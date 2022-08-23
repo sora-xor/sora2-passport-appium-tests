@@ -56,7 +56,7 @@ public class FirstTest extends BaseTest {
 
  @Test
     public void testCheckAppInstalled () {
-        // Our bondle ID is co.jp.soramitsu.sora.dev
+        // Our bondle ID is co.jp.soramitsu.sora.dev.
 	 	Assert.assertTrue(driver.isAppInstalled(bundlId));
     };
     
