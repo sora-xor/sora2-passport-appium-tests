@@ -20,7 +20,7 @@ import java.util.concurrent.*;
 import java.time.Duration;
 
 public class FirstTest extends BaseTest {
-	private IOSDriver driver;
+	public IOSDriver driver;
 	private String bundlId = "co.jp.soramitsu.sora.dev";
 
     @BeforeSuite
@@ -93,12 +93,14 @@ public class FirstTest extends BaseTest {
 		
 		//Check we are in mnemonic reorder screen
 		Assert.assertNotNull(driver.findElement(By.xpath("//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]")), "We ddn't get to the mnemoic reorder screen");
-	 	
+		Assert.assertNotNull(driver.findElement(By.name(keyWords.get(1))));
 		//Enter the mnemonic
 		for (int i = 0; i < keyWords.size(); i++)
 	 	{
-	 		driver.findElement(By.name(keyWords.get(i))).click();
+			Assert.assertTrue(driver.findElement(By.name(keyWords.get(i))).isDisplayed());
+			driver.findElement(By.name(keyWords.get(i))).click();
 	 	}
+		Assert.assertTrue(driver.findElement(By.name("CONFIRM")).isDisplayed());
 	 	driver.findElement(By.name("CONFIRM")).click();
 	 	
 	 	//Check that we are at the pin code setup screen

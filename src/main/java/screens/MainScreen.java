@@ -10,18 +10,17 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class MainScreen {
 	private IOSDriver driver;
-	
-	private WebElement walletHeader = driver.findElement(By.name("Wallet"));
-	
+		
 	public MainScreen() {
 	}
 	
 	public MainScreen(IOSDriver driver) {
-        this.driver = driver;
+		this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
-	
+
 	public void validateHeader() {
+		WebElement walletHeader = driver.findElement(By.name("Wallet"));
 		Assert.assertTrue(walletHeader.isDisplayed(), "Main screen header isn't displayed.");
     }
 	
