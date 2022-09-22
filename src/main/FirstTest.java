@@ -28,7 +28,7 @@ public class FirstTest extends BaseTest {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOs");
         capabilities.setCapability("appium:platformVersion", "16.0");
-        capabilities.setCapability("appium:deviceName", "iPhone 13");
+        capabilities.setCapability("appium:deviceName", "iPhone 14 Pro Max");
         capabilities.setCapability("appium:includeSafariInWebviews", true);
         capabilities.setCapability("appium:newCommandTimeout", 3600);
         capabilities.setCapability("appium:connectHardwareKeyboard", true);
