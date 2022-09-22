@@ -27,7 +27,7 @@ public class FirstTest extends BaseTest {
     public void setUp() throws Exception {    	
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOs");
-        capabilities.setCapability("appium:platformVersion", "16");
+        capabilities.setCapability("appium:platformVersion", "16.0");
         capabilities.setCapability("appium:deviceName", "iPhone 13");
         capabilities.setCapability("appium:includeSafariInWebviews", true);
         capabilities.setCapability("appium:newCommandTimeout", 3600);
