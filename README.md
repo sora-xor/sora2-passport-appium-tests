@@ -16,7 +16,10 @@ brew install node
 ```
 npm install -g appium
 ```
-
+- The iOs driver:
+```
+npm install appium-xcuitest-driver
+```
 - Next step is to set up the Sora Wallet app to the simulator.
 Please download the Sora Wallet to Downloads folder and then run
 > xcrun simctl list | grep 13
