@@ -22,18 +22,19 @@ npm install appium-xcuitest-driver
 ```
 - Next step is to set up the Sora Wallet app to the simulator.
 Please download the Sora Wallet to Downloads folder and then run
-> xcrun simctl list | grep 13
+> xcrun simctl list | grep 14
 
 It should return something like this:
 ```
- Phone: iPhone 13 Pro (88560389-34FF-4E68-ACC0-26C20B2835E2) (Shutdown)
- Phone: iPhone 13 Pro Max (D7052F17-F875-4CD2-B6C7-22DF184A9DA3) (Shutdown)
- Phone: iPhone 13 mini (7480C6BA-6C91-4FA7-89CF-6553B5020E55) (Shutdown)
- Phone: iPhone 13 (CA6F8482-D442-4BB7-BD3D-312D3D0A16E6) (Booted)
+    iPhone 14 (85C6EDCA-0831-4075-B26D-A45C8295E203) (Shutdown) 
+    iPhone 14 Plus (3B2693CF-150D-4E3F-8114-FF747E873882) (Shutdown) 
+    iPhone 14 Pro (E529C846-CC49-43A3-9E38-7BEDF37286C3) (Shutdown) 
+    iPhone 14 Pro Max (0284B3FC-F186-491F-9405-97E076CB6084) (Shutdown) 
+    iPad mini (6th generation) (1494B97C-D292-41B8-A4A0-2CBD5E626A71) (Shutdown)
 ```
-You'll need the long ID you have in brackets for the **iPhone 13**. So please replace my ID with yours in the install command.
+You'll need the long ID you have in brackets for the **iPhone 14 Pro Max**. So please replace my ID with yours in the install command.
 ```
-xcrun simctl install CA6F8482-D442-4BB7-BD3D-312D3D0A16E6 Downloads/SoraPassport.app
+xcrun simctl install 0284B3FC-F186-491F-9405-97E076CB6084 Downloads/SoraPassport.app
 ```
 
 Almost done! And the last step is to download and run tests.
