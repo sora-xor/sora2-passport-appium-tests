@@ -34,6 +34,7 @@ It should return something like this:
 ```
 You'll need the long ID you have in brackets for the **iPhone 14 Pro Max**. So please replace my ID with yours in the install command.
 ```
+xcrun simctl boot 0284B3FC-F186-491F-9405-97E076CB6084
 xcrun simctl install 0284B3FC-F186-491F-9405-97E076CB6084 Downloads/SoraPassport.app
 ```
 
