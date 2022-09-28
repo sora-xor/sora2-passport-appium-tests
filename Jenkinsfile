@@ -15,7 +15,7 @@ pipeline {
                 dir("source") {
                     checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[credentialsId: 'sorabot-github-user', url: 'https://github.com/soramitsu/sora-passport-ios']]]
                     script {
-                        sh "ls -la && xcodebuild -workspace SoraPassport.xcworkspace -scheme SoraPassport -sdk iphonesimulat"
+                        sh "xcodebuild -workspace SoraPassport.xcworkspace -scheme SoraPassport -sdk iphonesimulator -configuration Debug"
                     }
                 }
             }
