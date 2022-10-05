@@ -1,0 +1,7 @@
+target
+.idea
+.allure
+build
+garbage/*
+/testLog.log
+bakong-appium-tests.iml
