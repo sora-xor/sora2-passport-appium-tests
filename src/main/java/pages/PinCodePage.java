@@ -31,35 +31,23 @@ public class PinCodePage {
 
     public WalletPage enterAndConfirmPinCode() {
 
-        //Enter pin
+        //Enter Pin Code
         pinCodeBtn0.shouldBe(Condition.visible).click();
-
         pinCodeBtn1.shouldBe(Condition.visible).click();
-
         pinCodeBtn2.shouldBe(Condition.visible).click();
-
         pinCodeBtn3.shouldBe(Condition.visible).click();
-
         pinCodeBtn4.shouldBe(Condition.visible).click();
-
         pinCodeBtn5.shouldBe(Condition.visible).click();
 
         //Confirm Pin Code
 
         pinCodeBtn0.shouldBe(Condition.visible).click();
-
         pinCodeBtn1.shouldBe(Condition.visible).click();
-
         pinCodeBtn2.shouldBe(Condition.visible).click();
-
         pinCodeBtn3.shouldBe(Condition.visible).click();
-
         pinCodeBtn4.shouldBe(Condition.visible).click();
-
         pinCodeBtn5.shouldBe(Condition.visible).click();
 
         return screen(WalletPage.class);
-
-
     }
 }
