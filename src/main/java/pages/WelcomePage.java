@@ -12,7 +12,7 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 @Log4j2
 public class WelcomePage {
 
- //  @iOSXCUITFindBy(id = "English")
+    @iOSXCUITFindBy(accessibility = "CREATE ACCOUNT")
     @AndroidFindBy(xpath = "//*[@text='CREATE ACCOUNT']")
     private SelenideElement createAccountBtn;
 

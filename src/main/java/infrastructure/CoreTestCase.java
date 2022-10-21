@@ -11,18 +11,39 @@ import io.qameta.allure.Attachment;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeSuite;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
+
+import io.appium.java_client.ios.IOSDriver;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Locale;
+import java.net.URL;
 
 public class CoreTestCase {
 
     public static final Faker FAKER = new Faker(new Locale("en-GB"));
+    private String bundlId = "co.jp.soramitsu.sora.dev";
     private AppiumDriver driver;
+    public IOSDriver ios_driver;
+    private static AppiumDriverLocalService service;
+    
+    
+    @BeforeSuite
+    public void globalSetup () throws IOException {
+    	service = AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
+    			.withIPAddress("127.0.0.1")
+    			.withArgument(()-> "--base-path", "/wd/hub"));
+
+    	
+    	service.start();
+    }
 
     @BeforeTest
     static void setupAllureReports() {
@@ -34,10 +55,17 @@ public class CoreTestCase {
 
     @BeforeClass
     public void setUp() throws MalformedURLException {
-        driver = Platform.getInstance().getDriver();
-        WebDriverRunner.setWebDriver(driver);
+    	if (Platform.isAndroid()) {
+    		driver = Platform.getInstance().getDriver();
+    		WebDriverRunner.setWebDriver(driver);
+    	}
+    	else if (Platform.isIOS()) {
+    		ios_driver = Platform.getInstance().getIosDriver();
+    		ios_driver.activateApp(bundlId);
+    		WebDriverRunner.setWebDriver(ios_driver);
+    	}
     }
-
+ 
     @AfterMethod
     public void screenShotOnFail() throws IOException {
         screenshot();
@@ -49,6 +77,17 @@ public class CoreTestCase {
         if (driver != null) {
             driver.quit();
         }
+    }
+    
+    @AfterSuite
+    public void globalTearDown () {
+        if (service != null) {
+            service.stop();
+        }
+    }
+
+    public URL getServiceUrl () {
+        return service.getUrl();
     }
 
     @Attachment(type = "img/png")

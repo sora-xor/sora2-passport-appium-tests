@@ -6,6 +6,7 @@ import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.Capabilities;
 
 import java.net.MalformedURLException;
@@ -18,8 +19,7 @@ public class Platform {
     private static final String PLATFORM_ANDROID = "android";
 
     private static final Platform instance = new Platform();
-    private final String name;
-
+    private static String name;
     public static Platform getInstance() {
         return instance;
     }
@@ -30,20 +30,20 @@ public class Platform {
 
     AppiumDriver getDriver() throws MalformedURLException {
         URL URL = new URL("http://localhost:4723/wd/hub");
-        if (isAndroid()) {
-            return new AndroidDriver(URL, getAndroidDesiredCapabilities());
-        } else if (isIOS()) {
-            return new IOSDriver(URL, getIOSDesiredCapabilities());
-        } else {
-            throw new IllegalArgumentException("Cannot detect type of the Driver. settings.Platform value: " + name);
-        }
+        return new AndroidDriver(URL, getAndroidDesiredCapabilities());
     }
-
-    public boolean isAndroid() {
+    
+    
+    IOSDriver getIosDriver() throws MalformedURLException {
+    	URL IOS_URL = new URL("http://0.0.0.0:4723/wd/hub");
+        return new IOSDriver(IOS_URL, getIOSDesiredCapabilities());	
+    }
+    
+    public static boolean isAndroid() {
         return PLATFORM_ANDROID.equals(name);
     }
 
-    public boolean isIOS() {
+    public static boolean isIOS() {
         return PLATFORM_IOS.equals(name);
     }
 
@@ -58,18 +58,16 @@ public class Platform {
     }
 
     private Capabilities getIOSDesiredCapabilities() {
-        XCUITestOptions options = new XCUITestOptions();
-        options.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
-        // Hint: run `xcodebuild -showsdks` to see the list of available SDKs
-        options.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 12");
-        // Hint: run `xcrun simctl list runtimes` to get available runtimes
-        options.setCapability(MobileCapabilityType.PLATFORM_VERSION, "15.5");
-        options.setCapability(MobileCapabilityType.APP, resourcePath("apps/Bakong.zip"));
-        options.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
-        options.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 20);
-//        options.setCapability("autoAcceptAlerts", true);
-//        options.setFullReset(true);
-        return options;
+    	DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("platformName", "iOs");
+		capabilities.setCapability("automationName", "XCUITest");
+        capabilities.setCapability("appium:platformVersion", "16.0");
+        capabilities.setCapability("appium:deviceName", "iPhone 14 Pro");
+        capabilities.setCapability("appium:includeSafariInWebviews", true);
+        capabilities.setCapability("appium:newCommandTimeout", 3600);
+        capabilities.setCapability("appium:connectHardwareKeyboard", true);
+		capabilities.setCapability("appium:wdaLaunchTimeout", 40000);
+        return capabilities;
     }
 
     private String resourcePath(String file) {
