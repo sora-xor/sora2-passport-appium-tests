@@ -17,19 +17,21 @@ pipeline {
                     script {
                         sh "pod install"
                         sh "xcodebuild -workspace SoraPassport.xcworkspace -scheme SoraPassport -sdk iphonesimulator -configuration Debug"
+                        sh "export no_proxy=localhost"
+                        sh "mvn clean install test -DsuiteXmlFile=testng.xml"
                     }
                 }
             }
         }
 
-        stage('Test') {
-            steps {
-                script {
-                    sh "export no_proxy=localhost"
-                    sh "mvn clean install test -DsuiteXmlFile=testng.xml"
-                }
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         script {
+        //             sh "export no_proxy=localhost"
+        //             sh "mvn clean install test -DsuiteXmlFile=testng.xml"
+        //         }
+        //     }
+        // }
     }
 
     post {                                                                                                                                                                                                                                                                                                                                                                                                                                                     
