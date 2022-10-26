@@ -15,7 +15,7 @@ pipeline {
                 dir("source") {
                     checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[credentialsId: 'sorabot-github-user', url: 'https://github.com/soramitsu/sora-passport-ios']]]
                     script {
-                        sh "locale -a"
+                        sh "export LANG=en_US.UTF-8"
                         sh "pod install"
                         sh "xcodebuild -workspace SoraPassport.xcworkspace -scheme SoraPassport -sdk iphonesimulator -configuration Debug"
                         sh "export no_proxy=localhost"
