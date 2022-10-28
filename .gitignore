@@ -1,6 +1,7 @@
 target
 .idea
 .allure
+*.DS_Store
 .DS_Store
 build
 garbage/*
