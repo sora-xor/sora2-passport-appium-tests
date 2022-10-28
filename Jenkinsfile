@@ -32,7 +32,7 @@ pipeline {
         stage('Test') {
              steps {
                  script {
-                     sh """mvn clean install:test "-DsuiteXmlFile=testng.xml" """
+                     sh """mvn clean install test "-DsuiteXmlFile=testng.xml" """
                  }
              }
          }
