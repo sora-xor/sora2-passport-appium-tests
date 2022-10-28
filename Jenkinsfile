@@ -24,8 +24,6 @@ pipeline {
                         sh "pod update Firebase"
                         sh "pod install"
                         sh "xcodebuild -workspace SoraPassport.xcworkspace -scheme SoraPassport -sdk iphonesimulator -configuration Debug"
-                        //sh """pwd;  find . -type f -name "tesng.xml" """
-			//sh """mvn clean install:test "-DsuiteXmlFile=testng.xml" """
                     }
                 }
             }
@@ -34,8 +32,7 @@ pipeline {
         stage('Test') {
              steps {
                  script {
-                     //sh "export no_proxy=localhost"
-                     sh """mvn clean install:test "-DsuiteXmlFile=testng.xml" ""
+                     sh """mvn clean install:test "-DsuiteXmlFile=testng.xml" """
                  }
              }
          }
