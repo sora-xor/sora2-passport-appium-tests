@@ -24,7 +24,8 @@ pipeline {
                         sh "pod update Firebase"
                         sh "pod install"
                         sh "xcodebuild -workspace SoraPassport.xcworkspace -scheme SoraPassport -sdk iphonesimulator -configuration Debug"
-                        sh """mvn clean install:test "-DsuiteXmlFile=testng.xml" """
+                        sh "ls | grep testing.xml"
+			sh """mvn clean install:test "-DsuiteXmlFile=testng.xml" """
                     }
                 }
             }
