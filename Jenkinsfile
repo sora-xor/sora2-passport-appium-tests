@@ -6,13 +6,13 @@ pipeline {
         disableConcurrentBuilds()
     }
     agent {
-        label 'mac-ios-1'
+        label 'macos-agent'
     }
     environment {
-	LANG = "en_US.UTF-8"
-	LANGUAGE = "en_US.UTF-8"
-	LC_ALL = "en_US.UTF-8"
-	no_proxy = "local_host" 
+	    LANG = "en_US.UTF-8"
+	    LANGUAGE = "en_US.UTF-8"
+	    LC_ALL = "en_US.UTF-8"
+	    no_proxy = "local_host" 
     }
     stages {
         
