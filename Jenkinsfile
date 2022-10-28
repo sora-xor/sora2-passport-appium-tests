@@ -11,7 +11,8 @@ pipeline {
     environment {
 	LANG = "en_US.UTF-8"
 	LANGUAGE = "en_US.UTF-8"
-	LC_ALL = "en_US.UTF-8" 
+	LC_ALL = "en_US.UTF-8"
+	no_proxy = "local_host" 
     }
     stages {
         
@@ -22,8 +23,7 @@ pipeline {
                     script {
                         sh "pod update Firebase"
                         sh "pod install"
-                        sh "xcodebuild -workspace SoraPassport.xcworkspace -scheme SoraPassport -sdk iphonesimulator -configuration Debug"
-                        sh "export no_proxy=localhost"
+                        sh """xcodebuild "-workspace SoraPassport.xcworkspace" "-scheme SoraPassport" "-sdk iphonesimulator" "-configuration Debug" """
                         sh "mvn clean install test -DsuiteXmlFile=testng.xml"
                     }
                 }
