@@ -6,7 +6,7 @@ pipeline {
         disableConcurrentBuilds()
     }
     agent {
-        label 'macos-agent'
+        label 'mac-ios-agent'
     }
     environment {
 	    LANG = "en_US.UTF-8"
