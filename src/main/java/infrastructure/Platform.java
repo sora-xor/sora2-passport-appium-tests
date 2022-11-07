@@ -33,12 +33,13 @@ public class Platform {
 
     AppiumDriver getDriver() throws MalformedURLException {
         URL URL = new URL("http://localhost:4723/wd/hub");
-        return new AndroidDriver(URL, getAndroidDesiredCapabilities());
-    }
-    
-    IOSDriver getIosDriver() throws MalformedURLException {
-    	URL IOS_URL = new URL("http://0.0.0.0:4723/wd/hub");
-        return new IOSDriver(IOS_URL, getIOSDesiredCapabilities());	
+        if (isAndroid()) {
+            return new AndroidDriver(URL, getAndroidDesiredCapabilities());
+        } else if (isIOS()) {
+            return new IOSDriver(URL, getIOSDesiredCapabilities());
+        } else {
+            throw new IllegalArgumentException("Cannot detect type of the Driver. settings.Platform value: " + name);
+        }
     }
 
     public static boolean isAndroid() {

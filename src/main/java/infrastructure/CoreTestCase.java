@@ -30,7 +30,7 @@ public class CoreTestCase {
     public static final Faker FAKER = new Faker(new Locale("en-GB"));
     private String bundlId = "co.jp.soramitsu.sora.dev";
     private AppiumDriver driver;
-    public IOSDriver ios_driver;
+ //   public IOSDriver ios_driver;
     private static AppiumDriverLocalService service;
     
     @BeforeSuite
@@ -53,18 +53,16 @@ public class CoreTestCase {
 
     @BeforeClass
     public void setUp() throws MalformedURLException {
-    	if (Platform.isAndroid()) {
     		driver = Platform.getInstance().getDriver();
     		WebDriverRunner.setWebDriver(driver);
-    	}
-    	else if (Platform.isIOS()) {
-    		ios_driver = Platform.getInstance().getIosDriver();
-    		ios_driver.activateApp(bundlId);
-    		WebDriverRunner.setWebDriver(ios_driver);
-    	}
-    	else {
-            throw new IllegalArgumentException("Cannot detect type of the Driver.");
-        }
+//    	else if (Platform.isIOS()) {
+//    		driver = Platform.getInstance().getIosDriver();
+//    		driver.activateApp(bundlId);
+//    		WebDriverRunner.setWebDriver(ios_driver);
+//    	}
+//    	else {
+//            throw new IllegalArgumentException("Cannot detect type of the Driver.");
+//        }
     }
 
     @AfterMethod
