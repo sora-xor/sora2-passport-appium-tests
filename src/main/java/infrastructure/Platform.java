@@ -70,6 +70,7 @@ public class Platform {
         capabilities.setCapability("appium:newCommandTimeout", 3600);
         capabilities.setCapability("appium:connectHardwareKeyboard", true);
 		capabilities.setCapability("appium:wdaLaunchTimeout", 40000);
+		capabilities.setCapability("bundleId", "co.jp.soramitsu.sora.dev");
         return capabilities;
     }
 
