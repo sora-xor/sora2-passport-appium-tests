@@ -65,7 +65,7 @@ public class Platform {
         capabilities.setCapability("platformName", "iOs");
 		capabilities.setCapability("automationName", "XCUITest");
         capabilities.setCapability("appium:platformVersion", "16.1");
-        capabilities.setCapability("appium:deviceName", "iPhone 14 Pro");
+        capabilities.setCapability("appium:deviceName", "new_phone");
         capabilities.setCapability("appium:includeSafariInWebviews", true);
         capabilities.setCapability("appium:newCommandTimeout", 3600);
         capabilities.setCapability("appium:connectHardwareKeyboard", true);
