@@ -64,7 +64,7 @@ public class Platform {
     	DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOs");
 		capabilities.setCapability("automationName", "XCUITest");
-        capabilities.setCapability("appium:platformVersion", "16.0");
+        capabilities.setCapability("appium:platformVersion", "16.1");
         capabilities.setCapability("appium:deviceName", "iPhone 14 Pro");
         capabilities.setCapability("appium:includeSafariInWebviews", true);
         capabilities.setCapability("appium:newCommandTimeout", 3600);
