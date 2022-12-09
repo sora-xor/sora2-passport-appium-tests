@@ -43,6 +43,8 @@ public class CoreTestCase {
     	service.start();
     }
 
+
+
     @BeforeTest
     static void setupAllureReports() {
         Configuration.screenshots = false;

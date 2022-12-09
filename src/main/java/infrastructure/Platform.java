@@ -32,7 +32,7 @@ public class Platform {
     }
 
     AppiumDriver getDriver() throws MalformedURLException {
-        URL URL = new URL("http://localhost:4723/wd/hub");
+        URL URL = new URL("http://127.0.0.1:4723/wd/hub");
         if (isAndroid()) {
             return new AndroidDriver(URL, getAndroidDesiredCapabilities());
         } else if (isIOS()) {
@@ -56,7 +56,7 @@ public class Platform {
         options.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         options.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12.0");
         options.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UIAutomator2");
-        options.setCapability(MobileCapabilityType.APP, resourcePath("apps/SORA2.5.3.apk"));
+        options.setCapability(MobileCapabilityType.APP, resourcePath("apps/Sora_3.0.0.0-debug_develop_debug.apk"));
         return options;
     }
 
