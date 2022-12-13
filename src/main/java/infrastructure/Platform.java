@@ -32,13 +32,14 @@ public class Platform {
     }
 
     AppiumDriver getDriver() throws MalformedURLException {
-        URL URL = new URL("http://localhost:4723/wd/hub");
-        return new AndroidDriver(URL, getAndroidDesiredCapabilities());
-    }
-    
-    IOSDriver getIosDriver() throws MalformedURLException {
-    	URL IOS_URL = new URL("http://0.0.0.0:4723/wd/hub");
-        return new IOSDriver(IOS_URL, getIOSDesiredCapabilities());	
+        URL URL = new URL("http://127.0.0.1:4723/wd/hub");
+        if (isAndroid()) {
+            return new AndroidDriver(URL, getAndroidDesiredCapabilities());
+        } else if (isIOS()) {
+            return new IOSDriver(URL, getIOSDesiredCapabilities());
+        } else {
+            throw new IllegalArgumentException("Cannot detect type of the Driver. settings.Platform value: " + name);
+        }
     }
 
     public static boolean isAndroid() {
@@ -55,7 +56,7 @@ public class Platform {
         options.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         options.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12.0");
         options.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UIAutomator2");
-        options.setCapability(MobileCapabilityType.APP, resourcePath("apps/SORA2.5.3.apk"));
+        options.setCapability(MobileCapabilityType.APP, resourcePath("apps/Sora_3.0.0.0-debug_develop_debug.apk"));
         return options;
     }
 
@@ -63,12 +64,13 @@ public class Platform {
     	DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOs");
 		capabilities.setCapability("automationName", "XCUITest");
-        capabilities.setCapability("appium:platformVersion", "16.0");
-        capabilities.setCapability("appium:deviceName", "iPhone 14 Pro");
+        capabilities.setCapability("appium:platformVersion", "16.1");
+        capabilities.setCapability("appium:deviceName", "new_phone");
         capabilities.setCapability("appium:includeSafariInWebviews", true);
         capabilities.setCapability("appium:newCommandTimeout", 3600);
         capabilities.setCapability("appium:connectHardwareKeyboard", true);
 		capabilities.setCapability("appium:wdaLaunchTimeout", 40000);
+		capabilities.setCapability("bundleId", "co.jp.soramitsu.sora.dev");
         return capabilities;
     }
 
