@@ -9,22 +9,14 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 @Log4j2
 public class ImportAccountPage {
 
-
- //   @AndroidFindBy(xpath = "//*[text()='Account name']")
- //   private SelenideElement accountNameField;
-
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.widget.EditText")
     private SelenideElement mnemonicInput;
-
-
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/accountNameEt")
     private SelenideElement accountNameField;
 
-
     @AndroidFindBy(xpath = "//*[@text='CONTINUE']")
     private SelenideElement nextBtn;
-
 
     public NameYourAccountPage enterMnemonicPhrase(String mnemonic) {
 
@@ -34,14 +26,14 @@ public class ImportAccountPage {
         nextBtn.shouldBe(Condition.visible).click();
         return screen(NameYourAccountPage.class);
     }
-//    public NameYourAccountPage enterRawSeed(String rawseed) {
-//
-//        log.info("Enter Mnemonic Phrase " + mnemonic );
-//
-//        mnemonicInput.shouldBe(Condition.visible).sendKeys(mnemonic);
-//        nextBtn.shouldBe(Condition.visible).click();
-//        return screen(PinCodePage.class);
-//    }
+    public NameYourAccountPage enterRawSeed (String rawseed) {
+
+        log.info("Enter Rawseed" + rawseed);
+
+        mnemonicInput.shouldBe(Condition.visible).sendKeys(rawseed);
+        nextBtn.shouldBe(Condition.visible).click();
+        return screen(NameYourAccountPage.class);
+    }
 
 }
 

@@ -11,12 +11,12 @@
     <properties>
         <suitename>testng.xml</suitename>
         <threads>1</threads>
-        <platform>ios</platform>
+        <platform>android</platform>
 
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <appium.version>8.1.1</appium.version>
+        <appium.version>8.3.0</appium.version>
         <testng.version>7.6.1</testng.version>
         <selenide.version>2.1.3</selenide.version>
         <assertj.version>3.23.1</assertj.version>

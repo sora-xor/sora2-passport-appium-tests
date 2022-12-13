@@ -9,9 +9,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class WalletPage extends CommonPage {
 
-//    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/bottomNavigationView")
-//    private NavigationBarSection navigationBarSection;
-
     @AndroidFindBy(xpath = "//*[@text='Liquid assets']")
     private SelenideElement liquidAssets;
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/title")

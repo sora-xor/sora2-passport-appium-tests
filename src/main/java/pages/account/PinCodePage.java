@@ -11,13 +11,11 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PinCodePage {
-
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/pinCodeTitleTv")
     private SelenideElement pinCodeTitleTv;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/btn0")
     private SelenideElement pinCodeBtn0;
-
     public WalletPage enterAndConfirmPinCode () {
         $(By.id("jp.co.soramitsu.sora.develop:id/btn"));
 

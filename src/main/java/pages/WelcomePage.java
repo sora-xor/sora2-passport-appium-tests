@@ -51,16 +51,4 @@ public class WelcomePage {
 
         return screen(ImportAccountPage.class);
     }
-
-
-
-    //   @Step("Select language and go to next page")
-
-    // public LetsGetStartedPage goToLetsGetStartedPage() {
- //       log.info("Select language and go to next page");
- //       englishLanguage.shouldBe(Condition.visible)
- //               .click();
- //       nextButton.shouldBe(Condition.visible)
-   ///             .click();
-   //     return screen(LetsGetStartedPage.class);
     }

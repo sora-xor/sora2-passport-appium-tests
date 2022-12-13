@@ -12,7 +12,7 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 public class FirstTest extends CoreTestCase {
 
     @Test
-    public void openLetsGetStartedPage (){
+    public void openLetsGetStartedPage () {
         WelcomePage welcomePage = screen(WelcomePage.class);
         NameYourAccountPage nameYourAccountPage = welcomePage.goToCreateAccountPage();
     }
