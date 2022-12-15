@@ -7,6 +7,5 @@ def pipline = new org.ios.AppTestPipeline(
     steps: this,
     jobParams: jobParams,
     label: "mac-ios-2",
-    appPushNoti: true
 )
 pipline.runPipeline('sora')
