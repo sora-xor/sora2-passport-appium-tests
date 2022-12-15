@@ -3,7 +3,7 @@
 // Job properties
 def jobParams = []
 
-def pipline = new org.ios.AutoTest(
+def pipline = new org.ios.AppTestPipeline(
     steps: this,
     jobParams: jobParams,
     label: "mac-ios-2",
