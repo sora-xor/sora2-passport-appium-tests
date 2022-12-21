@@ -63,14 +63,15 @@ public class Platform {
     private Capabilities getIOSDesiredCapabilities() {
     	DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOs");
-		capabilities.setCapability("automationName", "XCUITest");
+	capabilities.setCapability("automationName", "XCUITest");
         capabilities.setCapability("appium:platformVersion", "16.0");
         capabilities.setCapability("appium:deviceName", "new_phone");
         capabilities.setCapability("appium:includeSafariInWebviews", true);
         capabilities.setCapability("appium:newCommandTimeout", 3600);
         capabilities.setCapability("appium:connectHardwareKeyboard", true);
-		capabilities.setCapability("appium:wdaLaunchTimeout", 40000);
-		capabilities.setCapability("bundleId", "co.jp.soramitsu.sora.dev");
+	capabilities.setCapability("appium:wdaLaunchTimeout", 40000);
+	capabilities.setCapability("bundleId", "co.jp.soramitsu.sora.dev");
+	capabilities.setCapability("appium:isHeadless", true);
         return capabilities;
     }
 
