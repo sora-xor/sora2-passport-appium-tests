@@ -3,8 +3,11 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PinCodePage {
 
@@ -29,24 +32,19 @@ public class PinCodePage {
     @AndroidFindBy(id = "jp.co.soramitsu.sora:id/btn3")
     private SelenideElement pinCodeBtn5;
 
-    public WalletPage enterAndConfirmPinCode() {
+    public WalletPage enterAndConfirmPinCode () {
+        $(By.id("jp.co.soramitsu.sora:id/btn"));
 
-        //Enter Pin Code
-        pinCodeBtn0.shouldBe(Condition.visible).click();
-        pinCodeBtn1.shouldBe(Condition.visible).click();
-        pinCodeBtn2.shouldBe(Condition.visible).click();
-        pinCodeBtn3.shouldBe(Condition.visible).click();
-        pinCodeBtn4.shouldBe(Condition.visible).click();
-        pinCodeBtn5.shouldBe(Condition.visible).click();
+        for (int i =  1; i <= 6; i++)
+        {
+            $(By.id("jp.co.soramitsu.sora:id/btn"+i)).click();
+        }
+        assertThat(pinCodeTitleTv.getText()).isEqualTo("Confirm pin code");
 
-        //Confirm Pin Code
-
-        pinCodeBtn0.shouldBe(Condition.visible).click();
-        pinCodeBtn1.shouldBe(Condition.visible).click();
-        pinCodeBtn2.shouldBe(Condition.visible).click();
-        pinCodeBtn3.shouldBe(Condition.visible).click();
-        pinCodeBtn4.shouldBe(Condition.visible).click();
-        pinCodeBtn5.shouldBe(Condition.visible).click();
+        for (int i =  1; i <= 6; i++)
+        {
+            $(By.id("jp.co.soramitsu.sora:id/btn"+i)).click();
+        }
 
         return screen(WalletPage.class);
     }

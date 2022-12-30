@@ -19,12 +19,25 @@ public class CreateAccountPage {
     @AndroidFindBy(xpath = "//*[@text='OK']")
     private SelenideElement doNotTakeScreenshotsBtn;
 
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/tvPassphraseWords1")
+    private SelenideElement tvPassphraseWords1;
+
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/tvPassphraseWords2")
+    private SelenideElement tvPassphraseWords2;
+
+    public void getWords(){
+        String passphraseWords1 = tvPassphraseWords1.getText();
+        String passphraseWords2 = tvPassphraseWords2.getText();
+
+    }
+
     public void enterAccountName (String mnemonic) {
 
         log.info("Enter Account Name " + mnemonic );
         accountNameField.shouldBe(Condition.visible).sendKeys("AccountTest");
         nextBtn.shouldBe(Condition.visible).click();
         doNotTakeScreenshotsBtn.shouldBe(Condition.visible).click();
+
 
     }
 
