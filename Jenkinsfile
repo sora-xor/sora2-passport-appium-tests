@@ -1,11 +1,27 @@
 @Library('jenkins-library') _
 
 // Job properties
-def jobParams = []
+def jobParams = [
+  choice(
+    choices: ['iOS', 'android'],
+    name: 'platform',
+    description: 'Platform'
+  ),
+]
 
-def pipline = new org.ios.AppTestPipeline(
+if ( "${params.platform}" == "iOS" ) {
+  def pipline = new org.ios.AppTestPipeline(
     steps: this,
     jobParams: jobParams,
     label: "mac-ios-1",
-)
-pipline.runPipeline('sora')
+    )
+  pipline.runPipeline('sora')
+} else {
+  echo "pipeline for android"
+//   def pipline = new org.android.AppTestPipeline(
+//     steps: this,
+//     jobParams: jobParams,
+//     label: "mac-ios-1",
+//     )
+//   pipline.runPipeline('sora')
+}
