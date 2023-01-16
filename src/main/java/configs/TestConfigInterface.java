@@ -11,4 +11,7 @@ public interface TestConfigInterface extends Config{
 
     @Key("mnemonic")
     String mnemonic ();
+
+    @Key("rawseed")
+    String rawseed ();
 }
