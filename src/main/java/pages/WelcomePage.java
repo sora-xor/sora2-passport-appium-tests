@@ -7,6 +7,8 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.extern.log4j.Log4j2;
 import pages.account.ImportAccountPage;
 import pages.account.NameYourAccountPage;
+import static infrastructure.Platform.isIOS;
+import static infrastructure.Platform.isAndroid;
 
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 
@@ -23,6 +25,7 @@ public class WelcomePage {
     @AndroidFindBy(xpath = "//*[@text='Raw seed']")
     private SelenideElement importRawSeed;
 
+    @iOSXCUITFindBy(accessibility = "IMPORT ACCOUNT")
     @AndroidFindBy(xpath = "//*[@text='IMPORT ACCOUNT']")
     private SelenideElement importAccountBtn;
 
@@ -38,7 +41,9 @@ public class WelcomePage {
 
         log.info("import account");
         importAccountBtn.shouldBe(Condition.visible).click();
-        importPassphrase.click();
+        if (isAndroid()) { 
+        	importPassphrase.click();
+        }
 
         return screen(ImportAccountPage.class);
     }
