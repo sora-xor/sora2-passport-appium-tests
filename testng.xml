@@ -5,5 +5,10 @@
     <classes>
       <class name="commontests.FirstTest"/>
     </classes>
-  </test> <!-- Test -->
+  </test>
+    <test thread-count="1" name="ImportAccountTest">
+    <classes>
+      <class name="commontests.ImportAccountPassphrase"/>
+    </classes>
+  </test>
 </suite> <!-- Suite -->
