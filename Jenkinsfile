@@ -10,7 +10,7 @@ def jobParams = [
 ]
 def jobLibrary = "org.ios.AppTestPipeline"
 
-def pipline = new jobLibrary(
+def pipline = new "${jobLibrary}"(
   steps: this,
   jobParams: jobParams,
   label: "mac-ios-1",
