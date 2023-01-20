@@ -6,22 +6,14 @@ def jobParams = [
     choices: ['iOS', 'android'],
     name: 'platform',
     description: 'Platform'
-  ),
+  )
 ]
+def jobLibrary = "org.ios.AppTestPipeline"
 
-if ( "${params.platform}" == "iOS" ) {
-  def pipline = new org.ios.AppTestPipeline(
-    steps: this,
-    jobParams: jobParams,
-    label: "mac-ios-1",
-    )
-  pipline.runPipeline('sora')
-} else {
-  echo "pipeline for android"
-//   def pipline = new org.android.AppTestPipeline(
-//     steps: this,
-//     jobParams: jobParams,
-//     label: "mac-ios-1",
-//     )
-//   pipline.runPipeline('sora')
-}
+def pipline = new jobLibrary(
+  steps: this,
+  jobParams: jobParams,
+  label: "mac-ios-1",
+)
+
+pipline.runPipeline('sora')
