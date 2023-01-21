@@ -1,4 +1,4 @@
-@Library('jenkins-library') _
+@Library('jenkins-library@feature/DOPS-2170') _
 
 // Job properties
 def jobParams = [
@@ -10,18 +10,19 @@ def jobParams = [
 ]
 
 if ( "${params.platform}" == "iOS" ) {
-  def pipline = new org.ios.AppTestPipeline(
+  def pipeline = new org.ios.AppTestPipeline(
     steps: this,
     jobParams: jobParams,
-    label: "mac-ios-1",
+    label: "mac-ios-1"
     )
-  pipline.runPipeline('sora')
 } else {
   echo "pipeline for android"
-//   def pipline = new org.android.AppTestPipeline(
-//     steps: this,
-//     jobParams: jobParams,
-//     label: "mac-ios-1",
-//     )
-//   pipline.runPipeline('sora')
+  def pipeline = new org.android.AppPipeline(
+    steps: this,
+    testCmd: 'ktlint clean runModuleTests jacocoTestReport',
+    jobParams: jobParams,
+    dockerImage: 'build-tools/android-build-box-jdk11:latest'
+  )
 }
+pipeline.runPipeline('sora')
+
