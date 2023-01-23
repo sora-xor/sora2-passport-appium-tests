@@ -24,7 +24,7 @@ public class NameYourAccountPage {
 
     public PinCodePage enterAccountNameAfterImport (String accountName) {
     	if (isAndroid()) {
-    		accountNameField.shouldBe(Condition.visible).sendKeys("Import Account");
+    		accountNameField.shouldBe(Condition.visible).sendKeys(accountName);
     		nextBtn.shouldBe(Condition.visible).click();
     	}
         return screen(PinCodePage.class);

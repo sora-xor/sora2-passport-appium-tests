@@ -8,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import pages.account.ImportAccountPage;
 import pages.account.NameYourAccountPage;
 import static infrastructure.Platform.isIOS;
+import static org.assertj.core.api.Assertions.assertThat;
 import static infrastructure.Platform.isAndroid;
 
 import static com.codeborne.selenide.appium.ScreenObject.screen;
@@ -52,8 +53,13 @@ public class WelcomePage {
 
         log.info("import account");
         importAccountBtn.shouldBe(Condition.visible).click();
-        importRawSeed.click();
+        if (isAndroid()) { 
+        	importRawSeed.click();
+        }
 
         return screen(ImportAccountPage.class);
+    }
+    public void welcomePageIsOpen (){
+        assertThat(createAccountBtn).isIn(Condition.visible);
     }
     }

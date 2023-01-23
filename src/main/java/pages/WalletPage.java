@@ -13,6 +13,7 @@ public class WalletPage extends CommonPage {
     @AndroidFindBy(xpath = "//*[@text='Liquid assets']")
     @iOSXCUITFindBy(accessibility = "Liquid assets")
     private SelenideElement liquidAssets;
+    
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/title")
     private SelenideElement walletTitlePage;
 

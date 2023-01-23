@@ -11,16 +11,16 @@ import pages.MorePage;
 import pages.WelcomePage;
 
 @Log4j2
-public class AccountOptionsPage {
-	
-    @iOSXCUITFindBy(accessibility = "FORGET ACCOUNT")
-    private SelenideElement forgetAccountBtn;
+public class AccountsPage {
+
+    @iOSXCUITFindBy(accessibility = "iconMenuInfo")
+    private SelenideElement currentAccountBtn;
     
-    public PinCodePage forgetAccount()
+    public AccountOptionsPage goToAccountOptionsPage()
     {
-        log.info("Click forget account");
-        forgetAccountBtn.click();
-        return screen(PinCodePage.class);
+        log.info("Click (i) near the only account");
+        currentAccountBtn.click();
+        return screen(AccountOptionsPage.class);
     } 
 
 }

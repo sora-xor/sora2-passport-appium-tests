@@ -8,6 +8,7 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 
 import org.openqa.selenium.By;
 import pages.WalletPage;
+import pages.WelcomePage;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
@@ -19,6 +20,9 @@ public class PinCodePage {
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/pinCodeTitleTv")
     @iOSXCUITFindBy(accessibility = "Confirm Pin Code")
     private SelenideElement pinCodeTitleTv;
+    
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Logout\"]")
+    private SelenideElement logoutAlertBnt;
 
     @iOSXCUITFindBy(accessibility = "0")
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/btn0")
@@ -47,7 +51,23 @@ public class PinCodePage {
     			$(By.name(""+i)).click();   			
     		}
     	}
-
         return screen(WalletPage.class);
     }
+    public WelcomePage enterPinCode() {
+    	if (isAndroid()) {
+    		$(By.id("jp.co.soramitsu.sora.develop:id/btn"));
+
+    		for (int i =  1; i <= 6; i++)
+    		{
+    			$(By.id("jp.co.soramitsu.sora.develop:id/btn"+i)).click();
+    		}	
+    	}
+    	if (isIOS()) {
+    		for (int i =  1; i <= 6; i++) {
+    			$(By.name(""+i)).click();   			
+    		}	
+    	}
+    	logoutAlertBnt.click();
+    	return screen(WelcomePage.class);
+    	}
 }
