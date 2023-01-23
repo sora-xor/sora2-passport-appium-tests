@@ -21,5 +21,10 @@ public class ImportAccountPassphrase extends CoreTestCase {
         PinCodePage pinCodePage = nameYourAccountPage.enterAccountNameAfterImport("Import Passphrase");
         WalletPage walletPage = pinCodePage.enterAndConfirmPinCode();
         walletPage.walletPageIsOpen();
+        MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
+        AccountsPage accountsPage = morePage.goToAccounts();
+        AccountOptionsPage accountOptionsPage = accountsPage.goToAccountOptionsPage();
+        PinCodePage enterCodePage = accountOptionsPage.forgetAccount();
+        WelcomePage welcomePageAgain = enterCodePage.enterPinCode();
     }
 }
