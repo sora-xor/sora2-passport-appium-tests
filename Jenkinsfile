@@ -15,14 +15,14 @@ if ( "${params.platform}" == "iOS" ) {
     jobParams: jobParams,
     label: "mac-ios-1"
     )
+  pipeline.runPipeline('sora')
 } else {
-  echo "pipeline for android"
   def pipeline = new org.android.AppPipeline(
     steps: this,
     testCmd: 'ktlint clean runModuleTests jacocoTestReport',
     jobParams: jobParams,
     dockerImage: 'build-tools/android-build-box-jdk11:latest'
   )
+  pipeline.runPipeline('sora')
 }
-pipeline.runPipeline('sora')
 
