@@ -39,7 +39,7 @@ public class ImportAccountPage {
 	@iOSXCUITFindBy(accessibility = "OK")
     private SelenideElement rawSeedAlertOkBtn;
 
-	@iOSXCUITFindBy(accessibility = "CONTINUE") // //XCUIElementTypeButton[@name="CONTINUE"]
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"CONTINUE\"]")
 	@AndroidFindBy(xpath = "//*[@text='CONTINUE']")
     private SelenideElement nextBtn;
 
