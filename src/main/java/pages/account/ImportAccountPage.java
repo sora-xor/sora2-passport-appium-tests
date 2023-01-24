@@ -2,6 +2,8 @@ package pages.account;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.extern.log4j.Log4j2;
@@ -12,6 +14,7 @@ import static infrastructure.Platform.isAndroid;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 @Log4j2
 public class ImportAccountPage {
+	private AppiumDriver driver;
 
 	@iOSXCUITFindBy(accessibility = "Mnemonic passphrase")
 	@AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.widget.EditText")
@@ -38,12 +41,16 @@ public class ImportAccountPage {
 	
 	@iOSXCUITFindBy(accessibility = "OK")
     private SelenideElement rawSeedAlertOkBtn;
+	
+	@iOSXCUITFindBy(accessibility = "Done")
+    private SelenideElement DoneBtn;
 
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"CONTINUE\"]")
 	@AndroidFindBy(xpath = "//*[@text='CONTINUE']")
     private SelenideElement nextBtn;
 
     public NameYourAccountPage enterMnemonicPhrase(String mnemonic) {
+
 
         log.info("Enter Mnemonic Phrase " + mnemonic );
         if (isAndroid()) {
@@ -54,7 +61,7 @@ public class ImportAccountPage {
         	mnemonicInput.sendKeys(mnemonic);
         	accountNameField.click();
         	accountNameField.sendKeys("Import Account");
-        	topOfScreen.click();
+        	DoneBtn.click();
         	nextBtn.should(Condition.attribute("accessible", "true")).click();
 
         }
@@ -69,15 +76,14 @@ public class ImportAccountPage {
             mnemonicInput.shouldBe(Condition.visible).sendKeys(rawseed);
             nextBtn.shouldBe(Condition.visible).click();
         }
-        if (isIOS()) {
-        
+        if (isIOS()) {       
         	sourceTypeSelector.shouldBe(Condition.visible).click();
         	rawSeedSelectorElement.shouldBe(Condition.visible).click();
         	rawSeedAlertOkBtn.shouldBe(Condition.visible).click();
         	rawSeedInput.shouldBe(Condition.enabled).sendKeys(rawseed);
         	accountNameField.click();
         	accountNameField.sendKeys("Import Account");
-        	topOfScreen.click();
+        	DoneBtn.click();
         	nextBtn.should(Condition.attribute("accessible", "true")).click();
         }
 
