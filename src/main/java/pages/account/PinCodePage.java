@@ -19,6 +19,10 @@ import static infrastructure.Platform.isAndroid;
 public class PinCodePage {
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/pinCodeTitleTv")
     @iOSXCUITFindBy(accessibility = "Confirm Pin Code")
+    private SelenideElement pinCodeRepeatTitleTv;
+    
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/pinCodeTitleTv")
+    @iOSXCUITFindBy(accessibility = "Setup Pin Code")
     private SelenideElement pinCodeTitleTv;
     
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Logout\"]")
@@ -35,7 +39,7 @@ public class PinCodePage {
     		{
     			$(By.id("jp.co.soramitsu.sora.develop:id/btn"+i)).click();
     		}
-    		assertThat(pinCodeTitleTv.getText()).isEqualTo("Confirm pin code");
+    		assertThat(pinCodeRepeatTitleTv.getText()).isEqualTo("Confirm pin code");
 
     		for (int i =  1; i <= 6; i++)
     		{
@@ -43,10 +47,11 @@ public class PinCodePage {
     		}
     	}
     	if (isIOS()) {
+    		assertThat(pinCodeTitleTv.isDisplayed());
     		for (int i =  1; i <= 6; i++) {
     			$(By.name(""+i)).click();   			
     		}
-    		assertThat(pinCodeTitleTv.isDisplayed());
+    		assertThat(pinCodeRepeatTitleTv.isDisplayed());
     		for (int i =  1; i <= 6; i++) {
     			$(By.name(""+i)).click();   			
     		}
@@ -63,6 +68,7 @@ public class PinCodePage {
     		}	
     	}
     	if (isIOS()) {
+    		assertThat(pinCodeTitleTv.isDisplayed());
     		for (int i =  1; i <= 6; i++) {
     			$(By.name(""+i)).click();   			
     		}	
