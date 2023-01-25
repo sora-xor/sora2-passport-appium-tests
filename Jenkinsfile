@@ -17,7 +17,7 @@ if ( "${params.platform}" == "iOS" ) {
     )
   pipeline.runPipeline('sora')
 } else {
-  def pipeline = new org.android.AppPipeline(
+  def pipeline = new org.android.AppTestPipeline(
     steps: this,
     testCmd: 'ktlint clean runModuleTests jacocoTestReport',
     jobParams: jobParams,
