@@ -17,7 +17,7 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 public class NameYourAccountPage {
 
 	@iOSXCUITFindBy(accessibility = "Account name")
-	@AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.widget.EditText")
+	@AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.widget.EditText")
     private SelenideElement accountNameField;
 
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"CONTINUE\"]")
@@ -36,6 +36,7 @@ public class NameYourAccountPage {
     public PayAttentionPage enterAccountName (String accountName) {
     	if (isAndroid()) {
         accountNameField.shouldBe(Condition.visible).sendKeys("Create Account");
+
         nextBtn.shouldBe(Condition.visible).click();
     	}
     	else if (isIOS()) {

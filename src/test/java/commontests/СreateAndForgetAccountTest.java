@@ -1,6 +1,5 @@
 package commontests;
 
-import configs.TestConfig;
 import infrastructure.CoreTestCase;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;
@@ -11,10 +10,10 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 
 
 @Log4j2
-public class ForgetAccountTest extends CoreTestCase {
+public class СreateAndForgetAccountTest extends CoreTestCase {
 
     @Test
-    public void ForgetAccountTest() {
+    public void СreateAndForgetAccountTest() {
 
         WelcomePage welcomePage = screen(WelcomePage.class);
         NameYourAccountPage nameYourAccountPage = welcomePage.goToCreateAccountPage();

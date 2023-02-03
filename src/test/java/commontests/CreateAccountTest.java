@@ -21,7 +21,7 @@ public class CreateAccountTest extends CoreTestCase {
     public void enterAccountName (){
         WelcomePage welcomePage = screen(WelcomePage.class);
         NameYourAccountPage nameYourAccountPage = welcomePage.goToCreateAccountPage();
-        PayAttentionPage payAttention = nameYourAccountPage.enterAccountName("TestAccount");
+        PayAttentionPage payAttention = nameYourAccountPage.enterAccountName("Account Test");
         PassphrasePage passphrasePage = payAttention.confirmPayAttention();
         PinCodePage pinCodePage = passphrasePage.skipPassPhrase();
         WalletPage walletPage = pinCodePage.enterAndConfirmPinCode();
