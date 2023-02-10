@@ -16,12 +16,12 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 public class ImportAccountPage {
 	private AppiumDriver driver;
 
-	@iOSXCUITFindBy(accessibility = "Mnemonic passphrase")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextView")
 	@AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.widget.EditText")
     private SelenideElement mnemonicInput;
 	
-	@iOSXCUITFindBy(accessibility = "Raw Seed (64 hex symbols)")
-	private SelenideElement rawSeedInput;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextView")
+    private SelenideElement rawSeedInput;
 
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField")
 	@AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/accountNameEt")
@@ -45,7 +45,7 @@ public class ImportAccountPage {
 	@iOSXCUITFindBy(accessibility = "Done")
     private SelenideElement DoneBtn;
 
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"CONTINUE\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Continue\"]")
 	@AndroidFindBy(xpath = "//*[@text='CONTINUE']")
     private SelenideElement nextBtn;
 
@@ -57,11 +57,8 @@ public class ImportAccountPage {
         	mnemonicInput.shouldBe(Condition.visible).sendKeys(mnemonic);
         	nextBtn.shouldBe(Condition.visible).click();
         }
-        else if (isIOS()) { //in IOS the input is invisible
+        else if (isIOS()) {
         	mnemonicInput.sendKeys(mnemonic);
-        	accountNameField.click();
-        	accountNameField.sendKeys("Import Account");
-        	DoneBtn.click();
         	nextBtn.should(Condition.attribute("accessible", "true")).click();
 
         }
@@ -77,13 +74,7 @@ public class ImportAccountPage {
             nextBtn.shouldBe(Condition.visible).click();
         }
         if (isIOS()) {       
-        	sourceTypeSelector.shouldBe(Condition.visible).click();
-        	rawSeedSelectorElement.shouldBe(Condition.visible).click();
-        	rawSeedAlertOkBtn.shouldBe(Condition.visible).click();
-        	rawSeedInput.shouldBe(Condition.enabled).sendKeys(rawseed);
-        	accountNameField.click();
-        	accountNameField.sendKeys("Import Account");
-        	DoneBtn.click();
+            rawSeedInput.shouldBe(Condition.enabled).sendKeys(rawseed);
         	nextBtn.should(Condition.attribute("accessible", "true")).click();
         }
 

@@ -56,7 +56,7 @@ public class PinCodePage {
     			$(By.name(""+i)).click();   			
     		}
     	}
-        return screen(WalletPage.class);
+         return screen(WalletPage.class);
     }
     public WelcomePage enterPinCode() {
     	if (isAndroid()) {

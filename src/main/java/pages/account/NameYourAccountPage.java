@@ -16,22 +16,13 @@ import static infrastructure.Platform.isAndroid;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 public class NameYourAccountPage {
 
-	@iOSXCUITFindBy(accessibility = "Account name")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField")
 	@AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.widget.EditText")
     private SelenideElement accountNameField;
 
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"CONTINUE\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Continue\"]")
 	@AndroidFindBy(xpath = "//*[@text='CONTINUE']")
     private SelenideElement nextBtn;
-	
-	@iOSXCUITFindBy(accessibility = "OK")
-    private SelenideElement AlertOkBtn;
-	
-	@iOSXCUITFindBy(accessibility = "Done")
-    private SelenideElement DoneBtn;
-	
-
-
 
     public PayAttentionPage enterAccountName (String accountName) {
     	if (isAndroid()) {
@@ -40,9 +31,7 @@ public class NameYourAccountPage {
     	}
     	else if (isIOS()) {
     		accountNameField.sendKeys("Create Account");
-    		DoneBtn.click();
             nextBtn.click();
-        	AlertOkBtn.shouldBe(Condition.visible).click();
         }
         return screen(PayAttentionPage.class);
     }
@@ -52,6 +41,9 @@ public class NameYourAccountPage {
     		accountNameField.shouldBe(Condition.visible).sendKeys(accountName);
     		nextBtn.shouldBe(Condition.enabled).click();
     	}
+        else if (isIOS()) {
+            accountNameField.shouldBe(Condition.visible).sendKeys(accountName);
+            nextBtn.shouldBe(Condition.enabled).click();}
         return screen(PinCodePage.class);
     }
 }

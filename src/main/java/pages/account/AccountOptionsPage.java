@@ -13,7 +13,7 @@ import pages.WelcomePage;
 @Log4j2
 public class AccountOptionsPage {
 	
-    @iOSXCUITFindBy(accessibility = "FORGET ACCOUNT")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Forget account\"]")
     private SelenideElement forgetAccountBtn;
     
     public PinCodePage forgetAccount()
