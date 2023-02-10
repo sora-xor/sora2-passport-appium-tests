@@ -16,6 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static infrastructure.Platform.isIOS;
 import static infrastructure.Platform.isAndroid;
 
+
 public class PinCodePage {
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/pinCodeTitleTv")
     @iOSXCUITFindBy(accessibility = "Confirm Pin Code")
@@ -28,9 +29,6 @@ public class PinCodePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Logout\"]")
     private SelenideElement logoutAlertBnt;
 
-    @iOSXCUITFindBy(accessibility = "0")
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/btn0")
-    private SelenideElement pinCodeBtn0;
     public WalletPage enterAndConfirmPinCode () {
     	if (isAndroid()) {
     		$(By.id("jp.co.soramitsu.sora.develop:id/btn"));

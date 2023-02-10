@@ -25,25 +25,14 @@ public class NameYourAccountPage {
     private SelenideElement nextBtn;
 
     public PayAttentionPage enterAccountName (String accountName) {
-    	if (isAndroid()) {
         accountNameField.shouldBe(Condition.visible).sendKeys("Create Account");
         nextBtn.shouldBe(Condition.visible).click();
-    	}
-    	else if (isIOS()) {
-    		accountNameField.sendKeys("Create Account");
-            nextBtn.click();
-        }
         return screen(PayAttentionPage.class);
     }
 
     public PinCodePage enterAccountNameAfterImport (String accountName) {
-    	if (isAndroid()) {
-    		accountNameField.shouldBe(Condition.visible).sendKeys(accountName);
-    		nextBtn.shouldBe(Condition.enabled).click();
-    	}
-        else if (isIOS()) {
-            accountNameField.shouldBe(Condition.visible).sendKeys(accountName);
-            nextBtn.shouldBe(Condition.enabled).click();}
+        accountNameField.shouldBe(Condition.visible).sendKeys(accountName);
+        nextBtn.shouldBe(Condition.enabled).click();
         return screen(PinCodePage.class);
     }
 }

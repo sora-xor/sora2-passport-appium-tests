@@ -28,16 +28,9 @@ public class PayAttentionPage {
     private SelenideElement nextBtn;
 
     public PassphrasePage confirmPayAttention () {
-    	if (isAndroid())  {
     		loseMyPassphraseCheckbox.shouldBe(Condition.visible).click();
     		exposeOrShareCheckbox.shouldBe(Condition.visible).click();
     		responsibilityCheckbox.shouldBe(Condition.visible).click();
-    	}
-        else if (isIOS()) {
-            loseMyPassphraseCheckbox.click();
-            exposeOrShareCheckbox.click();
-            responsibilityCheckbox.click();
-        }
     	nextBtn.shouldBe(Condition.visible).click();
         return screen(PassphrasePage.class);
     }
