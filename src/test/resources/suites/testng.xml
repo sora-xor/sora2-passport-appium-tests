@@ -11,13 +11,18 @@
       <class name="commontests.ImportAccountPassphrase"/>
     </classes>
     </test>
-   <test thread-count="1" name="ImportAccountRawSeed">
+    <test thread-count="1" name="ImportAccountRawSeed">
    <parameter name="accountNameParam" value="Import RawSeed" />
     <classes>    
       <class name="commontests.ImportAccountRawSeed"/>
     </classes>
    </test>
-     <test thread-count="1" name="CreateAccountTest">
+   <test thread-count="1" name="CreateAndForgetAccountTest">
+    <classes>
+      <class name="commontests.CreateAndForgetAccountTest"/>
+    </classes>
+    </test>
+   <test thread-count="1" name="CreateAccountTest">
     <classes>
       <class name="commontests.CreateAccountTest"/>
     </classes>

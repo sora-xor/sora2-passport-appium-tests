@@ -7,6 +7,8 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.extern.log4j.Log4j2;
 
 import static com.codeborne.selenide.appium.ScreenObject.screen;
+
+import com.codeborne.selenide.Condition;
 @Log4j2
 public class NavigationBarSection extends ElementsContainer {
 
@@ -34,7 +36,7 @@ public class NavigationBarSection extends ElementsContainer {
     public MorePage goToMorePage()
     {
         log.info("Click more button");
-        moreBtn.click();
+        moreBtn.shouldBe(Condition.visible).click();
         return screen(MorePage.class);
     }
 
