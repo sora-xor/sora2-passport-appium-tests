@@ -16,14 +16,16 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 @Log4j2
 public class WelcomePage {
 
-	@iOSXCUITFindBy(accessibility = "CREATE ACCOUNT")
+	@iOSXCUITFindBy(accessibility = "CREATE NEW ACCOUNT")
     @AndroidFindBy(xpath = "//*[@text='CREATE NEW ACCOUNT']")
     private SelenideElement createAccountBtn;
 
-    @AndroidFindBy(xpath = "//*[@text='Passphrase']")
+	@iOSXCUITFindBy(accessibility = "Passphrase")
+	@AndroidFindBy(xpath = "//*[@text='Passphrase']")
     private SelenideElement importPassphrase;
 
-    @AndroidFindBy(xpath = "//*[@text='Raw seed']")
+	@iOSXCUITFindBy(accessibility = "Raw seed")
+	@AndroidFindBy(xpath = "//*[@text='Raw seed']")
     private SelenideElement importRawSeed;
 
     @iOSXCUITFindBy(accessibility = "IMPORT ACCOUNT")
@@ -42,9 +44,8 @@ public class WelcomePage {
 
         log.info("import account");
         importAccountBtn.shouldBe(Condition.visible).click();
-        if (isAndroid()) { 
-        	importPassphrase.click();
-        }
+        importPassphrase.click();
+        
 
         return screen(ImportAccountPage.class);
     }
@@ -53,9 +54,7 @@ public class WelcomePage {
 
         log.info("import account");
         importAccountBtn.shouldBe(Condition.visible).click();
-        if (isAndroid()) { 
-        	importRawSeed.click();
-        }
+        importRawSeed.click();
 
         return screen(ImportAccountPage.class);
     }

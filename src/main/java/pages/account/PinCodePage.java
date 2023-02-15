@@ -38,7 +38,7 @@ public class PinCodePage {
     @iOSXCUITFindBy(accessibility = "0")
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/btn0")
     private SelenideElement pinCodeBtn0;
-    public WalletPage enterAndConfirmPinCode () {
+    public WalletPage enterAndConfirmPinCodeNew() {
     	if (isAndroid()) {
     		$(By.id("jp.co.soramitsu.sora.develop:id/btn"));
 
@@ -56,11 +56,43 @@ public class PinCodePage {
     	if (isIOS()) {
     		assertThat(pinCodeTitleTv.isDisplayed());
     		for (int i =  1; i <= 6; i++) {
-    			$(By.name(""+i)).click();   			
+    			//$(By.name(""+i)).click(); 
+    			$(By.xpath("(//XCUIElementTypeStaticText[@name=\""+i+"\"])[2]")).click();
     		}
     		assertThat(pinCodeRepeatTitleTv.isDisplayed());
     		for (int i =  1; i <= 6; i++) {
-    			$(By.name(""+i)).click();   			
+    			//$(By.name(""+i)).click();
+    			$(By.xpath("(//XCUIElementTypeStaticText[@name=\""+i+"\"])[2]")).click();
+    		}
+    	}
+        return screen(WalletPage.class);
+    }
+    
+    public WalletPage enterAndConfirmPinCode() {
+    	if (isAndroid()) {
+    		$(By.id("jp.co.soramitsu.sora.develop:id/btn"));
+
+    		for (int i =  1; i <= 6; i++)
+    		{
+    			$(By.id("jp.co.soramitsu.sora.develop:id/btn"+i)).click();
+    		}
+    		assertThat(pinCodeRepeatTitleTv.getText()).isEqualTo("Confirm pin code");
+
+    		for (int i =  1; i <= 6; i++)
+    		{
+    			$(By.id("jp.co.soramitsu.sora.develop:id/btn"+i)).click();
+    		}
+    	}
+    	if (isIOS()) {
+    		assertThat(pinCodeTitleTv.isDisplayed());
+    		for (int i =  1; i <= 6; i++) {
+    			//$(By.name(""+i)).click(); 
+    			$(By.xpath("//XCUIElementTypeStaticText[@name=\""+i+"\"]")).click();
+    		}
+    		assertThat(pinCodeRepeatTitleTv.isDisplayed());
+    		for (int i =  1; i <= 6; i++) {
+    			//$(By.name(""+i)).click();
+    			$(By.xpath("//XCUIElementTypeStaticText[@name=\""+i+"\"]")).click();
     		}
     	}
         return screen(WalletPage.class);

@@ -38,8 +38,8 @@ public class MorePage {
 
     public AccountsPage goToAccounts ()
     {
-        $x("//*[@text='Crypto Accounts']").shouldBe(Condition.visible).click();
-  //      cryptoAccountsBtn.click();
+      //  $x("//*[@text='Crypto Accounts']").click();
+        cryptoAccountsBtn.shouldBe(Condition.visible).click();
         return screen(AccountsPage.class);
     }
 }
