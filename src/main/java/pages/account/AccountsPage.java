@@ -20,19 +20,19 @@ public class AccountsPage {
     @iOSXCUITFindBy(accessibility = "iconMenuInfo")
     private SelenideElement currentAccountBtn;
 
-    @AndroidFindBy(id = "OpenAccountMenuItem")
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OpenAccountMenuItem")
     private SelenideElement openAccountMenuItem;
 
-    @AndroidFindBy(id = "FloatingButton")
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/FloatingButton")
     private SelenideElement floatingButton;
 
-    @AndroidFindBy(xpath = "//*[@text='Select account for batch export']")
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SelectAccountForBatchExport")
     private SelenideElement selectAccountForBatchExport;
 
-    @AndroidFindBy(xpath = "//*[@text='Open account options']")
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OpenAccountOptions")
     private SelenideElement openAccountOptios;
 
-    @AndroidFindBy(xpath = "//*[@text='FORGET ACCOUNT']")
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/ForgetAccount")
     private SelenideElement forgetAccountBtn;
 
     public AccountOptionsPage goToAccountOptionsPage()
@@ -40,15 +40,11 @@ public class AccountsPage {
         log.info("Click (i) near the only account");
         currentAccountBtn.click();
         return screen(AccountOptionsPage.class);
-    }
+    } 
 
     public PinCodePage forgetAccount() {
-    //    $(By.id("OpenAccountMenuItem")).shouldBe(Condition.visible).click();
-    //    openAccountMenuItem.click();
-        $x("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.widget.ScrollView/android.view.View/android.view.View").shouldBe(Condition.visible).click();
-
-        $x("//*[@text='Open account options']").shouldBe(Condition.visible).click();
-
+       openAccountMenuItem.click();
+       openAccountOptios.shouldBe(Condition.visible).click();
        forgetAccountBtn.click();
         return screen(PinCodePage.class);
     }

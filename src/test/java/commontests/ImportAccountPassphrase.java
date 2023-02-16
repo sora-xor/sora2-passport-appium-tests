@@ -25,7 +25,6 @@ public class ImportAccountPassphrase extends CoreTestCase {
         AccountsPage accountsPage = morePage.goToAccounts();
         AccountOptionsPage accountOptionsPage = accountsPage.goToAccountOptionsPage();
         PinCodePage enterCodePage = accountOptionsPage.forgetAccount();
-        enterCodePage.enterPinCode();
-
+        WelcomePage welcomePageAgain = enterCodePage.enterPinCode();
     }
 }

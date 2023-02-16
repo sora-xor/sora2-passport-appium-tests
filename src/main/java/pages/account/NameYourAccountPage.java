@@ -34,14 +34,25 @@ public class NameYourAccountPage {
 
 
     public PayAttentionPage enterAccountName (String accountName) {
+    	if (isAndroid()) {
         accountNameField.shouldBe(Condition.visible).sendKeys("Create Account");
+
         nextBtn.shouldBe(Condition.visible).click();
+    	}
+    	else if (isIOS()) {
+    		accountNameField.sendKeys("Create Account");
+    		DoneBtn.click();
+            nextBtn.click();
+        	AlertOkBtn.shouldBe(Condition.visible).click();
+        }
         return screen(PayAttentionPage.class);
     }
 
     public PinCodePage enterAccountNameAfterImport (String accountName) {
-    	accountNameField.shouldBe(Condition.visible).sendKeys(accountName);
-    	nextBtn.shouldBe(Condition.enabled).click();
+    	if (isAndroid()) {
+    		accountNameField.shouldBe(Condition.visible).sendKeys(accountName);
+    		nextBtn.shouldBe(Condition.enabled).click();
+    	}
         return screen(PinCodePage.class);
     }
 }
