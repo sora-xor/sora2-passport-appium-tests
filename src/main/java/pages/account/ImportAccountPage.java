@@ -17,7 +17,7 @@ public class ImportAccountPage {
 	private AppiumDriver driver;
 
 	@iOSXCUITFindBy(accessibility = "Mnemonic passphrase")
-	@AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.widget.EditText")
+	@AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.widget.EditText")
     private SelenideElement mnemonicInput;
 	
 	@iOSXCUITFindBy(accessibility = "Raw Seed (64 hex symbols)")

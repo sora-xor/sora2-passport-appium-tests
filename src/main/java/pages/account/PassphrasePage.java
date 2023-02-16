@@ -14,7 +14,6 @@ public class PassphrasePage {
     private SelenideElement skipBtn;
 
     public PinCodePage skipPassPhrase () {
-
         skipBtn.shouldBe(Condition.visible).click();
         return screen(PinCodePage.class);
     }

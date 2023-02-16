@@ -9,3 +9,8 @@ garbage/*
 bakong-appium-tests.iml
 allure-results
 test-output
+resources/apps/*
+.project
+.classpath
+*.apk
+/test/resources/apps/Sora_3.0.0.5-debug_develop_debug.apk

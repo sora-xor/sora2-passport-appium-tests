@@ -56,7 +56,7 @@ public class Platform {
         options.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         options.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12.0");
         options.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UIAutomator2");
-        options.setCapability(MobileCapabilityType.APP, resourcePath("apps/Sora_3.0.0.0-debug_develop_debug.apk"));
+        options.setCapability(MobileCapabilityType.APP, resourcePath("apps/Sora_3.0.0.5-debug_develop_debug.apk"));
         return options;
     }
 

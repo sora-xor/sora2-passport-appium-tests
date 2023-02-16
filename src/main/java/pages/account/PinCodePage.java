@@ -20,13 +20,20 @@ public class PinCodePage {
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/pinCodeTitleTv")
     @iOSXCUITFindBy(accessibility = "Confirm Pin Code")
     private SelenideElement pinCodeRepeatTitleTv;
-    
+
+	@AndroidFindBy(id = "android:id/button1")
+	private SelenideElement logoutBtn;
+
+	@AndroidFindBy(id = "android:id/button2")
+	private SelenideElement cancelBtn;
+
+	@AndroidFindBy(xpath = "//*[@text='LOGOUT']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Logout\"]")
+	private SelenideElement logoutAlertBnt;
+
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/pinCodeTitleTv")
     @iOSXCUITFindBy(accessibility = "Setup Pin Code")
     private SelenideElement pinCodeTitleTv;
-    
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Logout\"]")
-    private SelenideElement logoutAlertBnt;
 
     @iOSXCUITFindBy(accessibility = "0")
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/btn0")
@@ -73,7 +80,7 @@ public class PinCodePage {
     			$(By.name(""+i)).click();   			
     		}	
     	}
-    	logoutAlertBnt.click();
+   	    logoutAlertBnt.click();
     	return screen(WelcomePage.class);
     	}
 }

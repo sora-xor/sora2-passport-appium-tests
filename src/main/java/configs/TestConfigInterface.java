@@ -14,4 +14,6 @@ public interface TestConfigInterface extends Config{
 
     @Key("rawseed")
     String rawseed ();
+    @Key("email")
+    String email ();
 }
