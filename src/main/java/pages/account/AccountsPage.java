@@ -48,12 +48,5 @@ public class AccountsPage {
        forgetAccountBtn.click();
         return screen(PinCodePage.class);
     }
-
-    public PinCodePage forgetAccount() {
-       openAccountMenuItem.click();
-       openAccountOptios.shouldBe(Condition.visible).click();
-       forgetAccountBtn.click();
-        return screen(PinCodePage.class);
     }
 
-}
