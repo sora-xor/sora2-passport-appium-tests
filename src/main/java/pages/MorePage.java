@@ -12,34 +12,47 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 
 public class MorePage {
 
-    @AndroidFindBy(xpath = "//*[@text='Crypto Accounts']")
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/CryptoAccountsButton")
     @iOSXCUITFindBy(accessibility = "Crypto Accounts")
     private SelenideElement cryptoAccountsBtn;
 
-    @AndroidFindBy(xpath = "//*[@text='Nodes']")
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SoraCard")
+    //@iOSXCUITFindBy(accessibility = "Sora Card")
+    private SelenideElement soraCardBtn;
+
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/BuyXor")
+    //@iOSXCUITFindBy(accessibility = "Buy Xor with fiat")
+    private SelenideElement buyXORbyFiatBtn;
+
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/Nodes")
     @iOSXCUITFindBy(accessibility = "Nodes")
     private SelenideElement nodesBtn;
 
-    @AndroidFindBy(xpath = "//*[@text='App settings']")
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/AppSettings")
     @iOSXCUITFindBy(accessibility = "App settings")
     private SelenideElement appSettingsBtn;
 
-    @AndroidFindBy(xpath = "//*[@text='Login & Security']")
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/LoginAndSecurity")
     @iOSXCUITFindBy(accessibility = "Login & Security")
     private SelenideElement loginAndSecurityBtn;
 
-    @AndroidFindBy(xpath = "//*[@text='Invite Friends & Earn']")
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/Invite")
     private SelenideElement inviteFrinedsBtn;
 
-    @AndroidFindBy(xpath = "//*[@text='Information']")
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/Information")
     @iOSXCUITFindBy(accessibility = "Information")
     private SelenideElement informationBtn;
 
 
     public AccountsPage goToAccounts ()
     {
-      //  $x("//*[@text='Crypto Accounts']").click();
         cryptoAccountsBtn.shouldBe(Condition.visible).click();
         return screen(AccountsPage.class);
+    }
+
+    public BuyXorPage goToBuyXorWithFiat ()
+    {
+        buyXORbyFiatBtn.shouldBe(Condition.visible).click();
+        return screen(BuyXorPage.class);
     }
 }

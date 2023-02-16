@@ -8,13 +8,13 @@
   </test>
   <test thread-count="1" name="ImportAccountTest">
     <classes>
-      <class name="commontests.ImportAccountPassphrase"/>
+      <class name="commontests.ImportAndForgetAccountPassphrase"/>
     </classes>
     </test>
     <test thread-count="1" name="ImportAccountRawSeed">
    <parameter name="accountNameParam" value="Import RawSeed" />
     <classes>    
-      <class name="commontests.ImportAccountRawSeed"/>
+      <class name="commontests.ImportAndForgetAccountRawSeed"/>
     </classes>
    </test>
    <test thread-count="1" name="CreateAndForgetAccountTest">
