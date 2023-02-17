@@ -52,39 +52,15 @@ public class ImportAccountPage {
     public NameYourAccountPage enterMnemonicPhrase(String mnemonic) {
 
         log.info("Enter Mnemonic Phrase " + mnemonic );
-        if (isAndroid()) {
-        	mnemonicInput.shouldBe(Condition.visible).sendKeys(mnemonic);
-        	nextBtn.shouldBe(Condition.visible).click();
-        }
-        else if (isIOS()) { //in IOS the input is invisible
-        	mnemonicInput.sendKeys(mnemonic);
-        	accountNameField.click();
-        	accountNameField.sendKeys("Import Account");
-        	DoneBtn.click();
-        	nextBtn.should(Condition.attribute("accessible", "true")).click();
-
-        }
-        
+        mnemonicInput.shouldBe(Condition.visible).sendKeys(mnemonic);
+        nextBtn.shouldBe(Condition.visible).click();
         return screen(NameYourAccountPage.class);
     }
     public NameYourAccountPage enterRawSeed (String rawseed) {
 
         log.info("Enter Rawseed" + rawseed);
-        
-        if (isAndroid()) {
-            mnemonicInput.shouldBe(Condition.visible).sendKeys(rawseed);
-            nextBtn.shouldBe(Condition.visible).click();
-        }
-        if (isIOS()) {       
-        	sourceTypeSelector.shouldBe(Condition.visible).click();
-        	rawSeedSelectorElement.shouldBe(Condition.visible).click();
-        	rawSeedAlertOkBtn.shouldBe(Condition.visible).click();
-        	rawSeedInput.shouldBe(Condition.enabled).sendKeys(rawseed);
-        	accountNameField.click();
-        	accountNameField.sendKeys("Import Account");
-        	DoneBtn.click();
-        	nextBtn.should(Condition.attribute("accessible", "true")).click();
-        }
+        mnemonicInput.shouldBe(Condition.visible).sendKeys(rawseed);
+        nextBtn.shouldBe(Condition.visible).click();
 
         return screen(NameYourAccountPage.class);
     }

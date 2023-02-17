@@ -18,8 +18,9 @@ public class ImportAndForgetAccountPassphrase extends CoreTestCase {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase();
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
-        PinCodePage pinCodePage1 = accountsPage.forgetAccount();
-        pinCodePage1.enterPinCode();
+        AccountOptionsPage accountOptionsPage = accountsPage.goToAccountOptionsPage();
+        PinCodePage enterCodePage = accountOptionsPage.forgetAccount();
+        enterCodePage.enterPinCode();
 
     }
 }

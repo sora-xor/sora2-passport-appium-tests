@@ -38,7 +38,7 @@ public class WalletPage extends CommonPage {
         PayAttentionPage payAttention = nameYourAccountPage.enterAccountName("Account Test");
         PassphrasePage passphrasePage = payAttention.confirmPayAttention();
         PinCodePage pinCodePage = passphrasePage.skipPassPhrase();
-        WalletPage walletPage = pinCodePage.enterAndConfirmPinCode();
+        WalletPage walletPage = pinCodePage.enterAndConfirmPinCodeNew();
         walletPage.walletPageIsOpen();
         return screen(WalletPage.class);
     }
