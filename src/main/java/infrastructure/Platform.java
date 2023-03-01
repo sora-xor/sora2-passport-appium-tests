@@ -58,7 +58,7 @@ public class Platform {
         options.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12.0");
         options.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UIAutomator2");
         options.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "jp.co.soramitsu.sora.develop");
-        //options.setCapability(MobileCapabilityType.APP, resourcePath("apps/Sora_3.0.0.5-debug_develop_debug.apk"));
+        options.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "jp.co.soramitsu.sora.splash.presentation.SplashActivity");
         return options;
     }
 
