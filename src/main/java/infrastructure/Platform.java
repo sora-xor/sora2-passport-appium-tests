@@ -8,6 +8,7 @@ import io.appium.java_client.ios.options.XCUITestOptions;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.Capabilities;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
 
 
 
@@ -56,6 +57,7 @@ public class Platform {
         options.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         options.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12.0");
         options.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UIAutomator2");
+        options.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "jp.co.soramitsu.sora.develop");
         //options.setCapability(MobileCapabilityType.APP, resourcePath("apps/Sora_3.0.0.5-debug_develop_debug.apk"));
         return options;
     }
