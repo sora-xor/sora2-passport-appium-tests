@@ -13,19 +13,11 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 public class CreateAndForgetAccountTest extends CoreTestCase {
 
     @Test
-    public void сreateAndForgetAccountTest() {
-
-        WelcomePage welcomePage = screen(WelcomePage.class);
-        NameYourAccountPage nameYourAccountPage = welcomePage.goToCreateAccountPage();
-        PayAttentionPage payAttention = nameYourAccountPage.enterAccountName("Account Test");
-        PassphrasePage passphrasePage = payAttention.confirmPayAttention();
-        PinCodePage pinCodePage = passphrasePage.skipPassPhrase();
-        WalletPage walletPage = pinCodePage.enterAndConfirmPinCodeNew();
-        walletPage.walletPageIsOpen();
+    public void CreateAndForgetAccountTest() {
+        WalletPage walletPage = WalletPage.createNewAccount();
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
-        AccountOptionsPage accountOptionsPage = accountsPage.goToAccountOptionsPage();
-        PinCodePage enterCodePage = accountOptionsPage.forgetAccount();
+        PinCodePage enterCodePage = accountsPage.forgetAccount();
         enterCodePage.enterPinCode();
     }
 }

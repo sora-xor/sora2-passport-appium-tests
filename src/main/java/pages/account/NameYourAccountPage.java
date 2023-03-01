@@ -2,17 +2,8 @@ package pages.account;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.impl.WebDriverThreadLocalContainer;
-
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-
-import static infrastructure.Platform.isIOS;
-
-import org.openqa.selenium.Keys;
-
-import static infrastructure.Platform.isAndroid;
-
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 public class NameYourAccountPage {
 
@@ -30,7 +21,6 @@ public class NameYourAccountPage {
 	@iOSXCUITFindBy(accessibility = "Done")
     private SelenideElement DoneBtn;
 	
-
 
 
     public PayAttentionPage enterAccountName (String accountName) {

@@ -31,6 +31,16 @@ public class WalletPage extends CommonPage {
         walletPage.walletPageIsOpen();
         return screen(WalletPage.class);
     }
+    
+    public static WalletPage importAccountUseRawSeed() {
+        WelcomePage welcomePage = screen(WelcomePage.class);
+        ImportAccountPage importAccountPage = welcomePage.goToImportAccountPageRawSeed();
+        NameYourAccountPage nameYourAccountPage = importAccountPage.enterRawSeed(TestConfig.config.rawseed());
+        PinCodePage pinCodePage = nameYourAccountPage.enterAccountNameAfterImport("Import RawSeed");
+        WalletPage walletPage = pinCodePage.enterAndConfirmPinCode();
+        walletPage.walletPageIsOpen();
+        return screen(WalletPage.class);
+    }
 
     public static WalletPage createNewAccount(){
         WelcomePage welcomePage = screen(WelcomePage.class);
