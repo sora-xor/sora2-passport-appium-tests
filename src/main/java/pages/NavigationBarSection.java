@@ -34,7 +34,7 @@ public class NavigationBarSection extends ElementsContainer {
 
     public MorePage goToMorePage()
     {
-        log.info("Click more button");
+        log.info("Click More button");
         moreBtn.shouldBe(Condition.visible).click();
         return screen(MorePage.class);
     }
@@ -45,5 +45,4 @@ public class NavigationBarSection extends ElementsContainer {
         polkaswapBtn.shouldBe(Condition.visible).click();
         return screen(PolkaswapPage.class);
     }
-
 }
