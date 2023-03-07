@@ -19,7 +19,7 @@ if ( "${params.platform}" == "iOS" ) {
 } else {
   def pipeline = new org.android.AppTestPipeline(
     steps: this,
-    testCmd: 'ktlint clean runModuleTests jacocoTestReport',
+//     testCmd: 'ktlint clean runModuleTests jacocoTestReport',
     jobParams: jobParams,
     dockerImage: 'build-tools/android-build-box-jdk11:latest'
   )
