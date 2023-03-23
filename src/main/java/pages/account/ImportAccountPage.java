@@ -46,7 +46,7 @@ public class ImportAccountPage {
 
     public NameYourAccountPage enterMnemonicPhrase(String mnemonic) {
 
-        log.info("Enter Mnemonic Phrase " + mnemonic );
+        log.info("Enter Mnemonic Phrase" + mnemonic );
         mnemonicInput.shouldBe(Condition.visible).sendKeys(mnemonic);
         nextBtn.shouldBe(Condition.visible).click();
         return screen(NameYourAccountPage.class);

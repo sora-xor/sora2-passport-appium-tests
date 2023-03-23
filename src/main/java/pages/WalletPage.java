@@ -5,16 +5,23 @@ import com.codeborne.selenide.SelenideElement;
 import configs.TestConfig;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Logger;
 import pages.account.*;
 
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Log4j2
 public class WalletPage extends CommonPage {
 
     @AndroidFindBy(xpath = "//*[@text='Liquid assets']")
     @iOSXCUITFindBy(accessibility = "Liquid assets")
     private SelenideElement liquidAssets;
+
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/GetSoraCard")
+    @iOSXCUITFindBy(accessibility = "GetSoraCardBtn")
+    private SelenideElement getSoraCardBtn;
     
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/title")
     private SelenideElement walletTitlePage;
@@ -56,6 +63,13 @@ public class WalletPage extends CommonPage {
     public void walletPageIsOpen (){
        String actualTitle = liquidAssets.shouldBe(Condition.visible).getText();
        assertThat(actualTitle).as("Liquid assets title").isEqualTo("Liquid assets");
+    }
+
+    public SoraCardPage goToSoraCardPage()
+    {
+        log.info("Click Get Sora Card button");
+        getSoraCardBtn.shouldBe(Condition.visible).click();
+        return screen(SoraCardPage.class);
     }
 
 }

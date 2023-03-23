@@ -26,4 +26,24 @@
       <class name="commontests.CreateAccountTest"/>
     </classes>
     </test>
+    <test thread-count="1" name="SwapTest">
+        <classes>
+            <class name="commontests.SwapTest"/>
+        </classes>
+    </test>
+    <test thread-count="1" name="BuyXorWithFiatTest">
+        <classes>
+            <class name="commontests.BuyXorWithFiatTest"/>
+        </classes>
+    </test>
+    <test thread-count="1" name="GetSoraCardTest">
+        <classes>
+            <class name="commontests.GetSoraCardTest"/>
+        </classes>
+    </test>
+    <test thread-count="1" name="AlreadyHaveACardTest">
+        <classes>
+            <class name="commontests.AlreadyHaveACardTest"/>
+        </classes>
+    </test>
 </suite> <!-- Suite -->
