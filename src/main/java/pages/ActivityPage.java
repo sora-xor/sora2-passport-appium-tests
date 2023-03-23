@@ -27,7 +27,7 @@ public class ActivityPage {
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.widget.TextView[5]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\'Status']")
-    private SelenideElement getTransactionStatus1;
+    private SelenideElement getTransactionStatus;
 
     @AndroidFindBy(xpath = "//*[@text='CLOSE']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\'CLOSE']")
