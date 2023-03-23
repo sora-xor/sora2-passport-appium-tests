@@ -1,5 +1,6 @@
 package commontests;
 
+import configs.TestConfig;
 import infrastructure.CoreTestCase;
 import org.testng.annotations.Test;
 import pages.SoraCardPage;
@@ -14,6 +15,6 @@ public class AlreadyHaveACardTest extends CoreTestCase {
         SoraCardPage soraCardPage = walletPage.goToSoraCardPage();
         soraCardPage.swipeDown();
         KYCPage kycPage = soraCardPage.AlreadyHaveACardFlow();
-        kycPage.VerifyYourPhoneNumber();
+        kycPage.VerifyYourPhoneNumber(TestConfig.config.email());
     }
 }

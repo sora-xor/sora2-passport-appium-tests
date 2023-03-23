@@ -33,29 +33,11 @@ public class ActivityPage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\'CLOSE']")
     private SelenideElement closeBtn;
   public void CheckLastTransactionStatus(String randomValue){
-//      lastTransaction.shouldBe(Condition.visible).click();
-//      swappedItem.shouldBe(Condition.visible);
-  //    String actualStatus= getTransactionStatus.shouldBe(Condition.visible).getText();
- //     assertThat(actualStatus).as("Pending").isEqualTo("Pending");
 
       lastTransaction.shouldBe(Condition.visible).click();
       String getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
       log.info("Get Xor from last transaction: "+getXorAmountValueFromHistory);
       assertThat(getXorAmountValueFromHistory).isEqualTo(randomValue+" XOR");
-
-
-
-
-  //    String searchText  = randomValue; /*+ " XOR ->"; */
- //     $(By.ByXPath("//*[contains(text(),'+searchText+')]")).shouldBe(Condition.enabled);
-//String formatted = String.format("Welcome to %s!", value);
-
- //       String formatted = String.format("//*[contains(text(),'%s')]", "XOR");
-
- //     String formatted = String.format("//*[@text='%s')]", searchText);
- //     $x(formatted).shouldBe(Condition.enabled);
-
-
 
   }
 

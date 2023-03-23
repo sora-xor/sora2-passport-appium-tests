@@ -1,5 +1,6 @@
 package commontests;
 
+import configs.TestConfig;
 import infrastructure.CoreTestCase;
 import org.testng.annotations.Test;
 import pages.SoraCardPage;
@@ -13,6 +14,6 @@ public class GetSoraCardTest extends CoreTestCase {
         SoraCardPage soraCardPage = walletPage.goToSoraCardPage();
         soraCardPage.СheckThatUserHaveEnoughXorForAFreeCard();
         KYCPage kycPage = soraCardPage.StartSoraCardFlow();
-        kycPage.VerifyYourPhoneNumber();
+        kycPage.VerifyYourPhoneNumber(TestConfig.config.phone());
     }
 }

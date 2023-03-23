@@ -19,9 +19,9 @@ public class KYCPage {
     @iOSXCUITFindBy(accessibility = "SEND SMS CODE")
     private SelenideElement sendSMSCodeBtn;
 
-    public void VerifyYourPhoneNumber(){
+    public void VerifyYourPhoneNumber(String phone){
         acceptAndContinueBtn.shouldBe(Condition.visible).click();
-        phoneNumberField.shouldBe(Condition.visible).sendKeys("12345678");
+        phoneNumberField.shouldBe(Condition.visible).sendKeys(phone);
         sendSMSCodeBtn.shouldBe(Condition.enabled).click();
     }
 
