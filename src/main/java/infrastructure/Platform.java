@@ -32,7 +32,7 @@ public class Platform {
         name = System.getProperty("PLATFORM");
     }
 
-    AppiumDriver getDriver() throws MalformedURLException {
+    public AppiumDriver getDriver() throws MalformedURLException {
         URL URL = new URL("http://127.0.0.1:4723/wd/hub");
         if (isAndroid()) {
             return new AndroidDriver(URL, getAndroidDesiredCapabilities());

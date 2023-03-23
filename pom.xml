@@ -18,7 +18,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <appium.version>8.3.0</appium.version>
         <testng.version>7.6.1</testng.version>
-        <selenide.version>2.1.3</selenide.version>
+        <selenide.version>2.7.0</selenide.version>
         <assertj.version>3.23.1</assertj.version>
         <log4j.version>2.18.0</log4j.version>
         <lomboc.version>1.18.24</lomboc.version>
@@ -98,19 +98,31 @@
         <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-java</artifactId>
-        <version>4.6.0</version>
+        <version>4.8.1</version>
         </dependency>
 
         <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-api</artifactId>
-        <version>4.6.0</version>
+        <version>4.8.1</version>
         </dependency>
 
         <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-remote-driver</artifactId>
         <version>4.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <build>
