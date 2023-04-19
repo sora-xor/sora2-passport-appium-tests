@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 import pages.account.*;
 
 import static com.codeborne.selenide.appium.ScreenObject.screen;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 @Log4j2
 public class WalletPage extends CommonPage {
