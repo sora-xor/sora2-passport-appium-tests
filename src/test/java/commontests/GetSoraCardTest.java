@@ -14,6 +14,6 @@ public class GetSoraCardTest extends CoreTestCase {
         SoraCardPage soraCardPage = walletPage.goToSoraCardPage();
         soraCardPage.СheckThatUserHaveEnoughXorForAFreeCard();
         KYCPage kycPage = soraCardPage.StartSoraCardFlow();
-        kycPage.VerifyYourPhoneNumber(TestConfig.config.phone());
+        kycPage.VerifyYourPhoneNumber(TestConfig.config.phoneFailed());
     }
 }

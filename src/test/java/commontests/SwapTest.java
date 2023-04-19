@@ -6,6 +6,7 @@ import infrastructure.CoreTestCase;
 import infrastructure.Random;
 import org.testng.annotations.Test;
 import pages.*;
+import pages.account.AccountsPage;
 import pages.account.ImportAccountPage;
 import pages.account.NameYourAccountPage;
 import pages.account.PinCodePage;
@@ -26,7 +27,10 @@ public class SwapTest  extends CoreTestCase {
         polkaswapPage.SimpleSwap(randomValue);
         ActivityPage activityPage = walletPage.goToActivityPage();
         activityPage.CheckLastTransactionStatus(randomValue);
-
+        MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
+        AccountsPage accountsPage = morePage.goToAccounts();
+        PinCodePage enterCodePage = accountsPage.forgetAccount();
+        enterCodePage.enterPinCode();
     }
 
 }
