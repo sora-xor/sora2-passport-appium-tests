@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.SoraCardPage;
 import pages.WalletPage;
 import pages.account.KYCPage;
+import pages.account.VerificationStatusPage;
 
 public class AlreadyHaveACardTest extends CoreTestCase {
 
@@ -15,6 +16,8 @@ public class AlreadyHaveACardTest extends CoreTestCase {
         SoraCardPage soraCardPage = walletPage.goToSoraCardPage();
         soraCardPage.swipeDown();
         KYCPage kycPage = soraCardPage.AlreadyHaveACardFlow();
-        kycPage.VerifyYourPhoneNumber(TestConfig.config.email());
+        kycPage.VerifyYourPhoneNumber(TestConfig.config.phonePending());
+        VerificationStatusPage verificationStatusPage = kycPage.goToVerificationStatusPage();
+        verificationStatusPage.checkStatus();
     }
 }

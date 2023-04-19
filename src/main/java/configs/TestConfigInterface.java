@@ -16,6 +16,18 @@ public interface TestConfigInterface extends Config{
     String rawseed ();
     @Key("email")
     String email ();
-    @Key("phone")
-    String phone();
+    @Key("phonePending")
+    String phonePending();
+
+    @Key("phoneApproved")
+    String phoneApproved();
+
+    @Key("phoneFailed")
+    String phoneFailed();
+
+    @Key("phoneRejected")
+    String phoneRejected();
+
+    @Key("testOtp")
+    String testOtp();
 }

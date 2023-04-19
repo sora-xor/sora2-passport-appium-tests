@@ -15,7 +15,7 @@ import static infrastructure.Platform.isIOS;
 import static infrastructure.Platform.isAndroid;
 
 public class PinCodePage {
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/pinCodeTitleTv")
+    @AndroidFindBy(xpath = "//*[@text='Confirm pin code']")
     @iOSXCUITFindBy(accessibility = "Confirm Pin Code")
     private SelenideElement pinCodeRepeatTitleTv;
 
@@ -29,7 +29,7 @@ public class PinCodePage {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Logout\"]")
 	private SelenideElement logoutAlertBnt;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/pinCodeTitleTv")
+    @AndroidFindBy(xpath = "//*[@text='Setup pin code']")
     @iOSXCUITFindBy(accessibility = "Setup Pin Code")
     private SelenideElement pinCodeTitleTv;
 
@@ -38,17 +38,17 @@ public class PinCodePage {
     private SelenideElement pinCodeBtn0;
     public WalletPage enterAndConfirmPinCodeNew() {
     	if (isAndroid()) {
-    		$(By.id("jp.co.soramitsu.sora.develop:id/btn"));
+    		$(By.id("jp.co.soramitsu.sora.develop:id/"));
 
     		for (int i =  1; i <= 6; i++)
     		{
-    			$(By.id("jp.co.soramitsu.sora.develop:id/btn"+i)).click();
+    			$(By.id("jp.co.soramitsu.sora.develop:id/"+i)).click();
     		}
     		assertThat(pinCodeRepeatTitleTv.getText()).isEqualTo("Confirm pin code");
 
     		for (int i =  1; i <= 6; i++)
     		{
-    			$(By.id("jp.co.soramitsu.sora.develop:id/btn"+i)).click();
+    			$(By.id("jp.co.soramitsu.sora.develop:id/"+i)).click();
     		}
     	}
     	if (isIOS()) {
@@ -68,17 +68,17 @@ public class PinCodePage {
     
     public WalletPage enterAndConfirmPinCode() {
     	if (isAndroid()) {
-    		$(By.id("jp.co.soramitsu.sora.develop:id/btn"));
+    		$(By.id("jp.co.soramitsu.sora.develop:id/"));
 
     		for (int i =  1; i <= 6; i++)
     		{
-    			$(By.id("jp.co.soramitsu.sora.develop:id/btn"+i)).click();
+    			$(By.id("jp.co.soramitsu.sora.develop:id/"+i)).click();
     		}
     		assertThat(pinCodeRepeatTitleTv.getText()).isEqualTo("Confirm pin code");
 
     		for (int i =  1; i <= 6; i++)
     		{
-    			$(By.id("jp.co.soramitsu.sora.develop:id/btn"+i)).click();
+    			$(By.id("jp.co.soramitsu.sora.develop:id/"+i)).click();
     		}
     	}
     	if (isIOS()) {
@@ -97,11 +97,11 @@ public class PinCodePage {
     }
     public WelcomePage enterPinCode() {
     	if (isAndroid()) {
-    		$(By.id("jp.co.soramitsu.sora.develop:id/btn"));
+    		$(By.id("jp.co.soramitsu.sora.develop:id/"));
 
     		for (int i =  1; i <= 6; i++)
     		{
-    			$(By.id("jp.co.soramitsu.sora.develop:id/btn"+i)).click();
+    			$(By.id("jp.co.soramitsu.sora.develop:id/"+i)).click();
     		}	
     	}
     	if (isIOS()) {

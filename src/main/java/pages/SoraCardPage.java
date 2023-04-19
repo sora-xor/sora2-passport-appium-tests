@@ -11,10 +11,10 @@ import pages.account.KYCPage;
 import java.net.MalformedURLException;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.appium.AppiumScrollOptions.up;
-import static com.codeborne.selenide.appium.AppiumScrollOptions.with;
+import static com.codeborne.selenide.appium.AppiumScrollOptions.*;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static com.codeborne.selenide.appium.ScrollDirection.DOWN;
+import static com.codeborne.selenide.appium.ScrollDirection.UP;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
@@ -59,7 +59,7 @@ public class SoraCardPage{
         SelenideAppium.$x(".//*[@text='See the list']")
                 .scroll(with(DOWN, 1));
         SelenideAppium.$x(".//*[@text='I ALREADY HAVE A CARD']")
-                .scroll(up())
+                .scroll(down())
                 .shouldHave(visible);
     }
 

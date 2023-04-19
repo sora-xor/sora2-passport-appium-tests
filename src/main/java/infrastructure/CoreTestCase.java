@@ -30,23 +30,23 @@ public class CoreTestCase {
     public static final Faker FAKER = new Faker(new Locale("en-GB"));
     private String bundlId = "co.jp.soramitsu.sora.dev";
     private AppiumDriver driver;
- //   public IOSDriver ios_driver;
+    //   public IOSDriver ios_driver;
     private static AppiumDriverLocalService service;
-    
+
     @BeforeSuite
-    public void globalSetup () throws IOException {
-    	service = AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
-    			.withIPAddress("127.0.0.1")
-    			.withArgument(()-> "--base-path", "/wd/hub"));
+    public void globalSetup() throws IOException {
+        service = AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
+                .withIPAddress("127.0.0.1")
+                .withArgument(() -> "--base-path", "/wd/hub"));
 
-    	
-    	service.start();
+
+        service.start();
     }
-
 
 
     @BeforeTest
     static void setupAllureReports() {
+        Configuration.timeout=8000;
         Configuration.screenshots = false;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
                 .screenshots(true)
@@ -55,8 +55,8 @@ public class CoreTestCase {
 
     @BeforeClass
     public void setUp() throws MalformedURLException {
-    		driver = Platform.getInstance().getDriver();
-    		WebDriverRunner.setWebDriver(driver);
+        driver = Platform.getInstance().getDriver();
+        WebDriverRunner.setWebDriver(driver);
 //    	else if (Platform.isIOS()) {
 //    		driver = Platform.getInstance().getIosDriver();
 //    		driver.activateApp(bundlId);
@@ -79,15 +79,15 @@ public class CoreTestCase {
             driver.quit();
         }
     }
-    
+
     @AfterSuite
-    public void globalTearDown () {
+    public void globalTearDown() {
         if (service != null) {
             service.stop();
         }
     }
 
-    public URL getServiceUrl () {
+    public URL getServiceUrl() {
         return service.getUrl();
     }
 
