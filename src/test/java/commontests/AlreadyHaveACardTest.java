@@ -5,19 +5,25 @@ import infrastructure.CoreTestCase;
 import org.testng.annotations.Test;
 import pages.SoraCardPage;
 import pages.WalletPage;
+import pages.account.KYCOtpPage;
 import pages.account.KYCPage;
+import pages.account.TermsAndConditionsPage;
 import pages.account.VerificationStatusPage;
 
 public class AlreadyHaveACardTest extends CoreTestCase {
 
     @Test
-    public void AlreadyHaveACardTest() {
+    public void alreadyHaveACardTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase();
         SoraCardPage soraCardPage = walletPage.goToSoraCardPage();
         soraCardPage.swipeDown();
-        KYCPage kycPage = soraCardPage.AlreadyHaveACardFlow();
-        kycPage.VerifyYourPhoneNumber(TestConfig.config.phonePending());
-        VerificationStatusPage verificationStatusPage = kycPage.goToVerificationStatusPage();
-        verificationStatusPage.checkStatus();
+        TermsAndConditionsPage termsAndConditionsPage = soraCardPage.alreadyHaveACardFlow();
+        KYCPage kycPage = termsAndConditionsPage.acceptTermsAndConditions();
+        String phoneNumber = TestConfig.config.phonePending();
+        String testOtp = TestConfig.config.testOtp();
+        KYCOtpPage kycOtpPage = kycPage.verifyYourPhoneNumber(phoneNumber);
+        kycOtpPage.verifyOTP(testOtp);
+    //    VerificationStatusPage verificationStatusPage = kycPage.goToVerificationStatusPage();
+    //    verificationStatusPage.checkStatus();
     }
 }

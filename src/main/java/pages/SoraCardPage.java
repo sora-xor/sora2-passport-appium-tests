@@ -7,6 +7,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.extern.log4j.Log4j2;
 import pages.account.KYCPage;
+import pages.account.TermsAndConditionsPage;
 
 import java.net.MalformedURLException;
 
@@ -38,7 +39,7 @@ public class SoraCardPage{
 
     public SoraCardPage() throws MalformedURLException {
     }
-    public void СheckThatUserHaveEnoughXorForAFreeCard() {
+    public void checkThatUserHaveEnoughXorForAFreeCard() {
         String actualXorBalance = enoughXorForAFreeCard.shouldBe(Condition.visible).getText();
         assertThat(actualXorBalance).isEqualTo("You have enough XOR for a FREE card");
     }
@@ -48,7 +49,7 @@ public class SoraCardPage{
         assertThat(actualXorBalance).contains("You need");
     }
 
-    public KYCPage StartSoraCardFlow() {
+    public KYCPage startSoraCardFlow() {
         continueBtn.shouldBe(Condition.visible).click();
         return screen(KYCPage.class);
     }
@@ -58,15 +59,15 @@ public class SoraCardPage{
         SelenideAppium.$x(".//*[@text='€0 annual service fee']").click();
         SelenideAppium.$x(".//*[@text='See the list']")
                 .scroll(with(DOWN, 1));
-        SelenideAppium.$x(".//*[@text='I ALREADY HAVE A CARD']")
+        SelenideAppium.$x(".//*[@text='I already have a card']")
                 .scroll(down())
-                .shouldHave(visible);
+               .shouldHave(visible);
     }
 
-    public KYCPage AlreadyHaveACardFlow() {
+    public TermsAndConditionsPage alreadyHaveACardFlow() {
         {
             alreadyHaveACardBtn.shouldBe(Condition.visible).click();
-            return screen(KYCPage.class);
+            return screen(TermsAndConditionsPage.class);
         }
     }
 }

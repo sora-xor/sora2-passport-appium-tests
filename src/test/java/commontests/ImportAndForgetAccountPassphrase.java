@@ -14,7 +14,7 @@ public class ImportAndForgetAccountPassphrase extends CoreTestCase {
 
 
     @Test
-    public void importAccountPassphrase (){
+    public void importAndForgetAccountPassphrase (){
         WalletPage walletPage = WalletPage.importAccountUsePassphrase();
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();

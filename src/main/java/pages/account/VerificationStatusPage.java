@@ -20,6 +20,9 @@ public class VerificationStatusPage {
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.TextView")
     private SelenideElement verificationStatus;
 
+    @AndroidFindBy(xpath = "//*[@text='SUPPORT']")
+    @iOSXCUITFindBy(accessibility = "SUPPORT")
+    private SelenideElement supportBtn;
     @AndroidFindBy(xpath = "//*[@text='CLOSE']")
     @iOSXCUITFindBy(accessibility = "CLOSE")
     private SelenideElement closeBtn;

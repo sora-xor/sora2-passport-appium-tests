@@ -41,7 +41,7 @@ public class ImportAccountPage {
     private SelenideElement DoneBtn;
 
 	@iOSXCUITFindBy(accessibility = "Continue")
-	@AndroidFindBy(xpath = "//*[@text='CONTINUE']")
+	@AndroidFindBy(xpath = "//*[@text='Continue']")
     private SelenideElement nextBtn;
 
     public NameYourAccountPage enterMnemonicPhrase(String mnemonic) {

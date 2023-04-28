@@ -12,7 +12,7 @@ public class NameYourAccountPage {
     private SelenideElement accountNameField;
 
 	@iOSXCUITFindBy(accessibility = "Continue")
-	@AndroidFindBy(xpath = "//*[@text='CONTINUE']")
+	@AndroidFindBy(xpath = "//*[@text='Continue']")
     private SelenideElement nextBtn;
 	
 	@iOSXCUITFindBy(accessibility = "OK")
