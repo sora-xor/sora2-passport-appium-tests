@@ -13,7 +13,7 @@ import pages.account.PinCodePage;
 
 public class BuyXorWithFiatTest extends CoreTestCase {
     @Test
-    public void BuyXorWithFiat () {
+    public void buyXorWithFiat () {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase();
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
         BuyXorPage buyXorPage = morePage.goToBuyXorWithFiat();

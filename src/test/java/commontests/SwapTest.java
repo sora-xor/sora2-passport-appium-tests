@@ -19,7 +19,7 @@ public class SwapTest  extends CoreTestCase {
     Random rnd = new Random();
     String randomValue = rnd.RandomValue();
     @Test
-    public void SwapTest () {
+    public void swapTest () {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase();
         PolkaswapPage polkaswapPage =  walletPage.goToPolkaswapPage();
         polkaswapPage.PolkaswapPageIsOpen();

@@ -21,7 +21,7 @@ import pages.account.PinCodePage;
 public class ImportAndForgetAccountRawSeed extends CoreTestCase {
 
 	@Test
-	public void importAccountRawSeed (){
+	public void importAndForgetAccountRawSeed (){
         WalletPage walletPage = WalletPage.importAccountUseRawSeed();
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();

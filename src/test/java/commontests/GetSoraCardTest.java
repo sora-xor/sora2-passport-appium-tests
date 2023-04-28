@@ -9,11 +9,11 @@ import pages.account.KYCPage;
 
 public class GetSoraCardTest extends CoreTestCase {
     @Test
-    public void GetSoraCardTest() {
+    public void getSoraCardTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase();
         SoraCardPage soraCardPage = walletPage.goToSoraCardPage();
-        soraCardPage.СheckThatUserHaveEnoughXorForAFreeCard();
-        KYCPage kycPage = soraCardPage.StartSoraCardFlow();
-        kycPage.VerifyYourPhoneNumber(TestConfig.config.phoneFailed());
+        soraCardPage.checkThatUserHaveEnoughXorForAFreeCard();
+        KYCPage kycPage = soraCardPage.startSoraCardFlow();
+        kycPage.verifyYourPhoneNumber(TestConfig.config.phoneFailed());
     }
 }

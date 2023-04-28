@@ -13,7 +13,7 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 public class CreateAndForgetAccountTest extends CoreTestCase {
 
     @Test
-    public void CreateAndForgetAccountTest() {
+    public void createAndForgetAccountTest() {
         WalletPage walletPage = WalletPage.createNewAccount();
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
