@@ -29,7 +29,7 @@ public class ActivityPage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\'Status']")
     private SelenideElement getTransactionStatus;
 
-    @AndroidFindBy(xpath = "//*[@text='CLOSE']")
+    @AndroidFindBy(xpath = "//*[@text='Close']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\'CLOSE']")
     private SelenideElement closeBtn;
   public void CheckLastTransactionStatus(String randomValue){

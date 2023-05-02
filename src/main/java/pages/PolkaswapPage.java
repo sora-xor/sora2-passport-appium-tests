@@ -24,7 +24,7 @@ public class PolkaswapPage extends CommonPage {
     @iOSXCUITFindBy(accessibility = "Disclaimer")
     private SelenideElement disclaimer;
 
-    @AndroidFindBy(xpath = "//*[@text='CLOSE']")
+    @AndroidFindBy(xpath = "//*[@text='Close']")
     @iOSXCUITFindBy(accessibility = "Close")
     private SelenideElement disclaimerCloseBtn;
 
@@ -77,7 +77,7 @@ public class PolkaswapPage extends CommonPage {
     @iOSXCUITFindBy(accessibility = "Review")
     private SelenideElement swapBtn;
 
-    @AndroidFindBy(xpath = "//*[@text='CONFIRM']")
+    @AndroidFindBy(xpath = "//*[@text='Confirm']")
     @iOSXCUITFindBy(accessibility = "Confirm")
     private SelenideElement confirmBtn;
 
