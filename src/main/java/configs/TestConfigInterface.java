@@ -9,11 +9,13 @@ import org.aeonbits.owner.Config;
         "classpath:test.properties"})
 public interface TestConfigInterface extends Config{
 
-    @Key("mnemonic")
-    String mnemonic ();
+    @Key("mnemonic1")
+    String mnemonic1 ();
 
     @Key("rawseed")
     String rawseed ();
+    @Key("mnemonic2")
+    String mnemonic2 ();
     @Key("email")
     String email ();
     @Key("phonePending")
