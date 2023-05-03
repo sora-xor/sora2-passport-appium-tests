@@ -24,6 +24,10 @@ public class ExplorePage {
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeTextField[1]")
     private SelenideElement inputAmountFieldXor;
 
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/InputAmountFieldXST")
+    @iOSXCUITFindBy(iOSClassChain = "")
+    private SelenideElement inputAmountFieldXst;
+
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SelectToken")
     @iOSXCUITFindBy(accessibility = "Select token")
     private SelenideElement selectTokenItem2;
@@ -63,13 +67,15 @@ public class ExplorePage {
         supplyLiquidityTitle.shouldBe(Condition.visible).exists();
         selectTokenXor.shouldBe(Condition.visible).click();
         xorToken.shouldBe(Condition.visible).click();
-        inputAmountFieldXor.shouldBe(Condition.visible).sendKeys(randomLiquidity);
         selectTokenItem2.shouldBe(Condition.visible).click();
         xstToken.shouldBe(Condition.visible).click();
+        inputAmountFieldXor.shouldBe(Condition.visible).sendKeys(randomLiquidity);
+        log.info("Supply XOR : "+randomLiquidity+" XOR" );
         supplyeBtn.shouldBe(Condition.visible).click();
+        log.info("Supply XST : "+inputAmountFieldXst.shouldBe(Condition.visible).getText()+" XST" );
         confirmBtn.shouldBe(Condition.visible).click();
         closeBtn.shouldBe(Condition.visible).click();
 
-        log.info("Entered Xor (randomLiquidity) : "+randomLiquidity+" XOR");
+
     }
 }

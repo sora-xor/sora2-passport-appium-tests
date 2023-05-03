@@ -3,6 +3,7 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import configs.TestConfig;
+import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.extern.log4j.Log4j2;
@@ -14,6 +15,8 @@ import static org.assertj.core.api.Assertions.*;
 
 @Log4j2
 public class WalletPage extends CommonPage {
+
+    Utils utils = new Utils();
 
     @AndroidFindBy(xpath = "//*[@text='Liquid assets']")
     @iOSXCUITFindBy(accessibility = "Liquid assets")
@@ -70,6 +73,11 @@ public class WalletPage extends CommonPage {
         log.info("Click Get Sora Card button");
         getSoraCardBtn.shouldBe(Condition.visible).click();
         return screen(SoraCardPage.class);
+    }
+
+    public void goToPooledAssets()
+    {
+       utils.scrollForward(1);
     }
 
 }

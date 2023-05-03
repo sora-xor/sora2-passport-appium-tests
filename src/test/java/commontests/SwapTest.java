@@ -21,7 +21,7 @@ public class SwapTest  extends CoreTestCase {
     @Test
     public void swapTest () {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase();
-        PolkaswapPage polkaswapPage =  walletPage.goToPolkaswapPage();
+        PolkaswapPage polkaswapPage = walletPage.goToPolkaswapPage();
         polkaswapPage.PolkaswapPageIsOpen();
         polkaswapPage.PolkaswapSelectToken();
         polkaswapPage.SimpleSwap(randomValue);

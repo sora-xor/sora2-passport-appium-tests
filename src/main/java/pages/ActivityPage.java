@@ -21,8 +21,12 @@ public class ActivityPage {
     @iOSXCUITFindBy(accessibility = "")
     private SelenideElement getXorFromLastTransaction;
 
-    @AndroidFindBy(accessibility = "Swapped")
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.widget.TextView[3]")
     @iOSXCUITFindBy(accessibility = "")
+    private SelenideElement getXstFromLastTransaction;
+
+    @AndroidFindBy(accessibility = "Swapped")
+    @iOSXCUITFindBy(accessibility = "Swapped")
     private SelenideElement swappedItem;
 
     @AndroidFindBy(accessibility = "Sent to pool")
