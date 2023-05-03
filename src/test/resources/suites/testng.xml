@@ -31,11 +31,11 @@
             <class name="commontests.ChangePinCodeTest"/>
         </classes>
     </test>
-<!--    <test thread-count="1" name="GetSoraCardTest">-->
-<!--        <classes>-->
-<!--            <class name="commontests.GetSoraCardTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test thread-count="1" name="AddLiquidityTest">
+        <classes>
+            <class name="commontests.AddLiquidityTest"/>
+        </classes>
+    </test>
 <!--    <test thread-count="1" name="AlreadyHaveACardTest">-->
 <!--        <classes>-->
 <!--            <class name="commontests.AlreadyHaveACardTest"/>-->
