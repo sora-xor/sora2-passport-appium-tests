@@ -26,7 +26,7 @@ public class SwapTest  extends CoreTestCase {
         polkaswapPage.PolkaswapSelectToken();
         polkaswapPage.SimpleSwap(randomValue);
         ActivityPage activityPage = walletPage.goToActivityPage();
-        activityPage.CheckLastTransactionStatus(randomValue);
+        activityPage.checkLastTransactionStatusSwap(randomValue);
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();

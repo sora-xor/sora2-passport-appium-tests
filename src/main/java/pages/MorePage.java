@@ -2,11 +2,18 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.appium.SelenideAppium;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import pages.account.AccountsPage;
+import pages.account.LoginAndSecurityPage;
+import pages.account.PinCodePage;
 
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.appium.AppiumScrollOptions.down;
+import static com.codeborne.selenide.appium.AppiumScrollOptions.with;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
+import static com.codeborne.selenide.appium.ScrollDirection.DOWN;
 
 public class MorePage {
 
@@ -53,4 +60,11 @@ public class MorePage {
         buyXORbyFiatBtn.shouldBe(Condition.visible).click();
         return screen(BuyXorPage.class);
     }
+
+    public LoginAndSecurityPage goToLoginAndSecurity ()
+    {
+        loginAndSecurityBtn.shouldBe(Condition.visible).click();
+        return screen(LoginAndSecurityPage.class);
+    }
+
 }

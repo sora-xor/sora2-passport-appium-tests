@@ -16,9 +16,9 @@ public class NavigationBarSection extends ElementsContainer {
     @iOSXCUITFindBy(accessibility = "Assets")
     private SelenideElement assetsBtn;
 
-    @AndroidFindBy(accessibility ="Invest")
-    @iOSXCUITFindBy(accessibility = "Discover")
-    private SelenideElement investBtn;
+    @AndroidFindBy(accessibility ="Explore")
+    @iOSXCUITFindBy(accessibility = "")
+    private SelenideElement exploreBtn;
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc=\"Polkaswap\"]")
     @iOSXCUITFindBy(accessibility = "Swap")
@@ -44,5 +44,12 @@ public class NavigationBarSection extends ElementsContainer {
         log.info("Click Polkaswap button");
         polkaswapBtn.shouldBe(Condition.visible).click();
         return screen(PolkaswapPage.class);
+    }
+
+    public ExplorePage goToExplorePage()
+    {
+        log.info("Click Explore button");
+        exploreBtn.shouldBe(Condition.visible).click();
+        return screen(ExplorePage.class);
     }
 }

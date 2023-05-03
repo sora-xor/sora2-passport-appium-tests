@@ -32,7 +32,7 @@ public class WalletPage extends CommonPage {
     public static WalletPage importAccountUsePassphrase() {
         WelcomePage welcomePage = screen(WelcomePage.class);
         ImportAccountPage importAccountPage = welcomePage.goToImportAccountPagePassphrase();
-        NameYourAccountPage nameYourAccountPage = importAccountPage.enterMnemonicPhrase(TestConfig.config.mnemonic());
+        NameYourAccountPage nameYourAccountPage = importAccountPage.enterMnemonicPhrase(TestConfig.config.mnemonic1());
         PinCodePage pinCodePage = nameYourAccountPage.enterAccountNameAfterImport("Import Passphrase");
         WalletPage walletPage = pinCodePage.enterAndConfirmPinCode();
         walletPage.walletPageIsOpen();

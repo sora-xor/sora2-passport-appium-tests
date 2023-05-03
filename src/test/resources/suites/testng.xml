@@ -26,11 +26,11 @@
             <class name="commontests.SwapTest"/>
         </classes>
     </test>
-<!--    <test thread-count="1" name="BuyXorWithFiatTest">-->
-<!--        <classes>-->
-<!--            <class name="commontests.BuyXorWithFiatTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test thread-count="1" name="ChangePinCodeTest">
+        <classes>
+            <class name="commontests.ChangePinCodeTest"/>
+        </classes>
+    </test>
 <!--    <test thread-count="1" name="GetSoraCardTest">-->
 <!--        <classes>-->
 <!--            <class name="commontests.GetSoraCardTest"/>-->

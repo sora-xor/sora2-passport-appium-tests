@@ -113,7 +113,6 @@ public class PolkaswapPage extends CommonPage {
     public void SimpleSwap(String randomValue)
     {
         inputAmountFieldXor.shouldBe(Condition.visible).sendKeys(randomValue);
-        //String enteredXorValue = inputAmountFieldXor.shouldBe(Condition.visible).getText();
         swapBtn.shouldBe(Condition.enabled).click();
         confirmBtn.shouldBe(Condition.visible).click();
         swappedItem.shouldBe(Condition.visible);
