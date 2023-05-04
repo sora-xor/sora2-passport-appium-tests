@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.appium.SelenideAppium;
 
+import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.extern.log4j.Log4j2;
@@ -19,6 +20,8 @@ import static infrastructure.Platform.isIOS;
 import static org.assertj.core.api.Assertions.assertThat;
 @Log4j2
 public class PolkaswapPage extends CommonPage {
+
+    Utils utils = new Utils();
 
     @AndroidFindBy(xpath = "//*[@text='Disclaimer']")
     @iOSXCUITFindBy(accessibility = "Disclaimer")
@@ -100,6 +103,7 @@ public class PolkaswapPage extends CommonPage {
     		.scroll(down())
     		.shouldHave(visible);
     	}
+        utils.scrollForward(1);
         disclaimerCloseBtn.shouldBe(Condition.visible).click();
     }
 
