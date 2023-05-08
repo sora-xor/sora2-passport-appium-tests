@@ -10,7 +10,6 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class KYCOtpPage {
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText")
-    @iOSXCUITFindBy(accessibility = "")
     private SelenideElement otpInput;
 
     public void verifyOTP (String otpTest){

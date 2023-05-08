@@ -13,19 +13,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class LoginAndSecurityPage {
 
     @AndroidFindBy(xpath = "//*[@text='Change PIN']")
-    @iOSXCUITFindBy(accessibility = "")
     private SelenideElement changePinBtn;
 
     @AndroidFindBy(xpath = "//*[@text='Biometric Auth']")
-    @iOSXCUITFindBy(accessibility = "")
     private SelenideElement biometricAuthBtn;
 
     @AndroidFindBy(xpath = "//*[@text='Pin code changed successfully']")
-    @iOSXCUITFindBy(accessibility = "")
     private SelenideElement pinCodeСhangedToast;
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[2]/android.widget.Button")
-    @iOSXCUITFindBy(accessibility = "")
     private SelenideElement backBtn;
 
     public PinCodePage goToChangePin()
