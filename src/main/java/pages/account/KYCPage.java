@@ -14,11 +14,9 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 public class KYCPage {
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText")
-    @iOSXCUITFindBy(accessibility = "")
     private SelenideElement phoneNumberField;
 
     @AndroidFindBy(xpath = "//*[@text='Send SMS code']")
-    @iOSXCUITFindBy(accessibility = "")
     private SelenideElement sendSMSCodeBtn;
 
  /*   @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText")

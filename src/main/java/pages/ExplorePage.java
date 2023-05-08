@@ -9,15 +9,12 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class ExplorePage {
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/AddLiquidity")
-    @iOSXCUITFindBy(accessibility = "")
     private SelenideElement addLiquidityBtn;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/PrimaryButton")
-    @iOSXCUITFindBy(accessibility = "")
     private SelenideElement primaryBtn;
 
     @AndroidFindBy(xpath = "//*[@text='Supply liquidity']")
-    @iOSXCUITFindBy(accessibility = "")
     private SelenideElement supplyLiquidityTitle;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/InputAmountFieldXOR")
@@ -48,15 +45,12 @@ public class ExplorePage {
     private SelenideElement xstToken;
 
     @AndroidFindBy(xpath = "//*[@text='Supply']")
-    @iOSXCUITFindBy(accessibility = "")
     private SelenideElement supplyeBtn;
 
     @AndroidFindBy(xpath = "//*[@text='Confirm']")
-    @iOSXCUITFindBy(accessibility = "")
     private SelenideElement confirmBtn;
 
     @AndroidFindBy(xpath = "//*[@text='Close']")
-    @iOSXCUITFindBy(accessibility = "")
     private SelenideElement closeBtn;
 
 
