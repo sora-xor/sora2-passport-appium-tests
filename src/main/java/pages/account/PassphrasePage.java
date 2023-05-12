@@ -8,7 +8,7 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 
 public class PassphrasePage {
 
-    @AndroidFindBy(xpath = "//*[@text='Skip']")
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/Skip")
     @iOSXCUITFindBy(accessibility = "SKIP")
     private SelenideElement skipBtn;
 
