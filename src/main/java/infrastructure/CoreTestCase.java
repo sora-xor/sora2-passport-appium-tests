@@ -46,7 +46,7 @@ public class CoreTestCase {
 
     @BeforeTest
     static void setupAllureReports() {
-        Configuration.timeout=8000;
+        Configuration.timeout=14000;
         Configuration.screenshots = false;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
                 .screenshots(true)

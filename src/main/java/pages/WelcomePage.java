@@ -17,7 +17,7 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 public class WelcomePage {
 
 	@iOSXCUITFindBy(accessibility = "CREATE NEW ACCOUNT")
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/CreateNewAccount")
+    @AndroidFindBy(xpath = "//*[@text=\"CREATE NEW ACCOUNT\"]")
     private SelenideElement createAccountBtn;
 
 	@iOSXCUITFindBy(accessibility = "Passphrase")
@@ -29,13 +29,13 @@ public class WelcomePage {
     private SelenideElement importRawSeed;
 
     @iOSXCUITFindBy(accessibility = "IMPORT ACCOUNT")
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/ImportAccount")
+    @AndroidFindBy(xpath = "//*[@text=\"IMPORT ACCOUNT\"]")
     private SelenideElement importAccountBtn;
 
     public NameYourAccountPage goToCreateAccountPage() {
 
     	try {
-			Thread.sleep(7000);
+			Thread.sleep(14000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,7 +49,7 @@ public class WelcomePage {
     public ImportAccountPage goToImportAccountPagePassphrase() {
 
         try {
-        	Thread.sleep(7000);
+        	Thread.sleep(14000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,7 +65,7 @@ public class WelcomePage {
     public ImportAccountPage goToImportAccountPageRawSeed() {
 
     	try {
-			Thread.sleep(7000);
+			Thread.sleep(14000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
