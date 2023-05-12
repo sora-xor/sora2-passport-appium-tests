@@ -25,7 +25,7 @@ public class SoraCardPage{
     @iOSXCUITFindBy(accessibility = "enoughXorForAFreeCard")
     private SelenideElement enoughXorForAFreeCard;
 
-    @AndroidFindBy(xpath = "//*[@text='CONTINUE']")
+    @AndroidFindBy(xpath = "//*[@text='Continue']")
     @iOSXCUITFindBy(accessibility = "CONTINUE")
     private SelenideElement continueBtn;
 
