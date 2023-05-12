@@ -96,6 +96,7 @@ public class PolkaswapPage extends CommonPage {
     	if (isAndroid()) {
     		String actualTitle = disclaimer.shouldBe(Condition.visible).getText();
     		assertThat(actualTitle).as("Disclaimer").isEqualTo("Disclaimer");
+    		utils.scrollForward(1);
     	}
     	if (isIOS()) {
     		disclaimer.shouldBe(Condition.visible).click();
@@ -103,7 +104,6 @@ public class PolkaswapPage extends CommonPage {
     		.scroll(down())
     		.shouldHave(visible);
     	}
-        utils.scrollForward(1);
         disclaimerCloseBtn.shouldBe(Condition.visible).click();
     }
 

@@ -17,19 +17,19 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 public class WelcomePage {
 
 	@iOSXCUITFindBy(accessibility = "CREATE NEW ACCOUNT")
-    @AndroidFindBy(xpath = "//*[@text='CREATE NEW ACCOUNT']")
+    @AndroidFindBy(xpath = "//*[@text=\"CREATE NEW ACCOUNT\"]")
     private SelenideElement createAccountBtn;
 
 	@iOSXCUITFindBy(accessibility = "Passphrase")
-	@AndroidFindBy(xpath = "//*[@text='Passphrase']")
+	@AndroidFindBy(xpath = "//*[@text=\"Passphrase\"]")
     private SelenideElement importPassphrase;
 
 	@iOSXCUITFindBy(accessibility = "Raw seed")
-	@AndroidFindBy(xpath = "//*[@text='Raw seed']")
+	@AndroidFindBy(xpath = "//*[@text=\"Raw seed\"]")
     private SelenideElement importRawSeed;
 
     @iOSXCUITFindBy(accessibility = "IMPORT ACCOUNT")
-    @AndroidFindBy(xpath = "//*[@text='IMPORT ACCOUNT']")
+    @AndroidFindBy(xpath = "//*[@text=\"IMPORT ACCOUNT\"]")
     private SelenideElement importAccountBtn;
 
     public NameYourAccountPage goToCreateAccountPage() {
