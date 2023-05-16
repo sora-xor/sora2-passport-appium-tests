@@ -149,18 +149,18 @@ public class PinCodePage {
 		if (isIOS()) {
 				assertThat(currentPinCodeTitleTv.isDisplayed());
 				for (int i =  1; i <= 6; i++) {
-					//$(By.name(""+i)).click();
-					$(By.xpath("(//XCUIElementTypeStaticText[@name=\""+i+"\"])[2]")).click();
+					$(By.name(""+i)).click();
+					//$(By.xpath("(//XCUIElementTypeStaticText[@name=\""+i+"\"])[2]")).click();
 				}
 				assertThat(newPinCodeTitleTv.isDisplayed());
 				for (int i =  1; i <= 6; i++) {
-					//$(By.name(""+i)).click();
-					$(By.xpath("(//XCUIElementTypeStaticText[@name=\""+i+"\"])[2]")).click();
+					$(By.name(""+i)).click();
+					//$(By.xpath("(//XCUIElementTypeStaticText[@name=\""+i+"\"])[2]")).click();
 				}
 				assertThat(confirmNewPinCodeTitleTv.isDisplayed());
 				for (int i =  1; i <= 6; i++) {
-					//$(By.name(""+i)).click();
-					$(By.xpath("(//XCUIElementTypeStaticText[@name=\""+i+"\"])[2]")).click();
+					$(By.name(""+i)).click();
+					//$(By.xpath("(//XCUIElementTypeStaticText[@name=\""+i+"\"])[2]")).click();
 				}
 			}
 			return screen(LoginAndSecurityPage.class);
