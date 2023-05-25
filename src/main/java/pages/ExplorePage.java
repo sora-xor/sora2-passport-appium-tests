@@ -50,7 +50,7 @@ public class ExplorePage {
 
     @AndroidFindBy(xpath = "//*[@text='Supply']")
     @iOSXCUITFindBy(accessibility = "Review")
-    private SelenideElement supplyeBtn;
+    private SelenideElement supplyBtn;
 
     @AndroidFindBy(xpath = "//*[@text='Confirm']")
     @iOSXCUITFindBy(accessibility = "Confirm")
@@ -62,7 +62,7 @@ public class ExplorePage {
 
 
 
-    public void addLiquidty(String randomLiquidity)
+    public void addLiquidity(String randomLiquidity)
     {
         addLiquidityBtn.shouldBe(Condition.visible).click();
         supplyLiquidityTitle.shouldBe(Condition.visible).exists();
@@ -72,7 +72,7 @@ public class ExplorePage {
         xstToken.shouldBe(Condition.visible).click();
         inputAmountFieldXor.shouldBe(Condition.visible).sendKeys(randomLiquidity);
         log.info("Supply XOR : "+randomLiquidity+" XOR" );
-        supplyeBtn.shouldBe(Condition.visible).click();
+        supplyBtn.shouldBe(Condition.visible).click();
         if (isAndroid()) log.info("Supply XST : "+inputAmountFieldXst.shouldBe(Condition.visible).getText()+" XST" );
         confirmBtn.shouldBe(Condition.visible).click();
         closeBtn.shouldBe(Condition.visible).click();
