@@ -31,6 +31,7 @@ public class ActivityPage {
     private SelenideElement swappedItem;
 
     @AndroidFindBy(accessibility = "Sent to pool")
+    @iOSXCUITFindBy(accessibility = "Extrinsic hash")
     private SelenideElement sentToPoolItem;
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.widget.TextView[5]")
@@ -63,8 +64,14 @@ public class ActivityPage {
 
         lastTransaction.shouldBe(Condition.visible).click();
         sentToPoolItem.shouldBe(Condition.visible);
-        log.info("Last transaction type: "+sentToPoolItem.getAttribute("content-desc"));
-        String getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
+        String getXorAmountValueFromHistory = "";
+        if (isAndroid()) {
+            log.info("Last transaction type: " + sentToPoolItem.getAttribute("content-desc"));
+            getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
+        }
+        else if (isIOS()) {
+            getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getValue();
+        }
         log.info("Get Xor from last transaction: "+getXorAmountValueFromHistory);
         assertThat(getXorAmountValueFromHistory).isEqualTo(randomLiquidity+" XOR");
         closeBtn.shouldBe(Condition.visible).click();

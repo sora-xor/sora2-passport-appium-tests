@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.appium.SelenideAppium;
 import configs.TestConfig;
 import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -10,7 +11,11 @@ import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.Logger;
 import pages.account.*;
 
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.appium.AppiumScrollOptions.down;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
+import static infrastructure.Platform.isAndroid;
+import static infrastructure.Platform.isIOS;
 import static org.assertj.core.api.Assertions.*;
 
 @Log4j2
@@ -77,7 +82,13 @@ public class WalletPage extends CommonPage {
 
     public void goToPooledAssets()
     {
-       utils.scrollForward(1);
+        if (isAndroid()) utils.scrollForward(1);
+        if (isIOS()) {
+                SelenideAppium.$x("(//XCUIElementTypeStaticText[@name=\"Expand\"])[2]")
+                .scroll(down())
+                .shouldHave(visible);
+        }
+
     }
 
 }

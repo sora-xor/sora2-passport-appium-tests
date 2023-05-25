@@ -6,15 +6,19 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.extern.log4j.Log4j2;
 
+import static infrastructure.Platform.isAndroid;
+
 @Log4j2
 public class ExplorePage {
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/AddLiquidity")
+    @iOSXCUITFindBy(accessibility = "Add Liquidity")
     private SelenideElement addLiquidityBtn;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/PrimaryButton")
     private SelenideElement primaryBtn;
 
     @AndroidFindBy(xpath = "//*[@text='Supply liquidity']")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`label == \"Supply liquidity\"`]")
     private SelenideElement supplyLiquidityTitle;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/InputAmountFieldXOR")
@@ -22,7 +26,7 @@ public class ExplorePage {
     private SelenideElement inputAmountFieldXor;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/InputAmountFieldXST")
-    @iOSXCUITFindBy(iOSClassChain = "")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeTextField[2]")
     private SelenideElement inputAmountFieldXst;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SelectToken")
@@ -34,23 +38,26 @@ public class ExplorePage {
     private SelenideElement inputAmountField2;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SelectTokenXOR")
-    @iOSXCUITFindBy(accessibility = "XOR")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`label == \"Select token\"`][1]")
     private SelenideElement selectTokenXor;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/XORElement")
-    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`label == \"SORA\"`][2]")
+    @iOSXCUITFindBy(accessibility = "SORA")
     private SelenideElement xorToken;
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/XSTElement")
-    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`label == \"SORA Synthetics\"`][2]")
+    @iOSXCUITFindBy(accessibility = "SORA Synthetics")
     private SelenideElement xstToken;
 
     @AndroidFindBy(xpath = "//*[@text='Supply']")
+    @iOSXCUITFindBy(accessibility = "Review")
     private SelenideElement supplyeBtn;
 
     @AndroidFindBy(xpath = "//*[@text='Confirm']")
+    @iOSXCUITFindBy(accessibility = "Confirm")
     private SelenideElement confirmBtn;
 
     @AndroidFindBy(xpath = "//*[@text='Close']")
+    @iOSXCUITFindBy(accessibility = "Close")
     private SelenideElement closeBtn;
 
 
@@ -66,9 +73,11 @@ public class ExplorePage {
         inputAmountFieldXor.shouldBe(Condition.visible).sendKeys(randomLiquidity);
         log.info("Supply XOR : "+randomLiquidity+" XOR" );
         supplyeBtn.shouldBe(Condition.visible).click();
-        log.info("Supply XST : "+inputAmountFieldXst.shouldBe(Condition.visible).getText()+" XST" );
+        if (isAndroid()) log.info("Supply XST : "+inputAmountFieldXst.shouldBe(Condition.visible).getText()+" XST" );
         confirmBtn.shouldBe(Condition.visible).click();
         closeBtn.shouldBe(Condition.visible).click();
+        log.info("Click Close button" );
+
 
 
     }
