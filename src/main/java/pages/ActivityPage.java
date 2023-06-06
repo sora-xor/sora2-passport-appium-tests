@@ -77,8 +77,10 @@ public class ActivityPage {
     public void checkLastTransactionStatusPool(String randomLiquidity){
         if (isIOS()) {WebDriver driver = WebDriverRunner.getWebDriver();
             WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT30S"), Duration.parse("PT1S"));
-            wait.until(ExpectedConditions.visibilityOf(TodayTxt));}
-        lastPooledTransaction.shouldBe(Condition.visible).click();
+            wait.until(ExpectedConditions.visibilityOf(TodayTxt));
+            lastPooledTransaction.shouldBe(Condition.visible).click();
+        }
+        if (isAndroid()) lastTransaction.shouldBe(Condition.visible).click();
         sentToPoolItem.shouldBe(Condition.visible);
         String getXorAmountValueFromHistory = "";
         if (isAndroid()) {
