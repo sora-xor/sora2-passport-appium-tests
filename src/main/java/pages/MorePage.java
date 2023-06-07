@@ -67,4 +67,10 @@ public class MorePage {
         return screen(LoginAndSecurityPage.class);
     }
 
+    public NodesPage goToNodesPage ()
+    {
+        nodesBtn.shouldBe(Condition.visible).click();
+        return screen(NodesPage.class);
+    }
+
 }
