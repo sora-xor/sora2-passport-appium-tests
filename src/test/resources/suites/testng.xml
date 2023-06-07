@@ -36,6 +36,11 @@
             <class name="commontests.AddLiquidityTest"/>
         </classes>
     </test>
+    <test thread-count="1" name="ChangeNodeTest">
+        <classes>
+            <class name="commontests.ChangeNodeTest"/>
+        </classes>
+    </test>
 <!--    <test thread-count="1" name="AlreadyHaveACardTest">-->
 <!--        <classes>-->
 <!--            <class name="commontests.AlreadyHaveACardTest"/>-->
