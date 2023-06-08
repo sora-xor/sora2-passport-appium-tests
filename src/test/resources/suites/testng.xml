@@ -41,6 +41,16 @@
             <class name="commontests.ChangeNodeTest"/>
         </classes>
     </test>
+    <test thread-count="1" name="AddCustomNodeTest">
+        <classes>
+            <class name="commontests.AddCustomNodeTest"/>
+        </classes>
+    </test>
+    <test thread-count="1" name="ChangeLanguageTest">
+        <classes>
+            <class name="commontests.ChangeLanguageTest"/>
+        </classes>
+    </test>
 <!--    <test thread-count="1" name="AlreadyHaveACardTest">-->
 <!--        <classes>-->
 <!--            <class name="commontests.AlreadyHaveACardTest"/>-->

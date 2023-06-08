@@ -73,4 +73,10 @@ public class MorePage {
         return screen(NodesPage.class);
     }
 
+    public AppSettingsPage goToAppSettingsPage ()
+    {
+        appSettingsBtn.shouldBe(Condition.visible).click();
+        return screen(AppSettingsPage.class);
+    }
+
 }

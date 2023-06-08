@@ -15,6 +15,11 @@ public class NodesPage {
     @AndroidFindBy(xpath = "//*[@text='DEFAULT NODES']")
     private SelenideElement defaultNodesTitle;
 
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.widget.EditText[1]")
+    private SelenideElement nodeNameField;
+
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.widget.EditText[2]")
+    private SelenideElement nodeAddressField;
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[1]/android.view.View[1]")
     private SelenideElement framenode1Btn;
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[1]/android.view.View[2]")
@@ -34,6 +39,8 @@ public class NodesPage {
     @AndroidFindBy(xpath = "//*[@text='Connected']")
     private SelenideElement connectedToast;
 
+    @AndroidFindBy(xpath = "//*[@text='Error']")
+    private SelenideElement alreadyAddedNodeError;
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.Button")
     private SelenideElement backBtn;
 
@@ -47,7 +54,7 @@ public class NodesPage {
         successfullySwitchForm.shouldBe(Condition.visible);
         confirmBtn.shouldBe(Condition.visible).click();
         try {
-            Thread.sleep(5000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -56,4 +63,23 @@ public class NodesPage {
         backBtn.shouldBe(Condition.visible).click();
     }
 
-}
+    public void addCustomNode()
+    {
+        selectNodeTitle.shouldBe(Condition.visible);
+        defaultNodesTitle.shouldBe(Condition.visible);
+        addCustomNodebtn.shouldBe(Condition.visible).click();
+        nodeNameField.shouldBe(Condition.visible).sendKeys("custom node");
+        nodeAddressField.shouldBe(Condition.visible).sendKeys("wss://ws.framenode-3.r0.dev.sora2.soramitsu.co.jp");
+        addCustomNodebtn.shouldBe(Condition.visible).click();
+        alreadyAddedNodeError.shouldBe(Condition.visible);
+        confirmBtn.shouldBe(Condition.visible).click();
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        backBtn.shouldBe(Condition.visible).click();
+        backBtn.shouldBe(Condition.visible).click();
+    }
+    }
