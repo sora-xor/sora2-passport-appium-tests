@@ -30,7 +30,7 @@ public class WalletPage extends CommonPage {
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/GetSoraCard")
     @iOSXCUITFindBy(accessibility = "GetSoraCardBtn")
     private SelenideElement getSoraCardBtn;
-    
+
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/title")
     private SelenideElement walletTitlePage;
 
@@ -46,7 +46,7 @@ public class WalletPage extends CommonPage {
         walletPage.walletPageIsOpen();
         return screen(WalletPage.class);
     }
-    
+
     public static WalletPage importAccountUseRawSeed() {
         WelcomePage welcomePage = screen(WelcomePage.class);
         ImportAccountPage importAccountPage = welcomePage.goToImportAccountPageRawSeed();
@@ -57,7 +57,7 @@ public class WalletPage extends CommonPage {
         return screen(WalletPage.class);
     }
 
-    public static WalletPage createNewAccount(){
+    public static WalletPage createNewAccount() {
         WelcomePage welcomePage = screen(WelcomePage.class);
         NameYourAccountPage nameYourAccountPage = welcomePage.goToCreateAccountPage();
         PayAttentionPage payAttention = nameYourAccountPage.enterAccountName("Account Test");
@@ -68,27 +68,37 @@ public class WalletPage extends CommonPage {
         return screen(WalletPage.class);
     }
 
-    public void walletPageIsOpen (){
-       String actualTitle = liquidAssets.shouldBe(Condition.visible).getText();
-       assertThat(actualTitle).as("Liquid assets title").isEqualTo("Liquid assets");
+    public void walletPageIsOpen() {
+        String actualTitle = liquidAssets.shouldBe(Condition.visible).getText();
+        assertThat(actualTitle).as("Liquid assets title").isEqualTo("Liquid assets");
     }
 
-    public SoraCardPage goToSoraCardPage()
-    {
+    public SoraCardPage goToSoraCardPage() {
         log.info("Click Get Sora Card button");
         getSoraCardBtn.shouldBe(Condition.visible).click();
         return screen(SoraCardPage.class);
     }
 
-    public void goToPooledAssets()
-    {
+    public LiquidAssetsPage goToLiquidAssets() {
         if (isAndroid()) utils.scrollForward(1);
         if (isIOS()) {
-                SelenideAppium.$x("(//XCUIElementTypeStaticText[@name=\"Expand\"])[2]")
-                .scroll(down())
-                .shouldHave(visible);
+            SelenideAppium.$x("(//XCUIElementTypeStaticText[@name=\"Expand\"])[2]")
+                    .scroll(down())
+                    .shouldHave(visible);
         }
-
+        return screen(LiquidAssetsPage.class);
     }
 
-}
+        public void goToPooledAssets ()
+        {
+            if (isAndroid()) utils.scrollForward(1);
+            if (isIOS()) {
+                SelenideAppium.$x("(//XCUIElementTypeStaticText[@name=\"Expand\"])[2]")
+                        .scroll(down())
+                        .shouldHave(visible);
+            }
+        }
+    }
+
+
+

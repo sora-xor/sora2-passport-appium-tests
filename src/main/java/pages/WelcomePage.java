@@ -34,12 +34,6 @@ public class WelcomePage {
 
     public NameYourAccountPage goToCreateAccountPage() {
 
-    	try {
-			Thread.sleep(14000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
     	log.info("Create account");
         createAccountBtn.shouldBe(Condition.visible).click();
 
@@ -48,12 +42,6 @@ public class WelcomePage {
 
     public ImportAccountPage goToImportAccountPagePassphrase() {
 
-        try {
-        	Thread.sleep(14000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
     	log.info("import account");
         importAccountBtn.shouldBe(Condition.visible).click();
         importPassphrase.click();
@@ -64,12 +52,6 @@ public class WelcomePage {
 
     public ImportAccountPage goToImportAccountPageRawSeed() {
 
-    	try {
-			Thread.sleep(14000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
     	log.info("import account");
         importAccountBtn.shouldBe(Condition.visible).click();
         importRawSeed.click();
