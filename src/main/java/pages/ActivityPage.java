@@ -22,14 +22,14 @@ import static org.assertj.core.api.Assertions.*;
 public class ActivityPage {
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]")
-    @iOSXCUITFindBy(xpath ="(//XCUIElementTypeStaticText[@name=\"Swapped\"])[1]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Swapped\"])[1]")
     private SelenideElement lastTransaction;
 
-    @iOSXCUITFindBy(xpath ="(//XCUIElementTypeStaticText[@name=\"Pool\"])[1]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Pool\"])[1]")
     private SelenideElement lastPooledTransaction;
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.widget.TextView[2]")
-    @iOSXCUITFindBy(xpath ="//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]")
     private SelenideElement getXorFromLastTransaction;
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.widget.TextView[3]")
@@ -38,6 +38,9 @@ public class ActivityPage {
     @AndroidFindBy(accessibility = "Swapped")
     @iOSXCUITFindBy(accessibility = "Extrinsic hash")
     private SelenideElement swappedItem;
+
+    @AndroidFindBy(accessibility = "Sent")
+    private SelenideElement sentItem;
 
     @AndroidFindBy(accessibility = "Sent to pool")
     @iOSXCUITFindBy(accessibility = "Extrinsic hash")
@@ -53,29 +56,30 @@ public class ActivityPage {
     @iOSXCUITFindBy(accessibility = "TODAY")
     private SelenideElement TodayTxt;
 
-  public void checkLastTransactionStatusSwap(String randomValue){
-      if (isIOS()) {WebDriver driver = WebDriverRunner.getWebDriver();
-          WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT30S"), Duration.parse("PT1S"));
-          wait.until(ExpectedConditions.visibilityOf(TodayTxt));}
-      lastTransaction.shouldBe(Condition.visible).click();
-      swappedItem.shouldBe(Condition.visible);
-      String getXorAmountValueFromHistory = "";
-      if (isAndroid()) {
-    	  log.info("Last transaction type: "+swappedItem.getAttribute("content-desc"));
-    	  getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
-      }
-      else if (isIOS()) {
-    	  getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getValue();
-      }
-      log.info("Get Xor from last transaction: "+getXorAmountValueFromHistory);
-      assertThat(getXorAmountValueFromHistory).isEqualTo(randomValue+" XOR");
-      closeBtn.shouldBe(Condition.visible).click();
-  }
+    public void checkLastTransactionStatusSwap(String randomValue) {
+        if (isIOS()) {
+            WebDriver driver = WebDriverRunner.getWebDriver();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT30S"), Duration.parse("PT1S"));
+            wait.until(ExpectedConditions.visibilityOf(TodayTxt));
+        }
+        lastTransaction.shouldBe(Condition.visible).click();
+        swappedItem.shouldBe(Condition.visible);
+        String getXorAmountValueFromHistory = "";
+        if (isAndroid()) {
+            log.info("Last transaction type: " + swappedItem.getAttribute("content-desc"));
+            getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
+        } else if (isIOS()) {
+            getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getValue();
+        }
+        log.info("Get Xor from last transaction: " + getXorAmountValueFromHistory);
+        assertThat(getXorAmountValueFromHistory).isEqualTo(randomValue + " XOR");
+        closeBtn.shouldBe(Condition.visible).click();
+    }
 
-  
 
-    public void checkLastTransactionStatusPool(String randomLiquidity){
-        if (isIOS()) {WebDriver driver = WebDriverRunner.getWebDriver();
+    public void checkLastTransactionStatusPool(String randomLiquidity) {
+        if (isIOS()) {
+            WebDriver driver = WebDriverRunner.getWebDriver();
             WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT30S"), Duration.parse("PT1S"));
             wait.until(ExpectedConditions.visibilityOf(TodayTxt));
             lastPooledTransaction.shouldBe(Condition.visible).click();
@@ -86,14 +90,33 @@ public class ActivityPage {
         if (isAndroid()) {
             log.info("Last transaction type: " + sentToPoolItem.getAttribute("content-desc"));
             getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
-        }
-        else if (isIOS()) {
+        } else if (isIOS()) {
             getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getValue();
         }
-        log.info("Get Xor from last transaction: "+getXorAmountValueFromHistory);
-        assertThat(getXorAmountValueFromHistory).isEqualTo(randomLiquidity+" XOR");
+        log.info("Get Xor from last transaction: " + getXorAmountValueFromHistory);
+        assertThat(getXorAmountValueFromHistory).isEqualTo(randomLiquidity + " XOR");
         closeBtn.shouldBe(Condition.visible).click();
 
     }
 
+    public void checkLastTransactionSendToken(String randomValue) {
+//        if (isIOS()) {WebDriver driver = WebDriverRunner.getWebDriver();
+//            WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT30S"), Duration.parse("PT1S"));
+//            wait.until(ExpectedConditions.visibilityOf(TodayTxt));
+//            lastPooledTransaction.shouldBe(Condition.visible).click();//       }
+        if (isAndroid()) lastTransaction.shouldBe(Condition.visible).click();
+        sentItem.shouldBe(Condition.visible);
+        String getXorAmountValueFromHistory = "";
+        if (isAndroid()) {
+            log.info("Last transaction type: " + sentItem.getAttribute("content-desc"));
+            getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
+        }
+//        else if (isIOS()) {
+//            getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getValue();
+//        }
+        log.info("Get Xor from last transaction: " + getXorAmountValueFromHistory);
+        assertThat(getXorAmountValueFromHistory).isEqualTo(randomValue + " XOR");
+        closeBtn.shouldBe(Condition.visible).click();
+
+    }
 }
