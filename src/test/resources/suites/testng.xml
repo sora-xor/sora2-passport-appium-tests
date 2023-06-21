@@ -51,9 +51,14 @@
             <class name="commontests.ChangeLanguageTest"/>
         </classes>
     </test>
-    <test thread-count="1" name="SendTokenTest">
+    <test thread-count="1" name="StartInvitingTest">
         <classes>
-            <class name="commontests.SendTokenTest"/>
+            <class name="commontests.StartInvitingTest"/>
+        </classes>
+    </test>
+    <test thread-count="1" name="EnterReferrerLink">
+        <classes>
+            <class name="commontests.EnterReferrerLink"/>
         </classes>
     </test>
 <!--    <test thread-count="1" name="AlreadyHaveACardTest">-->
