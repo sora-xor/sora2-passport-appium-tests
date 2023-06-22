@@ -79,4 +79,9 @@ public class MorePage {
         return screen(AppSettingsPage.class);
     }
 
+    public ReferralProgramPage goToReferralProgramPage()
+    {
+        inviteFrinedsBtn.shouldBe(Condition.visible).click();
+        return screen(ReferralProgramPage.class);
+    }
 }

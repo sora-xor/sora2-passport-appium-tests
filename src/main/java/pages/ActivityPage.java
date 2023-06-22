@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static infrastructure.Platform.isAndroid;
 import static infrastructure.Platform.isIOS;
 import static org.assertj.core.api.Assertions.*;
@@ -42,6 +43,15 @@ public class ActivityPage {
     @AndroidFindBy(accessibility = "Sent")
     private SelenideElement sentItem;
 
+    @AndroidFindBy(accessibility = "Referrer set")
+    private SelenideElement referrerSetItem;
+
+    @AndroidFindBy(accessibility = "Bonded")
+    private SelenideElement boundedItem;
+
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[1]/android.widget.TextView[2]")
+    private SelenideElement availableInvitations;
+
     @AndroidFindBy(accessibility = "Sent to pool")
     @iOSXCUITFindBy(accessibility = "Extrinsic hash")
     private SelenideElement sentToPoolItem;
@@ -55,6 +65,10 @@ public class ActivityPage {
     private SelenideElement closeBtn;
     @iOSXCUITFindBy(accessibility = "TODAY")
     private SelenideElement TodayTxt;
+
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.Button")
+    private SelenideElement backBtn;
+
 
     public void checkLastTransactionStatusSwap(String randomValue) {
         if (isIOS()) {
@@ -119,4 +133,33 @@ public class ActivityPage {
         closeBtn.shouldBe(Condition.visible).click();
 
     }
+
+    public ReferralProgramPage checkSetReffererTransaction() {
+        if (referrerSetItem.isDisplayed()) {
+            closeBtn.shouldBe(Condition.visible).click();
+        }
+        else {
+            log.info("Referrer's is already set");
+        }
+        backBtn.shouldBe(Condition.visible).click();
+        return screen(ReferralProgramPage.class);
+    }
+
+    public ReferralProgramPage checkBoundXorTransaction() {
+        WebDriver driver = WebDriverRunner.getWebDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT300S"), Duration.parse("PT1S"));
+        wait.until(ExpectedConditions.visibilityOf(boundedItem));
+        boundedItem.shouldBe(Condition.visible);
+        closeBtn.shouldBe(Condition.visible).click();
+        String getAvailableInvitations = "";
+        if (isAndroid()) {
+            getAvailableInvitations = availableInvitations.shouldBe(Condition.visible).getText();
+            log.info("Available invitations " + getAvailableInvitations);
+        }
+        backBtn.shouldBe(Condition.visible).click();
+        return screen(ReferralProgramPage.class);
+    }
+
+
+
 }

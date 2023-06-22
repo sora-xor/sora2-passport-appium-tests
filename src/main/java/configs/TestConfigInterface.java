@@ -32,4 +32,10 @@ public interface TestConfigInterface extends Config{
 
     @Key("testOtp")
     String testOtp();
+
+    @Key("referrerLink1")
+    String referrerLink1();
+
+    @Key("referrerLink2")
+    String referrerLink2();
 }

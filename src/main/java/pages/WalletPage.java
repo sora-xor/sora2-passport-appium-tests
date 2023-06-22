@@ -47,6 +47,16 @@ public class WalletPage extends CommonPage {
         return screen(WalletPage.class);
     }
 
+    public static WalletPage importAccount2UsePassphrase() {
+        WelcomePage welcomePage = screen(WelcomePage.class);
+        ImportAccountPage importAccountPage = welcomePage.goToImportAccountPagePassphrase();
+        NameYourAccountPage nameYourAccountPage = importAccountPage.enterMnemonicPhrase(TestConfig.config.mnemonic2());
+        PinCodePage pinCodePage = nameYourAccountPage.enterAccountNameAfterImport("Import Passphrase2");
+        WalletPage walletPage = pinCodePage.enterAndConfirmPinCode();
+        walletPage.walletPageIsOpen();
+        return screen(WalletPage.class);
+    }
+
     public static WalletPage importAccountUseRawSeed() {
         WelcomePage welcomePage = screen(WelcomePage.class);
         ImportAccountPage importAccountPage = welcomePage.goToImportAccountPageRawSeed();

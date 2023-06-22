@@ -34,7 +34,7 @@ public class LiquidAssetsPage {
     private SelenideElement inputAmountFieldXor;
 
 
-    @AndroidFindBy(xpath = "//*[@text='Review']")
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[4]/android.widget.Button")
     private SelenideElement reviewBtn;
 
     @AndroidFindBy(xpath = "//*[@text='Confirm']")
@@ -54,18 +54,16 @@ public class LiquidAssetsPage {
         xorElement.shouldBe(Condition.visible).click();
         inputAmountFieldXor.shouldBe(Condition.visible).sendKeys(randomValue);
 
-//        WebDriver driver = WebDriverRunner.getWebDriver();
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT300S"), Duration.parse("PT1S"));
-//        wait.until(ExpectedConditions.visibilityOf(reviewBtn));
+        WebDriver driver = WebDriverRunner.getWebDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT300S"), Duration.parse("PT1S"));
+        wait.until(ExpectedConditions.visibilityOf(reviewBtn));
+        reviewBtn.click();
 
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        reviewBtn.shouldBe(Condition.visible).click();
-        confirmBtn.shouldBe(Condition.visible).click();
+        WebDriver driver1 = WebDriverRunner.getWebDriver();
+        WebDriverWait wait1 = new WebDriverWait(driver1, Duration.parse("PT300S"), Duration.parse("PT1S"));
+        wait1.until(ExpectedConditions.visibilityOf(confirmBtn));
+        confirmBtn.click();
+
         closeBtn.shouldBe(Condition.visible).click();
     }
 }
