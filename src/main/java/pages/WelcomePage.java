@@ -28,7 +28,7 @@ public class WelcomePage {
 	@AndroidFindBy(xpath = "//*[@text=\"Raw seed\"]")
     private SelenideElement importRawSeed;
 
-    @iOSXCUITFindBy(accessibility = "IMPORT ACCOUNT")
+    @iOSXCUITFindBy(accessibility = "Import account")
     @AndroidFindBy(xpath = "//*[@text=\"IMPORT ACCOUNT\"]")
     private SelenideElement importAccountBtn;
 
