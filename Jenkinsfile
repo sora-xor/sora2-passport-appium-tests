@@ -1,5 +1,4 @@
-// @Library('jenkins-library') _
-@Library('jenkins-library@feature/SUP-4541') _
+@Library('jenkins-library') _
 
 // Job properties
 def jobParams = [
