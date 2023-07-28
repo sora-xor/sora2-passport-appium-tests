@@ -38,4 +38,7 @@ public interface TestConfigInterface extends Config{
 
     @Key("referrerLink2")
     String referrerLink2();
+
+    @Key("assetId")
+    String assetId();
 }

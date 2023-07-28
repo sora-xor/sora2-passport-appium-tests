@@ -8,12 +8,16 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 
 public class PassphrasePage {
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/Skip")
+    @AndroidFindBy(xpath = "//*[@text='SKIP']")
     @iOSXCUITFindBy(accessibility = "SKIP")
     private SelenideElement skipBtn;
 
+    @AndroidFindBy(xpath = "//*[@text='I will risk it']")
+    private SelenideElement willRiskBtn;
+
     public PinCodePage skipPassPhrase () {
         skipBtn.shouldBe(Condition.visible).click();
+        willRiskBtn.shouldBe(Condition.visible).click();
         return screen(PinCodePage.class);
     }
 }

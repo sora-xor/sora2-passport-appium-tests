@@ -7,11 +7,11 @@ import pages.*;
 import pages.account.AccountsPage;
 import pages.account.PinCodePage;
 
-public class EnterReferrerLink extends CoreTestCase {
+public class SetReferrerLink extends CoreTestCase {
 
     @Test
-    public void enterReffererLink() {
-        WalletPage walletPage = WalletPage.importAccount2UsePassphrase();
+    public void setReffererLink() {
+        WalletPage walletPage = WalletPage.createNewAccount();
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
         ReferralProgramPage referralProgramPage = morePage.goToReferralProgramPage();
         ActivityPage activityPage = referralProgramPage.setRefferrersLink(TestConfig.config.referrerLink1());
