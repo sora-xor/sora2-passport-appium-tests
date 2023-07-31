@@ -24,7 +24,7 @@ public class ReferralProgramPage extends CoreTestCase{
     @AndroidFindBy(xpath = "//*[@text='Get more invitations']")
     private SelenideElement getMoreInvitationsBtn;
 
-    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View/android.widget.Button")
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.view.View/android.view.View[2]/android.widget.Button")
     private SelenideElement enterReferrersLinkBtn;
 
     @AndroidFindBy(className = "android.widget.EditText")
@@ -56,16 +56,11 @@ public class ReferralProgramPage extends CoreTestCase{
 
     public ActivityPage setRefferrersLink(String referrerLink)
     {
-        //No referrer's link
-        if (enterReferrersLinkBtn.isDisplayed())
-        {
-            enterReferrersLinkBtn.shouldBe(Condition.visible).click();
-            enterReferrersLinkField.shouldBe(Condition.visible).sendKeys(referrerLink);
-            activateReferrersBtn.shouldBe(Condition.visible).click();
-        }
-        //Referrer is already set
-        else
-        log.info("Referrer's link is already set");
+
+        enterReferrersLinkBtn.shouldBe(Condition.visible).click();
+        enterReferrersLinkField.shouldBe(Condition.visible).sendKeys(referrerLink);
+        activateReferrersBtn.shouldBe(Condition.visible).click();
+
         return screen (ActivityPage.class);
     }
 }
