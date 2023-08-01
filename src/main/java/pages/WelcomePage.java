@@ -25,7 +25,7 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 @Log4j2
 public class WelcomePage {
 
-	@iOSXCUITFindBy(accessibility = "CREATE NEW ACCOUNT")
+	@iOSXCUITFindBy(accessibility = "Create account")
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/CreateNewAccount")
     private SelenideElement createAccountBtn;
 
@@ -37,7 +37,7 @@ public class WelcomePage {
 	@AndroidFindBy(xpath = "//*[@text=\"Raw seed\"]")
     private SelenideElement importRawSeed;
 
-    @iOSXCUITFindBy(accessibility = "IMPORT ACCOUNT")
+    @iOSXCUITFindBy(accessibility = "Import account")
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/ImportAccount")
     private SelenideElement importAccountBtn;
 
