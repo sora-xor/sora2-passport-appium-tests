@@ -13,7 +13,7 @@ public class ImportAccountPage {
 
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextView")
 	@AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.widget.EditText")
-    private SelenideElement elementInput;
+    private SelenideElement mnemonicInput;
 	
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField")
 	@AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/accountNameEt")
@@ -41,17 +41,26 @@ public class ImportAccountPage {
 	@AndroidFindBy(xpath = "//*[@text='Continue']")
     private SelenideElement nextBtn;
 
+    @AndroidFindBy(xpath = "//*[@text='Enter your secret Raw Seed']")
+    private SelenideElement enterRawSeedTitle;
+
+    @AndroidFindBy(xpath = "//*[@text='Enter your secret Passphrase']")
+    private SelenideElement enterPassphraseTitle;
+
+
     public NameYourAccountPage enterMnemonicPhrase(String mnemonic) {
 
+        enterPassphraseTitle.shouldBe(Condition.visible);
         log.info("Enter Mnemonic Phrase" + mnemonic );
-        elementInput.shouldBe(Condition.visible).sendKeys(mnemonic);
+        mnemonicInput.shouldBe(Condition.visible).sendKeys(mnemonic);
         nextBtn.shouldBe(Condition.visible).click();
         return screen(NameYourAccountPage.class);
     }
     public NameYourAccountPage enterRawSeed (String rawseed) {
 
+        enterRawSeedTitle.shouldBe(Condition.visible);
         log.info("Enter Rawseed" + rawseed);
-        elementInput.shouldBe(Condition.visible).sendKeys(rawseed);
+        mnemonicInput.shouldBe(Condition.visible).sendKeys(rawseed);
         nextBtn.shouldBe(Condition.visible).click();
         return screen(NameYourAccountPage.class);
     }
