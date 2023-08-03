@@ -13,9 +13,8 @@ public class TermsAndConditionsPage {
     @iOSXCUITFindBy(accessibility = "Accept & Continue")
     private SelenideElement acceptAndContinueBtn;
 
-    public KYCPage acceptTermsAndConditions() {
+    public VerifyPhoneNumberOtpPage acceptTermsAndConditions() {
         acceptAndContinueBtn.shouldBe(Condition.visible).click();
-
-        return screen(KYCPage.class);
+        return screen(VerifyPhoneNumberOtpPage.class);
     }
 }

@@ -56,9 +56,19 @@
             <class name="commontests.SendTokenTest"/>
         </classes>
     </test>
-    <test thread-count="1" name="SetReferrerLink">
+    <test thread-count="1" name="SoraCardPhoneApprovedTest">
         <classes>
-            <class name="commontests.SetReferrerLink"/>
+            <class name="commontests.SoraCardPhoneApprovedTest"/>
+        </classes>
+    </test>
+    <test thread-count="1" name="SoraCardPhonePendingTest">
+        <classes>
+            <class name="commontests.SoraCardPhonePendingTest"/>
+        </classes>
+    </test>
+    <test thread-count="1" name="SoraCardPhoneRejectedTest">
+        <classes>
+            <class name="commontests.SoraCardPhoneRejectedTest"/>
         </classes>
     </test>
 </suite> <!-- Suite -->

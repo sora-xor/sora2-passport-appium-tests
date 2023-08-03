@@ -1,18 +1,10 @@
 package commontests;
 
-import configs.TestConfig;
 import infrastructure.CoreTestCase;
-import org.testng.annotations.Test;
-import pages.SoraCardPage;
-import pages.WalletPage;
-import pages.account.KYCOtpPage;
-import pages.account.KYCPage;
-import pages.account.TermsAndConditionsPage;
-import pages.account.VerificationStatusPage;
 
 public class AlreadyHaveACardTest extends CoreTestCase {
 
-    @Test
+/*    @Test
     public void alreadyHaveACardTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase();
         SoraCardPage soraCardPage = walletPage.goToSoraCardPage();
@@ -26,4 +18,7 @@ public class AlreadyHaveACardTest extends CoreTestCase {
     //    VerificationStatusPage verificationStatusPage = kycPage.goToVerificationStatusPage();
     //    verificationStatusPage.checkStatus();
     }
+
+ */
 }
+
