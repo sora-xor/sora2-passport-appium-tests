@@ -46,7 +46,8 @@ public class MorePage extends Utils {
     private SelenideElement loginAndSecurityBtn;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/Invite")
-    private SelenideElement inviteFrinedsBtn;
+    @iOSXCUITFindBy(accessibility = "Invite Friends & Earn")
+    private SelenideElement inviteFriendsBtn;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/Information")
     @iOSXCUITFindBy(accessibility = "Information")
@@ -61,7 +62,7 @@ public class MorePage extends Utils {
 
     public BuyXorPage goToBuyXorWithFiat ()
     {
-        buyXORbyFiatBtn.shouldBe(Condition.visible).click();
+        if (isAndroid()) buyXORbyFiatBtn.shouldBe(Condition.visible).click();
         return screen(BuyXorPage.class);
     }
 
@@ -85,10 +86,9 @@ public class MorePage extends Utils {
 
     public ReferralProgramPage goToReferralProgramPage()
     {
-        if (isAndroid()) {
-            scrollForward(1);
-            }
-        inviteFrinedsBtn.shouldBe(Condition.visible).click();
+        if (isAndroid()) scrollForward(1);
+
+        inviteFriendsBtn.shouldBe(Condition.visible).click();
         return screen(ReferralProgramPage.class);
     }
 }

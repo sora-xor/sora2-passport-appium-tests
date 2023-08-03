@@ -19,25 +19,32 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 @Log4j2
 public class ReferralProgramPage extends CoreTestCase{
     @AndroidFindBy(xpath = "//*[@text='Start inviting']")
+    @iOSXCUITFindBy(accessibility = "Start inviting")
     private SelenideElement starttInvitingBtn;
 
     @AndroidFindBy(xpath = "//*[@text='Get more invitations']")
+    @iOSXCUITFindBy(accessibility = "Get more invitations")
     private SelenideElement getMoreInvitationsBtn;
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.view.View/android.view.View[2]/android.widget.Button")
+    @iOSXCUITFindBy(accessibility = "Enter referrer's link")
     private SelenideElement enterReferrersLinkBtn;
 
     @AndroidFindBy(className = "android.widget.EditText")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeTextField")
     private SelenideElement enterReferrersLinkField;
 
     @AndroidFindBy(xpath = "//*[@text='Activate']")
+    @iOSXCUITFindBy(accessibility = "Activate")
     private SelenideElement activateReferrersBtn;
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.widget.EditText")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeTextField")
     private SelenideElement enterAmountOfInvitationsInput;
 
 
     @AndroidFindBy(xpath = "//*[@text='Bond XOR']")
+    @iOSXCUITFindBy(accessibility = "Bond XOR")
     private SelenideElement bondXorBtn;
 
 
