@@ -2,15 +2,22 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.extern.log4j.Log4j2;
 
 import static infrastructure.Platform.isAndroid;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-public class ExplorePage {
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/AddLiquidity")
+public class ExplorePage extends CommonPage{
+
+    @AndroidFindBy(accessibility = "Explore")
+    private SelenideElement exploreBottomNavBtn;
+
+    infrastructure.Utils utils = new Utils();
+    @AndroidFindBy(id = "jp.co.soramitsu.ui_core:id/onIconAction")
     @iOSXCUITFindBy(accessibility = "Add Liquidity")
     private SelenideElement addLiquidityBtn;
 
@@ -60,10 +67,30 @@ public class ExplorePage {
     @iOSXCUITFindBy(accessibility = "Close")
     private SelenideElement closeBtn;
 
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[6]/android.widget.Button")
+    private SelenideElement showMorePools;
 
+    @AndroidFindBy(xpath = "//*[@text='Polkaswap pools']")
+    private SelenideElement polkaswapPoolsTitle;
 
-    public void addLiquidity(String randomLiquidity)
+    public void explorePolkaswapPools()
     {
+        exploreBottomNavBtn.shouldBe(Condition.selected);
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        if (isAndroid()) {
+            utils.scrollForward(1);
+        }
+        showMorePools.shouldBe(Condition.visible).click();
+    }
+    public void addLiquidity(String randomLiquidity)
+
+    {
+        polkaswapPoolsTitle.shouldBe(Condition.visible);
         addLiquidityBtn.shouldBe(Condition.visible).click();
         supplyLiquidityTitle.shouldBe(Condition.visible).exists();
         selectTokenXor.shouldBe(Condition.visible).click();

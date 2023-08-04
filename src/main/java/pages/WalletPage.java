@@ -98,17 +98,8 @@ public class WalletPage extends CommonPage {
 //        }
         return screen(LiquidAssetsPage.class);
     }
+}
 
-        public void goToPooledAssets ()
-        {
-            if (isAndroid()) utils.scrollForward(1);
-//            if (isIOS()) {
-//                SelenideAppium.$x("(//XCUIElementTypeStaticText[@name=\"Expand\"])[2]")
-//                        .scroll(down())
-//                        .shouldHave(visible);
-//            }
-        }
-    }
 
 
 
