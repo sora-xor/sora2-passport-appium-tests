@@ -54,6 +54,16 @@ public class VerificationStatusPage {
         return screen(WalletPage.class);
     }
 
+    public WalletPage checkFailedtatus ()
+    {
+        String actualStatus = verificationStatus.shouldBe(Condition.visible).getText();
+        assertThat(actualStatus).as("Verification failed").isEqualTo("Verification failed");
+        log.info("KYC Status: " + actualStatus);
+        logOutCardBtn.shouldBe(Condition.visible).click();
+        backBtn.shouldBe(Condition.visible).click();
+        return screen(WalletPage.class);
+    }
+
 }
 
 

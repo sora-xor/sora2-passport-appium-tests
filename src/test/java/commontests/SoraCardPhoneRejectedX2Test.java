@@ -8,10 +8,10 @@ import pages.SoraCardPage;
 import pages.WalletPage;
 import pages.account.*;
 
-public class SoraCardPhoneRejectedTest extends CoreTestCase {
+public class SoraCardPhoneRejectedX2Test extends CoreTestCase {
 
     @Test
-    public void soraCardPhoneRejectedTest() {
+    public void soraCardPhoneRejectedX2Test() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase();
         SoraCardPage soraCardPage = walletPage.goToSoraCardPage();
         soraCardPage.swipeDown();

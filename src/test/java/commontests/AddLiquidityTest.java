@@ -18,8 +18,8 @@ public class AddLiquidityTest extends CoreTestCase {
     @Test
     public void addLiquidityTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase();
-        walletPage.goToPooledAssets();
         ExplorePage explorePage = walletPage.getNavigationBarSection().goToExplorePage();
+        explorePage.explorePolkaswapPools();
         explorePage.addLiquidity(randomLiquidity);
         ActivityPage activityPage = walletPage.goToActivityPage();
         activityPage.checkLastTransactionStatusPool(randomLiquidity);
