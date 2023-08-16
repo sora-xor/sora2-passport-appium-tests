@@ -19,7 +19,7 @@ public class VerificationStatusPage {
 
     @AndroidFindBy(xpath = "//*[@text='Telegram support']")
     private SelenideElement telegramSupportBtn;
-    @AndroidFindBy(xpath = "//*[@text='LOG OUT']")
+    @AndroidFindBy(xpath = "//*[@text='Log out']")
     private SelenideElement logOutCardBtn;
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.Button")
