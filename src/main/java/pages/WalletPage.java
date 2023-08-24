@@ -37,6 +37,9 @@ public class WalletPage extends CommonPage {
     @AndroidFindBy(id = "jp.co.soramitsu.develop.sora.develop:id/tvEmptyHistoryTitle")
     private SelenideElement emptyHistoryTitle;
 
+    @AndroidFindBy(id ="jp.co.soramitsu.sora.develop:id/CardInfo")
+    private SelenideElement soraCardInfo;
+
     public static WalletPage importAccountUsePassphrase() {
         WelcomePage welcomePage = screen(WelcomePage.class);
         ImportAccountPage importAccountPage = welcomePage.goToImportAccountPagePassphrase();
@@ -97,6 +100,12 @@ public class WalletPage extends CommonPage {
 //                    .shouldHave(visible);
 //        }
         return screen(LiquidAssetsPage.class);
+    }
+
+    public SoraCardDetailsPage goToSoraCardInfo ()
+    {
+        soraCardInfo.shouldBe(Condition.visible).click();
+        return screen(SoraCardDetailsPage.class);
     }
 }
 

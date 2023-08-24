@@ -71,6 +71,11 @@
             <class name="commontests.SoraCardPhoneRejectedX2Test"/>
         </classes>
     </test>
+    <test thread-count="1" name="SoraCardGetIBANTest">
+        <classes>
+            <class name="commontests.SoraCardGetIBANTest"/>
+        </classes>
+    </test>
     <test thread-count="1" name="SetReferrerLink">
         <classes>
             <class name="commontests.SetReferrerLink"/>
