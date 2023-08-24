@@ -19,11 +19,15 @@ public class VerificationStatusPage {
 
     @AndroidFindBy(xpath = "//*[@text='Telegram support']")
     private SelenideElement telegramSupportBtn;
+
+    @AndroidFindBy(xpath = "//*[@text='Close']")
+    private SelenideElement closeBtn;
     @AndroidFindBy(xpath = "//*[@text='Log out']")
     private SelenideElement logOutCardBtn;
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.Button")
     private SelenideElement backBtn;
+
 
     public WalletPage checkRejectedStatus ()
     {
@@ -31,7 +35,6 @@ public class VerificationStatusPage {
         assertThat(actualStatus).as("Verification rejected").isEqualTo("Verification rejected");
         log.info("KYC Status: " + actualStatus);
         logOutCardBtn.shouldBe(Condition.visible).click();
-        backBtn.shouldBe(Condition.visible).click();
         return screen(WalletPage.class);
     }
     public WalletPage checkApprovedStatus ()
@@ -40,7 +43,6 @@ public class VerificationStatusPage {
         assertThat(actualStatus).as("Application approved").isEqualTo("Application approved");
         log.info("KYC Status: " + actualStatus);
         logOutCardBtn.shouldBe(Condition.visible).click();
-        backBtn.shouldBe(Condition.visible).click();
         return screen(WalletPage.class);
     }
 
@@ -50,17 +52,24 @@ public class VerificationStatusPage {
         assertThat(actualStatus).as("Verification in progress").isEqualTo("Verification in progress");
         log.info("KYC Status: " + actualStatus);
         logOutCardBtn.shouldBe(Condition.visible).click();
-        backBtn.shouldBe(Condition.visible).click();
         return screen(WalletPage.class);
     }
 
-    public WalletPage checkFailedtatus ()
+    public WalletPage checkFailedStatus ()
     {
         String actualStatus = verificationStatus.shouldBe(Condition.visible).getText();
         assertThat(actualStatus).as("Verification failed").isEqualTo("Verification failed");
         log.info("KYC Status: " + actualStatus);
         logOutCardBtn.shouldBe(Condition.visible).click();
-        backBtn.shouldBe(Condition.visible).click();
+        return screen(WalletPage.class);
+    }
+
+    public WalletPage checkApprovedStatusForCardInfo ()
+    {
+        String actualStatus = verificationStatus.shouldBe(Condition.visible).getText();
+        assertThat(actualStatus).as("Application approved").isEqualTo("Application approved");
+        log.info("KYC Status: " + actualStatus);
+        closeBtn.shouldBe(Condition.visible).click();
         return screen(WalletPage.class);
     }
 
