@@ -20,7 +20,7 @@ public class SoraCardGetIBANTest extends CoreTestCase {
         String phoneNumber = TestConfig.config.phoneApproved();
         String testOtp = TestConfig.config.testOtp();
         VerificationStatusPage verificationStatusPage = verifyPhoneNumberOTPPage.verifyYourPhoneNumber(phoneNumber, testOtp);
-        verificationStatusPage.checkApprovedStatusForCardInfo();
+        verificationStatusPage.checkApprovedStatusWithoutLogOut();
         SoraCardDetailsPage soraCardDetailsPage = walletPage.goToSoraCardInfo();
         soraCardDetailsPage.checkIBAN();
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
