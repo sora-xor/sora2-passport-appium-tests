@@ -20,6 +20,8 @@ public class SoraCardVerificationFailedTest extends CoreTestCase {
         String phoneNumber = TestConfig.config.phoneFailed();
         String testOtp = TestConfig.config.testOtp();
         VerificationStatusPage verificationStatusPage = verifyPhoneNumberOTPPage.verifyYourPhoneNumber(phoneNumber, testOtp);
+        KYCPage kycPage = verificationStatusPage.goToKYCProcess();
+        kycPage.getPrepared();
         verificationStatusPage.checkFailedStatus();
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();

@@ -76,6 +76,11 @@
             <class name="commontests.SoraCardGetIBANTest"/>
         </classes>
     </test>
+    <test thread-count="1" name="SoraCardVerificationFailedTest">
+        <classes>
+            <class name="commontests.SoraCardVerificationFailedTest"/>
+        </classes>
+    </test>
     <test thread-count="1" name="SetReferrerLink">
         <classes>
             <class name="commontests.SetReferrerLink"/>
