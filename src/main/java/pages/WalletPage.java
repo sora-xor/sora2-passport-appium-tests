@@ -11,6 +11,7 @@ import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.Logger;
 import pages.account.*;
 
+import static com.codeborne.selenide.Condition.selected;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.AppiumScrollOptions.down;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
@@ -23,9 +24,8 @@ public class WalletPage extends CommonPage {
 
     Utils utils = new Utils();
 
-    @AndroidFindBy(xpath = "//*[@text='Liquid assets']")
-    @iOSXCUITFindBy(accessibility = "Liquid assets")
-    private SelenideElement liquidAssets;
+    @AndroidFindBy(accessibility = "Wallet")
+    private SelenideElement walletTab;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/GetSoraCard")
     @iOSXCUITFindBy(accessibility = "GetSoraCardBtn")
@@ -82,8 +82,8 @@ public class WalletPage extends CommonPage {
     }
 
     public void walletPageIsOpen() {
-        String actualTitle = liquidAssets.shouldBe(Condition.visible).getText();
-        assertThat(actualTitle).as("Liquid assets title").isEqualTo("Liquid assets");
+        walletTab.shouldBe(Condition.selected);
+        log.info("Wallet tab is selected: "+walletTab.shouldBe(Condition.selected).getAttribute("selected"));
     }
 
     public SoraCardPage goToSoraCardPage() {

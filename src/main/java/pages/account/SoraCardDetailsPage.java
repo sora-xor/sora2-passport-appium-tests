@@ -32,8 +32,12 @@ public class SoraCardDetailsPage extends Utils {
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/LOG_OUT")
     private SelenideElement logOutSoraCardBtn;
-    @AndroidFindBy(xpath = "//*[@text='LOGOUT']")
+    @AndroidFindBy(xpath = "//*[@text='Logout']")
     private SelenideElement logOutConfirmBtn;
+
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/IbanCardShareClick")
+    private SelenideElement shareIBANCard;
+
 
     public WalletPage checkIBAN ()
     {
@@ -41,6 +45,7 @@ public class SoraCardDetailsPage extends Utils {
         String getIBANdetails  = "";
         getIBANdetails =  IBANdetails.shouldBe(Condition.visible).getText();
         log.info("IBAN account details: " + getIBANdetails);
+        shareIBANCard.shouldBe(Condition.visible);
         scrollForward(1);
         logOutSoraCardBtn.shouldBe(Condition.visible).click();
         logOutConfirmBtn.shouldBe(Condition.visible).click();
