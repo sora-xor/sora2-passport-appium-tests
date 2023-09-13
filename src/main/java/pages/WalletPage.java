@@ -25,10 +25,11 @@ public class WalletPage extends CommonPage {
     Utils utils = new Utils();
 
     @AndroidFindBy(accessibility = "Wallet")
+    @iOSXCUITFindBy(accessibility = "TabBar/wallet")
     private SelenideElement walletTab;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/GetSoraCard")
-    @iOSXCUITFindBy(accessibility = "GetSoraCardBtn")
+    @iOSXCUITFindBy(accessibility = "Get SORA Card")
     private SelenideElement getSoraCardBtn;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/title")
@@ -82,8 +83,15 @@ public class WalletPage extends CommonPage {
     }
 
     public void walletPageIsOpen() {
-        walletTab.shouldBe(Condition.selected);
-        log.info("Wallet tab is selected: "+walletTab.shouldBe(Condition.selected).getAttribute("selected"));
+        if (isAndroid()) {
+            walletTab.shouldBe(Condition.selected);
+            log.info("Wallet tab is selected: "+walletTab.shouldBe(Condition.selected).getAttribute("selected"));
+        }
+        if (isIOS()) {
+            walletTab.shouldBe(Condition.visible);
+            log.info("Wallet tab is selected: "+walletTab.shouldBe(Condition.visible).getAttribute("visible"));
+
+        }
     }
 
     public SoraCardPage goToSoraCardPage() {

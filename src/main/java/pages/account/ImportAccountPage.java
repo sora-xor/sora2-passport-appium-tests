@@ -42,9 +42,11 @@ public class ImportAccountPage {
     private SelenideElement nextBtn;
 
     @AndroidFindBy(xpath = "//*[@text='Enter your secret Raw Seed']")
+    @iOSXCUITFindBy(accessibility = "Enter your secret Raw Seed")
     private SelenideElement enterRawSeedTitle;
 
     @AndroidFindBy(xpath = "//*[@text='Enter your secret Passphrase']")
+    @iOSXCUITFindBy(accessibility = "Enter your secret Passphrase")
     private SelenideElement enterPassphraseTitle;
 
 

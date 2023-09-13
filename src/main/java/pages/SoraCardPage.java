@@ -22,13 +22,14 @@ public class SoraCardPage{
     private SelenideElement viewSoraCardDetailsBtn;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SoraCardLogInOrSignUp")
+    @iOSXCUITFindBy(accessibility = "Log in or Sign up")
     private SelenideElement soraCardLogInOrSignUpBtn;
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.view.View[2]/android.widget.TextView[3]")
     @iOSXCUITFindBy(accessibility = "enoughXorForAFreeCard")
     private SelenideElement enoughXorForAFreeCard;
 
     @AndroidFindBy(xpath = "//*[@text='Continue']")
-    @iOSXCUITFindBy(accessibility = "CONTINUE")
+    @iOSXCUITFindBy(accessibility = "Continue")
     private SelenideElement continueBtn;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/GetMoreXor")
