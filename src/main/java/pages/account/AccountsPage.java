@@ -30,11 +30,13 @@ public class AccountsPage {
     private SelenideElement forgetAccountBtn;
 
     public PinCodePage forgetAccount() {
-       openAccountMenuItem.click();
+        log.info("Open Account menu");
+        openAccountMenuItem.click();
        if (isAndroid()) {
     	   openAccountOptios.shouldBe(Condition.visible).click();
        }
-       forgetAccountBtn.click();
+        log.info("Tap Forget account");
+        forgetAccountBtn.click();
         return screen(PinCodePage.class);
     }
     }
