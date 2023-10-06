@@ -21,7 +21,7 @@ if ( "${params.platform}" == "iOS" ) {
     steps: this,
 //     testCmd: 'ktlint clean runModuleTests jacocoTestReport',
     jobParams: jobParams,
-    dockerImage: 'build-tools/android-build-box-jdk11:latest'
+    dockerImage: 'build-tools/android-build-box-jdk17'
   )
   pipeline.runPipeline('sora')
 }
