@@ -7,19 +7,23 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.extern.log4j.Log4j2;
+import pages.account.AccountsPage;
 import pages.account.ImportAccountPage;
 import pages.account.NameYourAccountPage;
+import pages.account.PinCodePage;
+
 import static infrastructure.Platform.isIOS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static infrastructure.Platform.isAndroid;
-
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 
 @Log4j2
@@ -40,6 +44,10 @@ public class WelcomePage {
     @iOSXCUITFindBy(accessibility = "Import account")
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/ImportAccount")
     private SelenideElement importAccountBtn;
+    
+	@AndroidFindBy(xpath = "//*[@text='Enter Pin Code']")
+	@iOSXCUITFindBy(accessibility = "Enter Pin Code")
+	private SelenideElement pinCodeTitleTv;
 
     public NameYourAccountPage goToCreateAccountPage() {
 
@@ -47,6 +55,7 @@ public class WelcomePage {
     	WebDriver driver = WebDriverRunner.getWebDriver();
     	WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
     	wait.until(ExpectedConditions.visibilityOf(importAccountBtn));
+    	
     	log.info("Create account");
         createAccountBtn.shouldBe(Condition.visible).click();
 
@@ -58,7 +67,23 @@ public class WelcomePage {
     	log.info("Waiting for first screen load");
     	WebDriver driver = WebDriverRunner.getWebDriver();
     	WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
-    	wait.until(ExpectedConditions.visibilityOf(importAccountBtn));
+    	wait.until(ExpectedConditions.or(
+    			ExpectedConditions.visibilityOf(importAccountBtn),
+    			ExpectedConditions.visibilityOf(pinCodeTitleTv)));
+    	
+    	if (pinCodeTitleTv.is(Condition.visible)) {
+    		log.info("Already logged in");
+    		WalletPage walletPage = enterPinCode();
+    		MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
+    		AccountsPage accountsPage = morePage.goToAccounts();
+            PinCodePage enterCodePage = accountsPage.forgetAccount();
+            enterCodePage.enterPinCode();
+        	WebDriverWait wait_again = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
+        	wait_again.until(ExpectedConditions.visibilityOf(importAccountBtn));
+            
+    	} else {
+        assertThat(importAccountBtn).isIn(Condition.visible);
+    	}
     	log.info("import account");
         importAccountBtn.shouldBe(Condition.visible).click();
         importPassphrase.click();
@@ -72,19 +97,71 @@ public class WelcomePage {
     	log.info("Waiting for first screen load");
     	WebDriver driver = WebDriverRunner.getWebDriver();
     	WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
-    	wait.until(ExpectedConditions.visibilityOf(importAccountBtn));
+    	wait.until(ExpectedConditions.or(
+    			ExpectedConditions.visibilityOf(importAccountBtn),
+    			ExpectedConditions.visibilityOf(pinCodeTitleTv)));
+    	
+    	if (pinCodeTitleTv.is(Condition.visible)) {
+    		log.info("Desided to logout");
+    		WalletPage walletPage = enterPinCode();
+    		MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
+    		AccountsPage accountsPage = morePage.goToAccounts();
+            PinCodePage enterCodePage = accountsPage.forgetAccount();
+            enterCodePage.enterPinCode();
+        	WebDriverWait wait_again = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
+        	wait_again.until(ExpectedConditions.visibilityOf(importAccountBtn));
+            
+    	} else {
+        assertThat(importAccountBtn).isIn(Condition.visible);
+    	}
+    
     	log.info("import account");
         importAccountBtn.shouldBe(Condition.visible).click();
         importRawSeed.click();
 
         return screen(ImportAccountPage.class);
     }
+    
     public void welcomePageIsOpen (){
     	
     	log.info("Waiting for first screen load");
     	WebDriver driver = WebDriverRunner.getWebDriver();
     	WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
-    	wait.until(ExpectedConditions.visibilityOf(importAccountBtn));
+    	wait.until(ExpectedConditions.or(
+    			ExpectedConditions.visibilityOf(createAccountBtn),
+    			ExpectedConditions.visibilityOf(pinCodeTitleTv)));
+    	
+    	if (pinCodeTitleTv.is(Condition.visible)) {
+    		log.info("Desided to logout");
+    		WalletPage walletPage = enterPinCode();
+    		MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
+    		AccountsPage accountsPage = morePage.goToAccounts();
+            PinCodePage enterCodePage = accountsPage.forgetAccount();
+            enterCodePage.enterPinCode();
+        	WebDriverWait wait_again = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
+        	wait_again.until(ExpectedConditions.visibilityOf(createAccountBtn));
+            
+    	} else {
         assertThat(createAccountBtn).isIn(Condition.visible);
+    	}
     }
+    
+	public WalletPage enterPinCode() {
+		log.info("Enter Pin Code");
+		if (isAndroid()) {
+			$(By.id("jp.co.soramitsu.sora.develop:id/"));
+
+			for (int i = 1; i <= 6; i++) {
+				$(By.id("jp.co.soramitsu.sora.develop:id/" + i)).click();
+			}
+		}
+		if (isIOS()) {
+			assertThat(pinCodeTitleTv.isDisplayed());
+			for (int i = 1; i <= 6; i++) {
+				$(By.name("" + i)).click();
+			}
+		}
+		return screen(WalletPage.class);
+	}
+    
     }
