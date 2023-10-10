@@ -72,7 +72,7 @@ public class WelcomePage {
     			ExpectedConditions.visibilityOf(pinCodeTitleTv)));
     	
     	if (pinCodeTitleTv.is(Condition.visible)) {
-    		log.info("Already logged in");
+    		log.info("Already logged in. Logout needed.");
     		WalletPage walletPage = enterPinCode();
     		MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
     		AccountsPage accountsPage = morePage.goToAccounts();
@@ -102,7 +102,7 @@ public class WelcomePage {
     			ExpectedConditions.visibilityOf(pinCodeTitleTv)));
     	
     	if (pinCodeTitleTv.is(Condition.visible)) {
-    		log.info("Desided to logout");
+    		log.info("Already logged in. Logout needed.");
     		WalletPage walletPage = enterPinCode();
     		MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
     		AccountsPage accountsPage = morePage.goToAccounts();
@@ -128,21 +128,21 @@ public class WelcomePage {
     	WebDriver driver = WebDriverRunner.getWebDriver();
     	WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
     	wait.until(ExpectedConditions.or(
-    			ExpectedConditions.visibilityOf(createAccountBtn),
+    			ExpectedConditions.visibilityOf(importAccountBtn),
     			ExpectedConditions.visibilityOf(pinCodeTitleTv)));
     	
     	if (pinCodeTitleTv.is(Condition.visible)) {
-    		log.info("Desided to logout");
+    		log.info("Already logged in. Logout needed.");
     		WalletPage walletPage = enterPinCode();
     		MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
     		AccountsPage accountsPage = morePage.goToAccounts();
             PinCodePage enterCodePage = accountsPage.forgetAccount();
             enterCodePage.enterPinCode();
         	WebDriverWait wait_again = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
-        	wait_again.until(ExpectedConditions.visibilityOf(createAccountBtn));
+        	wait_again.until(ExpectedConditions.visibilityOf(importAccountBtn));
             
     	} else {
-        assertThat(createAccountBtn).isIn(Condition.visible);
+        assertThat(importAccountBtn).isIn(Condition.visible);
     	}
     }
     

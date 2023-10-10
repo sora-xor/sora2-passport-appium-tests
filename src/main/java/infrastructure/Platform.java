@@ -42,6 +42,15 @@ public class Platform {
             throw new IllegalArgumentException("Cannot detect type of the Driver. settings.Platform value: " + name);
         }
     }
+    
+    public IOSDriver getIosDriver() throws MalformedURLException {
+        URL URL = new URL("http://127.0.0.1:4723/wd/hub");
+        if (isIOS()) {
+            return new IOSDriver(URL, getIOSDesiredCapabilities());
+        } else {
+            throw new IllegalArgumentException("It's not IOS, so can't get iOs driver: " + name);
+        }
+    }
 
     public static boolean isAndroid() {
         return PLATFORM_ANDROID.equals(name);
