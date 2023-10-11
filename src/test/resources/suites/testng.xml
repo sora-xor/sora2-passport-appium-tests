@@ -6,7 +6,7 @@
       <class name="commontests.FirstTest"/>
     </classes>
   </test>
-  <test thread-count="1" name="ImportAndForgetAccountPassphrase">
+<test thread-count="1" name="ImportAndForgetAccountPassphrase">
     <classes>
       <class name="commontests.ImportAndForgetAccountPassphrase"/>
     </classes>

@@ -43,14 +43,6 @@ public class Platform {
         }
     }
     
-    public IOSDriver getIosDriver() throws MalformedURLException {
-        URL URL = new URL("http://127.0.0.1:4723/wd/hub");
-        if (isIOS()) {
-            return new IOSDriver(URL, getIOSDesiredCapabilities());
-        } else {
-            throw new IllegalArgumentException("It's not IOS, so can't get iOs driver: " + name);
-        }
-    }
 
     public static boolean isAndroid() {
         return PLATFORM_ANDROID.equals(name);
@@ -80,7 +72,7 @@ public class Platform {
         capabilities.setCapability("appium:newCommandTimeout", 3600);
         capabilities.setCapability("appium:connectHardwareKeyboard", true);
         capabilities.setCapability("appium:wdaLaunchTimeout", 40000);
-        capabilities.setCapability("noReset", true);
+        //capabilities.setCapability("noReset", false);
         capabilities.setCapability("bundleId", "co.jp.soramitsu.sora.dev");
         capabilities.setCapability("appium:isHeadless", true);
         return capabilities;
