@@ -1,4 +1,4 @@
-@Library('jenkins-library') _
+@Library('jenkins-library@fix/ios-autotest') _
 
 // Job properties
 def jobParams = [
