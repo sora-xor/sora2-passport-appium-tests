@@ -13,7 +13,7 @@ if ( "${params.platform}" == "iOS" ) {
   def pipeline = new org.ios.AppTestPipeline(
     steps: this,
     jobParams: jobParams,
-    label: "mac-ios-2"
+    label: "mac-ios-1"
     )
   pipeline.runPipeline('sora')
 } else {
