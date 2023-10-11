@@ -30,7 +30,7 @@ public class CoreTestCase {
     public static final Faker FAKER = new Faker(new Locale("en-GB"));
     private String bundlId = "co.jp.soramitsu.sora.dev";
     private AppiumDriver driver;
-      public IOSDriver ios_driver;
+    //  public IOSDriver ios_driver;
     private static AppiumDriverLocalService service;
 
     @BeforeSuite
@@ -77,10 +77,6 @@ public class CoreTestCase {
 	@AfterClass
     public void tearDown() throws MalformedURLException {
         WebDriverRunner.closeWebDriver();
-        if (Platform.isIOS()) {
-        	ios_driver = Platform.getInstance().getIosDriver();
-        	ios_driver.resetApp();
-        }
         if (driver != null) {
             driver.quit();
         }

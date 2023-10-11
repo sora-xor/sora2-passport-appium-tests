@@ -67,8 +67,6 @@ public class WelcomePage {
         	WebDriverWait wait_again = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
         	wait_again.until(ExpectedConditions.visibilityOf(createAccountBtn));
             
-    	} else {
-        assertThat(createAccountBtn).isIn(Condition.visible);
     	}
     	
     	log.info("Create account");
@@ -96,8 +94,6 @@ public class WelcomePage {
         	WebDriverWait wait_again = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
         	wait_again.until(ExpectedConditions.visibilityOf(importAccountBtn));
             
-    	} else {
-        assertThat(importAccountBtn).isIn(Condition.visible);
     	}
     	log.info("import account");
         importAccountBtn.shouldBe(Condition.visible).click();
@@ -126,10 +122,7 @@ public class WelcomePage {
         	WebDriverWait wait_again = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
         	wait_again.until(ExpectedConditions.visibilityOf(importAccountBtn));
             
-    	} else {
-        assertThat(importAccountBtn).isIn(Condition.visible);
     	}
-    
     	log.info("import account");
         importAccountBtn.shouldBe(Condition.visible).click();
         importRawSeed.click();
@@ -156,8 +149,6 @@ public class WelcomePage {
         	WebDriverWait wait_again = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
         	wait_again.until(ExpectedConditions.visibilityOf(importAccountBtn));
             
-    	} else {
-        assertThat(importAccountBtn).isIn(Condition.visible);
     	}
     }
     
