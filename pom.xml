@@ -21,7 +21,7 @@
         <selenide.version>2.7.0</selenide.version>
         <assertj.version>3.23.1</assertj.version>
         <log4j.version>2.18.0</log4j.version>
-        <lomboc.version>1.18.24</lomboc.version>
+        <lomboc.version>1.18.30</lomboc.version>
         <aspectj.version>1.9.9.1</aspectj.version>
         <allure.version>2.19.0</allure.version>
         <faker.version>1.0.2</faker.version>
