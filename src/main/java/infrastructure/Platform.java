@@ -5,10 +5,10 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
-import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.remote.options.BaseOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.Capabilities;
-import io.appium.java_client.remote.AndroidMobileCapabilityType;
+import io.appium.java_client.android.options.UiAutomator2Options;
 
 
 
@@ -53,14 +53,14 @@ public class Platform {
     }
 
     private Capabilities getAndroidDesiredCapabilities() {
-        UiAutomator2Options options = new UiAutomator2Options();
-        options.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        options.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
-        options.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12.0");
-        options.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UIAutomator2");
-        options.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "jp.co.soramitsu.sora.develop");
-        options.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "jp.co.soramitsu.sora.splash.presentation.SplashActivity");
-        return options;
+        UiAutomator2Options options = new UiAutomator2Options()
+        		.setPlatformName("Android")
+        		.setDeviceName("emulator-5554")
+        		.setPlatformVersion("12.0")
+        		.setAutomationName("UIAutomator2")
+        		.setAppPackage("jp.co.soramitsu.sora.develop")
+        		.setAppActivity("jp.co.soramitsu.sora.splash.presentation.SplashActivity");
+		return options;
     }
 
     private Capabilities getIOSDesiredCapabilities() {
