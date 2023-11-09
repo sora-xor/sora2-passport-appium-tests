@@ -16,9 +16,9 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <appium.version>8.3.0</appium.version>
+        <appium.version>9.0.0</appium.version>
         <testng.version>7.6.1</testng.version>
-        <selenide.version>2.7.0</selenide.version>
+        <selenide.version>7.0.2</selenide.version>
         <assertj.version>3.23.1</assertj.version>
         <log4j.version>2.18.0</log4j.version>
         <lomboc.version>1.18.30</lomboc.version>
@@ -89,7 +89,7 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
-        </dependency>
+        </dependency> 
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide-appium</artifactId>
@@ -98,19 +98,19 @@
         <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-java</artifactId>
-        <version>4.8.1</version>
+        <version>4.5.0</version>
         </dependency>
 
         <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-api</artifactId>
-        <version>4.8.1</version>
+        <version>4.5.0</version>
         </dependency>
 
         <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-remote-driver</artifactId>
-        <version>4.8.0</version>
+        <version>4.5.0</version>
         </dependency>
     </dependencies>
     <build>

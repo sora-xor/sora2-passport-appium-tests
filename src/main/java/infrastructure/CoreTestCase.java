@@ -35,17 +35,17 @@ public class CoreTestCase {
 
     @BeforeSuite
     public void globalSetup() throws IOException {
+    	System.setProperty("webdriver.http.factory", "jdk-http-client");
         service = AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
                 .withIPAddress("127.0.0.1")
                 .withArgument(() -> "--base-path", "/wd/hub"));
-
-
         service.start();
     }
 
 
     @BeforeTest
     static void setupAllureReports() {
+    	
         Configuration.timeout=14000;
         Configuration.screenshots = false;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
@@ -57,14 +57,6 @@ public class CoreTestCase {
     public void setUp() throws MalformedURLException {
         driver = Platform.getInstance().getDriver();
         WebDriverRunner.setWebDriver(driver);
-//    	else if (Platform.isIOS()) {
-//    		driver = Platform.getInstance().getIosDriver();
-//    		driver.activateApp(bundlId);
-//    		WebDriverRunner.setWebDriver(ios_driver);
-//    	}
-//    	else {
-//            throw new IllegalArgumentException("Cannot detect type of the Driver.");
-//        }
     }
 
     @AfterMethod
