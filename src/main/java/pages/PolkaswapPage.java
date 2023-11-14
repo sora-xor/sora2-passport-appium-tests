@@ -44,15 +44,15 @@ public class PolkaswapPage extends CommonPage {
     private SelenideElement selectTokenBtn;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/XORElement")
-    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`label == \"SORA\"`][2]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"SORA\"])[2]")
     private SelenideElement xorToken;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/VALElement")
-    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`label == \"SORA Validator Token\"`][2]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"SORA Validator Token\"])[2]")
     private SelenideElement valToken;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/PSWAPElement")
-    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`label == \"Polkaswap\"`][2]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Polkaswap\"])[2]")
     private SelenideElement pswapToken;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/XSTElement")
