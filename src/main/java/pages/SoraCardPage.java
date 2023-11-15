@@ -10,10 +10,15 @@ import pages.account.VerifyPhoneNumberOtpPage;
 import pages.account.TermsAndConditionsPage;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.appium.AppiumScrollOptions.*;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static com.codeborne.selenide.appium.ScrollDirection.DOWN;
+import static infrastructure.Platform.isAndroid;
+import static infrastructure.Platform.isIOS;
 import static org.assertj.core.api.Assertions.assertThat;
+
+import org.openqa.selenium.By;
 
 @Log4j2
 public class SoraCardPage{
@@ -24,6 +29,7 @@ public class SoraCardPage{
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SoraCardLogInOrSignUp")
     @iOSXCUITFindBy(accessibility = "Log in or Sign up")
     private SelenideElement soraCardLogInOrSignUpBtn;
+    
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.view.View[2]/android.widget.TextView[3]")
     @iOSXCUITFindBy(accessibility = "enoughXorForAFreeCard")
     private SelenideElement enoughXorForAFreeCard;
@@ -35,6 +41,9 @@ public class SoraCardPage{
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/GetMoreXor")
     @iOSXCUITFindBy(accessibility = "GetMoreXor")
     private SelenideElement getMoreXorBtn;
+    
+    @iOSXCUITFindBy(accessibility = "€0 annual service fee")
+    private SelenideElement annualFeeBtn;
 
 
     public void checkThatUserHaveEnoughXorForAFreeCard() {
@@ -54,12 +63,20 @@ public class SoraCardPage{
 
     public void swipeDown()
     {
+    	if (isAndroid()) {
         SelenideAppium.$x(".//*[@text='€0 annual service fee']").click();
         SelenideAppium.$x(".//*[@text='or €20 application fee']")
                 .scroll(with(DOWN, 1));
         SelenideAppium.$x(".//*[@text='Log in or Sign up']")
                 .scroll(down())
                .shouldHave(visible);
+    	}
+    	if (isIOS()) {
+    		annualFeeBtn.shouldBe(Condition.visible).click();
+    		SelenideAppium.$(By.name("Log in or Sign up"))
+    		.scroll(down())
+    		.shouldHave(visible);
+    	}
     }
 
     public TermsAndConditionsPage viewSoraCardFlow() {
