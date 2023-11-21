@@ -31,8 +31,11 @@ public class AccountsPage {
     @iOSXCUITFindBy(accessibility = "Forget account")
     private SelenideElement forgetAccountBtn;
 
-    @AndroidFindBy(className = "android.widget.EditText")
+    @AndroidFindBy(xpath = "//android.widget.EditText")
     private SelenideElement accountName;
+
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OnNavigate")
+    private SelenideElement backButton;
 
     public PinCodePage forgetAccount() {
         log.info("Open Account menu");
@@ -48,8 +51,17 @@ public class AccountsPage {
     public void changeAccountName() {
         log.info("Open Account menu");
         openAccountMenuItem.click();
+        if (isAndroid()) {
+            openAccountOptios.shouldBe(Condition.visible).click();
+        }
+        log.info("Change account name");
         accountName.sendKeys("ChangedName");
         assertThat(accountName.getText()).isEqualTo("ChangedName");
+    }
+
+    public void returnToAccountsPage() {
+        log.info("Click Back button");
+        backButton.click();
     }
 }
 

@@ -15,7 +15,7 @@ public class ChangeAccountNameTest extends CoreTestCase {
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
         accountsPage.changeAccountName();
-        accountsPage = morePage.goToAccounts();
+        accountsPage.returnToAccountsPage();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
         enterCodePage.enterPinCode();
     }
