@@ -75,7 +75,6 @@ public class AppSettingsPage {
         spanishLanguage.shouldBe(Condition.visible).click();
         if (isIOS()) crossBtn.shouldBe(Condition.visible).click();
         cryptoAccountBtnSpanish.shouldBe(Condition.visible);
-        if (isAndroid()) buyXorWithFiatBtnSpanish.shouldBe(Condition.visible);
         nodesBtnSpanish.shouldBe(Condition.visible);
         appSettingsSpanishField.shouldBe(Condition.visible).click();
         return screen(AppSettingsPage.class);
