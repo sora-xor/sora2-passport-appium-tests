@@ -50,6 +50,9 @@ public class AppSettingsPage {
     @AndroidFindBy(xpath = "//*[@text='Comprar XOR con fiat']")
     private SelenideElement buyXorWithFiatBtnSpanish;
 
+    @AndroidFindBy(xpath = "//*[@text='Tarjeta SORA']")
+    private SelenideElement soraCardBtnSpanish;
+
     @AndroidFindBy(xpath = "//*[@text='Nodos']")
     @iOSXCUITFindBy(accessibility = "Nodos")
     private SelenideElement nodesBtnSpanish;
@@ -75,6 +78,8 @@ public class AppSettingsPage {
         spanishLanguage.shouldBe(Condition.visible).click();
         if (isIOS()) crossBtn.shouldBe(Condition.visible).click();
         cryptoAccountBtnSpanish.shouldBe(Condition.visible);
+        //if (isAndroid()) buyXorWithFiatBtnSpanish.shouldBe(Condition.visible);
+        if (isAndroid()) soraCardBtnSpanish.shouldBe(Condition.visible);
         nodesBtnSpanish.shouldBe(Condition.visible);
         appSettingsSpanishField.shouldBe(Condition.visible).click();
         return screen(AppSettingsPage.class);
