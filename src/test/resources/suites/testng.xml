@@ -57,12 +57,12 @@
             <class name="commontests.ChangeAccountNameTest"/>
         </classes>
     </test>
-    <!--
     <test thread-count="1" name="SendTokenTest">
         <classes>
             <class name="commontests.SendTokenTest"/>
         </classes>
     </test>
+    <!--
     <test thread-count="1" name="SoraCardPhoneApprovedTest">
         <classes>
             <class name="commontests.SoraCardPhoneApprovedTest"/>
