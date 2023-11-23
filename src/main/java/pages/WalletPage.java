@@ -101,7 +101,7 @@ public class WalletPage extends CommonPage {
     }
 
     public LiquidAssetsPage goToLiquidAssets() {
-        if (isAndroid()) utils.scrollForward(1);
+//        if (isAndroid()) utils.scrollForward(1);
 //        if (isIOS()) {
 //            SelenideAppium.$x("(//XCUIElementTypeStaticText[@name=\"Expand\"])[2]")
 //                    .scroll(down())
