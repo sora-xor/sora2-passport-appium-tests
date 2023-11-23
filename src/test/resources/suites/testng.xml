@@ -42,7 +42,6 @@
             <class name="commontests.AddCustomNodeTest"/>
         </classes>
     </test>
-   <!--
    <test thread-count="1" name="AddLiquidityTest">
         <classes>
             <class name="commontests.AddLiquidityTest"/>
@@ -53,6 +52,12 @@
             <class name="commontests.ChangeLanguageTest"/>
         </classes>
     </test>
+    <test thread-count="1" name="ChangeAccountNameTest">
+        <classes>
+            <class name="commontests.ChangeAccountNameTest"/>
+        </classes>
+    </test>
+    <!--
     <test thread-count="1" name="SendTokenTest">
         <classes>
             <class name="commontests.SendTokenTest"/>

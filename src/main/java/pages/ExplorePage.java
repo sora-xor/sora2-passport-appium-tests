@@ -17,7 +17,7 @@ public class ExplorePage extends CommonPage{
     private SelenideElement exploreBottomNavBtn;
 
     infrastructure.Utils utils = new Utils();
-    @AndroidFindBy(id = "jp.co.soramitsu.ui_core:id/onIconAction")
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OnMenuItem")
     @iOSXCUITFindBy(accessibility = "Add Liquidity")
     private SelenideElement addLiquidityBtn;
 
@@ -99,8 +99,8 @@ public class ExplorePage extends CommonPage{
         xstToken.shouldBe(Condition.visible).click();
         inputAmountFieldXor.shouldBe(Condition.visible).sendKeys(randomLiquidity);
         log.info("Supply XOR : "+randomLiquidity+" XOR" );
-        supplyBtn.shouldBe(Condition.visible).click();
         if (isAndroid()) log.info("Supply XST : "+inputAmountFieldXst.shouldBe(Condition.visible).getText()+" XST" );
+        supplyBtn.shouldBe(Condition.visible).click();
         confirmBtn.shouldBe(Condition.visible).click();
         closeBtn.shouldBe(Condition.visible).click();
         log.info("Click Close button" );
