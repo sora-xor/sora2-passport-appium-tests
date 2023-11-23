@@ -165,8 +165,8 @@ public class ActivityPage extends Utils {
             closeBtn.shouldBe(Condition.visible).click();
         } else {
             log.info("Referrer is not set!");
+            closeBtn.shouldBe(Condition.visible).click();
         }
-        closeBtn.shouldBe(Condition.visible).click();
         backBtn.shouldBe(Condition.visible).click();
         scrollBackward(1);
         return screen(ReferralProgramPage.class);
