@@ -84,7 +84,8 @@ public class ReferralProgramPage extends CoreTestCase {
 
         WebDriver driver = WebDriverRunner.getWebDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT10S"), Duration.parse("PT1S"));
-        if (wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.view.View/android.view.View[2]/android.widget.Button"))).isDisplayed())
+        if (wait.until(ExpectedConditions.visibilityOf(enterReferrersLinkBtn)).isDisplayed());
+        //if (wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.view.View/android.view.View[2]/android.widget.Button"))).isDisplayed())
         //No invitations
         {
             enterReferrersLinkBtn.shouldBe(Condition.visible).click();
@@ -92,6 +93,13 @@ public class ReferralProgramPage extends CoreTestCase {
             activateReferrersBtn.shouldBe(Condition.visible).click();
         }
         return screen (ActivityPage.class);
+    }
+
+    public ActivityPage createInviteLink() {
+        getMoreInvitationsBtn.shouldBe(Condition.visible).click();
+        enterAmountOfInvitationsInput.shouldBe(Condition.visible).sendKeys("1");
+        bondXorBtn.shouldBe(Condition.visible).click();
+        return screen(ActivityPage.class);
     }
     }
 
