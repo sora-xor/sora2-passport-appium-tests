@@ -12,12 +12,13 @@ import org.testng.annotations.Test;
 
 public class CreateReferrersLinkTest extends CoreTestCase {
     @Test
-    public void CreateReferrersLinkTest() {
+    public void createReferrersLinkTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase();
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
         ReferralProgramPage referralProgramPage = morePage.goToReferralProgramPage();
         ActivityPage activityPage = referralProgramPage.createInviteLink();
         activityPage.checkBoundXorTransaction();
+        referralProgramPage.returnToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
         enterCodePage.enterPinCode();

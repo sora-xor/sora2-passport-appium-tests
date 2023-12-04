@@ -66,7 +66,7 @@ public class ActivityPage extends Utils {
     @iOSXCUITFindBy(accessibility = "Extrinsic hash")
     private SelenideElement sentToPoolItem;
 
-    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.widget.TextView[4]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Status\"]/following-sibling::*[1]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\'Status']")
     private SelenideElement getTransactionStatus;
 
@@ -162,7 +162,7 @@ public class ActivityPage extends Utils {
 
     public ReferralProgramPage checkSetReffererTransaction() {
 
-        assertThat(getTransactionStatus).isEqualTo("Successful");
+        assertThat(getTransactionStatus.getText()).isEqualTo("Successful");
         backBtn.shouldBe(Condition.visible).click();
         return screen(ReferralProgramPage.class);
     }
