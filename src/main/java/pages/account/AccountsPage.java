@@ -6,6 +6,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import static org.assertj.core.api.Assertions.*;
 
@@ -37,6 +38,7 @@ public class AccountsPage {
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OnNavigate")
     private SelenideElement backButton;
 
+    @Step
     public PinCodePage forgetAccount() {
         log.info("Open Account menu");
         openAccountMenuItem.click();
@@ -48,6 +50,7 @@ public class AccountsPage {
         return screen(PinCodePage.class);
     }
 
+    @Step
     public void changeAccountName() {
         log.info("Open Account menu");
         openAccountMenuItem.click();
@@ -59,6 +62,7 @@ public class AccountsPage {
         assertThat(accountName.getText()).isEqualTo("ChangedName");
     }
 
+    @Step
     public void returnToAccountsPage() {
         log.info("Click Back button");
         backButton.click();

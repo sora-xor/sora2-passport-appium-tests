@@ -2,6 +2,7 @@ package commontests;
 
 import configs.TestConfig;
 import infrastructure.CoreTestCase;
+import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
 import pages.*;
 import pages.account.AccountsPage;
@@ -9,6 +10,7 @@ import pages.account.PinCodePage;
 
 public class SetReferrerLink extends CoreTestCase {
 
+    @TmsLink("SORA-377")
     @Test
     public void setReferrerLink() {
         WalletPage walletPage = WalletPage.createNewAccount();

@@ -6,6 +6,7 @@ import com.codeborne.selenide.WebDriverRunner;
 
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import pages.account.AccountsPage;
 import pages.account.ImportAccountPage;
@@ -49,7 +50,8 @@ public class WelcomePage {
 	@iOSXCUITFindBy(accessibility = "Enter Pin Code")
 	private SelenideElement pinCodeTitleTv;
 
-    public NameYourAccountPage goToCreateAccountPage() {
+    @Step
+	public NameYourAccountPage goToCreateAccountPage() {
 
     	log.info("Waiting for first screen load");
     	WebDriver driver = WebDriverRunner.getWebDriver();

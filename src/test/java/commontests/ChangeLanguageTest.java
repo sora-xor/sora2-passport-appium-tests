@@ -1,6 +1,8 @@
 package commontests;
 
 import infrastructure.CoreTestCase;
+import io.qameta.allure.Feature;
+import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
 import pages.AppSettingsPage;
 import pages.MorePage;
@@ -11,6 +13,8 @@ import pages.account.PinCodePage;
 
 public class ChangeLanguageTest extends CoreTestCase {
     @Test
+    @Feature("Settings")
+    @TmsLink("SORA-381")
     public void changeLanguageTest() {
         WalletPage walletPage = WalletPage.createNewAccount();
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();

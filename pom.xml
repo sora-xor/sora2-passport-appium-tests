@@ -125,6 +125,7 @@
                     <argLine>-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar -Xmx1024m</argLine>
                     <systemPropertyVariables>
                         <PLATFORM>${platform}</PLATFORM>
+                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                     </systemPropertyVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>${project.basedir}\src\test\resources\suites\${suitename}</suiteXmlFile>

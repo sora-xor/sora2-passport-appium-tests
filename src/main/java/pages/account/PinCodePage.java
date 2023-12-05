@@ -3,6 +3,7 @@ package pages.account;
 import com.codeborne.selenide.SelenideElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import pages.WalletPage;
@@ -50,6 +51,7 @@ public class PinCodePage {
 	@AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/btn0")
 	private SelenideElement pinCodeBtn0;
 
+	@Step
 	public WalletPage enterAndConfirmPinCodeNew() {
 		if (isAndroid()) {
 			log.info("Set up Pin Code");
@@ -81,6 +83,7 @@ public class PinCodePage {
 		return screen(WalletPage.class);
 	}
 
+	@Step
 	public WalletPage enterAndConfirmPinCode() {
 		log.info("Set up Pin Code");
 		if (isAndroid()) {
@@ -113,6 +116,7 @@ public class PinCodePage {
 		return screen(WalletPage.class);
 	}
 
+	@Step
 	public WelcomePage enterPinCode() {
 		log.info("Enter Pin Code");
 		if (isAndroid()) {
@@ -132,6 +136,7 @@ public class PinCodePage {
 		return screen(WelcomePage.class);
 	}
 
+	@Step
 	public LoginAndSecurityPage changeAndConfirmChangePinCode() {
 		if (isAndroid()) {
 				$(By.id("jp.co.soramitsu.sora.develop:id/"));
