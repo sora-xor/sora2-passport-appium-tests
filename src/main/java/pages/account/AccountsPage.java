@@ -34,7 +34,7 @@ public class AccountsPage {
     private SelenideElement forgetAccountBtn;
 
     @AndroidFindBy(xpath = "//android.widget.EditText")
-    @iOSXCUITFindBy(accessibility = "XCUIElementTypeTextField")
+    @iOSXCUITFindBy(className = "XCUIElementTypeTextField")
     private SelenideElement accountName;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OnNavigate")
@@ -58,7 +58,8 @@ public class AccountsPage {
         if (isAndroid()) {
             openAccountOptions.shouldBe(Condition.visible).click();
         }
-        log.info("Change account name");
+        log.info("Change account name to: Changed Name");
+        accountName.clear();
         accountName.sendKeys("ChangedName");
         assertThat(accountName.getText()).isEqualTo("ChangedName");
     }
