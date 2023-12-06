@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static com.codeborne.selenide.appium.ScreenObject.screen;
+
 @Log4j2
 public class ReferralProgramPage extends CoreTestCase {
     @AndroidFindBy(xpath = "//*[@text='Start inviting']")
@@ -53,6 +54,11 @@ public class ReferralProgramPage extends CoreTestCase {
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[1]/android.widget.TextView[2]")
     private SelenideElement availableInvitationsField;
 
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OnNavigate")
+    private SelenideElement backButton;
+
+
+
 
     public ActivityPage startInvitingFlow() {
 
@@ -71,27 +77,43 @@ public class ReferralProgramPage extends CoreTestCase {
 
     public ActivityPage unBondXor() {
         String availableInvitations = availableInvitationsField.getText();
-        log.info("Available invitations:"+availableInvitations);
-            unbondXorBtn.shouldBe(Condition.visible).click();
-            enterAmountOfInvitationsInput.shouldBe(Condition.visible).sendKeys("1");
-            unbondXorBtn.shouldBe(Condition.visible).click();
+        log.info("Available invitations: " + availableInvitations);
+        unbondXorBtn.shouldBe(Condition.visible).click();
+        enterAmountOfInvitationsInput.shouldBe(Condition.visible).sendKeys("1");
+        unbondXorBtn.shouldBe(Condition.visible).click();
 
         return screen(ActivityPage.class);
     }
 
-    public ActivityPage setRefferrersLink(String referrerLink)
-    {
+    public ActivityPage setRefferrersLink(String referrerLink) {
 
         WebDriver driver = WebDriverRunner.getWebDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT10S"), Duration.parse("PT1S"));
-        if (wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.view.View/android.view.View[2]/android.widget.Button"))).isDisplayed())
+        if (wait.until(ExpectedConditions.visibilityOf(enterReferrersLinkBtn)).isDisplayed()) ;
+        //if (wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.view.View/android.view.View[2]/android.widget.Button"))).isDisplayed())
         //No invitations
         {
             enterReferrersLinkBtn.shouldBe(Condition.visible).click();
             enterReferrersLinkField.shouldBe(Condition.visible).sendKeys(referrerLink);
             activateReferrersBtn.shouldBe(Condition.visible).click();
         }
-        return screen (ActivityPage.class);
+        return screen(ActivityPage.class);
     }
+
+    public ActivityPage createInviteLink() {
+        if (startInvitingBtn.isDisplayed()) {
+            startInvitingBtn.click();
+        } else {
+            getMoreInvitationsBtn.shouldBe(Condition.visible).click();
+        }
+        enterAmountOfInvitationsInput.shouldBe(Condition.visible).sendKeys("1");
+        bondXorBtn.shouldBe(Condition.visible).click();
+        return screen(ActivityPage.class);
     }
+
+    public MorePage returnToMorePage(){
+        backButton.shouldBe(Condition.visible).click();
+        return screen(MorePage.class);
+    }
+}
 

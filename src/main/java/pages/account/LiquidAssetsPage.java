@@ -33,7 +33,7 @@ import static infrastructure.Platform.isIOS;
 @Log4j2
 public class LiquidAssetsPage {
 
-    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.widget.Button[1]")
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SendButton")
     @iOSXCUITFindBy(accessibility = "Send")
     private SelenideElement sendTokenBtn;
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/TokenN0")
@@ -60,6 +60,9 @@ public class LiquidAssetsPage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeTextField")
     private SelenideElement inputAmountFieldXor;
 
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/InputAmountField")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeTextField")
+    private SelenideElement inputAmountField;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/ReviewButton")
     @iOSXCUITFindBy(accessibility = "Review")
@@ -111,13 +114,10 @@ public class LiquidAssetsPage {
         xorTokenDetails.shouldBe(Condition.visible).click();
         log.info("Tap Send  button");
         sendTokenBtn.shouldBe(Condition.visible).click();
-        log.info("Enter address" + TestConfig.config.assetId());
+        log.info("Enter address " + TestConfig.config.assetId());
         accountToSendInput.shouldBe(Condition.visible).sendKeys(TestConfig.config.assetId());
         searchResultToSend.shouldBe(Condition.visible).click();
-        log.info("Select XOR token");
-        selectTokenXor.shouldBe(Condition.visible).click();
-        xorElement.shouldBe(Condition.visible).click();
-        inputAmountFieldXor.shouldBe(Condition.visible).sendKeys(randomValue);
+        inputAmountField.shouldBe(Condition.visible).sendKeys(randomValue);
         if (isAndroid()) {
             log.info("Check Network Fee button");
             networkFeeBtn.shouldBe(Condition.visible).click();

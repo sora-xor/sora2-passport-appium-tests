@@ -66,7 +66,7 @@ public class ActivityPage extends Utils {
     @iOSXCUITFindBy(accessibility = "Extrinsic hash")
     private SelenideElement sentToPoolItem;
 
-    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.widget.TextView[5]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Status\"]/following-sibling::*[1]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\'Status']")
     private SelenideElement getTransactionStatus;
 
@@ -161,14 +161,9 @@ public class ActivityPage extends Utils {
     }
 
     public ReferralProgramPage checkSetReffererTransaction() {
-        if (referrerSetItem.isDisplayed()) {
-            closeBtn.shouldBe(Condition.visible).click();
-        } else {
-            log.info("Referrer is not set!");
-        }
-        closeBtn.shouldBe(Condition.visible).click();
+
+        assertThat(getTransactionStatus.getText()).isEqualTo("Successful");
         backBtn.shouldBe(Condition.visible).click();
-        scrollBackward(1);
         return screen(ReferralProgramPage.class);
     }
 
@@ -197,8 +192,6 @@ public class ActivityPage extends Utils {
             getAvailableInvitations = availableInvitations.shouldBe(Condition.visible).getText();
             log.info("Available invitations " + getAvailableInvitations);
         }
-        scrollBackward(1);
-
         return screen(ReferralProgramPage.class);
     }
 

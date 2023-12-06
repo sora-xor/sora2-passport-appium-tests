@@ -1,21 +1,23 @@
 package commontests;
 
-import configs.TestConfig;
 import infrastructure.CoreTestCase;
-import org.testng.annotations.Test;
-import pages.*;
+import pages.ActivityPage;
+import pages.MorePage;
+import pages.ReferralProgramPage;
+import pages.WalletPage;
 import pages.account.AccountsPage;
 import pages.account.PinCodePage;
+import org.testng.annotations.Test;
 
-public class SetReferrerLink extends CoreTestCase {
 
+public class CreateReferrersLinkTest extends CoreTestCase {
     @Test
-    public void setReferrerLink() {
-        WalletPage walletPage = WalletPage.createNewAccount();
+    public void createReferrersLinkTest() {
+        WalletPage walletPage = WalletPage.importAccountUsePassphrase();
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
         ReferralProgramPage referralProgramPage = morePage.goToReferralProgramPage();
-        ActivityPage activityPage = referralProgramPage.setRefferrersLink(TestConfig.config.referrerLink1());
-        activityPage.checkSetReffererTransaction();
+        ActivityPage activityPage = referralProgramPage.createInviteLink();
+        activityPage.checkBoundXorTransaction();
         referralProgramPage.returnToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();

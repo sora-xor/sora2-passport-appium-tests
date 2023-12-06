@@ -17,6 +17,7 @@ public class StartInvitingTest extends CoreTestCase {
         activityPage.checkBoundXorTransaction();
         referralProgramPage.unBondXor();
         activityPage.checkUnboundXorTransaction();
+        referralProgramPage.returnToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
         enterCodePage.enterPinCode();
