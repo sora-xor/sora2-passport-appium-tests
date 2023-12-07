@@ -1,14 +1,11 @@
 package commontests;
 
-import com.codeborne.selenide.Condition;
 import configs.TestConfig;
 import infrastructure.CoreTestCase;
 import infrastructure.Random;
 import org.testng.annotations.Test;
 import pages.*;
 import pages.account.AccountsPage;
-import pages.account.ImportAccountPage;
-import pages.account.NameYourAccountPage;
 import pages.account.PinCodePage;
 
 
@@ -20,7 +17,7 @@ public class SwapTest  extends CoreTestCase {
     String randomValue = rnd.RandomValue();
     @Test
     public void swapTest () {
-        WalletPage walletPage = WalletPage.importAccountUsePassphrase();
+        WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         PolkaswapPage polkaswapPage = walletPage.goToPolkaswapPage();
         polkaswapPage.PolkaswapPageIsOpen();
         polkaswapPage.PolkaswapSelectToken();

@@ -1,5 +1,6 @@
 package commontests;
 
+import configs.TestConfig;
 import infrastructure.CoreTestCase;
 import pages.ActivityPage;
 import pages.MorePage;
@@ -13,7 +14,7 @@ import org.testng.annotations.Test;
 public class CreateReferrersLinkTest extends CoreTestCase {
     @Test
     public void createReferrersLinkTest() {
-        WalletPage walletPage = WalletPage.importAccountUsePassphrase();
+        WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
         ReferralProgramPage referralProgramPage = morePage.goToReferralProgramPage();
         ActivityPage activityPage = referralProgramPage.createInviteLink();

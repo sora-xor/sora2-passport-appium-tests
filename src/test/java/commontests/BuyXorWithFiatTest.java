@@ -5,16 +5,12 @@ import infrastructure.CoreTestCase;
 import org.testng.annotations.Test;
 import pages.BuyXorPage;
 import pages.MorePage;
-import pages.PolkaswapPage;
 import pages.WalletPage;
-import pages.account.AccountsPage;
-import pages.account.NameYourAccountPage;
-import pages.account.PinCodePage;
 
 public class BuyXorWithFiatTest extends CoreTestCase {
     @Test
     public void buyXorWithFiat () {
-        WalletPage walletPage = WalletPage.importAccountUsePassphrase();
+        WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
         BuyXorPage buyXorPage = morePage.goToBuyXorWithFiat();
         buyXorPage.CompleteFormToBuyXor();

@@ -12,7 +12,7 @@ public class SoraCardPhoneRejectedX2Test extends CoreTestCase {
 
     @Test
     public void soraCardPhoneRejectedX2Test() {
-        WalletPage walletPage = WalletPage.importAccountUsePassphrase();
+        WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         SoraCardPage soraCardPage = walletPage.goToSoraCardPage();
         soraCardPage.swipeDown();
         TermsAndConditionsPage termsAndConditionsPage = soraCardPage.viewSoraCardFlow();
