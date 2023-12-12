@@ -56,7 +56,7 @@ public class PolkaswapPage extends CommonPage {
     private SelenideElement pswapToken;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/XSTElement")
-    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`label == \"SORA Synthetics\"`][2]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"SORA Synthetics\"])[2]")
     private SelenideElement xstToken;
 
 

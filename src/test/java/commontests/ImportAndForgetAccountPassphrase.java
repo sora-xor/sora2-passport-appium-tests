@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import pages.*;
 import pages.account.*;
 
-import static com.codeborne.selenide.appium.ScreenObject.screen;
 
 @Log4j2
 public class ImportAndForgetAccountPassphrase extends CoreTestCase {

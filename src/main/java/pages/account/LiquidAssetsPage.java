@@ -41,11 +41,11 @@ public class LiquidAssetsPage {
     private SelenideElement xorTokenDetails;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SearchInput")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[4]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar[@name=\"Select recipient address\"]/following-sibling::*//XCUIElementTypeTextField")
     private SelenideElement accountToSendInput;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SearchItemN0")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[4]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"SEARCH RESULTS\"]/parent::*/following-sibling::*//XCUIElementTypeStaticText")
     private SelenideElement searchResultToSend;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SelectTokenXOR")
@@ -61,7 +61,7 @@ public class LiquidAssetsPage {
     private SelenideElement inputAmountFieldXor;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/InputAmountField")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeTextField")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
     private SelenideElement inputAmountField;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/ReviewButton")
