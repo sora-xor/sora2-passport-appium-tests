@@ -56,43 +56,37 @@ public class MorePage extends Utils {
 
 
     @Step
-    public AccountsPage goToAccounts ()
-    {
+    public AccountsPage goToAccounts() {
         cryptoAccountsBtn.shouldBe(Condition.visible).click();
         return screen(AccountsPage.class);
     }
 
     @Step
-    public BuyXorPage goToBuyXorWithFiat ()
-    {
+    public BuyXorPage goToBuyXorWithFiat() {
         if (isAndroid()) buyXORbyFiatBtn.shouldBe(Condition.visible).click();
         return screen(BuyXorPage.class);
     }
 
     @Step
-    public LoginAndSecurityPage goToLoginAndSecurity ()
-    {
+    public LoginAndSecurityPage goToLoginAndSecurity() {
         loginAndSecurityBtn.shouldBe(Condition.visible).click();
         return screen(LoginAndSecurityPage.class);
     }
 
     @Step
-    public NodesPage goToNodesPage ()
-    {
+    public NodesPage goToNodesPage() {
         nodesBtn.shouldBe(Condition.visible).click();
         return screen(NodesPage.class);
     }
 
     @Step
-    public AppSettingsPage goToAppSettingsPage ()
-    {
+    public AppSettingsPage goToAppSettingsPage() {
         appSettingsBtn.shouldBe(Condition.visible).click();
         return screen(AppSettingsPage.class);
     }
 
     @Step
-    public ReferralProgramPage goToReferralProgramPage()
-    {
+    public ReferralProgramPage goToReferralProgramPage() {
         if (isAndroid()) scrollForward(1);
 
         inviteFriendsBtn.shouldBe(Condition.visible).click();

@@ -13,11 +13,11 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 @Log4j2
 public class NavigationBarSection implements Container {
 
-    @AndroidFindBy(accessibility ="Assets")
+    @AndroidFindBy(accessibility = "Assets")
     @iOSXCUITFindBy(accessibility = "Assets")
     private SelenideElement assetsBtn;
 
-    @AndroidFindBy(accessibility ="Explore")
+    @AndroidFindBy(accessibility = "Explore")
     @iOSXCUITFindBy(accessibility = "Explore")
     private SelenideElement exploreBtn;
 
@@ -25,33 +25,30 @@ public class NavigationBarSection implements Container {
     @iOSXCUITFindBy(accessibility = "Swap")
     private SelenideElement polkaswapBtn;
 
-    @AndroidFindBy(accessibility ="Activity")
+    @AndroidFindBy(accessibility = "Activity")
     @iOSXCUITFindBy(accessibility = "Activity")
     private SelenideElement activityBtn;
-    
-    @AndroidFindBy(accessibility ="More")
+
+    @AndroidFindBy(accessibility = "More")
     @iOSXCUITFindBy(accessibility = "More")
     private SelenideElement moreBtn;
 
     @Step
-    public MorePage goToMorePage()
-    {
+    public MorePage goToMorePage() {
         log.info("Click More button");
         moreBtn.shouldBe(Condition.visible).click();
         return screen(MorePage.class);
     }
 
     @Step
-    public PolkaswapPage goToPolkaswapPage()
-    {
+    public PolkaswapPage goToPolkaswapPage() {
         log.info("Click Polkaswap button");
         polkaswapBtn.shouldBe(Condition.visible).click();
         return screen(PolkaswapPage.class);
     }
 
     @Step
-    public ExplorePage goToExplorePage()
-    {
+    public ExplorePage goToExplorePage() {
         log.info("Click Explore button");
         exploreBtn.shouldBe(Condition.visible).click();
         return screen(ExplorePage.class);

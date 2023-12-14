@@ -4,7 +4,9 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
@@ -59,8 +61,8 @@ public class BuyXorPage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\'Email verification required']")
     private SelenideElement emailVerificationRequiredField;
 
-    public void CompleteFormToBuyXor ()
-    {
+    @Step
+    public void CompleteFormToBuyXor() {
         continueBtn.shouldBe(Condition.visible).click();
         String checkAmount = fromAmount.shouldBe(Condition.visible).getText();
         assertThat(checkAmount).as("100.0").isEqualTo("100.0");
@@ -72,19 +74,17 @@ public class BuyXorPage {
         assertThat(checkPaymentMethod).as("Credit Card").isEqualTo("Credit Card");
     }
 
-
-    public void enterEmail (String email) {
+    @Step
+    public void enterEmail(String email) {
         log.info("Enter email" + email);
         emailField.shouldBe(Condition.visible).sendKeys(email);
         continueBtn.shouldBe(Condition.visible).click();
     }
 
-    public void emailVerificationRequired (){
+    @Step
+    public void emailVerificationRequired() {
         String actualTitle = emailVerificationRequiredField.shouldBe(Condition.visible).getText();
         log.info("Email verification required");
         assertThat(actualTitle).as("Email verification required").isEqualTo("Email verification required");
     }
-
-
-
 }

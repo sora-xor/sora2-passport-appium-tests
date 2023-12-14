@@ -14,6 +14,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -108,7 +109,7 @@ public class LiquidAssetsPage {
                 .perform();
     }
 
-
+    @Step
     public WalletPage sendToken(String randomValue) {
         log.info("Open XOR token details");
         xorTokenDetails.shouldBe(Condition.visible).click();

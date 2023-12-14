@@ -4,12 +4,14 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import pages.MorePage;
 
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static infrastructure.Platform.isAndroid;
 import static org.assertj.core.api.Assertions.assertThat;
+
 @Log4j2
 public class LoginAndSecurityPage {
 
@@ -28,21 +30,20 @@ public class LoginAndSecurityPage {
     @iOSXCUITFindBy(accessibility = "cross")
     private SelenideElement backBtn;
 
-    public PinCodePage goToChangePin()
-    {
+    @Step
+    public PinCodePage goToChangePin() {
         changePinBtn.shouldBe(Condition.visible).click();
         return screen(PinCodePage.class);
     }
 
-    public MorePage checkToastPinCodeChanged()
-    {
-    	if (isAndroid()) {
-    		assertThat(pinCodeСhangedToast.isDisplayed());
-    		log.info("Pin code changed");
-    	}
-    	backBtn.shouldBe(Condition.visible).click();    	
+    @Step
+    public MorePage checkToastPinCodeChanged() {
+        if (isAndroid()) {
+            assertThat(pinCodeСhangedToast.isDisplayed());
+            log.info("Pin code changed");
+        }
+        backBtn.shouldBe(Condition.visible).click();
         return screen(MorePage.class);
-    	
     }
 }
 

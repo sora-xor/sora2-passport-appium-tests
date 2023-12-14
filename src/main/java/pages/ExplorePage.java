@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
 import static infrastructure.Platform.isAndroid;
@@ -73,9 +74,11 @@ public class ExplorePage extends CommonPage{
     @AndroidFindBy(xpath = "//*[@text='Polkaswap pools']")
     private SelenideElement polkaswapPoolsTitle;
 
+    @Step
     public void explorePolkaswapPools()
     {
         exploreBottomNavBtn.shouldBe(Condition.selected);
+        //todo: find out WHY is it here...
         try {
             Thread.sleep(4000);
         } catch (InterruptedException e) {
@@ -87,8 +90,8 @@ public class ExplorePage extends CommonPage{
         }
         showMorePools.shouldBe(Condition.visible).click();
     }
+    @Step
     public void addLiquidity(String randomLiquidity)
-
     {
         polkaswapPoolsTitle.shouldBe(Condition.visible);
         addLiquidityBtn.shouldBe(Condition.visible).click();
@@ -104,8 +107,5 @@ public class ExplorePage extends CommonPage{
         confirmBtn.shouldBe(Condition.visible).click();
         closeBtn.shouldBe(Condition.visible).click();
         log.info("Click Close button" );
-
-
-
     }
 }

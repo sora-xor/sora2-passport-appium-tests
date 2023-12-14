@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -47,6 +48,7 @@ public class NodesPage {
     private SelenideElement backBtn;
 
 
+    @Step
     public void switchToDefaultNode()
     {
         selectNodeTitle.shouldBe(Condition.visible);
@@ -55,6 +57,7 @@ public class NodesPage {
         confirmBtn.shouldBe(Condition.visible).click();
         successfullySwitchForm.shouldBe(Condition.visible);
         confirmBtn.shouldBe(Condition.visible).click();
+        //todo: why thread sleep
         try {
             Thread.sleep(4000);
         } catch (InterruptedException e) {
@@ -65,6 +68,7 @@ public class NodesPage {
         backBtn.shouldBe(Condition.visible).click();
     }
 
+    @Step
     public void addCustomNode()
     {
         selectNodeTitle.shouldBe(Condition.visible);

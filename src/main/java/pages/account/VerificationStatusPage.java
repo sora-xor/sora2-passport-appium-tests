@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import pages.SoraCardPage;
 import pages.WalletPage;
@@ -27,12 +28,15 @@ public class VerificationStatusPage {
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.Button")
     private SelenideElement backBtn;
+
+    //todo: find out maybe one method check status with parameter will be enough
+    @Step
     public KYCPage goToKYCProcess()
     {
-
         return screen(KYCPage.class);
     }
 
+    @Step
     public WalletPage checkRejectedStatus ()
     {
         String actualStatus = verificationStatus.shouldBe(Condition.visible).getText();

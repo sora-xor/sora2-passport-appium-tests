@@ -2,23 +2,18 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.appium.SelenideAppium;
 import configs.TestConfig;
 import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
-import org.apache.logging.log4j.Logger;
 import pages.account.*;
 
-import static com.codeborne.selenide.Condition.selected;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.AppiumScrollOptions.down;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static infrastructure.Platform.isAndroid;
 import static infrastructure.Platform.isIOS;
-import static org.assertj.core.api.Assertions.*;
 
 @Log4j2
 public class WalletPage extends CommonPage {
@@ -79,7 +74,7 @@ public class WalletPage extends CommonPage {
     public static WalletPage createNewAccount() {
         WelcomePage welcomePage = screen(WelcomePage.class);
         NameYourAccountPage nameYourAccountPage = welcomePage.goToCreateAccountPage();
-        PayAttentionPage payAttention = nameYourAccountPage.enterAccountName("Account Test");
+        PayAttentionPage payAttention = nameYourAccountPage.enterAccountName();
         PassphrasePage passphrasePage = payAttention.confirmPayAttention();
         PinCodePage pinCodePage = passphrasePage.skipPassPhrase();
         WalletPage walletPage = pinCodePage.enterAndConfirmPinCodeNew();

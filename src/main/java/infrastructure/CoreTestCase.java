@@ -36,7 +36,7 @@ public class CoreTestCase {
 
     @BeforeSuite
     public void globalSetup() throws IOException {
-    	System.setProperty("webdriver.http.factory", "jdk-http-client");
+        System.setProperty("webdriver.http.factory", "jdk-http-client");
         service = AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
                 .withIPAddress("127.0.0.1")
                 .withArgument(() -> "--base-path", "/wd/hub"));
@@ -46,8 +46,7 @@ public class CoreTestCase {
 
     @BeforeTest
     static void setupAllureReports() {
-    	
-        Configuration.timeout=14000;
+        Configuration.timeout = 14000;
         Configuration.screenshots = false;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
                 .screenshots(true)
@@ -65,11 +64,10 @@ public class CoreTestCase {
     @AfterMethod
     public void screenShotOnFail() throws IOException {
         screenshot();
-        
     }
 
 
-	@AfterClass
+    @AfterClass
     public void tearDown() throws MalformedURLException {
         WebDriverRunner.closeWebDriver();
         if (driver != null) {

@@ -6,6 +6,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -78,7 +79,9 @@ public class ActivityPage extends Utils {
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.Button")
     private SelenideElement backBtn;
 
+    //todo: find out maybe one method check status with parameters will be enough
 
+    @Step
     public void checkLastTransactionStatusSwap(String randomValue) {
         if (isIOS()) {
             log.info("Waiting for the transaction item to be displayed");
@@ -88,7 +91,7 @@ public class ActivityPage extends Utils {
             log.info("Open the last Swap transaction details");
             lastSwappedTransaction.shouldBe(Condition.visible).click();
         }
-        if (isAndroid()){
+        if (isAndroid()) {
             log.info("Open the last Swap transaction details");
             lastTransaction.shouldBe(Condition.visible).click();
         }
@@ -106,6 +109,7 @@ public class ActivityPage extends Utils {
     }
 
 
+    @Step
     public void checkLastTransactionStatusPool(String randomLiquidity) {
         if (isIOS()) {
             log.info("Waiting for the transaction item to be displayed");
@@ -133,6 +137,7 @@ public class ActivityPage extends Utils {
 
     }
 
+    @Step
     public void checkLastTransactionSendToken(String randomValue) {
         if (isIOS()) {
             log.info("Waiting for the transaction item to be displayed");
@@ -160,6 +165,7 @@ public class ActivityPage extends Utils {
 
     }
 
+    @Step
     public ReferralProgramPage checkSetReffererTransaction() {
 
         assertThat(getTransactionStatus.getText()).isEqualTo("Successful");
@@ -167,6 +173,7 @@ public class ActivityPage extends Utils {
         return screen(ReferralProgramPage.class);
     }
 
+    @Step
     public ReferralProgramPage checkBoundXorTransaction() {
         WebDriver driver = WebDriverRunner.getWebDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT300S"), Duration.parse("PT1S"));
@@ -181,6 +188,7 @@ public class ActivityPage extends Utils {
         return screen(ReferralProgramPage.class);
     }
 
+    @Step
     public ReferralProgramPage checkUnboundXorTransaction() {
         WebDriver driver = WebDriverRunner.getWebDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT10S"), Duration.parse("PT1S"));
