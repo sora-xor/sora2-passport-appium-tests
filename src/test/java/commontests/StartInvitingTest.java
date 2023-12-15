@@ -1,5 +1,6 @@
 package commontests;
 
+import configs.TestConfig;
 import infrastructure.CoreTestCase;
 import org.testng.annotations.Test;
 import pages.*;
@@ -10,7 +11,7 @@ public class StartInvitingTest extends CoreTestCase {
 
     @Test
     public void startInvitingTest() {
-        WalletPage walletPage = WalletPage.importAccount2UsePassphrase();
+        WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic2());
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
         ReferralProgramPage referralProgramPage = morePage.goToReferralProgramPage();
         ActivityPage activityPage = referralProgramPage.startInvitingFlow();

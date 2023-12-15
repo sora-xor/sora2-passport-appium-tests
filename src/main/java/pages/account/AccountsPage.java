@@ -20,22 +20,26 @@ public class AccountsPage {
     private SelenideElement openAccountMenuItem;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/FloatingButton")
-    private SelenideElement floatingButton;
+    @iOSXCUITFindBy(accessibility = "Add account")
+    private SelenideElement addAccountButton;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SelectAccountForBatchExport")
     private SelenideElement selectAccountForBatchExport;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OpenAccountOptions")
-    private SelenideElement openAccountOptios;
+    @iOSXCUITFindBy(accessibility = "iconMenuInfo")
+    private SelenideElement openAccountOptions;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/ForgetAccount")
     @iOSXCUITFindBy(accessibility = "Forget account")
     private SelenideElement forgetAccountBtn;
 
     @AndroidFindBy(xpath = "//android.widget.EditText")
+    @iOSXCUITFindBy(className = "XCUIElementTypeTextField")
     private SelenideElement accountName;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OnNavigate")
+    @iOSXCUITFindBy(accessibility = "Account")
     private SelenideElement backButton;
 
     @Step
@@ -43,7 +47,7 @@ public class AccountsPage {
         log.info("Open Account menu");
         openAccountMenuItem.click();
         if (isAndroid()) {
-            openAccountOptios.shouldBe(Condition.visible).click();
+            openAccountOptions.shouldBe(Condition.visible).click();
         }
         log.info("Tap Forget account");
         forgetAccountBtn.click();
@@ -55,9 +59,10 @@ public class AccountsPage {
         log.info("Open Account menu");
         openAccountMenuItem.click();
         if (isAndroid()) {
-            openAccountOptios.shouldBe(Condition.visible).click();
+            openAccountOptions.shouldBe(Condition.visible).click();
         }
-        log.info("Change account name");
+        log.info("Change account name to: Changed Name");
+        accountName.clear();
         accountName.sendKeys("ChangedName");
         assertThat(accountName.getText()).isEqualTo("ChangedName");
     }

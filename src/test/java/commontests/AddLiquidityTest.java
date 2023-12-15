@@ -1,5 +1,6 @@
 package commontests;
 
+import configs.TestConfig;
 import infrastructure.CoreTestCase;
 import infrastructure.Random;
 import io.qameta.allure.Feature;
@@ -23,7 +24,7 @@ public class AddLiquidityTest extends CoreTestCase {
     @Feature("Pool")
     @TmsLink("SORA-255")
     public void addLiquidityTest() {
-        WalletPage walletPage = WalletPage.importAccountUsePassphrase();
+        WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         ExplorePage explorePage = walletPage.getNavigationBarSection().goToExplorePage();
         explorePage.explorePolkaswapPools();
         explorePage.addLiquidity(randomLiquidity);

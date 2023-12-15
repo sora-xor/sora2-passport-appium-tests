@@ -3,11 +3,13 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.appium.SelenideAppium;
 import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -43,20 +45,23 @@ public class ActivityPage extends Utils {
     private SelenideElement getXstFromLastTransaction;
 
     @AndroidFindBy(accessibility = "Swapped")
-    @iOSXCUITFindBy(accessibility = "Extrinsic hash")
+     @iOSXCUITFindBy(accessibility = "Swapped")
     private SelenideElement swappedItem;
 
     @AndroidFindBy(accessibility = "Sent")
-    @iOSXCUITFindBy(accessibility = "Extrinsic hash")
+    @iOSXCUITFindBy(accessibility = "Sent")
     private SelenideElement sentItem;
 
     @AndroidFindBy(accessibility = "Referrer set")
+    @iOSXCUITFindBy(accessibility = "Referrer set")
     private SelenideElement referrerSetItem;
 
     @AndroidFindBy(accessibility = "Bonded")
+    @iOSXCUITFindBy(accessibility = "Bonded")
     private SelenideElement boundedItem;
 
     @AndroidFindBy(accessibility = "Unbonded")
+    @iOSXCUITFindBy(accessibility = "Unbonded")
     private SelenideElement unboundedItem;
 
 
@@ -101,7 +106,8 @@ public class ActivityPage extends Utils {
             log.info("Last transaction type: " + swappedItem.getAttribute("content-desc"));
             getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
         } else if (isIOS()) {
-            getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getValue();
+            //getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getValue();
+            getXorAmountValueFromHistory = SelenideAppium.$(By.name(randomValue+" XOR")).shouldBe(Condition.visible).getValue();
         }
         log.info("Get Xor from last transaction: " + getXorAmountValueFromHistory);
         assertThat(getXorAmountValueFromHistory).isEqualTo(randomValue + " XOR");
@@ -155,9 +161,10 @@ public class ActivityPage extends Utils {
         String getXorAmountValueFromHistory = "";
         if (isAndroid()) {
             log.info("Last transaction type: " + sentItem.getAttribute("content-desc"));
+            //todo: try to change this to be like ios check
             getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
         } else if (isIOS()) {
-            getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getValue();
+            getXorAmountValueFromHistory = SelenideAppium.$(By.name(randomValue+" XOR")).shouldBe(Condition.visible).getValue();
         }
         log.info("Get Xor from last transaction: " + getXorAmountValueFromHistory);
         assertThat(getXorAmountValueFromHistory).isEqualTo(randomValue + " XOR");

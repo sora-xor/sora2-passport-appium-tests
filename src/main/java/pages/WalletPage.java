@@ -38,22 +38,11 @@ public class WalletPage extends CommonPage {
     private SelenideElement soraCardInfo;
 
     @Step
-    public static WalletPage importAccountUsePassphrase() {
+    public static WalletPage importAccountUsePassphrase(String mnemonic) {
         WelcomePage welcomePage = screen(WelcomePage.class);
         ImportAccountPage importAccountPage = welcomePage.goToImportAccountPagePassphrase();
-        NameYourAccountPage nameYourAccountPage = importAccountPage.enterMnemonicPhrase(TestConfig.config.mnemonic1());
+        NameYourAccountPage nameYourAccountPage = importAccountPage.enterMnemonicPhrase(mnemonic);
         PinCodePage pinCodePage = nameYourAccountPage.enterAccountNameAfterImport("Import Passphrase");
-        WalletPage walletPage = pinCodePage.enterAndConfirmPinCode();
-        walletPage.walletPageIsOpen();
-        return screen(WalletPage.class);
-    }
-
-    @Step
-    public static WalletPage importAccount2UsePassphrase() {
-        WelcomePage welcomePage = screen(WelcomePage.class);
-        ImportAccountPage importAccountPage = welcomePage.goToImportAccountPagePassphrase();
-        NameYourAccountPage nameYourAccountPage = importAccountPage.enterMnemonicPhrase(TestConfig.config.mnemonic2());
-        PinCodePage pinCodePage = nameYourAccountPage.enterAccountNameAfterImport("Import Passphrase2");
         WalletPage walletPage = pinCodePage.enterAndConfirmPinCode();
         walletPage.walletPageIsOpen();
         return screen(WalletPage.class);

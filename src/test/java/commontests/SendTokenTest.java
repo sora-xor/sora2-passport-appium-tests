@@ -1,6 +1,7 @@
 package commontests;
 
 
+import configs.TestConfig;
 import infrastructure.CoreTestCase;
 import infrastructure.Random;
 import org.testng.annotations.Test;
@@ -17,7 +18,7 @@ public class SendTokenTest extends CoreTestCase {
 
     @Test
     public void sendTokenTest() {
-        WalletPage walletPage = WalletPage.importAccountUsePassphrase();
+        WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         LiquidAssetsPage liquidAssetsPage = walletPage.goToLiquidAssets();
         liquidAssetsPage.sendToken(randomValue);
         ActivityPage activityPage = walletPage.goToActivityPage();
