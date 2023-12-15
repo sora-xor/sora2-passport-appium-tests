@@ -2,7 +2,6 @@ package commontests;
 
 import configs.TestConfig;
 import infrastructure.CoreTestCase;
-import org.apache.logging.log4j.core.selector.CoreContextSelectors;
 import org.testng.annotations.Test;
 import pages.MorePage;
 import pages.SoraCardPage;
@@ -12,7 +11,7 @@ import pages.account.*;
 public class SoraCardPhonePendingTest extends CoreTestCase {
     @Test
     public void soraCardPhonePendingTest() {
-        WalletPage walletPage = WalletPage.importAccountUsePassphrase();
+        WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         SoraCardPage soraCardPage = walletPage.goToSoraCardPage();
         soraCardPage.swipeDown();
         TermsAndConditionsPage termsAndConditionsPage = soraCardPage.viewSoraCardFlow();

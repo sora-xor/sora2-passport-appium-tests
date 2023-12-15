@@ -2,22 +2,17 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.appium.SelenideAppium;
 import configs.TestConfig;
 import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.extern.log4j.Log4j2;
-import org.apache.logging.log4j.Logger;
 import pages.account.*;
 
-import static com.codeborne.selenide.Condition.selected;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.AppiumScrollOptions.down;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static infrastructure.Platform.isAndroid;
 import static infrastructure.Platform.isIOS;
-import static org.assertj.core.api.Assertions.*;
 
 @Log4j2
 public class WalletPage extends CommonPage {
@@ -41,21 +36,11 @@ public class WalletPage extends CommonPage {
     @AndroidFindBy(id ="jp.co.soramitsu.sora.develop:id/CardInfo")
     private SelenideElement soraCardInfo;
 
-    public static WalletPage importAccountUsePassphrase() {
+    public static WalletPage importAccountUsePassphrase(String mnemonic) {
         WelcomePage welcomePage = screen(WelcomePage.class);
         ImportAccountPage importAccountPage = welcomePage.goToImportAccountPagePassphrase();
-        NameYourAccountPage nameYourAccountPage = importAccountPage.enterMnemonicPhrase(TestConfig.config.mnemonic1());
+        NameYourAccountPage nameYourAccountPage = importAccountPage.enterMnemonicPhrase(mnemonic);
         PinCodePage pinCodePage = nameYourAccountPage.enterAccountNameAfterImport("Import Passphrase");
-        WalletPage walletPage = pinCodePage.enterAndConfirmPinCode();
-        walletPage.walletPageIsOpen();
-        return screen(WalletPage.class);
-    }
-
-    public static WalletPage importAccount2UsePassphrase() {
-        WelcomePage welcomePage = screen(WelcomePage.class);
-        ImportAccountPage importAccountPage = welcomePage.goToImportAccountPagePassphrase();
-        NameYourAccountPage nameYourAccountPage = importAccountPage.enterMnemonicPhrase(TestConfig.config.mnemonic2());
-        PinCodePage pinCodePage = nameYourAccountPage.enterAccountNameAfterImport("Import Passphrase2");
         WalletPage walletPage = pinCodePage.enterAndConfirmPinCode();
         walletPage.walletPageIsOpen();
         return screen(WalletPage.class);

@@ -1,5 +1,6 @@
 package commontests;
 
+import configs.TestConfig;
 import infrastructure.CoreTestCase;
 import infrastructure.Random;
 import org.testng.annotations.Test;
@@ -17,7 +18,7 @@ public class AddLiquidityTest extends CoreTestCase {
 
     @Test
     public void addLiquidityTest() {
-        WalletPage walletPage = WalletPage.importAccountUsePassphrase();
+        WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         ExplorePage explorePage = walletPage.getNavigationBarSection().goToExplorePage();
         explorePage.explorePolkaswapPools();
         explorePage.addLiquidity(randomLiquidity);
