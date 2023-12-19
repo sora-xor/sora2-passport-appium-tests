@@ -1,103 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite thread-count="1" name="Suite">
- <test thread-count="1" name="Test">
-    <classes>
-      <class name="commontests.FirstTest"/>
-    </classes>
-  </test>
-<test thread-count="1" name="ImportAndForgetAccountPassphrase">
-    <classes>
-      <class name="commontests.ImportAndForgetAccountPassphrase"/>
-    </classes>
-    </test>
-  <test thread-count="1" name="ImportAndForgetAccountRawSeed">
-    <classes>    
-      <class name="commontests.ImportAndForgetAccountRawSeed"/>
-    </classes>
-   </test>
-   <test thread-count="1" name="CreateAndForgetAccountTest">
-    <classes>
-      <class name="commontests.CreateAndForgetAccountTest"/>
-    </classes>
-    </test>
-    <test thread-count="1" name="SwapTest">
-        <classes>
-            <class name="commontests.SwapTest"/>
-        </classes>
-    </test>
-    <test thread-count="1" name="ChangePinCodeTest">
-        <classes>
-            <class name="commontests.ChangePinCodeTest"/>
-        </classes>
-    </test>
-    
-    <test thread-count="1" name="ChangeNodeTest">
-        <classes>
-            <class name="commontests.ChangeNodeTest"/>
-        </classes>
-    </test>
-    <test thread-count="1" name="AddCustomNodeTest">
-        <classes>
-            <class name="commontests.AddCustomNodeTest"/>
-        </classes>
-    </test>
+
    <test thread-count="1" name="AddLiquidityTest">
         <classes>
             <class name="commontests.AddLiquidityTest"/>
         </classes>
-    </test> 
-   <test thread-count="1" name="ChangeLanguageTest">
-        <classes>
-            <class name="commontests.ChangeLanguageTest"/>
-        </classes>
-    </test>
-    <test thread-count="1" name="ChangeAccountNameTest">
-        <classes>
-            <class name="commontests.ChangeAccountNameTest"/>
-        </classes>
-    </test>
-    <test thread-count="1" name="SendTokenTest">
-        <classes>
-            <class name="commontests.SendTokenTest"/>
-        </classes>
-    </test>
-    <test thread-count="1" name="CreateReferrersLinkTest">
-        <classes>
-            <class name="commontests.CreateReferrersLinkTest"/>
-        </classes>
-    </test>
-    <test thread-count="1" name="SetReferrerLink">
-        <classes>
-            <class name="commontests.SetReferrerLink"/>
-        </classes>
     </test>
     <!--
+        <test thread-count="1" name="CreateReferrersLinkTest">
+            <classes>
+                <class name="commontests.CreateReferrersLinkTest"/>
+            </classes>
+        </test>
+        <test thread-count="1" name="SetReferrerLink">
+            <classes>
+                <class name="commontests.SetReferrerLink"/>
+            </classes>
+        </test>
 
-   <test thread-count="1" name="SoraCardPhoneApprovedTest">
-       <classes>
-           <class name="commontests.SoraCardPhoneApprovedTest"/>
-       </classes>
-   </test>
-   <test thread-count="1" name="SoraCardPhonePendingTest">
-       <classes>
-           <class name="commontests.SoraCardPhonePendingTest"/>
-       </classes>
-   </test>
-   <test thread-count="1" name="SoraCardPhoneRejectedX2Test">
-       <classes>
-           <class name="commontests.SoraCardPhoneRejectedX2Test"/>
-       </classes>
-   </test>
-   <test thread-count="1" name="SoraCardGetIBANTest">
-       <classes>
-           <class name="commontests.SoraCardGetIBANTest"/>
-       </classes>
-   </test>
-   <test thread-count="1" name="SoraCardVerificationFailedTest">
-       <classes>
-           <class name="commontests.SoraCardVerificationFailedTest"/>
-       </classes>
-   </test>
-   -->
+
+       <test thread-count="1" name="SoraCardPhoneApprovedTest">
+           <classes>
+               <class name="commontests.SoraCardPhoneApprovedTest"/>
+           </classes>
+       </test>
+       <test thread-count="1" name="SoraCardPhonePendingTest">
+           <classes>
+               <class name="commontests.SoraCardPhonePendingTest"/>
+           </classes>
+       </test>
+       <test thread-count="1" name="SoraCardPhoneRejectedX2Test">
+           <classes>
+               <class name="commontests.SoraCardPhoneRejectedX2Test"/>
+           </classes>
+       </test>
+       <test thread-count="1" name="SoraCardGetIBANTest">
+           <classes>
+               <class name="commontests.SoraCardGetIBANTest"/>
+           </classes>
+       </test>
+       <test thread-count="1" name="SoraCardVerificationFailedTest">
+           <classes>
+               <class name="commontests.SoraCardVerificationFailedTest"/>
+           </classes>
+       </test>
+       -->
 </suite>

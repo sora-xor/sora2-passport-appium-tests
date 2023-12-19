@@ -3,11 +3,8 @@ package pages.account;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-import com.codeborne.selenide.appium.AppiumScrollOptions;
-import com.codeborne.selenide.appium.ScrollDirection;
-import com.codeborne.selenide.appium.SelenideAppium;
 import configs.TestConfig;
-import io.appium.java_client.AppiumBy;
+import infrastructure.Utils;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -15,7 +12,6 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import lombok.extern.log4j.Log4j2;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,7 +20,6 @@ import pages.WalletPage;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static infrastructure.Platform.isAndroid;
@@ -148,10 +143,9 @@ public class LiquidAssetsPage {
 
         if (isIOS()) {
             log.info("Close Asset details by swipe down");
-            swipeDown();
+            Utils.swipeDown();
             qrScan.shouldBe(Condition.visible);
         }
-
         return screen(WalletPage.class);
     }
 }

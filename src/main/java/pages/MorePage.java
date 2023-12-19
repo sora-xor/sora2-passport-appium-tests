@@ -2,24 +2,17 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.appium.SelenideAppium;
 import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-import org.openqa.selenium.By;
 import pages.account.AccountsPage;
 import pages.account.LoginAndSecurityPage;
-import pages.account.PinCodePage;
 
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.appium.AppiumScrollOptions.down;
-import static com.codeborne.selenide.appium.AppiumScrollOptions.with;
+
 import static com.codeborne.selenide.appium.ScreenObject.screen;
-import static com.codeborne.selenide.appium.ScrollDirection.DOWN;
 import static infrastructure.Platform.isAndroid;
 
-public class MorePage extends Utils {
+public class MorePage {
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/CryptoAccountsButton")
     @iOSXCUITFindBy(accessibility = "Crypto Accounts")
@@ -86,7 +79,7 @@ public class MorePage extends Utils {
 
     public ReferralProgramPage goToReferralProgramPage()
     {
-        if (isAndroid()) scrollForward(1);
+        if (isAndroid()) Utils.scrollForward(1);
 
         inviteFriendsBtn.shouldBe(Condition.visible).click();
         return screen(ReferralProgramPage.class);

@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static com.codeborne.selenide.appium.ScreenObject.screen;
+import static com.codeborne.selenide.appium.SelenideAppium.$;
 import static infrastructure.Platform.isAndroid;
 import static infrastructure.Platform.isIOS;
 import static org.assertj.core.api.Assertions.*;
@@ -103,8 +104,7 @@ public class ActivityPage extends Utils {
             log.info("Last transaction type: " + swappedItem.getAttribute("content-desc"));
             getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
         } else if (isIOS()) {
-            //getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getValue();
-            getXorAmountValueFromHistory = SelenideAppium.$(By.name(randomValue+" XOR")).shouldBe(Condition.visible).getValue();
+            getXorAmountValueFromHistory = $(By.name(randomValue+" XOR")).shouldBe(Condition.visible).getValue();
         }
         log.info("Get Xor from last transaction: " + getXorAmountValueFromHistory);
         assertThat(getXorAmountValueFromHistory).isEqualTo(randomValue + " XOR");
@@ -131,12 +131,11 @@ public class ActivityPage extends Utils {
             log.info("Last transaction type: " + sentToPoolItem.getAttribute("content-desc"));
             getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
         } else if (isIOS()) {
-            getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getValue();
+            getXorAmountValueFromHistory = $(By.name(randomLiquidity+" XOR")).shouldBe(Condition.visible).getValue();
         }
         log.info("Get Xor from last transaction: " + getXorAmountValueFromHistory);
         assertThat(getXorAmountValueFromHistory).isEqualTo(randomLiquidity + " XOR");
         closeBtn.shouldBe(Condition.visible).click();
-
     }
 
     public void checkLastTransactionSendToken(String randomValue) {
@@ -159,7 +158,7 @@ public class ActivityPage extends Utils {
             //todo: try to change this to be like ios check
             getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
         } else if (isIOS()) {
-            getXorAmountValueFromHistory = SelenideAppium.$(By.name(randomValue+" XOR")).shouldBe(Condition.visible).getValue();
+            getXorAmountValueFromHistory = $(By.name(randomValue+" XOR")).shouldBe(Condition.visible).getValue();
         }
         log.info("Get Xor from last transaction: " + getXorAmountValueFromHistory);
         assertThat(getXorAmountValueFromHistory).isEqualTo(randomValue + " XOR");

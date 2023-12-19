@@ -21,8 +21,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Log4j2
 public class PolkaswapPage extends CommonPage {
 
-    Utils utils = new Utils();
-
     @AndroidFindBy(xpath = "//*[@text='Disclaimer']")
     @iOSXCUITFindBy(accessibility = "Disclaimer")
     private SelenideElement disclaimer;
@@ -96,7 +94,7 @@ public class PolkaswapPage extends CommonPage {
     	if (isAndroid()) {
     		String actualTitle = disclaimer.shouldBe(Condition.visible).getText();
     		assertThat(actualTitle).as("Disclaimer").isEqualTo("Disclaimer");
-    		utils.scrollForward(1);
+    		Utils.scrollForward(1);
     	}
     	if (isIOS()) {
     		disclaimer.shouldBe(Condition.visible).click();

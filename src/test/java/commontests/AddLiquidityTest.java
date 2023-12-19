@@ -28,6 +28,5 @@ public class AddLiquidityTest extends CoreTestCase {
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
         enterCodePage.enterPinCode();
-
     }
 }
