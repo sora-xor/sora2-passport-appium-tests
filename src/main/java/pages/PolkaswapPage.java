@@ -23,8 +23,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Log4j2
 public class PolkaswapPage extends CommonPage {
 
-    Utils utils = new Utils();
-
     @AndroidFindBy(xpath = "//*[@text='Disclaimer']")
     @iOSXCUITFindBy(accessibility = "Disclaimer")
     private SelenideElement disclaimer;
@@ -95,18 +93,18 @@ public class PolkaswapPage extends CommonPage {
     private SelenideElement closeBtn;
 
     @Step
-    public void PolkaswapPageIsOpen() {
-        if (isAndroid()) {
-            String actualTitle = disclaimer.shouldBe(Condition.visible).getText();
-            assertThat(actualTitle).as("Disclaimer").isEqualTo("Disclaimer");
-            utils.scrollForward(1);
-        }
-        if (isIOS()) {
-            disclaimer.shouldBe(Condition.visible).click();
-            SelenideAppium.$x("//XCUIElementTypeStaticText[@name=\"Close\"]")
-                    .scroll(down())
-                    .shouldHave(visible);
-        }
+    public void PolkaswapPageIsOpen(){
+    	if (isAndroid()) {
+    		String actualTitle = disclaimer.shouldBe(Condition.visible).getText();
+    		assertThat(actualTitle).as("Disclaimer").isEqualTo("Disclaimer");
+    		Utils.scrollForward(1);
+    	}
+    	if (isIOS()) {
+    		disclaimer.shouldBe(Condition.visible).click();
+    		SelenideAppium.$x("//XCUIElementTypeStaticText[@name=\"Close\"]")
+    		.scroll(down())
+    		.shouldHave(visible);
+    	}
         disclaimerCloseBtn.shouldBe(Condition.visible).click();
     }
 

@@ -11,14 +11,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.WalletPage;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 
 @Log4j2
-public class KYCPage extends Utils {
+public class KYCPage{
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.TextView")
     private SelenideElement getPreparedTitle;
@@ -49,7 +48,7 @@ public class KYCPage extends Utils {
         getPreparedText = getPreparedTitle.getText();
         getPreparedTitle.shouldBe(Condition.visible);
         log.info(getPreparedText);
-        scrollForward(1);
+        Utils.scrollForward(1);
         readyToAttemptBtn.shouldBe(Condition.visible).click();
 
         WebDriver driver = WebDriverRunner.getWebDriver();

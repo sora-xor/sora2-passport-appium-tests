@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite thread-count="1" name="Suite">
-    <listeners>
-        <listener class-name="listener.ScreenShotListener"/>
-    </listeners>
     <test thread-count="1" name="Test">
         <classes>
             <class name="commontests.FirstTest"/>
@@ -63,6 +60,11 @@
     <test thread-count="1" name="SendTokenTest">
         <classes>
             <class name="commontests.SendTokenTest"/>
+        </classes>
+    </test>
+    <test thread-count="1" name="StartInvitingTest">
+        <classes>
+            <class name="commontests.StartInvitingTest"/>
         </classes>
     </test>
     <test thread-count="1" name="CreateReferrersLinkTest">

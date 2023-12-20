@@ -9,24 +9,27 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
 import static infrastructure.Platform.isAndroid;
+import static infrastructure.Platform.isIOS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
 public class ExplorePage extends CommonPage{
 
+    //todo: delete this and use the button from NavigationBarSection class
     @AndroidFindBy(accessibility = "Explore")
+    @iOSXCUITFindBy(accessibility = "Explore")
     private SelenideElement exploreBottomNavBtn;
 
     infrastructure.Utils utils = new Utils();
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OnMenuItem")
-    @iOSXCUITFindBy(accessibility = "Add Liquidity")
+    @iOSXCUITFindBy(accessibility = "Create pool")
     private SelenideElement addLiquidityBtn;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/PrimaryButton")
     private SelenideElement primaryBtn;
 
     @AndroidFindBy(xpath = "//*[@text='Supply liquidity']")
-    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`label == \"Supply liquidity\"`]")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeNavigationBar[`name == \"Supply liquidity\"`]")
     private SelenideElement supplyLiquidityTitle;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/InputAmountFieldXOR")
@@ -68,10 +71,15 @@ public class ExplorePage extends CommonPage{
     @iOSXCUITFindBy(accessibility = "Close")
     private SelenideElement closeBtn;
 
+    @iOSXCUITFindBy(accessibility = "cross")
+    private SelenideElement crossBtn;
+
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]/android.view.View[6]/android.widget.Button")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Expand\"])[2]")
     private SelenideElement showMorePools;
 
     @AndroidFindBy(xpath = "//*[@text='Polkaswap pools']")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Polkaswap pools\"])[2]")
     private SelenideElement polkaswapPoolsTitle;
 
     @Step
@@ -85,17 +93,15 @@ public class ExplorePage extends CommonPage{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        if (isAndroid()) {
-            utils.scrollForward(1);
-        }
-        showMorePools.shouldBe(Condition.visible).click();
+
+        showMorePools.scrollTo().shouldBe(Condition.visible).click();
     }
-    @Step
     public void addLiquidity(String randomLiquidity)
+
     {
         polkaswapPoolsTitle.shouldBe(Condition.visible);
         addLiquidityBtn.shouldBe(Condition.visible).click();
-        supplyLiquidityTitle.shouldBe(Condition.visible).exists();
+        supplyLiquidityTitle.shouldBe(Condition.visible);
         selectTokenXor.shouldBe(Condition.visible).click();
         xorToken.shouldBe(Condition.visible).click();
         selectTokenItem2.shouldBe(Condition.visible).click();
@@ -107,5 +113,6 @@ public class ExplorePage extends CommonPage{
         confirmBtn.shouldBe(Condition.visible).click();
         closeBtn.shouldBe(Condition.visible).click();
         log.info("Click Close button" );
+        if (isIOS()) crossBtn.shouldBe(Condition.visible).click();
     }
 }

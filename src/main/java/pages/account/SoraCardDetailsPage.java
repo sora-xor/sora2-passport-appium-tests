@@ -12,7 +12,7 @@ import pages.WalletPage;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 
 @Log4j2
-public class SoraCardDetailsPage extends Utils {
+public class SoraCardDetailsPage {
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/TOP_UP")
     private SelenideElement soraCardTopUpBtn;
 
@@ -47,7 +47,7 @@ public class SoraCardDetailsPage extends Utils {
         getIBANdetails = IBANdetails.shouldBe(Condition.visible).getText();
         log.info("IBAN account details: " + getIBANdetails);
         shareIBANCard.shouldBe(Condition.visible);
-        scrollForward(1);
+        Utils.scrollForward(1);
         logOutSoraCardBtn.shouldBe(Condition.visible).click();
         logOutConfirmBtn.shouldBe(Condition.visible).click();
         return screen(WalletPage.class);
