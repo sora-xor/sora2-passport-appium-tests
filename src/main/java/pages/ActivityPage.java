@@ -3,7 +3,6 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-import com.codeborne.selenide.appium.SelenideAppium;
 import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
@@ -23,7 +22,7 @@ import static infrastructure.Platform.isIOS;
 import static org.assertj.core.api.Assertions.*;
 
 @Log4j2
-public class ActivityPage extends Utils {
+public class ActivityPage {
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Swapped\"])[1]")
@@ -46,7 +45,7 @@ public class ActivityPage extends Utils {
     private SelenideElement getXstFromLastTransaction;
 
     @AndroidFindBy(accessibility = "Swapped")
-     @iOSXCUITFindBy(accessibility = "Swapped")
+    @iOSXCUITFindBy(accessibility = "Swapped")
     private SelenideElement swappedItem;
 
     @AndroidFindBy(accessibility = "Sent")
@@ -107,7 +106,7 @@ public class ActivityPage extends Utils {
             log.info("Last transaction type: " + swappedItem.getAttribute("content-desc"));
             getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
         } else if (isIOS()) {
-            getXorAmountValueFromHistory = $(By.name(randomValue+" XOR")).shouldBe(Condition.visible).getValue();
+            getXorAmountValueFromHistory = $(By.name(randomValue + " XOR")).shouldBe(Condition.visible).getValue();
         }
         log.info("Get Xor from last transaction: " + getXorAmountValueFromHistory);
         assertThat(getXorAmountValueFromHistory).isEqualTo(randomValue + " XOR");
@@ -135,7 +134,7 @@ public class ActivityPage extends Utils {
             log.info("Last transaction type: " + sentToPoolItem.getAttribute("content-desc"));
             getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
         } else if (isIOS()) {
-            getXorAmountValueFromHistory = $(By.name(randomLiquidity+" XOR")).shouldBe(Condition.visible).getValue();
+            getXorAmountValueFromHistory = $(By.name(randomLiquidity + " XOR")).shouldBe(Condition.visible).getValue();
         }
         log.info("Get Xor from last transaction: " + getXorAmountValueFromHistory);
         assertThat(getXorAmountValueFromHistory).isEqualTo(randomLiquidity + " XOR");
@@ -163,17 +162,15 @@ public class ActivityPage extends Utils {
             //todo: try to change this to be like ios check
             getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
         } else if (isIOS()) {
-            getXorAmountValueFromHistory = $(By.name(randomValue+" XOR")).shouldBe(Condition.visible).getValue();
+            getXorAmountValueFromHistory = $(By.name(randomValue + " XOR")).shouldBe(Condition.visible).getValue();
         }
         log.info("Get Xor from last transaction: " + getXorAmountValueFromHistory);
         assertThat(getXorAmountValueFromHistory).isEqualTo(randomValue + " XOR");
         closeBtn.shouldBe(Condition.visible).click();
-
     }
 
     @Step
     public ReferralProgramPage checkSetReffererTransaction() {
-
         assertThat(getTransactionStatus.getText()).isEqualTo("Successful");
         backBtn.shouldBe(Condition.visible).click();
         return screen(ReferralProgramPage.class);
@@ -208,6 +205,5 @@ public class ActivityPage extends Utils {
         }
         return screen(ReferralProgramPage.class);
     }
-
 }
 

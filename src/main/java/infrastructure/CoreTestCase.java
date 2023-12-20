@@ -37,7 +37,9 @@ public class CoreTestCase {
     @BeforeSuite
     public void globalSetup() throws IOException {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
-        service = AppiumDriverLocalService.buildService(new AppiumServiceBuilder().withIPAddress("127.0.0.1").withArgument(() -> "--base-path", "/wd/hub"));
+        service = AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
+                .withIPAddress("127.0.0.1")
+                .withArgument(() -> "--base-path", "/wd/hub"));
         service.start();
     }
 
@@ -46,7 +48,9 @@ public class CoreTestCase {
     static void setupAllureReports() {
         Configuration.timeout = 14000;
         Configuration.screenshots = false;
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(true));
     }
 
     @BeforeClass
@@ -86,6 +90,5 @@ public class CoreTestCase {
     public byte[] screenshot() throws IOException {
         File screenshot = Screenshots.getLastScreenshot();
         return screenshot == null ? null : Files.toByteArray(screenshot);
-
     }
 }
