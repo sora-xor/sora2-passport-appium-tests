@@ -42,5 +42,4 @@ public class CommonPage implements Container {
         activityBtn.shouldBe(Condition.visible).click();
         return screen(ActivityPage.class);
     }
-
 }
