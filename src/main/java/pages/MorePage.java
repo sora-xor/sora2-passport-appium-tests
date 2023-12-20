@@ -5,6 +5,8 @@ import com.codeborne.selenide.SelenideElement;
 import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import pages.account.AccountsPage;
 import pages.account.LoginAndSecurityPage;
 
@@ -47,40 +49,40 @@ public class MorePage {
     private SelenideElement informationBtn;
 
 
-    public AccountsPage goToAccounts ()
-    {
+    @Step
+    public AccountsPage goToAccounts() {
         cryptoAccountsBtn.shouldBe(Condition.visible).click();
         return screen(AccountsPage.class);
     }
 
-    public BuyXorPage goToBuyXorWithFiat ()
-    {
+    @Step
+    public BuyXorPage goToBuyXorWithFiat() {
         if (isAndroid()) buyXORbyFiatBtn.shouldBe(Condition.visible).click();
         return screen(BuyXorPage.class);
     }
 
-    public LoginAndSecurityPage goToLoginAndSecurity ()
-    {
+    @Step
+    public LoginAndSecurityPage goToLoginAndSecurity() {
         loginAndSecurityBtn.shouldBe(Condition.visible).click();
         return screen(LoginAndSecurityPage.class);
     }
 
-    public NodesPage goToNodesPage ()
-    {
+    @Step
+    public NodesPage goToNodesPage() {
         nodesBtn.shouldBe(Condition.visible).click();
         return screen(NodesPage.class);
     }
 
-    public AppSettingsPage goToAppSettingsPage ()
-    {
+    @Step
+    public AppSettingsPage goToAppSettingsPage() {
         appSettingsBtn.shouldBe(Condition.visible).click();
         return screen(AppSettingsPage.class);
     }
 
+    @Step
     public ReferralProgramPage goToReferralProgramPage()
     {
         if (isAndroid()) Utils.scrollForward(1);
-
         inviteFriendsBtn.shouldBe(Condition.visible).click();
         return screen(ReferralProgramPage.class);
     }

@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -41,8 +42,8 @@ public class KYCPage{
     private SelenideElement closeKYCBtn;
 
 
-    public VerificationStatusPage getPrepared()
-    {
+    @Step
+    public VerificationStatusPage getPrepared() {
         String getPreparedText = "";
         getPreparedText = getPreparedTitle.getText();
         getPreparedTitle.shouldBe(Condition.visible);
@@ -65,6 +66,5 @@ public class KYCPage{
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Log out']")));
 
         return screen(VerificationStatusPage.class);
-
     }
 }

@@ -7,6 +7,7 @@ import com.codeborne.selenide.appium.SelenideAppium;
 import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.Random;
@@ -18,6 +19,7 @@ import static com.codeborne.selenide.appium.ScrollDirection.DOWN;
 import static infrastructure.Platform.isAndroid;
 import static infrastructure.Platform.isIOS;
 import static org.assertj.core.api.Assertions.assertThat;
+
 @Log4j2
 public class PolkaswapPage extends CommonPage {
 
@@ -90,7 +92,8 @@ public class PolkaswapPage extends CommonPage {
     @iOSXCUITFindBy(accessibility = "Close")
     private SelenideElement closeBtn;
 
-    public void PolkaswapPageIsOpen (){
+    @Step
+    public void PolkaswapPageIsOpen(){
     	if (isAndroid()) {
     		String actualTitle = disclaimer.shouldBe(Condition.visible).getText();
     		assertThat(actualTitle).as("Disclaimer").isEqualTo("Disclaimer");
@@ -105,6 +108,7 @@ public class PolkaswapPage extends CommonPage {
         disclaimerCloseBtn.shouldBe(Condition.visible).click();
     }
 
+    @Step
     public void PolkaswapSelectToken() {
         selectTokenXor.shouldBe(Condition.visible).click();
         xorToken.shouldBe(Condition.visible).click();
@@ -112,18 +116,14 @@ public class PolkaswapPage extends CommonPage {
         xstToken.shouldBe(Condition.visible).click();
     }
 
-    public void SimpleSwap(String randomValue)
-    {
+    @Step
+    public void SimpleSwap(String randomValue) {
         inputAmountFieldXor.shouldBe(Condition.visible).sendKeys(randomValue);
         swapBtn.shouldBe(Condition.enabled).click();
         confirmBtn.shouldBe(Condition.visible).click();
         swappedItem.shouldBe(Condition.visible);
         closeBtn.shouldBe(Condition.visible).click();
 
-        log.info("Entered Xor (randomValue) : "+randomValue+" XOR");
-
+        log.info("Entered Xor (randomValue) : " + randomValue + " XOR");
     }
-
-
-
 }

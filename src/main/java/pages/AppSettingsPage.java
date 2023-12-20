@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static infrastructure.Platform.isAndroid;
@@ -60,6 +61,7 @@ public class AppSettingsPage {
     @AndroidFindBy(xpath = "//*[@text='App settings']")
     private SelenideElement AppSettingBtnSpanish;
 
+    @Step
     public AppSettingsPage switchToEnglish() {
         appSettingsSpanishField.shouldBe(Condition.visible).click();
         changeLanguageEnglishBtn.shouldBe(Condition.visible).click();
@@ -68,56 +70,49 @@ public class AppSettingsPage {
         return screen(AppSettingsPage.class);
     }
 
-    public AppSettingsPage switchToRussian()
-    {
+    @Step
+    public AppSettingsPage switchToRussian() {
         return screen(AppSettingsPage.class);
     }
 
+    @Step
     public AppSettingsPage switchToSpanish() {
         changeLanguageEnglishBtn.shouldBe(Condition.visible).click();
         spanishLanguage.shouldBe(Condition.visible).click();
         if (isIOS()) crossBtn.shouldBe(Condition.visible).click();
         cryptoAccountBtnSpanish.shouldBe(Condition.visible);
-        //if (isAndroid()) buyXorWithFiatBtnSpanish.shouldBe(Condition.visible);
         if (isAndroid()) soraCardBtnSpanish.shouldBe(Condition.visible);
         nodesBtnSpanish.shouldBe(Condition.visible);
         appSettingsSpanishField.shouldBe(Condition.visible).click();
         return screen(AppSettingsPage.class);
     }
 
-    public AppSettingsPage switchToFrench()
-    {
+    public AppSettingsPage switchToFrench() {
         return screen(AppSettingsPage.class);
     }
 
 
-    public AppSettingsPage switchToGerman()
-    {
+    public AppSettingsPage switchToGerman() {
         return screen(AppSettingsPage.class);
     }
 
-    public AppSettingsPage switchToNorwegian()
-    {
+    public AppSettingsPage switchToNorwegian() {
         return screen(AppSettingsPage.class);
     }
 
-    public AppSettingsPage switchToChinese()
-    {
+    public AppSettingsPage switchToChinese() {
         return screen(AppSettingsPage.class);
     }
 
-    public AppSettingsPage switchToIndonesian()
-    {
+    public AppSettingsPage switchToIndonesian() {
         return screen(AppSettingsPage.class);
     }
 
-    public AppSettingsPage switchToTurkish()
-    {
+    public AppSettingsPage switchToTurkish() {
         return screen(AppSettingsPage.class);
     }
 
-    public AppSettingsPage switchToArab()
-    {
+    public AppSettingsPage switchToArab() {
         return screen(AppSettingsPage.class);
     }
 

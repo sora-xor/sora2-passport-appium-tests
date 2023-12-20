@@ -2,6 +2,7 @@ package commontests;
 
 import configs.TestConfig;
 import infrastructure.CoreTestCase;
+import io.qameta.allure.TmsLink;
 import io.qameta.allure.Issue;
 import org.testng.annotations.Test;
 import pages.*;
@@ -10,6 +11,7 @@ import pages.account.PinCodePage;
 
 public class SetReferrerLink extends CoreTestCase {
 
+    @TmsLink("SORA-377")
     @Test
     @Issue("link for ios to be added")
     public void setReferrerLink() {

@@ -3,6 +3,10 @@ package commontests;
 import configs.TestConfig;
 import infrastructure.CoreTestCase;
 import infrastructure.Random;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Features;
+import io.qameta.allure.TmsLink;
+import io.qameta.allure.TmsLinks;
 import org.testng.annotations.Test;
 import pages.ActivityPage;
 import pages.ExplorePage;
@@ -17,6 +21,8 @@ public class AddLiquidityTest extends CoreTestCase {
     String randomLiquidity = rnd.RandomValue();
 
     @Test
+    @Feature("Pool")
+    @TmsLink("SORA-255")
     public void addLiquidityTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         ExplorePage explorePage = walletPage.getNavigationBarSection().goToExplorePage();
@@ -24,7 +30,7 @@ public class AddLiquidityTest extends CoreTestCase {
         explorePage.addLiquidity(randomLiquidity);
         ActivityPage activityPage = walletPage.goToActivityPage();
         activityPage.checkLastTransactionStatusPool(randomLiquidity);
-        MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
+        MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
         enterCodePage.enterPinCode();

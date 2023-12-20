@@ -4,41 +4,43 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
+
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 
 
 @Log4j2
 public class ImportAccountPage {
 
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextView")
-	@AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.widget.EditText")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextView")
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.widget.EditText")
     private SelenideElement mnemonicInput;
-	
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField")
-	@AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/accountNameEt")
+
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField")
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/accountNameEt")
     private SelenideElement accountNameField;
-	
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]")
+
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]")
     private SelenideElement topOfScreen;
-	
-	@iOSXCUITFindBy(accessibility = "Account name")
+
+    @iOSXCUITFindBy(accessibility = "Account name")
     private SelenideElement accountNameInput;
-	
-	@iOSXCUITFindBy(accessibility = "Choose source type")
+
+    @iOSXCUITFindBy(accessibility = "Choose source type")
     private SelenideElement sourceTypeSelector;
-	
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Raw seed \"]")
+
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Raw seed \"]")
     private SelenideElement rawSeedSelectorElement;
-	
-	@iOSXCUITFindBy(accessibility = "OK")
+
+    @iOSXCUITFindBy(accessibility = "OK")
     private SelenideElement rawSeedAlertOkBtn;
-	
-	@iOSXCUITFindBy(accessibility = "Done")
+
+    @iOSXCUITFindBy(accessibility = "Done")
     private SelenideElement DoneBtn;
 
-	@iOSXCUITFindBy(accessibility = "Continue")
-	@AndroidFindBy(xpath = "//*[@text='Continue']")
+    @iOSXCUITFindBy(accessibility = "Continue")
+    @AndroidFindBy(xpath = "//*[@text='Continue']")
     private SelenideElement nextBtn;
 
     @AndroidFindBy(xpath = "//*[@text='Enter your secret Raw Seed']")
@@ -50,15 +52,18 @@ public class ImportAccountPage {
     private SelenideElement enterPassphraseTitle;
 
 
+    @Step
     public NameYourAccountPage enterMnemonicPhrase(String mnemonic) {
 
         enterPassphraseTitle.shouldBe(Condition.visible);
-        log.info("Enter Mnemonic Phrase: " + mnemonic );
+        log.info("Enter Mnemonic Phrase: " + mnemonic);
         mnemonicInput.shouldBe(Condition.visible).sendKeys(mnemonic);
         nextBtn.shouldBe(Condition.visible).click();
         return screen(NameYourAccountPage.class);
     }
-    public NameYourAccountPage enterRawSeed (String rawseed) {
+
+    @Step
+    public NameYourAccountPage enterRawSeed(String rawseed) {
 
         enterRawSeedTitle.shouldBe(Condition.visible);
         log.info("Enter Rawseed" + rawseed);
@@ -66,7 +71,6 @@ public class ImportAccountPage {
         nextBtn.shouldBe(Condition.visible).click();
         return screen(NameYourAccountPage.class);
     }
-
 }
 
 

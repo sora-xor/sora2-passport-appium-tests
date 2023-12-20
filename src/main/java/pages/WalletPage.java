@@ -6,6 +6,7 @@ import configs.TestConfig;
 import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import pages.account.*;
 
@@ -36,6 +37,7 @@ public class WalletPage extends CommonPage {
     @AndroidFindBy(id ="jp.co.soramitsu.sora.develop:id/CardInfo")
     private SelenideElement soraCardInfo;
 
+    @Step
     public static WalletPage importAccountUsePassphrase(String mnemonic) {
         WelcomePage welcomePage = screen(WelcomePage.class);
         ImportAccountPage importAccountPage = welcomePage.goToImportAccountPagePassphrase();
@@ -46,6 +48,7 @@ public class WalletPage extends CommonPage {
         return screen(WalletPage.class);
     }
 
+    @Step
     public static WalletPage importAccountUseRawSeed() {
         WelcomePage welcomePage = screen(WelcomePage.class);
         ImportAccountPage importAccountPage = welcomePage.goToImportAccountPageRawSeed();
@@ -56,10 +59,11 @@ public class WalletPage extends CommonPage {
         return screen(WalletPage.class);
     }
 
+    @Step
     public static WalletPage createNewAccount() {
         WelcomePage welcomePage = screen(WelcomePage.class);
         NameYourAccountPage nameYourAccountPage = welcomePage.goToCreateAccountPage();
-        PayAttentionPage payAttention = nameYourAccountPage.enterAccountName("Account Test");
+        PayAttentionPage payAttention = nameYourAccountPage.enterAccountName();
         PassphrasePage passphrasePage = payAttention.confirmPayAttention();
         PinCodePage pinCodePage = passphrasePage.skipPassPhrase();
         WalletPage walletPage = pinCodePage.enterAndConfirmPinCodeNew();
@@ -67,6 +71,7 @@ public class WalletPage extends CommonPage {
         return screen(WalletPage.class);
     }
 
+    @Step
     public void walletPageIsOpen() {
         if (isAndroid()) {
             walletTab.shouldBe(Condition.selected);
@@ -79,12 +84,14 @@ public class WalletPage extends CommonPage {
         }
     }
 
+    @Step
     public SoraCardPage goToSoraCardPage() {
         log.info("Click Get Sora Card button");
         getSoraCardBtn.shouldBe(Condition.visible).click();
         return screen(SoraCardPage.class);
     }
 
+    @Step
     public LiquidAssetsPage goToLiquidAssets() {
 //        if (isAndroid()) utils.scrollForward(1);
 //        if (isIOS()) {
@@ -95,6 +102,7 @@ public class WalletPage extends CommonPage {
         return screen(LiquidAssetsPage.class);
     }
 
+    @Step
     public SoraCardDetailsPage goToSoraCardInfo ()
     {
         soraCardInfo.shouldBe(Condition.visible).click();
