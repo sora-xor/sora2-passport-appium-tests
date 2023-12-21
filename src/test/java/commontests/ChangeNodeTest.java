@@ -7,7 +7,6 @@ import pages.MorePage;
 import pages.NodesPage;
 import pages.WalletPage;
 import pages.account.AccountsPage;
-import pages.account.LoginAndSecurityPage;
 import pages.account.PinCodePage;
 
 public class ChangeNodeTest extends CoreTestCase {
@@ -21,6 +20,6 @@ public class ChangeNodeTest extends CoreTestCase {
         nodesPage.switchToDefaultNode();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCode();
+        enterCodePage.enterPinCodeOnLogout();
     }
 }

@@ -3,7 +3,6 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
@@ -84,7 +83,6 @@ public class ActivityPage {
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.Button")
     private SelenideElement backBtn;
 
-    //todo: find out maybe one method check status with parameters will be enough
 
     @Step
     public void checkLastTransactionStatusSwap(String randomValue) {
@@ -104,18 +102,17 @@ public class ActivityPage {
         String getXorAmountValueFromHistory = "";
         if (isAndroid()) {
             log.info("Last transaction type: " + swappedItem.getAttribute("content-desc"));
-            getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
+            getXorAmountValueFromHistory = $(By.xpath(String.format("//*[@text=\"%s XOR\"]", randomValue))).shouldBe(Condition.visible).getText();
         } else if (isIOS()) {
             getXorAmountValueFromHistory = $(By.name(randomValue + " XOR")).shouldBe(Condition.visible).getValue();
         }
         log.info("Get Xor from last transaction: " + getXorAmountValueFromHistory);
-        assertThat(getXorAmountValueFromHistory).isEqualTo(randomValue + " XOR");
         closeBtn.shouldBe(Condition.visible).click();
     }
 
 
     @Step
-    public void checkLastTransactionStatusPool(String randomLiquidity) {
+    public void checkLastTransactionStatusPool(String randomValue) {
         if (isIOS()) {
             log.info("Waiting for the transaction item to be displayed");
             WebDriver driver = WebDriverRunner.getWebDriver();
@@ -132,12 +129,11 @@ public class ActivityPage {
         String getXorAmountValueFromHistory = "";
         if (isAndroid()) {
             log.info("Last transaction type: " + sentToPoolItem.getAttribute("content-desc"));
-            getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
+            getXorAmountValueFromHistory = $(By.xpath(String.format("//*[@text=\"%s XOR\"]", randomValue))).shouldBe(Condition.visible).getText();
         } else if (isIOS()) {
-            getXorAmountValueFromHistory = $(By.name(randomLiquidity + " XOR")).shouldBe(Condition.visible).getValue();
+            getXorAmountValueFromHistory = $(By.name(randomValue + " XOR")).shouldBe(Condition.visible).getValue();
         }
         log.info("Get Xor from last transaction: " + getXorAmountValueFromHistory);
-        assertThat(getXorAmountValueFromHistory).isEqualTo(randomLiquidity + " XOR");
         closeBtn.shouldBe(Condition.visible).click();
     }
 
@@ -159,13 +155,11 @@ public class ActivityPage {
         String getXorAmountValueFromHistory = "";
         if (isAndroid()) {
             log.info("Last transaction type: " + sentItem.getAttribute("content-desc"));
-            //todo: try to change this to be like ios check
-            getXorAmountValueFromHistory = getXorFromLastTransaction.shouldBe(Condition.visible).getText();
+            getXorAmountValueFromHistory = $(By.xpath(String.format("//*[@text=\"%s XOR\"]", randomValue))).shouldBe(Condition.visible).getText();
         } else if (isIOS()) {
             getXorAmountValueFromHistory = $(By.name(randomValue + " XOR")).shouldBe(Condition.visible).getValue();
         }
         log.info("Get Xor from last transaction: " + getXorAmountValueFromHistory);
-        assertThat(getXorAmountValueFromHistory).isEqualTo(randomValue + " XOR");
         closeBtn.shouldBe(Condition.visible).click();
     }
 

@@ -10,16 +10,12 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import pages.account.*;
 
-import static com.codeborne.selenide.appium.AppiumScrollOptions.down;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static infrastructure.Platform.isAndroid;
 import static infrastructure.Platform.isIOS;
 
 @Log4j2
 public class WalletPage extends CommonPage {
-
-    Utils utils = new Utils();
-
     @AndroidFindBy(accessibility = "Wallet")
     @iOSXCUITFindBy(accessibility = "TabBar/wallet")
     private SelenideElement walletTab;
@@ -43,7 +39,7 @@ public class WalletPage extends CommonPage {
         ImportAccountPage importAccountPage = welcomePage.goToImportAccountPagePassphrase();
         NameYourAccountPage nameYourAccountPage = importAccountPage.enterMnemonicPhrase(mnemonic);
         PinCodePage pinCodePage = nameYourAccountPage.enterAccountNameAfterImport("Import Passphrase");
-        WalletPage walletPage = pinCodePage.enterAndConfirmPinCode();
+        WalletPage walletPage = pinCodePage.enterAndConfirmPinCodeImport();
         walletPage.walletPageIsOpen();
         return screen(WalletPage.class);
     }
@@ -54,7 +50,7 @@ public class WalletPage extends CommonPage {
         ImportAccountPage importAccountPage = welcomePage.goToImportAccountPageRawSeed();
         NameYourAccountPage nameYourAccountPage = importAccountPage.enterRawSeed(TestConfig.config.rawseed());
         PinCodePage pinCodePage = nameYourAccountPage.enterAccountNameAfterImport("Import RawSeed");
-        WalletPage walletPage = pinCodePage.enterAndConfirmPinCode();
+        WalletPage walletPage = pinCodePage.enterAndConfirmPinCodeImport();
         walletPage.walletPageIsOpen();
         return screen(WalletPage.class);
     }
@@ -63,7 +59,7 @@ public class WalletPage extends CommonPage {
     public static WalletPage createNewAccount() {
         WelcomePage welcomePage = screen(WelcomePage.class);
         NameYourAccountPage nameYourAccountPage = welcomePage.goToCreateAccountPage();
-        PayAttentionPage payAttention = nameYourAccountPage.enterAccountName();
+        PayAttentionPage payAttention = nameYourAccountPage.enterAccountNameRegistration();
         PassphrasePage passphrasePage = payAttention.confirmPayAttention();
         PinCodePage pinCodePage = passphrasePage.skipPassPhrase();
         WalletPage walletPage = pinCodePage.enterAndConfirmPinCodeNew();

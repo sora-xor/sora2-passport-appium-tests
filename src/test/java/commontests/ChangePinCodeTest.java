@@ -26,6 +26,6 @@ public class ChangePinCodeTest extends CoreTestCase {
         MorePage morePage1 = loginAndSecurityPage.checkToastPinCodeChanged();
         AccountsPage accountsPage = morePage1.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCode();
+        enterCodePage.enterPinCodeOnLogout();
     }
 }

@@ -20,7 +20,6 @@ public class ExplorePage extends CommonPage{
     @iOSXCUITFindBy(accessibility = "Explore")
     private SelenideElement exploreBottomNavBtn;
 
-    infrastructure.Utils utils = new Utils();
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OnMenuItem")
     @iOSXCUITFindBy(accessibility = "Create pool")
     private SelenideElement addLiquidityBtn;
@@ -86,7 +85,6 @@ public class ExplorePage extends CommonPage{
     public void explorePolkaswapPools()
     {
         exploreBottomNavBtn.shouldBe(Condition.selected);
-        //todo: find out WHY is it here...
         try {
             Thread.sleep(4000);
         } catch (InterruptedException e) {

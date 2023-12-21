@@ -25,9 +25,8 @@ public class NameYourAccountPage {
     private SelenideElement DoneBtn;
 
 
-    //todo: make one method with name entering and two steps using it
     @Step
-    public PayAttentionPage enterAccountName() {
+    public PayAttentionPage enterAccountNameRegistration() {
         accountNameField.shouldBe(Condition.visible).sendKeys("Create Account");
         nextBtn.shouldBe(Condition.visible).click();
         return screen(PayAttentionPage.class);

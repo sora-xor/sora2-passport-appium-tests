@@ -65,7 +65,7 @@ public class WelcomePage {
             MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
             AccountsPage accountsPage = morePage.goToAccounts();
             PinCodePage enterCodePage = accountsPage.forgetAccount();
-            enterCodePage.enterPinCode();
+            enterCodePage.enterPinCodeOnLogout();
             WebDriverWait wait_again = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
             wait_again.until(ExpectedConditions.visibilityOf(createAccountBtn));
 
@@ -93,7 +93,7 @@ public class WelcomePage {
             MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
             AccountsPage accountsPage = morePage.goToAccounts();
             PinCodePage enterCodePage = accountsPage.forgetAccount();
-            enterCodePage.enterPinCode();
+            enterCodePage.enterPinCodeOnLogout();
             WebDriverWait wait_again = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
             wait_again.until(ExpectedConditions.visibilityOf(importAccountBtn));
 
@@ -122,7 +122,7 @@ public class WelcomePage {
             MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
             AccountsPage accountsPage = morePage.goToAccounts();
             PinCodePage enterCodePage = accountsPage.forgetAccount();
-            enterCodePage.enterPinCode();
+            enterCodePage.enterPinCodeOnLogout();
             WebDriverWait wait_again = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
             wait_again.until(ExpectedConditions.visibilityOf(importAccountBtn));
 
@@ -150,14 +150,12 @@ public class WelcomePage {
             MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
             AccountsPage accountsPage = morePage.goToAccounts();
             PinCodePage enterCodePage = accountsPage.forgetAccount();
-            enterCodePage.enterPinCode();
+            enterCodePage.enterPinCodeOnLogout();
             WebDriverWait wait_again = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
             wait_again.until(ExpectedConditions.visibilityOf(importAccountBtn));
-
         }
     }
 
-    //todo: make one method on entering pin code
     @Step
     public WalletPage enterPinCode() {
         log.info("Enter Pin Code");

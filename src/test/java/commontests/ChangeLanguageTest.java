@@ -6,7 +6,6 @@ import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
 import pages.AppSettingsPage;
 import pages.MorePage;
-import pages.NodesPage;
 import pages.WalletPage;
 import pages.account.AccountsPage;
 import pages.account.PinCodePage;
@@ -23,6 +22,6 @@ public class ChangeLanguageTest extends CoreTestCase {
         appSettingsPage.switchToEnglish();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCode();
+        enterCodePage.enterPinCodeOnLogout();
     }
 }

@@ -26,6 +26,6 @@ public class SendTokenTest extends CoreTestCase {
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCode();
+        enterCodePage.enterPinCodeOnLogout();
     }
 }

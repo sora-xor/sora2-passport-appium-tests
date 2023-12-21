@@ -4,9 +4,7 @@ import configs.TestConfig;
 import infrastructure.CoreTestCase;
 import infrastructure.Random;
 import io.qameta.allure.Feature;
-import io.qameta.allure.Features;
 import io.qameta.allure.TmsLink;
-import io.qameta.allure.TmsLinks;
 import org.testng.annotations.Test;
 import pages.ActivityPage;
 import pages.ExplorePage;
@@ -33,6 +31,6 @@ public class AddLiquidityTest extends CoreTestCase {
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCode();
+        enterCodePage.enterPinCodeOnLogout();
     }
 }

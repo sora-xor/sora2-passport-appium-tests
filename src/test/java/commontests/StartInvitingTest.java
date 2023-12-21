@@ -23,6 +23,6 @@ public class StartInvitingTest extends CoreTestCase {
         referralProgramPage.returnToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCode();
+        enterCodePage.enterPinCodeOnLogout();
     }
 }

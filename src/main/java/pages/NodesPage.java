@@ -57,7 +57,6 @@ public class NodesPage {
         confirmBtn.shouldBe(Condition.visible).click();
         successfullySwitchForm.shouldBe(Condition.visible);
         confirmBtn.shouldBe(Condition.visible).click();
-        //todo: why thread sleep
         try {
             Thread.sleep(4000);
         } catch (InterruptedException e) {

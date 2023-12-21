@@ -47,92 +47,68 @@ public class PinCodePage {
     @iOSXCUITFindBy(accessibility = "Confirm new pin code")
     private SelenideElement confirmNewPinCodeTitleTv;
 
+    @AndroidFindBy(xpath = "//*[@text='Enter pin code']")
+    @iOSXCUITFindBy(accessibility = "Enter pin code")
+    private SelenideElement enterPinCodeTitleTv;
+
     @iOSXCUITFindBy(accessibility = "0")
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/btn0")
     private SelenideElement pinCodeBtn0;
 
 
-    //todo: make one method for pin code entering and two steps using it
     @Step
     public WalletPage enterAndConfirmPinCodeNew() {
         if (isAndroid()) {
             log.info("Set up Pin Code");
-            $(By.id("jp.co.soramitsu.sora.develop:id/"));
-
-            for (int i = 1; i <= 6; i++) {
-                $(By.id("jp.co.soramitsu.sora.develop:id/" + i)).click();
-            }
-            assertThat(pinCodeRepeatTitleTv.getText()).isEqualTo("Confirm pin code");
+            assertThat(pinCodeTitleTv.isDisplayed()).isTrue();
+            enterPinCodeAndroid();
+            assertThat(pinCodeRepeatTitleTv.isDisplayed()).isTrue();
             log.info("Confirm Pin Code");
-            for (int i = 1; i <= 6; i++) {
-                $(By.id("jp.co.soramitsu.sora.develop:id/" + i)).click();
-            }
+            enterPinCodeAndroid();
         }
         if (isIOS()) {
             log.info("Set up Pin Code");
-            assertThat(pinCodeTitleTv.isDisplayed());
-            for (int i = 1; i <= 6; i++) {
-                //$(By.name(""+i)).click();
-                $(By.xpath("(//XCUIElementTypeStaticText[@name=\"" + i + "\"])[2]")).click();
-            }
-            assertThat(pinCodeRepeatTitleTv.isDisplayed());
+            assertThat(pinCodeTitleTv.isDisplayed()).isTrue();
+            enterPinCodeIOs();
+            assertThat(pinCodeRepeatTitleTv.isDisplayed()).isTrue();
             log.info("Confirm Pin Code");
-            for (int i = 1; i <= 6; i++) {
-                //$(By.name(""+i)).click();
-                $(By.xpath("(//XCUIElementTypeStaticText[@name=\"" + i + "\"])[2]")).click();
-            }
+            enterPinCodeIOs();
         }
         return screen(WalletPage.class);
     }
 
     @Step
-    public WalletPage enterAndConfirmPinCode() {
+    public WalletPage enterAndConfirmPinCodeImport() {
         log.info("Set up Pin Code");
         if (isAndroid()) {
             log.info("Set up Pin Code");
-            $(By.id("jp.co.soramitsu.sora.develop:id/"));
-
-            for (int i = 1; i <= 6; i++) {
-                $(By.id("jp.co.soramitsu.sora.develop:id/" + i)).click();
-            }
-            assertThat(pinCodeRepeatTitleTv.getText()).isEqualTo("Confirm pin code");
+            assertThat(pinCodeTitleTv.isDisplayed()).isTrue();
+            enterPinCodeAndroid();
+            assertThat(pinCodeRepeatTitleTv.isDisplayed()).isTrue();
             log.info("Confirm Pin Code");
-            for (int i = 1; i <= 6; i++) {
-                $(By.id("jp.co.soramitsu.sora.develop:id/" + i)).click();
-            }
+            enterPinCodeAndroid();
         }
         if (isIOS()) {
             log.info("Set up Pin Code");
-            assertThat(pinCodeTitleTv.isDisplayed());
-            for (int i = 1; i <= 6; i++) {
-                //$(By.name(""+i)).click();
-                $(By.xpath("//XCUIElementTypeStaticText[@name=\"" + i + "\"]")).click();
-            }
-            assertThat(pinCodeRepeatTitleTv.isDisplayed());
+            assertThat(pinCodeTitleTv.isDisplayed()).isTrue();
+            enterPinCodeIOs();
+            assertThat(pinCodeRepeatTitleTv.isDisplayed()).isTrue();
             log.info("Confirm Pin Code");
-            for (int i = 1; i <= 6; i++) {
-                //$(By.name(""+i)).click();
-                $(By.xpath("//XCUIElementTypeStaticText[@name=\"" + i + "\"]")).click();
-            }
+            enterPinCodeIOs();
         }
         return screen(WalletPage.class);
     }
 
     @Step
-    public WelcomePage enterPinCode() {
+    public WelcomePage enterPinCodeOnLogout() {
         log.info("Enter Pin Code");
         if (isAndroid()) {
-            $(By.id("jp.co.soramitsu.sora.develop:id/"));
-
-            for (int i = 1; i <= 6; i++) {
-                $(By.id("jp.co.soramitsu.sora.develop:id/" + i)).click();
-            }
+            assertThat(enterPinCodeTitleTv.isDisplayed()).isTrue();
+            enterPinCodeAndroid();
         }
         if (isIOS()) {
-            assertThat(pinCodeTitleTv.isDisplayed());
-            for (int i = 1; i <= 6; i++) {
-                $(By.name("" + i)).click();
-            }
+            assertThat(enterPinCodeTitleTv.isDisplayed()).isTrue();
+            enterPinCodeIOs();
         }
         logoutAlertBnt.click();
         return screen(WelcomePage.class);
@@ -141,47 +117,39 @@ public class PinCodePage {
     @Step
     public LoginAndSecurityPage changeAndConfirmChangePinCode() {
         if (isAndroid()) {
-            $(By.id("jp.co.soramitsu.sora.develop:id/"));
-            assertThat(currentPinCodeTitleTv.getText()).isEqualTo("Enter current pin code");
+            assertThat(currentPinCodeTitleTv.isDisplayed()).isTrue();
             log.info("Enter Current Pin Code");
-
-            for (int i = 1; i <= 6; i++) {
-                $(By.id("jp.co.soramitsu.sora.develop:id/" + i)).click();
-            }
-            assertThat(newPinCodeTitleTv.getText()).isEqualTo("Enter new pin code");
+            enterPinCodeAndroid();
+            assertThat(newPinCodeTitleTv.isDisplayed()).isTrue();
             log.info("Enter new Pin Code");
-
-            for (int i = 1; i <= 6; i++) {
-                $(By.id("jp.co.soramitsu.sora.develop:id/" + i)).click();
-            }
-
-            assertThat(confirmNewPinCodeTitleTv.getText()).isEqualTo("Confirm new pin code");
+            enterPinCodeAndroid();
+            assertThat(confirmNewPinCodeTitleTv.isDisplayed()).isTrue();
             log.info("Confirm Pin Code");
-
-            for (int i = 1; i <= 6; i++) {
-                $(By.id("jp.co.soramitsu.sora.develop:id/" + i)).click();
-            }
+            enterPinCodeAndroid();
         }
         if (isIOS()) {
-            assertThat(currentPinCodeTitleTv.isDisplayed());
+            assertThat(currentPinCodeTitleTv.isDisplayed()).isTrue();
             log.info("Enter Current Pin Code");
-            for (int i = 1; i <= 6; i++) {
-                $(By.name("" + i)).click();
-                //$(By.xpath("(//XCUIElementTypeStaticText[@name=\""+i+"\"])[2]")).click();
-            }
-            assertThat(newPinCodeTitleTv.isDisplayed());
+            enterPinCodeIOs();
+            assertThat(newPinCodeTitleTv.isDisplayed()).isTrue();
             log.info("Enter new Pin Code");
-            for (int i = 1; i <= 6; i++) {
-                $(By.name("" + i)).click();
-                //$(By.xpath("(//XCUIElementTypeStaticText[@name=\""+i+"\"])[2]")).click();
-            }
-            assertThat(confirmNewPinCodeTitleTv.isDisplayed());
+            enterPinCodeIOs();
+            assertThat(confirmNewPinCodeTitleTv.isDisplayed()).isTrue();
             log.info("Confirm Pin Code");
-            for (int i = 1; i <= 6; i++) {
-                $(By.name("" + i)).click();
-                //$(By.xpath("(//XCUIElementTypeStaticText[@name=\""+i+"\"])[2]")).click();
-            }
+            enterPinCodeIOs();
         }
         return screen(LoginAndSecurityPage.class);
+    }
+    public void enterPinCodeAndroid(){
+        for (int i = 1; i <= 6; i++) {
+            $(By.id("jp.co.soramitsu.sora.develop:id/" + i)).click();
+        }
+    }
+
+    public void enterPinCodeIOs(){
+        for (int i = 1; i <= 6; i++) {
+            $(By.name("" + i)).click();
+            //$(By.xpath("(//XCUIElementTypeStaticText[@name=\""+i+"\"])[2]")).click();
+        }
     }
 }

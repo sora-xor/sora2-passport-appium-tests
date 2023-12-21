@@ -17,6 +17,6 @@ public class AddCustomNodeTest extends CoreTestCase {
         nodesPage.addCustomNode();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCode();
+        enterCodePage.enterPinCodeOnLogout();
     }
 }

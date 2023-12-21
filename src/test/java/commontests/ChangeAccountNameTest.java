@@ -2,9 +2,7 @@ package commontests;
 
 import infrastructure.CoreTestCase;
 import io.qameta.allure.Feature;
-import io.qameta.allure.Features;
 import io.qameta.allure.TmsLink;
-import io.qameta.allure.TmsLinks;
 import org.testng.annotations.Test;
 import pages.MorePage;
 import pages.WalletPage;
@@ -23,6 +21,6 @@ public class ChangeAccountNameTest extends CoreTestCase {
         accountsPage.changeAccountName();
         accountsPage.returnToAccountsPage();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCode();
+        enterCodePage.enterPinCodeOnLogout();
     }
 }
