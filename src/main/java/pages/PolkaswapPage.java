@@ -21,7 +21,7 @@ import static infrastructure.Platform.isIOS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-public class PolkaswapPage extends CommonPage {
+public class PolkaswapPage {
 
     @AndroidFindBy(xpath = "//*[@text='Disclaimer']")
     @iOSXCUITFindBy(accessibility = "Disclaimer")

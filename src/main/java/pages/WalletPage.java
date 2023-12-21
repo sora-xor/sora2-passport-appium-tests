@@ -11,8 +11,7 @@ import lombok.extern.log4j.Log4j2;
 import pages.account.*;
 
 import static com.codeborne.selenide.appium.ScreenObject.screen;
-import static infrastructure.Platform.isAndroid;
-import static infrastructure.Platform.isIOS;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
 public class WalletPage extends CommonPage {
@@ -67,17 +66,19 @@ public class WalletPage extends CommonPage {
         return screen(WalletPage.class);
     }
 
-    @Step
     public void walletPageIsOpen() {
-        if (isAndroid()) {
+        log.info("Wallet tab is selected: " + getNavigationBarSection().isWalletTabSelected());
+        assertThat(getNavigationBarSection().isWalletTabSelected()).isTrue();
+        /*if (isAndroid()) {
             walletTab.shouldBe(Condition.selected);
             log.info("Wallet tab is selected: "+walletTab.shouldBe(Condition.selected).getAttribute("selected"));
         }
         if (isIOS()) {
             walletTab.shouldBe(Condition.visible);
             log.info("Wallet tab is selected: "+walletTab.shouldBe(Condition.visible).getAttribute("visible"));
-
         }
+
+         */
     }
 
     @Step

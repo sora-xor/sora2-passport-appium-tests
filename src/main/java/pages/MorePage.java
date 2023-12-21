@@ -14,7 +14,7 @@ import pages.account.LoginAndSecurityPage;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static infrastructure.Platform.isAndroid;
 
-public class MorePage {
+public class MorePage extends CommonPage{
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/CryptoAccountsButton")
     @iOSXCUITFindBy(accessibility = "Crypto Accounts")

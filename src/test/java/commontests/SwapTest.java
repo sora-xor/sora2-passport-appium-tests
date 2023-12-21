@@ -8,9 +8,6 @@ import pages.*;
 import pages.account.AccountsPage;
 import pages.account.PinCodePage;
 
-
-import static com.codeborne.selenide.appium.ScreenObject.screen;
-
 public class SwapTest  extends CoreTestCase {
 
     Random rnd = new Random();
@@ -18,11 +15,11 @@ public class SwapTest  extends CoreTestCase {
     @Test
     public void swapTest () {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
-        PolkaswapPage polkaswapPage = walletPage.goToPolkaswapPage();
+        PolkaswapPage polkaswapPage = walletPage.getNavigationBarSection().goToPolkaswapPage();
         polkaswapPage.PolkaswapPageIsOpen();
         polkaswapPage.PolkaswapSelectToken();
         polkaswapPage.SimpleSwap(randomValue);
-        ActivityPage activityPage = walletPage.goToActivityPage();
+        ActivityPage activityPage = walletPage.getNavigationBarSection().goToActivityPage();
         activityPage.checkLastTransactionStatusSwap(randomValue);
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
