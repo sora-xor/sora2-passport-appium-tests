@@ -14,12 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
 public class ExplorePage extends CommonPage{
-
-    //todo: delete this and use the button from NavigationBarSection class
-    @AndroidFindBy(accessibility = "Explore")
-    @iOSXCUITFindBy(accessibility = "Explore")
-    private SelenideElement exploreBottomNavBtn;
-
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OnMenuItem")
     @iOSXCUITFindBy(accessibility = "Create pool")
     private SelenideElement addLiquidityBtn;
@@ -84,18 +78,18 @@ public class ExplorePage extends CommonPage{
     @Step
     public void explorePolkaswapPools()
     {
-        exploreBottomNavBtn.shouldBe(Condition.selected);
+        assertThat(getNavigationBarSection().isExploreTabSelected()).isTrue();
         try {
             Thread.sleep(4000);
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
         showMorePools.scrollTo().shouldBe(Condition.visible).click();
     }
-    public void addLiquidity(String randomLiquidity)
 
+    @Step
+    public void addLiquidity(String randomLiquidity)
     {
         polkaswapPoolsTitle.shouldBe(Condition.visible);
         addLiquidityBtn.shouldBe(Condition.visible).click();
