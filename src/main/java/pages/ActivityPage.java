@@ -177,7 +177,7 @@ public class ActivityPage extends CommonPage {
         wait.until(ExpectedConditions.visibilityOf(boundedItem));
         boundedItem.shouldBe(Condition.visible);
         closeBtn.shouldBe(Condition.visible).click();
-        String getAvailableInvitations = "";
+        String getAvailableInvitations;
         if (isAndroid()) {
             getAvailableInvitations = availableInvitations.shouldBe(Condition.visible).getText();
             log.info("Available invitations " + getAvailableInvitations);
@@ -192,7 +192,7 @@ public class ActivityPage extends CommonPage {
         wait.until(ExpectedConditions.visibilityOf(unboundedItem));
         unboundedItem.shouldBe(Condition.visible);
         closeBtn.shouldBe(Condition.visible).click();
-        String getAvailableInvitations = "";
+        String getAvailableInvitations;
         if (isAndroid()) {
             getAvailableInvitations = availableInvitations.shouldBe(Condition.visible).getText();
             log.info("Available invitations " + getAvailableInvitations);

@@ -7,15 +7,11 @@ import org.testng.annotations.Test;
 import pages.*;
 import pages.account.*;
 
-import static com.codeborne.selenide.appium.ScreenObject.screen;
-
-
 @Log4j2
 public class CreateAndForgetAccountTest extends CoreTestCase {
 
     @Test
     @Feature("Create account")
-
     public void createAndForgetAccountTest() {
         WalletPage walletPage = WalletPage.createNewAccount();
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();

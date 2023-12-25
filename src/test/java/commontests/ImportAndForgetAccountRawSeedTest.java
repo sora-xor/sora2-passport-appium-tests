@@ -1,7 +1,5 @@
 package commontests;
 
-import static com.codeborne.selenide.appium.ScreenObject.screen;
-
 import io.qameta.allure.Feature;
 import io.qameta.allure.Features;
 import io.qameta.allure.TmsLink;

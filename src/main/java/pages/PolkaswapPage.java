@@ -2,17 +2,11 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.appium.SelenideAppium;
-
-import infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.appium.AppiumScrollOptions.down;
-import static com.codeborne.selenide.appium.AppiumScrollOptions.with;
 import static infrastructure.Platform.isAndroid;
 import static infrastructure.Platform.isIOS;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -90,18 +84,18 @@ public class PolkaswapPage {
     private SelenideElement closeBtn;
 
     @Step
-    public void checkAndCloseDisclaimer(){
-    	if (isAndroid()) {
-    		String actualTitle = disclaimer.shouldBe(Condition.visible).getText();
-    		assertThat(actualTitle).as("Disclaimer").isEqualTo("Disclaimer");
-    	//	Utils.scrollForward(1);
-    	}
-    	if (isIOS()) {
-    		disclaimer.shouldBe(Condition.visible).click();
+    public void checkAndCloseDisclaimer() {
+        if (isAndroid()) {
+            String actualTitle = disclaimer.shouldBe(Condition.visible).getText();
+            assertThat(actualTitle).as("Disclaimer").isEqualTo("Disclaimer");
+            //	Utils.scrollForward(1);
+        }
+        if (isIOS()) {
+            disclaimer.shouldBe(Condition.visible).click();
     	/*	SelenideAppium.$x("//XCUIElementTypeStaticText[@name=\"Close\"]")
     		.scroll(down())
     		.shouldHave(visible);*/
-    	}
+        }
         disclaimerCloseBtn.scrollTo().shouldBe(Condition.visible).click();
     }
 
