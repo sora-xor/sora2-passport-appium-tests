@@ -2,7 +2,9 @@ package commontests;
 
 import configs.TestConfig;
 import infrastructure.CoreTestCase;
+import io.qameta.allure.Feature;
 import io.qameta.allure.Issue;
+import lombok.extern.log4j.Log4j2;
 import pages.ActivityPage;
 import pages.MorePage;
 import pages.ReferralProgramPage;
@@ -11,10 +13,11 @@ import pages.account.AccountsPage;
 import pages.account.PinCodePage;
 import org.testng.annotations.Test;
 
-
+@Log4j2
 public class CreateReferrersLinkTest extends CoreTestCase {
     @Test
-    @Issue("link for ios to be added")
+    @Feature("Invite friends")
+    @Issue("issue in iOS")
     public void createReferrersLinkTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();

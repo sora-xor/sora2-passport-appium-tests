@@ -3,12 +3,14 @@ package commontests;
 import infrastructure.CoreTestCase;
 import io.qameta.allure.Feature;
 import io.qameta.allure.TmsLink;
+import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;
 import pages.MorePage;
 import pages.WalletPage;
 import pages.account.AccountsPage;
 import pages.account.PinCodePage;
 
+@Log4j2
 public class ChangeAccountNameTest extends CoreTestCase {
 
     @Test

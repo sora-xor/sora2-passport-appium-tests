@@ -16,6 +16,5 @@ public class BuyXorWithFiatTest extends CoreTestCase {
         buyXorPage.CompleteFormToBuyXor();
         buyXorPage.enterEmail(TestConfig.config.email());
         buyXorPage.emailVerificationRequired();
-
     }
 }

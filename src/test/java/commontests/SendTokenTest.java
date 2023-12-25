@@ -1,9 +1,9 @@
 package commontests;
 
-
 import configs.TestConfig;
 import infrastructure.CoreTestCase;
 import infrastructure.Random;
+import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;
 import pages.ActivityPage;
 import pages.MorePage;
@@ -11,6 +11,8 @@ import pages.WalletPage;
 import pages.account.AccountsPage;
 import pages.account.LiquidAssetsPage;
 import pages.account.PinCodePage;
+
+@Log4j2
 public class SendTokenTest extends CoreTestCase {
 
     Random rnd = new Random();

@@ -16,12 +16,12 @@ import pages.account.AccountsPage;
 import pages.account.PinCodePage;
 
 @Log4j2
-public class ImportAndForgetAccountRawSeed extends CoreTestCase {
+public class ImportAndForgetAccountRawSeedTest extends CoreTestCase {
 
     @Test
     @Features({@Feature("Import account"), @Feature("Logout")})
     @TmsLinks({@TmsLink("SORA-270"), @TmsLink("SORA-376")})
-    public void importAndForgetAccountRawSeed() {
+    public void importAndForgetAccountRawSeedTest() {
         WalletPage walletPage = WalletPage.importAccountUseRawSeed();
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();

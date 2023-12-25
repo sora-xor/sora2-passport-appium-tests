@@ -11,6 +11,7 @@ import pages.account.AccountsPage;
 import pages.account.LoginAndSecurityPage;
 
 
+import static com.codeborne.selenide.appium.AppiumScrollOptions.down;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static infrastructure.Platform.isAndroid;
 
@@ -82,8 +83,7 @@ public class MorePage extends CommonPage{
     @Step
     public ReferralProgramPage goToReferralProgramPage()
     {
-        if (isAndroid()) Utils.scrollForward(1);
-        inviteFriendsBtn.shouldBe(Condition.visible).click();
+        inviteFriendsBtn.scrollTo().shouldBe(Condition.visible).click();
         return screen(ReferralProgramPage.class);
     }
 }

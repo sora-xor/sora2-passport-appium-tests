@@ -11,14 +11,13 @@ import org.testng.annotations.Test;
 import pages.*;
 import pages.account.*;
 
-
 @Log4j2
-public class ImportAndForgetAccountPassphrase extends CoreTestCase {
+public class ImportAndForgetAccountPassphraseTest extends CoreTestCase {
 
     @Test
     @Features({@Feature("Import account"), @Feature("Logout")})
     @TmsLinks({@TmsLink("SORA-270"), @TmsLink("SORA-9")})
-    public void importAndForgetAccountPassphrase() {
+    public void importAndForgetAccountPassphraseTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();

@@ -10,12 +10,9 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
-import java.util.Random;
-
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.appium.AppiumScrollOptions.down;
 import static com.codeborne.selenide.appium.AppiumScrollOptions.with;
-import static com.codeborne.selenide.appium.ScrollDirection.DOWN;
 import static infrastructure.Platform.isAndroid;
 import static infrastructure.Platform.isIOS;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -93,23 +90,23 @@ public class PolkaswapPage {
     private SelenideElement closeBtn;
 
     @Step
-    public void PolkaswapPageIsOpen(){
+    public void checkAndCloseDisclaimer(){
     	if (isAndroid()) {
     		String actualTitle = disclaimer.shouldBe(Condition.visible).getText();
     		assertThat(actualTitle).as("Disclaimer").isEqualTo("Disclaimer");
-    		Utils.scrollForward(1);
+    	//	Utils.scrollForward(1);
     	}
     	if (isIOS()) {
     		disclaimer.shouldBe(Condition.visible).click();
-    		SelenideAppium.$x("//XCUIElementTypeStaticText[@name=\"Close\"]")
+    	/*	SelenideAppium.$x("//XCUIElementTypeStaticText[@name=\"Close\"]")
     		.scroll(down())
-    		.shouldHave(visible);
+    		.shouldHave(visible);*/
     	}
-        disclaimerCloseBtn.shouldBe(Condition.visible).click();
+        disclaimerCloseBtn.scrollTo().shouldBe(Condition.visible).click();
     }
 
     @Step
-    public void PolkaswapSelectToken() {
+    public void polkaswapSelectToken() {
         selectTokenXor.shouldBe(Condition.visible).click();
         xorToken.shouldBe(Condition.visible).click();
         selectTokenItem2.shouldBe(Condition.visible).click();
@@ -117,7 +114,7 @@ public class PolkaswapPage {
     }
 
     @Step
-    public void SimpleSwap(String randomValue) {
+    public void simpleSwap(String randomValue) {
         inputAmountFieldXor.shouldBe(Condition.visible).sendKeys(randomValue);
         swapBtn.shouldBe(Condition.enabled).click();
         confirmBtn.shouldBe(Condition.visible).click();

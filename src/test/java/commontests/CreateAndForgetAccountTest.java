@@ -1,6 +1,7 @@
 package commontests;
 
 import infrastructure.CoreTestCase;
+import io.qameta.allure.Feature;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;
 import pages.*;
@@ -13,6 +14,8 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 public class CreateAndForgetAccountTest extends CoreTestCase {
 
     @Test
+    @Feature("Create account")
+
     public void createAndForgetAccountTest() {
         WalletPage walletPage = WalletPage.createNewAccount();
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();

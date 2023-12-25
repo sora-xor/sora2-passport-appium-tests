@@ -5,6 +5,7 @@ import infrastructure.CoreTestCase;
 import infrastructure.Random;
 import io.qameta.allure.Feature;
 import io.qameta.allure.TmsLink;
+import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;
 import pages.ActivityPage;
 import pages.ExplorePage;
@@ -13,6 +14,7 @@ import pages.WalletPage;
 import pages.account.AccountsPage;
 import pages.account.PinCodePage;
 
+@Log4j2
 public class AddLiquidityTest extends CoreTestCase {
 
     Random rnd = new Random();

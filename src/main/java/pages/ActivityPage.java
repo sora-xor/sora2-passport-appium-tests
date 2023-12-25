@@ -72,7 +72,7 @@ public class ActivityPage extends CommonPage {
     private SelenideElement sentToPoolItem;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Status\"]/following-sibling::*[1]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\'Status']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Status\"]/following-sibling::*[1]")
     private SelenideElement getTransactionStatus;
 
     @AndroidFindBy(xpath = "//*[@text='Close']")
