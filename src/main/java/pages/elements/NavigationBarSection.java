@@ -25,7 +25,7 @@ public class NavigationBarSection implements Container {
     private SelenideElement exploreBtn;
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc=\"Polkaswap\"]")
-    @iOSXCUITFindBy(accessibility = "Swap")
+    @iOSXCUITFindBy(accessibility = "polkaswap")
     private SelenideElement polkaswapBtn;
 
     @AndroidFindBy(accessibility = "Activity")

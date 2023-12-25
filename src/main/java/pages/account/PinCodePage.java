@@ -36,7 +36,7 @@ public class PinCodePage {
     private SelenideElement pinCodeTitleTv;
 
     @AndroidFindBy(xpath = "//*[@text='Enter current pin code']")
-    @iOSXCUITFindBy(accessibility = "Enter current pin code")
+    @iOSXCUITFindBy(accessibility = "Enter Pin Code")
     private SelenideElement currentPinCodeTitleTv;
 
     @AndroidFindBy(xpath = "//*[@text='Enter new pin code']")
@@ -48,7 +48,7 @@ public class PinCodePage {
     private SelenideElement confirmNewPinCodeTitleTv;
 
     @AndroidFindBy(xpath = "//*[@text='Enter pin code']")
-    @iOSXCUITFindBy(accessibility = "Enter pin code")
+    @iOSXCUITFindBy(accessibility = "Enter Pin Code")
     private SelenideElement enterPinCodeTitleTv;
 
     @iOSXCUITFindBy(accessibility = "0")
@@ -131,10 +131,10 @@ public class PinCodePage {
             assertThat(currentPinCodeTitleTv.isDisplayed()).isTrue();
             log.info("Enter Current Pin Code");
             enterPinCodeIOs();
-            assertThat(newPinCodeTitleTv.isDisplayed()).isTrue();
+            assertThat(pinCodeTitleTv.isDisplayed()).isTrue();
             log.info("Enter new Pin Code");
             enterPinCodeIOs();
-            assertThat(confirmNewPinCodeTitleTv.isDisplayed()).isTrue();
+            assertThat(pinCodeRepeatTitleTv.isDisplayed()).isTrue();
             log.info("Confirm Pin Code");
             enterPinCodeIOs();
         }
