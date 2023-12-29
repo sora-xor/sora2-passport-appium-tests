@@ -13,9 +13,9 @@ import pages.account.AccountsPage;
 import pages.account.PinCodePage;
 
 @Log4j2
-public class AddCustomNodeTest extends CoreTestCase {
+@Feature("Select node")
+public class NodeTests extends CoreTestCase {
     @Test
-    @Feature("Select node")
     @TmsLink("SORA-332")
     @Issue("an issue with iOS")
     public void addCustomNodeTest() {
@@ -23,6 +23,19 @@ public class AddCustomNodeTest extends CoreTestCase {
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
         NodesPage nodesPage = morePage.goToNodesPage();
         nodesPage.addCustomNode();
+        AccountsPage accountsPage = morePage.goToAccounts();
+        PinCodePage enterCodePage = accountsPage.forgetAccount();
+        enterCodePage.enterPinCodeOnLogout();
+    }
+
+    @Test
+    @TmsLink("SORA-328")
+    @Issue("an issue with iOS")
+    public void changeDefaultNodeTest() {
+        WalletPage walletPage = WalletPage.createNewAccount();
+        MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
+        NodesPage nodesPage = morePage.goToNodesPage();
+        nodesPage.switchToDefaultNode();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
         enterCodePage.enterPinCodeOnLogout();

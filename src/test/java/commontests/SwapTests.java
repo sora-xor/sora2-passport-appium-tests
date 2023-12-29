@@ -3,31 +3,34 @@ package commontests;
 import configs.TestConfig;
 import infrastructure.CoreTestCase;
 import infrastructure.Random;
+import io.qameta.allure.Feature;
+import io.qameta.allure.TmsLink;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;
-import pages.ActivityPage;
-import pages.MorePage;
-import pages.WalletPage;
+import pages.*;
 import pages.account.AccountsPage;
-import pages.account.LiquidAssetsPage;
 import pages.account.PinCodePage;
 
 @Log4j2
-public class SendTokenTest extends CoreTestCase {
+public class SwapTests extends CoreTestCase {
 
     Random rnd = new Random();
     String randomValue = rnd.RandomValue();
-
     @Test
-    public void sendTokenTest() {
+    @Feature("Swap")
+    @TmsLink("SORA-242")
+    public void swapTest () {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
-        LiquidAssetsPage liquidAssetsPage = walletPage.goToLiquidAssets();
-        liquidAssetsPage.sendToken(randomValue);
+        PolkaswapPage polkaswapPage = walletPage.getNavigationBarSection().goToPolkaswapPage();
+        polkaswapPage.checkAndCloseDisclaimer();
+        polkaswapPage.polkaswapSelectToken();
+        polkaswapPage.simpleSwap(randomValue);
         ActivityPage activityPage = walletPage.getNavigationBarSection().goToActivityPage();
-        activityPage.checkLastTransactionSendToken(randomValue);
+        activityPage.checkLastTransactionStatusSwap(randomValue);
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
         enterCodePage.enterPinCodeOnLogout();
     }
+
 }

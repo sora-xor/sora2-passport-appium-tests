@@ -8,6 +8,7 @@ import pages.MorePage;
 import pages.WalletPage;
 
 public class BuyXorWithFiatTest extends CoreTestCase {
+    //is this test still actual?
     @Test
     public void buyXorWithFiat () {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
