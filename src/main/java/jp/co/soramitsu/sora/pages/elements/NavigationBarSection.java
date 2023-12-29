@@ -17,7 +17,7 @@ import static jp.co.soramitsu.sora.infrastructure.Platform.isIOS;
 public class NavigationBarSection implements Container {
 
     @AndroidFindBy(accessibility = "Wallet")
-    @iOSXCUITFindBy(accessibility = "Assets")
+    @iOSXCUITFindBy(accessibility = "Wallet")
     private SelenideElement walletBtn;
 
     @AndroidFindBy(accessibility = "Explore")
@@ -40,6 +40,7 @@ public class NavigationBarSection implements Container {
     public MorePage goToMorePage() {
         log.info("Click More button");
         moreBtn.shouldBe(Condition.visible).click();
+        isMoreTabSelected();
         return screen(MorePage.class);
     }
 
@@ -54,6 +55,7 @@ public class NavigationBarSection implements Container {
     public ExplorePage goToExplorePage() {
         log.info("Click Explore button");
         exploreBtn.shouldBe(Condition.visible).click();
+        isExploreTabSelected();
         return screen(ExplorePage.class);
     }
 
@@ -61,6 +63,7 @@ public class NavigationBarSection implements Container {
     public WalletPage goToWalletPage() {
         log.info("Click Wallet button");
         walletBtn.shouldBe(Condition.visible).click();
+        isWalletTabSelected();
         return screen(WalletPage.class);
     }
 
@@ -68,6 +71,7 @@ public class NavigationBarSection implements Container {
     public ActivityPage goToActivityPage() {
         log.info("Click Activity button");
         activityBtn.shouldBe(Condition.visible).click();
+        isActivityTabSelected();
         return screen(ActivityPage.class);
     }
 

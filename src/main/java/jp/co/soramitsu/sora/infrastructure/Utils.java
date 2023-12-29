@@ -29,7 +29,6 @@ public class Utils {
         }
     }
 
-    //todo check if there is a better way to swipe
     public static void swipeDown() {
         TouchAction touchAction = new TouchAction((PerformsTouchActions) getWebDriver());
         Dimension size = getWebDriver().manage().window().getSize();
