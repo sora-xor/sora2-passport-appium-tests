@@ -21,6 +21,7 @@ public class PoolTests extends CoreTestCase {
     Random rnd = new Random();
     String randomLiquidity = rnd.RandomValue();
 
+    //todo:add balance checking/ this test often fails because xst is not enough
     @Test
     @TmsLink("SORA-255")
     public void addLiquidityTest() {

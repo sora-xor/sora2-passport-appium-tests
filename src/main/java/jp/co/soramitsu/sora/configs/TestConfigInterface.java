@@ -6,39 +6,30 @@ import org.aeonbits.owner.Config;
 @Config.Sources({
         "system:properties",
         "system:env",
-        "classpath:test.properties"})
+        "classpath:envs/${STAGE}/test.properties"})
 public interface TestConfigInterface extends Config{
-
-    @Key("mnemonic1")
+    @Key("user1.mnemonic")
     String mnemonic1 ();
-
-    @Key("rawseed")
+    @Key("user1.rawseed")
     String rawseed ();
-    @Key("mnemonic2")
+    @Key("user2.mnemonic")
     String mnemonic2 ();
     @Key("email")
     String email ();
     @Key("phonePending")
     String phonePending();
-
     @Key("phoneApproved")
     String phoneApproved();
-
     @Key("phoneFailed")
     String phoneFailed();
-
     @Key("phoneRejected")
     String phoneRejected();
-
     @Key("testOtp")
     String testOtp();
-
-    @Key("referrerLink1")
+    @Key("user1.referrerLink")
     String referrerLink1();
-
-    @Key("referrerLink2")
+    @Key("user2.referrerLink")
     String referrerLink2();
-
-    @Key("assetId")
+    @Key("user2.assetId")
     String assetId();
 }

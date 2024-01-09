@@ -7,6 +7,7 @@ def jobParams = [
     name: 'platform',
     description: 'Platform'
   ),
+//  choice( choices: ['dev', 'stage'], name: 'env', description: 'Environment')
 ]
 
 if ( "${params.platform}" == "iOS" ) {
