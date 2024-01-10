@@ -28,10 +28,10 @@ public class VerifyPhoneNumberOtpPage {
     private SelenideElement otpField;
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[2]/android.widget.Button[2]")
-    private SelenideElement searchCountryField;
+    private SelenideElement searchCountryBtn;
 
     @AndroidFindBy(className = "android.widget.EditText")
-    private SelenideElement androidWidgetEditText;
+    private SelenideElement searchCountryEditText;
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.view.View")
     private SelenideElement searchCountryResult;
@@ -68,37 +68,9 @@ public class VerifyPhoneNumberOtpPage {
     public void setCountry(String countryCode)
     {
         selectCountryField.shouldBe(visible).click();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        searchCountryField.shouldBe(visible).click();
-
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        androidWidgetEditText.shouldBe(visible).sendKeys(countryCode);
+        searchCountryBtn.shouldBe(visible).click();
+        searchCountryEditText.shouldBe(visible).sendKeys(countryCode);
         searchCountryResult.shouldBe(visible).click();
-    }
-
-
-    public void scrollToSelectYourCountry() {
-        if (isAndroid()) {
-            SelenideAppium.$x(".//*[@text='Select your country']").click();
-            SelenideAppium.$x(".//*[@text='Afghanistan']")
-                    .scroll(with(DOWN, 4));
-            SelenideAppium.$x(".//*[@text='Montenegro']")
-                    .scroll(down())
-                    .shouldHave(visible)
-                    .click();
-
-        }
-
     }
 }
 
