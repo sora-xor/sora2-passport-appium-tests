@@ -13,7 +13,7 @@ import static com.codeborne.selenide.appium.AppiumScrollOptions.down;
 import static com.codeborne.selenide.appium.AppiumScrollOptions.with;
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static com.codeborne.selenide.appium.ScrollDirection.DOWN;
-import static infrastructure.Platform.isAndroid;
+import static jp.co.soramitsu.sora.infrastructure.Platform.isAndroid;
 
 @Log4j2
 public class VerifyPhoneNumberOtpPage {
