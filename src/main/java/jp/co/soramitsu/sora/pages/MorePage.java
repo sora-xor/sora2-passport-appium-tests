@@ -13,6 +13,7 @@ import static jp.co.soramitsu.sora.infrastructure.Platform.isAndroid;
 
 public class MorePage extends CommonPage{
 
+
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/CryptoAccountsButton")
     @iOSXCUITFindBy(accessibility = "Crypto Accounts")
     private SelenideElement cryptoAccountsBtn;

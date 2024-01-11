@@ -39,7 +39,7 @@ public class Platform {
             throw new IllegalArgumentException("Cannot detect type of the Driver. settings.Platform value: " + name);
         }
     }
-    
+
 
     public static boolean isAndroid() {
         return PLATFORM_ANDROID.equals(name);
