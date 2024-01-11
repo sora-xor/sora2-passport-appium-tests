@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.IOSDriver;
+import jp.co.soramitsu.sora.configs.TestConfig;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.Capabilities;
 
@@ -54,7 +55,7 @@ public class Platform {
         		.setDeviceName("emulator-5554")
         		.setPlatformVersion("12.0")
         		.setAutomationName("UIAutomator2")
-        		.setAppPackage("jp.co.soramitsu.sora.develop")
+        		.setAppPackage(TestConfig.config.androidBundleId())
         		.setAppActivity("jp.co.soramitsu.sora.splash.presentation.SplashActivity");
 		return options;
     }
@@ -69,7 +70,7 @@ public class Platform {
         capabilities.setCapability("appium:connectHardwareKeyboard", true);
         capabilities.setCapability("appium:wdaLaunchTimeout", 40000);
         //capabilities.setCapability("noReset", false);
-        capabilities.setCapability("bundleId", "co.jp.soramitsu.sora.dev");
+        capabilities.setCapability("bundleId", TestConfig.config.iOSBundleId());
         capabilities.setCapability("appium:isHeadless", true);
         return capabilities;
     }

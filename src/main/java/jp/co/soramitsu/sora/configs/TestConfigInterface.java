@@ -32,4 +32,8 @@ public interface TestConfigInterface extends Config{
     String referrerLink2();
     @Key("user2.assetId")
     String assetId();
+    @Key("androidBundleId")
+    String androidBundleId();
+    @Key("iOSBundleId")
+    String iOSBundleId();
 }
