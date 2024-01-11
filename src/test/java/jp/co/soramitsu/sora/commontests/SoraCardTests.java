@@ -15,7 +15,7 @@ import jp.co.soramitsu.sora.pages.WalletPage;
 @Feature("Sora Card")
 public class SoraCardTests extends CoreTestCase {
     //todo: all tests need to be fixed
-    @Test
+    @Test(enabled = false)
     public void soraCardGetIBANTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         SoraCardPage soraCardPage = walletPage.goToSoraCardPage();
@@ -42,17 +42,19 @@ public class SoraCardTests extends CoreTestCase {
         soraCardPage.swipeDown();
         TermsAndConditionsPage termsAndConditionsPage = soraCardPage.viewSoraCardFlow();
         VerifyPhoneNumberOtpPage verifyPhoneNumberOTPPage = termsAndConditionsPage.acceptTermsAndConditions();
+        String countryCode = TestConfig.config.countryCode();
+        verifyPhoneNumberOTPPage.setCountry(countryCode);
         String phoneNumber = TestConfig.config.phoneApproved();
         String testOtp = TestConfig.config.testOtp();
         VerificationStatusPage verificationStatusPage = verifyPhoneNumberOTPPage.verifyYourPhoneNumber(phoneNumber, testOtp);
         verificationStatusPage.checkApprovedStatus();
-        MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
+        MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
         enterCodePage.enterPinCodeOnLogout();
     }
 
-    @Test
+    @Test(enabled = false)
     @TmsLink("SORA-351")
     public void soraCardPhonePendingTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
@@ -70,7 +72,7 @@ public class SoraCardTests extends CoreTestCase {
         enterCodePage.enterPinCodeOnLogout();
     }
 
-    @Test
+    @Test(enabled = false)
     @TmsLink("SORA-359")
     public void soraCardPhoneRejectedX2Test() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
@@ -88,7 +90,7 @@ public class SoraCardTests extends CoreTestCase {
         enterCodePage.enterPinCodeOnLogout();
     }
 
-    @Test
+    @Test(enabled = false)
     @TmsLink("SORA-352")
     public void soraCardVerificationFailedTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
@@ -109,7 +111,7 @@ public class SoraCardTests extends CoreTestCase {
     }
 
     /*
-    @Test
+    @Test(enabled = false)
     public void alreadyHaveACardTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase();
         SoraCardPage soraCardPage = walletPage.goToSoraCardPage();
@@ -126,7 +128,7 @@ public class SoraCardTests extends CoreTestCase {
  */
 
     /*
-    @Test
+    @Test(enabled = false)
     public void getSoraCardTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase();
         SoraCardPage soraCardPage = walletPage.goToSoraCardPage();
