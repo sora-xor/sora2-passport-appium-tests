@@ -26,6 +26,7 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static infrastructure.Platform.isAndroid;
 import static infrastructure.Platform.isIOS;
 
+
 @Log4j2
 public class LiquidAssetsPage {
 

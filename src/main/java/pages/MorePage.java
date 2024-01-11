@@ -16,6 +16,7 @@ import static infrastructure.Platform.isAndroid;
 
 public class MorePage {
 
+
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/CryptoAccountsButton")
     @iOSXCUITFindBy(accessibility = "Crypto Accounts")
     private SelenideElement cryptoAccountsBtn;

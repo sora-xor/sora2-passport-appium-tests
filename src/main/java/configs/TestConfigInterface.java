@@ -41,4 +41,7 @@ public interface TestConfigInterface extends Config{
 
     @Key("assetId")
     String assetId();
+
+    @Key("countryCode")
+    String countryCode();
 }

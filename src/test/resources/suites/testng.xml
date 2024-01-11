@@ -81,7 +81,6 @@
             <class name="commontests.SetReferrerLink"/>
         </classes>
     </test>
-    <!--
 
    <test thread-count="1" name="SoraCardPhoneApprovedTest">
        <classes>
@@ -93,20 +92,22 @@
            <class name="commontests.SoraCardPhonePendingTest"/>
        </classes>
    </test>
-   <test thread-count="1" name="SoraCardPhoneRejectedX2Test">
-       <classes>
-           <class name="commontests.SoraCardPhoneRejectedX2Test"/>
-       </classes>
-   </test>
-   <test thread-count="1" name="SoraCardGetIBANTest">
-       <classes>
-           <class name="commontests.SoraCardGetIBANTest"/>
-       </classes>
-   </test>
-   <test thread-count="1" name="SoraCardVerificationFailedTest">
-       <classes>
-           <class name="commontests.SoraCardVerificationFailedTest"/>
-       </classes>
-   </test>
-   -->
+
+    <!--
+  <test thread-count="1" name="SoraCardPhoneRejectedX2Test">
+      <classes>
+          <class name="commontests.SoraCardPhoneRejectedX2Test"/>
+      </classes>
+  </test>
+  <test thread-count="1" name="SoraCardGetIBANTest">
+      <classes>
+          <class name="commontests.SoraCardGetIBANTest"/>
+      </classes>
+  </test>
+  <test thread-count="1" name="SoraCardVerificationFailedTest">
+      <classes>
+          <class name="commontests.SoraCardVerificationFailedTest"/>
+      </classes>
+  </test>
+  -->
 </suite>

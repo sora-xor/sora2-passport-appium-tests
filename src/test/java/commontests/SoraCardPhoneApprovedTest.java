@@ -17,6 +17,8 @@ public class SoraCardPhoneApprovedTest extends CoreTestCase {
         soraCardPage.swipeDown();
         TermsAndConditionsPage termsAndConditionsPage = soraCardPage.viewSoraCardFlow();
         VerifyPhoneNumberOtpPage verifyPhoneNumberOTPPage = termsAndConditionsPage.acceptTermsAndConditions();
+        String countryCode = TestConfig.config.countryCode();
+        verifyPhoneNumberOTPPage.setCountry(countryCode);
         String phoneNumber = TestConfig.config.phoneApproved();
         String testOtp = TestConfig.config.testOtp();
         VerificationStatusPage verificationStatusPage = verifyPhoneNumberOTPPage.verifyYourPhoneNumber(phoneNumber, testOtp);
