@@ -2,47 +2,47 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite thread-count="1" name="Suite">
     <listeners>
-        <listener class-name="jp.co.soramitsu.sora.listener.ScreenShotListener"/>
+        <listener class-name="jp.co.soramitsu.sora.qa.listener.ScreenShotListener"/>
     </listeners>
 
     <test thread-count="1" name="FirstTest">
         <classes>
-            <class name="jp.co.soramitsu.sora.commontests.FirstTest"/>
+            <class name="jp.co.soramitsu.sora.qa.commontests.FirstTest"/>
         </classes>
     </test>
     <test thread-count="1" name="NodeTests">
         <classes>
-            <class name="jp.co.soramitsu.sora.commontests.NodeTests"/>
+            <class name="jp.co.soramitsu.sora.qa.commontests.NodeTests"/>
         </classes>
     </test>
     <test thread-count="1" name="OnboardingTests">
         <classes>
-            <class name="jp.co.soramitsu.sora.commontests.OnboardingTests"/>
+            <class name="jp.co.soramitsu.sora.qa.commontests.OnboardingTests"/>
         </classes>
     </test>
     <test thread-count="1" name="PoolTests">
         <classes>
-            <class name="jp.co.soramitsu.sora.commontests.PoolTests"/>
+            <class name="jp.co.soramitsu.sora.qa.commontests.PoolTests"/>
         </classes>
     </test>
     <test thread-count="1" name="ReferralProgramTests">
         <classes>
-            <class name="jp.co.soramitsu.sora.commontests.ReferralProgramTests"/>
+            <class name="jp.co.soramitsu.sora.qa.commontests.ReferralProgramTests"/>
         </classes>
     </test>
     <test thread-count="1" name="SendTokenTests">
         <classes>
-            <class name="jp.co.soramitsu.sora.commontests.SendTokenTests"/>
+            <class name="jp.co.soramitsu.sora.qa.commontests.SendTokenTests"/>
         </classes>
     </test>
     <test thread-count="1" name="SwapTests">
         <classes>
-            <class name="jp.co.soramitsu.sora.commontests.SwapTests"/>
+            <class name="jp.co.soramitsu.sora.qa.commontests.SwapTests"/>
         </classes>
     </test>
     <test thread-count="1" name="SoraCardTests">
         <classes>
-            <class name="jp.co.soramitsu.sora.commontests.SoraCardTests"/>
+            <class name="jp.co.soramitsu.sora.qa.commontests.SoraCardTests"/>
         </classes>
     </test>
     <!--
