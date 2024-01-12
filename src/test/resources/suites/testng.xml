@@ -40,13 +40,12 @@
             <class name="jp.co.soramitsu.sora.commontests.SwapTests"/>
         </classes>
     </test>
-
-    <!--
     <test thread-count="1" name="SoraCardTests">
         <classes>
             <class name="jp.co.soramitsu.sora.commontests.SoraCardTests"/>
         </classes>
     </test>
+    <!--
     <test thread-count="1" name="BuyXorWithFiatTest">
         <classes>
             <class name="jp.co.soramitsu.sora.commontests.BuyXorWithFiatTest"/>
