@@ -55,7 +55,6 @@ public class ReferralProgramPage extends CoreTestCase {
     @iOSXCUITFindBy(accessibility = "cross")
     private SelenideElement backButton;
 
-    //todo: get rid of explicit waits
     @Step
     public ActivityPage startInvitingFlow() {
 
@@ -88,7 +87,7 @@ public class ReferralProgramPage extends CoreTestCase {
 
         WebDriver driver = WebDriverRunner.getWebDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT10S"), Duration.parse("PT1S"));
-        //todo chek this if
+        //todo why this if is here
         if (wait.until(ExpectedConditions.visibilityOf(enterReferrersLinkBtn)).isDisplayed())
         //No invitations
         {

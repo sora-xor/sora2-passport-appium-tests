@@ -55,7 +55,7 @@ public class VerifyPhoneNumberOtpPage {
         }
         otpField.shouldBe(Condition.visible).sendKeys(otpTest);
         log.info("entered OTP " + otpTest);
-
+        //todo test fails without this block. check and change to selenium wait
         try {
             Thread.sleep(4000);
         } catch (InterruptedException e) {

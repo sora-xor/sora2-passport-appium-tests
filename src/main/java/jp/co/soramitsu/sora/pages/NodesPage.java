@@ -57,12 +57,6 @@ public class NodesPage {
         confirmBtn.shouldBe(Condition.visible).click();
         successfullySwitchForm.shouldBe(Condition.visible);
         confirmBtn.shouldBe(Condition.visible).click();
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
         log.info("Node switched");
         backBtn.shouldBe(Condition.visible).click();
     }
@@ -78,12 +72,6 @@ public class NodesPage {
         addCustomNodebtn.shouldBe(Condition.visible).click();
         alreadyAddedNodeError.shouldBe(Condition.visible);
         confirmBtn.shouldBe(Condition.visible).click();
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
         backBtn.shouldBe(Condition.visible).click();
         backBtn.shouldBe(Condition.visible).click();
     }

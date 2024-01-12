@@ -14,7 +14,6 @@ import jp.co.soramitsu.sora.pages.WalletPage;
 @Log4j2
 @Feature("Sora Card")
 public class SoraCardTests extends CoreTestCase {
-    //todo: all tests need to be fixed
     @Test(enabled = false)
     public void soraCardGetIBANTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
