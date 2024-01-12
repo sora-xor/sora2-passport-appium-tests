@@ -24,7 +24,7 @@ public class SwapTests extends CoreTestCase {
     @TmsLink("SORA-242")
     public void swapTest () {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
-        PolkaswapPage polkaswapPage = walletPage.getNavigationBarSection().goToPolkaswapPage();
+        PolkaswapPage polkaswapPage = walletPage.goToPolkaswapPage();
         polkaswapPage.checkAndCloseDisclaimer();
         polkaswapPage.polkaswapSelectToken();
         polkaswapPage.simpleSwap(randomValue);

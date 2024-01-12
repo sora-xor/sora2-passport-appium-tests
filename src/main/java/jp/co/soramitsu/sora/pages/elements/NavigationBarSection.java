@@ -24,10 +24,6 @@ public class NavigationBarSection implements Container {
     @iOSXCUITFindBy(accessibility = "Explore")
     private SelenideElement exploreBtn;
 
-    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc=\"Polkaswap\"]")
-    @iOSXCUITFindBy(accessibility = "polkaswap")
-    private SelenideElement polkaswapBtn;
-
     @AndroidFindBy(accessibility = "Activity")
     @iOSXCUITFindBy(accessibility = "Activity")
     private SelenideElement activityBtn;
@@ -42,13 +38,6 @@ public class NavigationBarSection implements Container {
         moreBtn.shouldBe(Condition.visible).click();
         isMoreTabSelected();
         return screen(MorePage.class);
-    }
-
-    @Step
-    public PolkaswapPage goToPolkaswapPage() {
-        log.info("Click Polkaswap button");
-        polkaswapBtn.shouldBe(Condition.visible).click();
-        return screen(PolkaswapPage.class);
     }
 
     @Step
