@@ -93,6 +93,12 @@
        </classes>
    </test>
 
+    <test thread-count="1" name="SoraCardVerificationFailedTest">
+        <classes>
+            <class name="commontests.SoraCardVerificationFailedTest"/>
+        </classes>
+    </test>
+
     <!--
   <test thread-count="1" name="SoraCardPhoneRejectedX2Test">
       <classes>
@@ -102,11 +108,6 @@
   <test thread-count="1" name="SoraCardGetIBANTest">
       <classes>
           <class name="commontests.SoraCardGetIBANTest"/>
-      </classes>
-  </test>
-  <test thread-count="1" name="SoraCardVerificationFailedTest">
-      <classes>
-          <class name="commontests.SoraCardVerificationFailedTest"/>
       </classes>
   </test>
   -->

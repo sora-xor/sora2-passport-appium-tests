@@ -22,7 +22,7 @@ public class KYCPage{
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.TextView")
     private SelenideElement getPreparedTitle;
 
-    @AndroidFindBy(xpath = "//*[@text='OK, I am ready']")
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.widget.Button")
     private SelenideElement readyToAttemptBtn;
     @AndroidFindBy(xpath = "//*[@text='Log out']")
     private SelenideElement soraCardLogOutBtn;
@@ -41,6 +41,11 @@ public class KYCPage{
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/sns_button_close")
     private SelenideElement closeKYCBtn;
 
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.widget.RadioGroup/android.widget.RadioButton[1]")
+    private SelenideElement residentOfCheckbox;
+
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/sns_primary_button")
+    private SelenideElement ContinueBtn;
 
     @Step
     public VerificationStatusPage getPrepared() {
@@ -50,12 +55,16 @@ public class KYCPage{
         log.info(getPreparedText);
         Utils.scrollForward(1);
         readyToAttemptBtn.shouldBe(Condition.visible).click();
-
         WebDriver driver = WebDriverRunner.getWebDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT30S"), Duration.parse("PT5S"));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("jp.co.soramitsu.sora.develop:id/sns_country_title")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("jp.co.soramitsu.sora.develop:id/sns_title")));
 
+        residentOfCheckbox.shouldBe(Condition.visible).click();
+        ContinueBtn.shouldBe(Condition.visible).click();
+
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("jp.co.soramitsu.sora.develop:id/sns_country_title")));
         String selectCountry = "";
+
         selectCountry = selectCountryTitle.shouldBe(Condition.visible).getText();
         selectCountryTitle.shouldBe(Condition.visible);
         log.info(selectCountry);
