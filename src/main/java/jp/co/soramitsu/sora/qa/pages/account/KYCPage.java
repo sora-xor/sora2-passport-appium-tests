@@ -3,7 +3,6 @@ package jp.co.soramitsu.sora.qa.pages.account;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-import com.codeborne.selenide.appium.ScreenObject;
 import jp.co.soramitsu.sora.qa.infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
@@ -15,13 +14,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.appium.ScreenObject.screen;
+
 @Log4j2
 public class KYCPage{
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.TextView")
     private SelenideElement getPreparedTitle;
 
-    @AndroidFindBy(xpath = "//*[@text='OK, I am ready']")
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View/android.widget.Button")
     private SelenideElement readyToAttemptBtn;
     @AndroidFindBy(xpath = "//*[@text='Log out']")
     private SelenideElement soraCardLogOutBtn;
@@ -40,6 +41,11 @@ public class KYCPage{
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/sns_button_close")
     private SelenideElement closeKYCBtn;
 
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.widget.RadioGroup/android.widget.RadioButton[1]")
+    private SelenideElement residentOfCheckbox;
+
+    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/sns_primary_button")
+    private SelenideElement ContinueBtn;
 
     @Step
     public VerificationStatusPage getPrepared() {
@@ -48,9 +54,13 @@ public class KYCPage{
         log.info(getPreparedText);
         Utils.scrollForward(1);
         readyToAttemptBtn.shouldBe(Condition.visible).click();
-
         WebDriver driver = WebDriverRunner.getWebDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT30S"), Duration.parse("PT5S"));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("jp.co.soramitsu.sora.develop:id/sns_title")));
+
+        residentOfCheckbox.shouldBe(Condition.visible).click();
+        ContinueBtn.shouldBe(Condition.visible).click();
+
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("jp.co.soramitsu.sora.develop:id/sns_country_title")));
 
         String selectCountry = selectCountryTitle.shouldBe(Condition.visible).getText();
@@ -62,6 +72,6 @@ public class KYCPage{
 
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Log out']")));
 
-        return ScreenObject.screen(VerificationStatusPage.class);
+        return screen(VerificationStatusPage.class);
     }
 }
