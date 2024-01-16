@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 public class CoreTestCase {
 
