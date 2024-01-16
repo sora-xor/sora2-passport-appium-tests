@@ -15,9 +15,6 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 
 @Log4j2
 public class WalletPage extends CommonPage {
-    @AndroidFindBy(accessibility = "Wallet")
-    @iOSXCUITFindBy(accessibility = "TabBar/wallet")
-    private SelenideElement walletTab;
 
     @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/GetSoraCard")
     @iOSXCUITFindBy(accessibility = "Get SORA Card")
