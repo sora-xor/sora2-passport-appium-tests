@@ -22,6 +22,7 @@ import java.io.File;
 import java.net.URL;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.time.Duration;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
@@ -56,7 +57,7 @@ public class CoreTestCase {
     public void setUp() throws MalformedURLException {
         driver = Platform.getInstance().getDriver();
         WebDriverRunner.setWebDriver(driver);
-        driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     @AfterMethod
