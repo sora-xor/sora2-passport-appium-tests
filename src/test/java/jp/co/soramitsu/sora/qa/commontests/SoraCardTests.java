@@ -89,7 +89,7 @@ public class SoraCardTests extends CoreTestCase {
         enterCodePage.enterPinCodeOnLogout();
     }
 
-    @Test(enabled = false)
+    @Test()
     @TmsLink("SORA-352")
     public void soraCardVerificationFailedTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());

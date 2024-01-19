@@ -28,7 +28,7 @@ public class PoolTests extends CoreTestCase {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         //ios crushes here
         ExplorePage explorePage = walletPage.getNavigationBarSection().goToExplorePage();
-        explorePage.explorePolkaswapPools();
+        explorePage.clickPoolsButton();
         explorePage.addLiquidity(randomLiquidity);
         ActivityPage activityPage = walletPage.getNavigationBarSection().goToActivityPage();
         activityPage.checkLastTransactionStatusPool(randomLiquidity);

@@ -13,7 +13,17 @@ import static jp.co.soramitsu.sora.qa.infrastructure.Platform.isIOS;
 
 @Log4j2
 public class ExplorePage extends CommonPage{
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OnMenuItem")
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Pools\"]")
+    private SelenideElement poolButton;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Farming\"]")
+    private SelenideElement farmingButton;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Currencies\"]")
+    private SelenideElement currenciesButton;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Provide liquidity and earn rewards\"]/following-sibling::android.widget.ImageView")
     @iOSXCUITFindBy(accessibility = "Create pool")
     private SelenideElement addLiquidityBtn;
 
@@ -75,6 +85,13 @@ public class ExplorePage extends CommonPage{
     private SelenideElement polkaswapPoolsTitle;
 
     @Step
+    public void clickPoolsButton()
+    {
+        Assertions.assertThat(getNavigationBarSection().isExploreTabSelected()).isTrue();
+        poolButton.shouldBe(Condition.visible).click();
+        polkaswapPoolsTitle.shouldBe(Condition.visible);
+    }
+    @Step
     public void explorePolkaswapPools()
     {
         Assertions.assertThat(getNavigationBarSection().isExploreTabSelected()).isTrue();
@@ -84,7 +101,7 @@ public class ExplorePage extends CommonPage{
     @Step
     public void addLiquidity(String randomLiquidity)
     {
-        polkaswapPoolsTitle.shouldBe(Condition.visible);
+        log.info("Click Add liquidity button");
         addLiquidityBtn.shouldBe(Condition.visible).click();
         supplyLiquidityTitle.shouldBe(Condition.visible);
         selectTokenXor.shouldBe(Condition.visible).click();
