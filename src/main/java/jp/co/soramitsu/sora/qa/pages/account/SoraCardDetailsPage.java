@@ -2,7 +2,6 @@ package jp.co.soramitsu.sora.qa.pages.account;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import jp.co.soramitsu.sora.qa.infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
 import jp.co.soramitsu.sora.qa.pages.WalletPage;
