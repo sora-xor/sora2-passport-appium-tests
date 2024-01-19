@@ -14,21 +14,21 @@ import static org.assertj.core.api.Assertions.*;
 public class AccountsPage {
 
     @iOSXCUITFindBy(accessibility = "iconMenuInfo")
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OpenAccountMenuItem")
+    @AndroidFindBy(id = "OpenAccountMenuItem")
     private SelenideElement openAccountMenuItem;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/FloatingButton")
+    @AndroidFindBy(id = "FloatingButton")
     @iOSXCUITFindBy(accessibility = "Add account")
     private SelenideElement addAccountButton;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SelectAccountForBatchExport")
+    @AndroidFindBy(id = "SelectAccountForBatchExport")
     private SelenideElement selectAccountForBatchExport;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OpenAccountOptions")
+    @AndroidFindBy(id = "OpenAccountOptions")
     @iOSXCUITFindBy(accessibility = "iconMenuInfo")
     private SelenideElement openAccountOptions;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/ForgetAccount")
+    @AndroidFindBy(id = "ForgetAccount")
     @iOSXCUITFindBy(accessibility = "Forget account")
     private SelenideElement forgetAccountBtn;
 
@@ -36,7 +36,7 @@ public class AccountsPage {
     @iOSXCUITFindBy(className = "XCUIElementTypeTextField")
     private SelenideElement accountName;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OnNavigate")
+    @AndroidFindBy(id = "OnNavigate")
     @iOSXCUITFindBy(accessibility = "Account")
     private SelenideElement backButton;
 

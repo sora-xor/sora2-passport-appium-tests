@@ -29,22 +29,22 @@ public class KYCPage{
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.widget.TextView[1]")
     private SelenideElement attention2Attemps;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/sns_country_title")
+    @AndroidFindBy(id = "sns_country_title")
     private SelenideElement selectCountryTitle;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/sns_country_selector")
+    @AndroidFindBy(id = "sns_country_selector")
     private SelenideElement selectCountrySelector;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/sns_documents_title")
+    @AndroidFindBy(id = "sns_documents_title")
     private SelenideElement selectDocumentsTitle;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/sns_button_close")
+    @AndroidFindBy(id = "sns_button_close")
     private SelenideElement closeKYCBtn;
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.widget.RadioGroup/android.widget.RadioButton[1]")
     private SelenideElement residentOfCheckbox;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/sns_primary_button")
+    @AndroidFindBy(id = "sns_primary_button")
     private SelenideElement ContinueBtn;
 
     @Step
@@ -52,16 +52,15 @@ public class KYCPage{
         String getPreparedText = getPreparedTitle.getText();
         getPreparedTitle.shouldBe(Condition.visible);
         log.info(getPreparedText);
-        Utils.scrollForward(1);
-        readyToAttemptBtn.shouldBe(Condition.visible).click();
+        readyToAttemptBtn.scrollTo().shouldBe(Condition.visible).click();
         WebDriver driver = WebDriverRunner.getWebDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT30S"), Duration.parse("PT5S"));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("jp.co.soramitsu.sora.develop:id/sns_title")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("sns_title")));
 
         residentOfCheckbox.shouldBe(Condition.visible).click();
         ContinueBtn.shouldBe(Condition.visible).click();
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("jp.co.soramitsu.sora.develop:id/sns_country_title")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("sns_country_title")));
 
         String selectCountry = selectCountryTitle.shouldBe(Condition.visible).getText();
         selectCountryTitle.shouldBe(Condition.visible);

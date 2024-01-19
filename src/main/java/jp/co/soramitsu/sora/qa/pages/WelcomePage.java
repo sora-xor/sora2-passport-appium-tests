@@ -32,7 +32,7 @@ import static com.codeborne.selenide.appium.ScreenObject.screen;
 public class WelcomePage {
 
     @iOSXCUITFindBy(accessibility = "Create account")
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/CreateNewAccount")
+    @AndroidFindBy(id = "CreateNewAccount")
     private SelenideElement createAccountBtn;
 
     @iOSXCUITFindBy(accessibility = "Passphrase")
@@ -44,7 +44,7 @@ public class WelcomePage {
     private SelenideElement importRawSeed;
 
     @iOSXCUITFindBy(accessibility = "Import account")
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/ImportAccount")
+    @AndroidFindBy(id = "ImportAccount")
     private SelenideElement importAccountBtn;
 
     @AndroidFindBy(xpath = "//*[@text='Enter Pin Code']")
@@ -162,7 +162,7 @@ public class WelcomePage {
         log.info("Enter Pin Code");
         if (isAndroid()) {
             for (int i = 1; i <= 6; i++) {
-                $(By.id("jp.co.soramitsu.sora.develop:id/" + i)).click();
+                $(By.id("" + i)).click();
             }
         }
         if (isIOS()) {

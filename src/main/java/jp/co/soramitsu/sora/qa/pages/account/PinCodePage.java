@@ -53,7 +53,7 @@ public class PinCodePage {
     private SelenideElement enterPinCodeTitleTv;
 
     @iOSXCUITFindBy(accessibility = "0")
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/btn0")
+    @AndroidFindBy(id = "btn0")
     private SelenideElement pinCodeBtn0;
 
 
@@ -143,7 +143,7 @@ public class PinCodePage {
     }
     public void enterPinCodeAndroid(){
         for (int i = 1; i <= 6; i++) {
-            $(By.id("jp.co.soramitsu.sora.develop:id/" + i)).click();
+            $(By.id("" + i)).click();
         }
     }
 

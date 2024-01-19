@@ -51,7 +51,7 @@ public class ReferralProgramPage extends CoreTestCase {
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[1]/android.widget.TextView[2]")
     private SelenideElement availableInvitationsField;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/OnNavigate")
+    @AndroidFindBy(id = "OnNavigate")
     @iOSXCUITFindBy(accessibility = "cross")
     private SelenideElement backButton;
 

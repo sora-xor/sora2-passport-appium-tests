@@ -22,11 +22,11 @@ public class PolkaswapPage {
     @iOSXCUITFindBy(accessibility = "Close")
     private SelenideElement disclaimerCloseBtn;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SelectTokenXOR")
+    @AndroidFindBy(id = "SelectTokenXOR")
     @iOSXCUITFindBy(accessibility = "XOR")
     private SelenideElement selectTokenXor;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SelectToken")
+    @AndroidFindBy(id = "SelectToken")
     @iOSXCUITFindBy(accessibility = "Select token")
     private SelenideElement selectTokenItem2;
 
@@ -34,40 +34,39 @@ public class PolkaswapPage {
     @iOSXCUITFindBy(accessibility = "Select token")
     private SelenideElement selectTokenBtn;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/XORElement")
+    @AndroidFindBy(id = "XORElement")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"SORA\"])[2]")
     private SelenideElement xorToken;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/VALElement")
+    @AndroidFindBy(id = "VALElement")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"SORA Validator Token\"])[2]")
     private SelenideElement valToken;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/PSWAPElement")
+    @AndroidFindBy(id = "PSWAPElement")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Polkaswap\"])[2]")
     private SelenideElement pswapToken;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/XSTElement")
+    @AndroidFindBy(id = "XSTElement")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"SORA Synthetics\"])[2]")
     private SelenideElement xstToken;
 
-
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/InputAmountFieldXOR")
+    @AndroidFindBy(id = "InputAmountFieldXOR")
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeTextField[1]")
     private SelenideElement inputAmountFieldXor;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/InputAmountField")
+    @AndroidFindBy(id = "InputAmountField")
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeTextField[2]")
     private SelenideElement inputAmountField2;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/Market")
+    @AndroidFindBy(id = "Market")
     @iOSXCUITFindBy(accessibility = "Market")
     private SelenideElement marketField;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/Slippage")
+    @AndroidFindBy(id = "Slippage")
     @iOSXCUITFindBy(accessibility = "Slippage")
     private SelenideElement slippageField;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SwapButton")
+    @AndroidFindBy(id = "SwapButton")
     @iOSXCUITFindBy(accessibility = "Review")
     private SelenideElement swapBtn;
 

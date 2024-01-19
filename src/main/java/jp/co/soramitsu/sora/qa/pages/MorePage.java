@@ -15,35 +15,35 @@ import static jp.co.soramitsu.sora.qa.infrastructure.Platform.isAndroid;
 public class MorePage extends CommonPage{
 
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/CryptoAccountsButton")
+    @AndroidFindBy(id = "CryptoAccountsButton")
     @iOSXCUITFindBy(accessibility = "Crypto Accounts")
     private SelenideElement cryptoAccountsBtn;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SoraCard")
+    @AndroidFindBy(id = "SoraCard")
     //@iOSXCUITFindBy(accessibility = "Sora Card")
     private SelenideElement soraCardBtn;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/BuyXor")
+    @AndroidFindBy(id = "BuyXor")
     //@iOSXCUITFindBy(accessibility = "Buy Xor with fiat")
     private SelenideElement buyXORbyFiatBtn;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/Nodes")
+    @AndroidFindBy(id = "Nodes")
     @iOSXCUITFindBy(accessibility = "Nodes")
     private SelenideElement nodesBtn;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/AppSettings")
+    @AndroidFindBy(id = "AppSettings")
     @iOSXCUITFindBy(accessibility = "App settings")
     private SelenideElement appSettingsBtn;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/LoginAndSecurity")
+    @AndroidFindBy(id = "LoginAndSecurity")
     @iOSXCUITFindBy(accessibility = "Login & Security")
     private SelenideElement loginAndSecurityBtn;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/Invite")
+    @AndroidFindBy(id = "Invite")
     @iOSXCUITFindBy(accessibility = "Invite Friends & Earn")
     private SelenideElement inviteFriendsBtn;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/Information")
+    @AndroidFindBy(id = "Information")
     @iOSXCUITFindBy(accessibility = "Information")
     private SelenideElement informationBtn;
 

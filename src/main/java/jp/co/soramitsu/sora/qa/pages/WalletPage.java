@@ -9,24 +9,23 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
 import jp.co.soramitsu.sora.qa.pages.account.*;
 import lombok.extern.log4j.Log4j2;
-import org.assertj.core.api.Assertions;
 
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 
 @Log4j2
 public class WalletPage extends CommonPage {
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/GetSoraCard")
+    @AndroidFindBy(id = "GetSoraCard")
     @iOSXCUITFindBy(accessibility = "Get SORA Card")
     private SelenideElement getSoraCardBtn;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/title")
+    @AndroidFindBy(id = "title")
     private SelenideElement walletTitlePage;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.develop.sora.develop:id/tvEmptyHistoryTitle")
+    @AndroidFindBy(id = "tvEmptyHistoryTitle")
     private SelenideElement emptyHistoryTitle;
 
-    @AndroidFindBy(id ="jp.co.soramitsu.sora.develop:id/CardInfo")
+    @AndroidFindBy(id ="CardInfo")
     private SelenideElement soraCardInfo;
 
     @Step
@@ -36,7 +35,7 @@ public class WalletPage extends CommonPage {
         NameYourAccountPage nameYourAccountPage = importAccountPage.enterMnemonicPhrase(mnemonic);
         PinCodePage pinCodePage = nameYourAccountPage.enterAccountNameAfterImport("Import Passphrase");
         WalletPage walletPage = pinCodePage.enterAndConfirmPinCodeImport();
-        walletPage.walletPageIsOpen();
+        walletPage.getNavigationBarSection().checkWalletTabToBeSelected();
         return screen(WalletPage.class);
     }
 
@@ -47,7 +46,7 @@ public class WalletPage extends CommonPage {
         NameYourAccountPage nameYourAccountPage = importAccountPage.enterRawSeed(TestConfig.config.rawseed());
         PinCodePage pinCodePage = nameYourAccountPage.enterAccountNameAfterImport("Import RawSeed");
         WalletPage walletPage = pinCodePage.enterAndConfirmPinCodeImport();
-        walletPage.walletPageIsOpen();
+        walletPage.getNavigationBarSection().checkWalletTabToBeSelected();
         return screen(WalletPage.class);
     }
 
@@ -59,24 +58,10 @@ public class WalletPage extends CommonPage {
         PassphrasePage passphrasePage = payAttention.confirmPayAttention();
         PinCodePage pinCodePage = passphrasePage.skipPassPhrase();
         WalletPage walletPage = pinCodePage.enterAndConfirmPinCodeNew();
-        walletPage.walletPageIsOpen();
+        walletPage.getNavigationBarSection().checkWalletTabToBeSelected();
         return screen(WalletPage.class);
     }
 
-    public void walletPageIsOpen() {
-        log.info("Wallet tab is selected: " + getNavigationBarSection().isWalletTabSelected());
-        Assertions.assertThat(getNavigationBarSection().isWalletTabSelected()).isTrue();
-        /*if (isAndroid()) {
-            walletTab.shouldBe(Condition.selected);
-            log.info("Wallet tab is selected: "+walletTab.shouldBe(Condition.selected).getAttribute("selected"));
-        }
-        if (isIOS()) {
-            walletTab.shouldBe(Condition.visible);
-            log.info("Wallet tab is selected: "+walletTab.shouldBe(Condition.visible).getAttribute("visible"));
-        }
-
-         */
-    }
 
     @Step
     public SoraCardPage goToSoraCardPage() {
@@ -85,6 +70,7 @@ public class WalletPage extends CommonPage {
         return screen(SoraCardPage.class);
     }
 
+    //todo: this method is empty. check
     @Step
     public LiquidAssetsPage goToLiquidAssets() {
 //        if (isAndroid()) utils.scrollForward(1);

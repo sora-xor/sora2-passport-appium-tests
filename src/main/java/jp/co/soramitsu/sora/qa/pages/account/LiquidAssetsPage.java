@@ -24,38 +24,38 @@ import static jp.co.soramitsu.sora.qa.infrastructure.Platform.isIOS;
 @Log4j2
 public class LiquidAssetsPage {
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SendButton")
+    @AndroidFindBy(id = "SendButton")
     @iOSXCUITFindBy(accessibility = "Send")
     private SelenideElement sendTokenBtn;
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/TokenN0")
+    @AndroidFindBy(id = "TokenN0")
     @iOSXCUITFindBy(accessibility = "SORA")
     private SelenideElement xorTokenDetails;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SearchInput")
+    @AndroidFindBy(id = "SearchInput")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar[@name=\"Select recipient address\"]/following-sibling::*//XCUIElementTypeTextField")
     private SelenideElement accountToSendInput;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SearchItemN0")
+    @AndroidFindBy(id = "SearchItemN0")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"SEARCH RESULTS\"]/parent::*/following-sibling::*//XCUIElementTypeStaticText")
     private SelenideElement searchResultToSend;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SelectTokenXOR")
+    @AndroidFindBy(id = "SelectTokenXOR")
     @iOSXCUITFindBy(accessibility = "Wallet/arrow")
     private SelenideElement selectTokenXor;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/XORElement")
+    @AndroidFindBy(id = "XORElement")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"SORA\"])[3]")
     private SelenideElement xorElement;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/InputAmountFieldXOR")
+    @AndroidFindBy(id = "InputAmountFieldXOR")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"SORA Dev\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeTextField")
     private SelenideElement inputAmountFieldXor;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/InputAmountField")
+    @AndroidFindBy(id = "InputAmountField")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
     private SelenideElement inputAmountField;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/ReviewButton")
+    @AndroidFindBy(id = "ReviewButton")
     @iOSXCUITFindBy(accessibility = "Review")
     private SelenideElement reviewBtn;
 
@@ -71,7 +71,7 @@ public class LiquidAssetsPage {
     @iOSXCUITFindBy(accessibility = "OK")
     private SelenideElement okBtn;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/CloseButton")
+    @AndroidFindBy(id = "CloseButton")
     @iOSXCUITFindBy(accessibility = "Close")
     private SelenideElement closeBtn;
 

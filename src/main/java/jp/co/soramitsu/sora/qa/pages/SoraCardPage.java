@@ -23,10 +23,10 @@ import org.openqa.selenium.By;
 @Log4j2
 public class SoraCardPage {
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/GetSoraCard")
+    @AndroidFindBy(id = "GetSoraCard")
     private SelenideElement viewSoraCardDetailsBtn;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SoraCardLogInOrSignUp")
+    @AndroidFindBy(id = "SoraCardLogInOrSignUp")
     @iOSXCUITFindBy(accessibility = "Log in or Sign up")
     private SelenideElement soraCardLogInOrSignUpBtn;
 
@@ -38,7 +38,7 @@ public class SoraCardPage {
     @iOSXCUITFindBy(accessibility = "Continue")
     private SelenideElement continueBtn;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/GetMoreXor")
+    @AndroidFindBy(id = "GetMoreXor")
     @iOSXCUITFindBy(accessibility = "GetMoreXor")
     private SelenideElement getMoreXorBtn;
 

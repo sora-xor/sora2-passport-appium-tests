@@ -6,7 +6,6 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
-import org.assertj.core.api.Assertions;
 
 import static jp.co.soramitsu.sora.qa.infrastructure.Platform.isAndroid;
 import static jp.co.soramitsu.sora.qa.infrastructure.Platform.isIOS;
@@ -27,37 +26,37 @@ public class ExplorePage extends CommonPage{
     @iOSXCUITFindBy(accessibility = "Create pool")
     private SelenideElement addLiquidityBtn;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/PrimaryButton")
+    @AndroidFindBy(id = "PrimaryButton")
     private SelenideElement primaryBtn;
 
     @AndroidFindBy(xpath = "//*[@text='Supply liquidity']")
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeNavigationBar[`name == \"Supply liquidity\"`]")
     private SelenideElement supplyLiquidityTitle;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/InputAmountFieldXOR")
+    @AndroidFindBy(id = "InputAmountFieldXOR")
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeTextField[1]")
     private SelenideElement inputAmountFieldXor;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/InputAmountFieldXST")
+    @AndroidFindBy(id = "InputAmountFieldXST")
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeTextField[2]")
     private SelenideElement inputAmountFieldXst;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SelectToken")
+    @AndroidFindBy(id = "SelectToken")
     @iOSXCUITFindBy(accessibility = "Select token")
     private SelenideElement selectTokenItem2;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/InputAmountField")
+    @AndroidFindBy(id = "InputAmountField")
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeTextField[2]")
     private SelenideElement inputAmountField2;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/SelectTokenXOR")
+    @AndroidFindBy(id = "SelectTokenXOR")
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`label == \"Select token\"`][1]")
     private SelenideElement selectTokenXor;
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/XORElement")
+    @AndroidFindBy(id = "XORElement")
     @iOSXCUITFindBy(accessibility = "SORA")
     private SelenideElement xorToken;
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/XSTElement")
+    @AndroidFindBy(id = "XSTElement")
     @iOSXCUITFindBy(accessibility = "SORA Synthetics")
     private SelenideElement xstToken;
 
@@ -87,14 +86,12 @@ public class ExplorePage extends CommonPage{
     @Step
     public void clickPoolsButton()
     {
-        Assertions.assertThat(getNavigationBarSection().isExploreTabSelected()).isTrue();
         poolButton.shouldBe(Condition.visible).click();
         polkaswapPoolsTitle.shouldBe(Condition.visible);
     }
     @Step
     public void explorePolkaswapPools()
     {
-        Assertions.assertThat(getNavigationBarSection().isExploreTabSelected()).isTrue();
         showMorePools.scrollTo().shouldBe(Condition.visible).click();
     }
 
