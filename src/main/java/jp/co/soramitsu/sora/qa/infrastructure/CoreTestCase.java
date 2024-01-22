@@ -11,12 +11,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.AfterSuite;
+import org.testng.annotations.*;
 
 import java.io.File;
 import java.net.URL;
@@ -43,20 +38,27 @@ public class CoreTestCase {
     }
 
 
-    @BeforeTest
+    /*@BeforeTest
     static void setupAllureReports() {
         Configuration.timeout = 14000;
         Configuration.screenshots = false;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
                 .screenshots(true)
                 .savePageSource(true));
-    }
 
-    @BeforeClass
+    }*/
+
+    @BeforeTest
     public void setUp() throws MalformedURLException {
+
         driver = Platform.getInstance().getDriver();
         WebDriverRunner.setWebDriver(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        Configuration.timeout = 14000;
+        Configuration.screenshots = false;
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(true));
     }
 
     @AfterMethod
@@ -65,7 +67,7 @@ public class CoreTestCase {
     }
 
 
-    @AfterClass
+    @AfterTest
     public void tearDown() throws MalformedURLException {
         WebDriverRunner.closeWebDriver();
         if (driver != null) {

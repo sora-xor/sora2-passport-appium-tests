@@ -71,6 +71,7 @@ public class NavigationBarSection implements Container {
         return screen(ActivityPage.class);
     }
 
+    //todo make this method to work on ios too
     private void checkTabToBeSelected(SelenideElement tabButton)
     {
         new WebDriverWait(WebDriverRunner.getWebDriver(), Duration.parse("PT5S"))
