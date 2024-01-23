@@ -9,7 +9,6 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
 import jp.co.soramitsu.sora.qa.pages.account.*;
 import lombok.extern.log4j.Log4j2;
-import org.assertj.core.api.Assertions;
 
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 
@@ -36,7 +35,7 @@ public class WalletPage extends CommonPage {
         NameYourAccountPage nameYourAccountPage = importAccountPage.enterMnemonicPhrase(mnemonic);
         PinCodePage pinCodePage = nameYourAccountPage.enterAccountNameAfterImport("Import Passphrase");
         WalletPage walletPage = pinCodePage.enterAndConfirmPinCodeImport();
-        walletPage.walletPageIsOpen();
+        walletPage.getNavigationBarSection().checkWalletTabToBeSelected();
         return screen(WalletPage.class);
     }
 
@@ -47,7 +46,7 @@ public class WalletPage extends CommonPage {
         NameYourAccountPage nameYourAccountPage = importAccountPage.enterRawSeed(TestConfig.config.rawseed());
         PinCodePage pinCodePage = nameYourAccountPage.enterAccountNameAfterImport("Import RawSeed");
         WalletPage walletPage = pinCodePage.enterAndConfirmPinCodeImport();
-        walletPage.walletPageIsOpen();
+        walletPage.getNavigationBarSection().checkWalletTabToBeSelected();
         return screen(WalletPage.class);
     }
 
@@ -59,23 +58,8 @@ public class WalletPage extends CommonPage {
         PassphrasePage passphrasePage = payAttention.confirmPayAttention();
         PinCodePage pinCodePage = passphrasePage.skipPassPhrase();
         WalletPage walletPage = pinCodePage.enterAndConfirmPinCodeNew();
-        walletPage.walletPageIsOpen();
+        walletPage.getNavigationBarSection().checkWalletTabToBeSelected();
         return screen(WalletPage.class);
-    }
-
-    public void walletPageIsOpen() {
-        log.info("Wallet tab is selected: " + getNavigationBarSection().isWalletTabSelected());
-        Assertions.assertThat(getNavigationBarSection().isWalletTabSelected()).isTrue();
-        /*if (isAndroid()) {
-            walletTab.shouldBe(Condition.selected);
-            log.info("Wallet tab is selected: "+walletTab.shouldBe(Condition.selected).getAttribute("selected"));
-        }
-        if (isIOS()) {
-            walletTab.shouldBe(Condition.visible);
-            log.info("Wallet tab is selected: "+walletTab.shouldBe(Condition.visible).getAttribute("visible"));
-        }
-
-         */
     }
 
     @Step

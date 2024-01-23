@@ -16,13 +16,12 @@ import jp.co.soramitsu.sora.qa.pages.account.PinCodePage;
 @Feature("Select node")
 public class NodeTests extends CoreTestCase {
     @Test
-    @TmsLink("SORA-332")
-    @Issue("an issue with iOS")
-    public void addCustomNodeTest() {
+    @TmsLink("SORA-334")
+    public void addExistingCustomNodeTest() {
         WalletPage walletPage = WalletPage.createNewAccount();
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
         NodesPage nodesPage = morePage.goToNodesPage();
-        nodesPage.addCustomNode();
+        nodesPage.addExistingCustomNode();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
         enterCodePage.enterPinCodeOnLogout();
@@ -30,12 +29,12 @@ public class NodeTests extends CoreTestCase {
 
     @Test
     @TmsLink("SORA-328")
-    @Issue("an issue with iOS")
+    @Issue("wrong flow on ios")
     public void changeDefaultNodeTest() {
         WalletPage walletPage = WalletPage.createNewAccount();
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
         NodesPage nodesPage = morePage.goToNodesPage();
-        nodesPage.switchToDefaultNode();
+        morePage = nodesPage.switchToDefaultNode();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
         enterCodePage.enterPinCodeOnLogout();
