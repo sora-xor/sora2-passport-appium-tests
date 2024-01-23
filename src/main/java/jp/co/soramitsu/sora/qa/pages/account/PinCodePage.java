@@ -2,9 +2,12 @@ package jp.co.soramitsu.sora.qa.pages.account;
 
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.appium.ScreenObject;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.appium.java_client.touch.offset.PointOption;
 import io.qameta.allure.Step;
+import jp.co.soramitsu.sora.qa.infrastructure.Utils;
 import jp.co.soramitsu.sora.qa.pages.WalletPage;
 import jp.co.soramitsu.sora.qa.pages.WelcomePage;
 import lombok.extern.log4j.Log4j2;
@@ -147,10 +150,12 @@ public class PinCodePage {
         }
     }
 
+    //todo try to tap by coordinates
     public void enterPinCodeIOs(){
         for (int i = 1; i <= 6; i++) {
-            $(By.name("" + i)).click();
+            //$(By.name("" + i)).click();
             //$(By.xpath("(//XCUIElementTypeStaticText[@name=\""+i+"\"])[2]")).click();
+            Utils.tapElementByCoordinates($(By.name("" + i)));
         }
     }
 }
