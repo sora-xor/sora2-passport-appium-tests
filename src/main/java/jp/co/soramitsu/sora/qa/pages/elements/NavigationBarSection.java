@@ -3,6 +3,7 @@ package jp.co.soramitsu.sora.qa.pages.elements;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Container;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
@@ -11,10 +12,14 @@ import jp.co.soramitsu.sora.qa.pages.ExplorePage;
 import jp.co.soramitsu.sora.qa.pages.MorePage;
 import jp.co.soramitsu.sora.qa.pages.WalletPage;
 import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static jp.co.soramitsu.sora.qa.infrastructure.Platform.isAndroid;
-import static jp.co.soramitsu.sora.qa.infrastructure.Platform.isIOS;
+
 
 @Log4j2
 public class NavigationBarSection implements Container {
@@ -39,7 +44,7 @@ public class NavigationBarSection implements Container {
     public MorePage goToMorePage() {
         log.info("Click More button");
         moreBtn.shouldBe(Condition.visible).click();
-        isMoreTabSelected();
+        checkTabToBeSelected(moreBtn);
         return screen(MorePage.class);
     }
 
@@ -47,7 +52,7 @@ public class NavigationBarSection implements Container {
     public ExplorePage goToExplorePage() {
         log.info("Click Explore button");
         exploreBtn.shouldBe(Condition.visible).click();
-        isExploreTabSelected();
+        checkTabToBeSelected(exploreBtn);
         return screen(ExplorePage.class);
     }
 
@@ -55,7 +60,7 @@ public class NavigationBarSection implements Container {
     public WalletPage goToWalletPage() {
         log.info("Click Wallet button");
         walletBtn.shouldBe(Condition.visible).click();
-        isWalletTabSelected();
+        checkTabToBeSelected(walletBtn);
         return screen(WalletPage.class);
     }
 
@@ -63,48 +68,29 @@ public class NavigationBarSection implements Container {
     public ActivityPage goToActivityPage() {
         log.info("Click Activity button");
         activityBtn.shouldBe(Condition.visible).click();
-        isActivityTabSelected();
+        checkTabToBeSelected(activityBtn);
         return screen(ActivityPage.class);
     }
 
-    //todo: add exception handling in methods below
-    public boolean isWalletTabSelected(){
-        if (isAndroid()) {
-            return walletBtn.is(Condition.selected);
+    //todo make this method to work on ios too
+    private void checkTabToBeSelected(SelenideElement tabButton)
+    {
+        if(isAndroid()) {
+            new WebDriverWait(WebDriverRunner.getWebDriver(), Duration.parse("PT5S"))
+                    .pollingEvery(Duration.parse("PT1S"))
+                    .until(ExpectedConditions.elementToBeSelected(tabButton));
         }
-        if (isIOS()) {
-            return walletBtn.getValue().equals("1");
+        else {
+            new WebDriverWait(WebDriverRunner.getWebDriver(), Duration.parse("PT5S"))
+                    .pollingEvery(Duration.parse("PT1S"))
+                    .until(ExpectedConditions.attributeToBe(tabButton, "value", "1"));
         }
-        return false;
     }
 
-    public boolean isActivityTabSelected(){
-        if (isAndroid()) {
-            return activityBtn.is(Condition.selected);
-        }
-        if (isIOS()) {
-            return activityBtn.getValue().equals("1");
-        }
-        return false;
+    @Step
+    public void checkWalletTabToBeSelected()
+    {
+        checkTabToBeSelected(walletBtn);
     }
 
-    public boolean isExploreTabSelected(){
-        if (isAndroid()) {
-            return exploreBtn.is(Condition.selected);
-        }
-        if (isIOS()) {
-            return exploreBtn.getValue().equals("1");
-        }
-        return false;
-    }
-
-    public boolean isMoreTabSelected(){
-        if (isAndroid()) {
-            return moreBtn.is(Condition.selected);
-        }
-        if (isIOS()) {
-            return moreBtn.getValue().equals("1");
-        }
-        return false;
-    }
 }

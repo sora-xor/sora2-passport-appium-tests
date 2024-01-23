@@ -38,4 +38,6 @@ public interface TestConfigInterface extends Config{
     String androidBundleId();
     @Key("iOSBundleId")
     String iOSBundleId();
+    @Key("nodeAddress")
+    String nodeAddress();
 }
