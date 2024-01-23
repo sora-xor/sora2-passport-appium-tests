@@ -150,11 +150,8 @@ public class PinCodePage {
         }
     }
 
-    //todo try to tap by coordinates
     public void enterPinCodeIOs(){
         for (int i = 1; i <= 6; i++) {
-            //$(By.name("" + i)).click();
-            //$(By.xpath("(//XCUIElementTypeStaticText[@name=\""+i+"\"])[2]")).click();
             Utils.tapElementByCoordinates($(By.name("" + i)));
         }
     }
