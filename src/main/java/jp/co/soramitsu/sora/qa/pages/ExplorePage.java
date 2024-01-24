@@ -14,12 +14,15 @@ import static jp.co.soramitsu.sora.qa.infrastructure.Platform.isIOS;
 public class ExplorePage extends CommonPage{
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Pools\"]")
+    @iOSXCUITFindBy(accessibility = "Pools")
     private SelenideElement poolButton;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Farming\"]")
+    @iOSXCUITFindBy(accessibility = "Farming")
     private SelenideElement farmingButton;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Currencies\"]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Currencies\"])[1]")
     private SelenideElement currenciesButton;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Provide liquidity and earn rewards\"]/following-sibling::android.widget.ImageView")
@@ -80,7 +83,7 @@ public class ExplorePage extends CommonPage{
     private SelenideElement showMorePools;
 
     @AndroidFindBy(xpath = "//*[@text='Polkaswap pools']")
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Polkaswap pools\"])[2]")
+    @iOSXCUITFindBy(accessibility = "Polkaswap pools")
     private SelenideElement polkaswapPoolsTitle;
 
     @Step
@@ -112,6 +115,6 @@ public class ExplorePage extends CommonPage{
         confirmBtn.shouldBe(Condition.visible).click();
         closeBtn.shouldBe(Condition.visible).click();
         log.info("Click Close button" );
-        if (isIOS()) crossBtn.shouldBe(Condition.visible).click();
+        //if (isIOS()) crossBtn.shouldBe(Condition.visible).click();
     }
 }

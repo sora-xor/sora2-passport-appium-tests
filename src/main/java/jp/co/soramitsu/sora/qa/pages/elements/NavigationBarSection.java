@@ -18,7 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static com.codeborne.selenide.appium.ScreenObject.screen;
-
+import static jp.co.soramitsu.sora.qa.infrastructure.Platform.isAndroid;
 
 @Log4j2
 public class NavigationBarSection implements Container {
@@ -74,9 +74,16 @@ public class NavigationBarSection implements Container {
     //todo make this method to work on ios too
     private void checkTabToBeSelected(SelenideElement tabButton)
     {
-        new WebDriverWait(WebDriverRunner.getWebDriver(), Duration.parse("PT5S"))
-                .pollingEvery(Duration.parse("PT1S"))
-                .until(ExpectedConditions.elementToBeSelected(tabButton));
+        if(isAndroid()) {
+            new WebDriverWait(WebDriverRunner.getWebDriver(), Duration.parse("PT5S"))
+                    .pollingEvery(Duration.parse("PT1S"))
+                    .until(ExpectedConditions.elementToBeSelected(tabButton));
+        }
+        else {
+            new WebDriverWait(WebDriverRunner.getWebDriver(), Duration.parse("PT5S"))
+                    .pollingEvery(Duration.parse("PT1S"))
+                    .until(ExpectedConditions.attributeToBe(tabButton, "value", "1"));
+        }
     }
 
     @Step
