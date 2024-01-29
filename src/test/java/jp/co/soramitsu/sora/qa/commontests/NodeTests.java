@@ -9,8 +9,6 @@ import org.testng.annotations.Test;
 import jp.co.soramitsu.sora.qa.pages.MorePage;
 import jp.co.soramitsu.sora.qa.pages.NodesPage;
 import jp.co.soramitsu.sora.qa.pages.WalletPage;
-import jp.co.soramitsu.sora.qa.pages.account.AccountsPage;
-import jp.co.soramitsu.sora.qa.pages.account.PinCodePage;
 
 @Log4j2
 @Feature("Select node")
@@ -22,9 +20,6 @@ public class NodeTests extends CoreTestCase {
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
         NodesPage nodesPage = morePage.goToNodesPage();
         nodesPage.addExistingCustomNode();
-        AccountsPage accountsPage = morePage.goToAccounts();
-        PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCodeOnLogout();
     }
 
     @Test
@@ -35,8 +30,5 @@ public class NodeTests extends CoreTestCase {
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
         NodesPage nodesPage = morePage.goToNodesPage();
         morePage = nodesPage.switchToDefaultNode();
-        AccountsPage accountsPage = morePage.goToAccounts();
-        PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCodeOnLogout();
     }
 }

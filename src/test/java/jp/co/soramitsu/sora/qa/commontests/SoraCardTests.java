@@ -27,10 +27,6 @@ public class SoraCardTests extends CoreTestCase {
         verificationStatusPage.checkApprovedStatusWithoutLogOut();
         SoraCardDetailsPage soraCardDetailsPage = walletPage.goToSoraCardInfo();
         soraCardDetailsPage.checkIBAN();
-        MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
-        AccountsPage accountsPage = morePage.goToAccounts();
-        PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCodeOnLogout();
     }
 
     @Test
@@ -47,10 +43,6 @@ public class SoraCardTests extends CoreTestCase {
         String testOtp = TestConfig.config.testOtp();
         VerificationStatusPage verificationStatusPage = verifyPhoneNumberOTPPage.verifyYourPhoneNumber(phoneNumber, testOtp);
         verificationStatusPage.checkApprovedStatus();
-        MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
-        AccountsPage accountsPage = morePage.goToAccounts();
-        PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCodeOnLogout();
     }
 
     @Test(enabled = false)
@@ -65,10 +57,6 @@ public class SoraCardTests extends CoreTestCase {
         String testOtp = TestConfig.config.testOtp();
         VerificationStatusPage verificationStatusPage = verifyPhoneNumberOTPPage.verifyYourPhoneNumber(phoneNumber, testOtp);
         verificationStatusPage.checkPendingStatus();
-        MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
-        AccountsPage accountsPage = morePage.goToAccounts();
-        PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCodeOnLogout();
     }
 
     @Test(enabled = false)
@@ -83,10 +71,6 @@ public class SoraCardTests extends CoreTestCase {
         String testOtp = TestConfig.config.testOtp();
         VerificationStatusPage verificationStatusPage = verifyPhoneNumberOTPPage.verifyYourPhoneNumber(phoneNumber, testOtp);
         verificationStatusPage.checkRejectedStatus();
-        MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
-        AccountsPage accountsPage = morePage.goToAccounts();
-        PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCodeOnLogout();
     }
 
     @Test()
@@ -103,10 +87,6 @@ public class SoraCardTests extends CoreTestCase {
         KYCPage kycPage = verificationStatusPage.goToKYCProcess();
         kycPage.getPrepared();
         verificationStatusPage.checkFailedStatus();
-        MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
-        AccountsPage accountsPage = morePage.goToAccounts();
-        PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCodeOnLogout();
     }
 
     /*

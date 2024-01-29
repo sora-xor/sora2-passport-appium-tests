@@ -3,7 +3,6 @@ package jp.co.soramitsu.sora.qa.pages.account;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-import jp.co.soramitsu.sora.qa.infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
@@ -52,8 +51,7 @@ public class KYCPage{
         String getPreparedText = getPreparedTitle.getText();
         getPreparedTitle.shouldBe(Condition.visible);
         log.info(getPreparedText);
-        Utils.scrollForward(1);
-        readyToAttemptBtn.shouldBe(Condition.visible).click();
+        readyToAttemptBtn.scrollTo().shouldBe(Condition.visible).click();
         WebDriver driver = WebDriverRunner.getWebDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT30S"), Duration.parse("PT5S"));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("jp.co.soramitsu.sora.develop:id/sns_title")));

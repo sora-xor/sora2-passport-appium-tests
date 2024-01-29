@@ -11,12 +11,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.AfterSuite;
+import org.testng.annotations.*;
 
 import java.io.File;
 import java.net.URL;
@@ -28,9 +23,7 @@ import java.util.Locale;
 public class CoreTestCase {
 
     public static final Faker FAKER = new Faker(new Locale("en-GB"));
-    private String bundlId = "co.jp.soramitsu.sora.dev";
     private AppiumDriver driver;
-    //  public IOSDriver ios_driver;
     private static AppiumDriverLocalService service;
 
     @BeforeSuite
@@ -43,30 +36,25 @@ public class CoreTestCase {
     }
 
 
-    @BeforeTest
-    static void setupAllureReports() {
-        Configuration.timeout = 14000;
-        Configuration.screenshots = false;
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
-                .screenshots(true)
-                .savePageSource(true));
-    }
 
-    @BeforeClass
+    @BeforeMethod
     public void setUp() throws MalformedURLException {
+        Configuration.timeout = 8000;
+
         driver = Platform.getInstance().getDriver();
         WebDriverRunner.setWebDriver(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-    }
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(true));    }
 
     @AfterMethod
-    public void screenShotOnFail() throws IOException {
-        screenshot();
-    }
-
-
-    @AfterClass
     public void tearDown() throws MalformedURLException {
+        try {
+            screenshot();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         WebDriverRunner.closeWebDriver();
         if (driver != null) {
             driver.quit();

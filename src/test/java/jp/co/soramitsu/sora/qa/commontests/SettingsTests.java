@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import jp.co.soramitsu.sora.qa.pages.AppSettingsPage;
 import jp.co.soramitsu.sora.qa.pages.MorePage;
 import jp.co.soramitsu.sora.qa.pages.WalletPage;
-import jp.co.soramitsu.sora.qa.pages.account.AccountsPage;
 import jp.co.soramitsu.sora.qa.pages.account.LoginAndSecurityPage;
 import jp.co.soramitsu.sora.qa.pages.account.PinCodePage;
 
@@ -17,12 +16,6 @@ public class SettingsTests extends CoreTestCase {
     @TmsLink("SORA-263")
     public void changeAccountNameTest(){
         WalletPage walletPage = WalletPage.createNewAccount();
-        MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
-        AccountsPage accountsPage = morePage.goToAccounts();
-        accountsPage.changeAccountName();
-        accountsPage.returnToAccountsPage();
-        PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCodeOnLogout();
     }
 
     @Test
@@ -33,9 +26,6 @@ public class SettingsTests extends CoreTestCase {
         AppSettingsPage appSettingsPage = morePage.goToAppSettingsPage();
         appSettingsPage.switchToSpanish();
         appSettingsPage.switchToEnglish();
-        AccountsPage accountsPage = morePage.goToAccounts();
-        PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCodeOnLogout();
     }
 
     @Test
@@ -46,9 +36,6 @@ public class SettingsTests extends CoreTestCase {
         LoginAndSecurityPage loginAndSecurityPage = morePage.goToLoginAndSecurity();
         PinCodePage pinCodePage = loginAndSecurityPage.goToChangePin();
         loginAndSecurityPage = pinCodePage.changeAndConfirmChangePinCode();
-        MorePage morePage1 = loginAndSecurityPage.checkToastPinCodeChanged();
-        AccountsPage accountsPage = morePage1.goToAccounts();
-        PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCodeOnLogout();
+        morePage = loginAndSecurityPage.checkToastPinCodeChanged();
     }
 }

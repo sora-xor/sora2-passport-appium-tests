@@ -46,9 +46,6 @@ public class ReferralProgramTests extends CoreTestCase {
         referralProgramPage = activityPage.checkSetReffererTransaction();
         //ios crush on this step
         morePage = referralProgramPage.returnToMorePage();
-        AccountsPage accountsPage = morePage.goToAccounts();
-        PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCodeOnLogout();
     }
 
     @Test
@@ -61,8 +58,5 @@ public class ReferralProgramTests extends CoreTestCase {
         ActivityPage activityPage = referralProgramPage.createInviteLink();
         referralProgramPage = activityPage.checkBoundXorTransaction();
         morePage = referralProgramPage.returnToMorePage();
-        AccountsPage accountsPage = morePage.goToAccounts();
-        PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCodeOnLogout();
     }
 }
