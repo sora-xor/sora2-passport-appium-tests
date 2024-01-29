@@ -12,7 +12,7 @@ import jp.co.soramitsu.sora.qa.pages.ExplorePage;
 import jp.co.soramitsu.sora.qa.pages.MorePage;
 import jp.co.soramitsu.sora.qa.pages.WalletPage;
 import jp.co.soramitsu.sora.qa.pages.account.AccountsPage;
-import jp.co.soramitsu.sora.qa.pages.account.PinCodePage;
+import jp.co.soramitsu.sora.qa.pages.onboarding.PinCodePage;
 
 @Log4j2
 @Feature("Pool")

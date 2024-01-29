@@ -1,4 +1,4 @@
-package jp.co.soramitsu.sora.qa.pages;
+package jp.co.soramitsu.sora.qa.pages.onboarding;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -8,10 +8,10 @@ import com.codeborne.selenide.appium.ScreenObject;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
+import jp.co.soramitsu.sora.qa.infrastructure.Utils;
+import jp.co.soramitsu.sora.qa.pages.MorePage;
+import jp.co.soramitsu.sora.qa.pages.WalletPage;
 import jp.co.soramitsu.sora.qa.pages.account.AccountsPage;
-import jp.co.soramitsu.sora.qa.pages.account.ImportAccountPage;
-import jp.co.soramitsu.sora.qa.pages.account.NameYourAccountPage;
-import jp.co.soramitsu.sora.qa.pages.account.PinCodePage;
 import lombok.extern.log4j.Log4j2;
 
 import static jp.co.soramitsu.sora.qa.infrastructure.Platform.isIOS;
@@ -62,14 +62,14 @@ public class WelcomePage {
                 ExpectedConditions.visibilityOf(pinCodeTitleTv)));
         if (pinCodeTitleTv.is(Condition.visible)) {
             log.info("Already logged in. Logout needed.");
-            WalletPage walletPage = enterPinCode();
+            PinCodePage pinCodePage = ScreenObject.screen(PinCodePage.class);
+            WalletPage walletPage = pinCodePage.enterPinCode();
             MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
             AccountsPage accountsPage = morePage.goToAccounts();
-            PinCodePage enterCodePage = accountsPage.forgetAccount();
-            enterCodePage.enterPinCodeOnLogout();
+            pinCodePage = accountsPage.forgetAccount();
+            pinCodePage.enterPinCodeOnLogout();
             WebDriverWait wait_again = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
             wait_again.until(ExpectedConditions.visibilityOf(createAccountBtn));
-
         }
 
         log.info("Create account");
@@ -90,11 +90,12 @@ public class WelcomePage {
 
         if (pinCodeTitleTv.is(Condition.visible)) {
             log.info("Already logged in. Logout needed.");
-            WalletPage walletPage = enterPinCode();
+            PinCodePage pinCodePage = ScreenObject.screen(PinCodePage.class);
+            WalletPage walletPage = pinCodePage.enterPinCode();
             MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
             AccountsPage accountsPage = morePage.goToAccounts();
-            PinCodePage enterCodePage = accountsPage.forgetAccount();
-            enterCodePage.enterPinCodeOnLogout();
+            pinCodePage = accountsPage.forgetAccount();
+            pinCodePage.enterPinCodeOnLogout();
             WebDriverWait wait_again = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
             wait_again.until(ExpectedConditions.visibilityOf(importAccountBtn));
 
@@ -119,11 +120,12 @@ public class WelcomePage {
 
         if (pinCodeTitleTv.is(Condition.visible)) {
             log.info("Already logged in. Logout needed.");
-            WalletPage walletPage = enterPinCode();
+            PinCodePage pinCodePage = ScreenObject.screen(PinCodePage.class);
+            WalletPage walletPage = pinCodePage.enterPinCode();
             MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
             AccountsPage accountsPage = morePage.goToAccounts();
-            PinCodePage enterCodePage = accountsPage.forgetAccount();
-            enterCodePage.enterPinCodeOnLogout();
+            pinCodePage = accountsPage.forgetAccount();
+            pinCodePage.enterPinCodeOnLogout();
             WebDriverWait wait_again = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
             wait_again.until(ExpectedConditions.visibilityOf(importAccountBtn));
 
@@ -147,11 +149,12 @@ public class WelcomePage {
 
         if (pinCodeTitleTv.is(Condition.visible)) {
             log.info("Already logged in. Logout needed.");
-            WalletPage walletPage = enterPinCode();
+            PinCodePage pinCodePage = ScreenObject.screen(PinCodePage.class);
+            WalletPage walletPage = pinCodePage.enterPinCode();
             MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
             AccountsPage accountsPage = morePage.goToAccounts();
-            PinCodePage enterCodePage = accountsPage.forgetAccount();
-            enterCodePage.enterPinCodeOnLogout();
+            pinCodePage = accountsPage.forgetAccount();
+            pinCodePage.enterPinCodeOnLogout();
             WebDriverWait wait_again = new WebDriverWait(driver, Duration.parse("PT5S"), Duration.parse("PT1S"));
             wait_again.until(ExpectedConditions.visibilityOf(importAccountBtn));
         }

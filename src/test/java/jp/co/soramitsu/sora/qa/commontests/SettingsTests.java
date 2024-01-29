@@ -8,7 +8,7 @@ import jp.co.soramitsu.sora.qa.pages.AppSettingsPage;
 import jp.co.soramitsu.sora.qa.pages.MorePage;
 import jp.co.soramitsu.sora.qa.pages.WalletPage;
 import jp.co.soramitsu.sora.qa.pages.account.LoginAndSecurityPage;
-import jp.co.soramitsu.sora.qa.pages.account.PinCodePage;
+import jp.co.soramitsu.sora.qa.pages.onboarding.PinCodePage;
 
 @Feature("Settings")
 public class SettingsTests extends CoreTestCase {

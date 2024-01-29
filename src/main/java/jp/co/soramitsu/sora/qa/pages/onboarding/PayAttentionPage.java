@@ -1,4 +1,4 @@
-package jp.co.soramitsu.sora.qa.pages.account;
+package jp.co.soramitsu.sora.qa.pages.onboarding;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -23,14 +23,14 @@ public class PayAttentionPage {
 
     @AndroidFindBy(xpath = "//*[@text='CONTINUE']")
     @iOSXCUITFindBy(accessibility = "Continue")
-    private SelenideElement nextBtn;
+    private SelenideElement continueBtn;
 
     @Step
     public PassphrasePage confirmPayAttention() {
         loseMyPassphraseCheckbox.shouldBe(Condition.visible).click();
         exposeOrShareCheckbox.shouldBe(Condition.visible).click();
         responsibilityCheckbox.shouldBe(Condition.visible).click();
-        nextBtn.shouldBe(Condition.visible).click();
+        continueBtn.shouldBe(Condition.visible).click();
         return ScreenObject.screen(PassphrasePage.class);
     }
 }

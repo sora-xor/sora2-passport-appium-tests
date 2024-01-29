@@ -1,4 +1,4 @@
-package jp.co.soramitsu.sora.qa.pages.account;
+package jp.co.soramitsu.sora.qa.pages.onboarding;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -6,6 +6,7 @@ import com.codeborne.selenide.appium.ScreenObject;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
+import jp.co.soramitsu.sora.qa.pages.onboarding.NameYourAccountPage;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2

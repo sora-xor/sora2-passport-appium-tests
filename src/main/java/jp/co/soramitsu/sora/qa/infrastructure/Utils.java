@@ -1,5 +1,6 @@
 package jp.co.soramitsu.sora.qa.infrastructure;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.appium.java_client.AppiumBy;
@@ -72,6 +73,8 @@ public class Utils {
     public static void tapElementByCoordinates(SelenideElement element) {
         int x = element.getLocation().getX() + element.getSize().getWidth() / 2;
         int y = element.getLocation().getY() + element.getSize().getHeight() / 2;
+
+        element.shouldBe(Condition.visible);
 
         AppiumDriver driver = (AppiumDriver) getWebDriver();
 

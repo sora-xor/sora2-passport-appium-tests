@@ -1,4 +1,4 @@
-package jp.co.soramitsu.sora.qa.pages.account;
+package jp.co.soramitsu.sora.qa.pages.onboarding;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;

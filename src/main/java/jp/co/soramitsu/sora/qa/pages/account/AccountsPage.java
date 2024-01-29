@@ -7,6 +7,7 @@ import com.codeborne.selenide.appium.ScreenObject;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
+import jp.co.soramitsu.sora.qa.pages.onboarding.PinCodePage;
 import lombok.extern.log4j.Log4j2;
 import static org.assertj.core.api.Assertions.*;
 
