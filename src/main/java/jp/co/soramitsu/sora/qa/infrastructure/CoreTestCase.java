@@ -43,7 +43,7 @@ public class CoreTestCase {
 
         driver = Platform.getInstance().getDriver();
         WebDriverRunner.setWebDriver(driver);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
                 .screenshots(true)
                 .savePageSource(true));    }
