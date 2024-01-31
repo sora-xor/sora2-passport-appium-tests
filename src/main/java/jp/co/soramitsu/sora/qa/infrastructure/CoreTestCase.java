@@ -56,7 +56,7 @@ public class CoreTestCase {
     public void setUp() throws MalformedURLException {
         driver = Platform.getInstance().getDriver();
         WebDriverRunner.setWebDriver(driver);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterMethod
