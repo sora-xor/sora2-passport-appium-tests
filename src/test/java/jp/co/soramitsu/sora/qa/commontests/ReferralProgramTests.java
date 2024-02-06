@@ -18,7 +18,6 @@ import jp.co.soramitsu.sora.qa.pages.WalletPage;
 public class ReferralProgramTests extends CoreTestCase {
     @Test
     @TmsLinks({@TmsLink("SORA-379"), @TmsLink("SORA-380")})
-    @Issue("link for ios to be added")
     public void startInvitingTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic2());
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
@@ -32,7 +31,6 @@ public class ReferralProgramTests extends CoreTestCase {
 
     @Test
     @TmsLink("SORA-378")
-    @Issue("issue in iOS")
     public void createReferrersLinkTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
@@ -44,7 +42,6 @@ public class ReferralProgramTests extends CoreTestCase {
 
     @TmsLink("SORA-377")
     @Test
-    @Issue("link for ios to be added")
     public void setReferrerLinkTest() {
         WalletPage walletPage = WalletPage.createNewAccount();
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
