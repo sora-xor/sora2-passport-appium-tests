@@ -30,9 +30,6 @@ public class ReferralProgramTests extends CoreTestCase {
         activityPage = referralProgramPage.unBondXor();
         referralProgramPage = activityPage.checkUnboundXorTransaction();
         morePage = referralProgramPage.returnToMorePage();
-        AccountsPage accountsPage = morePage.goToAccounts();
-        PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCodeOnLogout();
     }
 
     @TmsLink("SORA-377")
@@ -44,7 +41,6 @@ public class ReferralProgramTests extends CoreTestCase {
         ReferralProgramPage referralProgramPage = morePage.goToReferralProgramPage();
         ActivityPage activityPage = referralProgramPage.setRefferrersLink(TestConfig.config.referrerLink1());
         referralProgramPage = activityPage.checkSetReffererTransaction();
-        //ios crush on this step
         morePage = referralProgramPage.returnToMorePage();
     }
 

@@ -81,6 +81,7 @@ public class ActivityPage extends CommonPage {
     @iOSXCUITFindBy(accessibility = "TODAY")
     private SelenideElement TodayTxt;
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.Button")
+    @iOSXCUITFindBy(accessibility = "Close")
     private SelenideElement backBtn;
 
 
@@ -165,17 +166,32 @@ public class ActivityPage extends CommonPage {
 
     @Step
     public ReferralProgramPage checkSetReffererTransaction() {
-        assertThat(getTransactionStatus.getText()).isEqualTo("Successful");
-        backBtn.shouldBe(Condition.visible).click();
+        WebDriver driver = WebDriverRunner.getWebDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT30S"), Duration.parse("PT1S"));
+        if(isAndroid()) {
+            wait.until(ExpectedConditions.attributeToBe(getTransactionStatus, "text", "Successful"));
+        }
+        else {
+            wait.until(ExpectedConditions.attributeToBe(getTransactionStatus, "value", "Successful"));
+
+        }        backBtn.shouldBe(Condition.visible).click();
         return screen(ReferralProgramPage.class);
     }
 
     @Step
     public ReferralProgramPage checkBoundXorTransaction() {
+        log.info("Check bond trx");
         WebDriver driver = WebDriverRunner.getWebDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT300S"), Duration.parse("PT1S"));
-        wait.until(ExpectedConditions.visibilityOf(boundedItem));
-        boundedItem.shouldBe(Condition.visible);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT30S"), Duration.parse("PT1S"));
+        assertThat(boundedItem.isDisplayed()).isTrue();
+        if(isAndroid()) {
+            wait.until(ExpectedConditions.attributeToBe(getTransactionStatus, "text", "Successful"));
+        }
+        else {
+            wait.until(ExpectedConditions.attributeToBe(getTransactionStatus, "value", "Successful"));
+
+        }
+        log.info("trx is successful");
         closeBtn.shouldBe(Condition.visible).click();
         String getAvailableInvitations;
         if (isAndroid()) {
@@ -187,10 +203,17 @@ public class ActivityPage extends CommonPage {
 
     @Step
     public ReferralProgramPage checkUnboundXorTransaction() {
+        log.info("Check unbond trx");
         WebDriver driver = WebDriverRunner.getWebDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT10S"), Duration.parse("PT1S"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT30S"), Duration.parse("PT1S"));
         wait.until(ExpectedConditions.visibilityOf(unboundedItem));
-        unboundedItem.shouldBe(Condition.visible);
+        if(isAndroid()) {
+            wait.until(ExpectedConditions.attributeToBe(getTransactionStatus, "text", "Successful"));
+        }
+        else {
+            wait.until(ExpectedConditions.attributeToBe(getTransactionStatus, "value", "Successful"));
+
+        }
         closeBtn.shouldBe(Condition.visible).click();
         String getAvailableInvitations;
         if (isAndroid()) {
