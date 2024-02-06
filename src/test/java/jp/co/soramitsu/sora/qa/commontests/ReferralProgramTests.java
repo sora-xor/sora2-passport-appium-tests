@@ -12,8 +12,6 @@ import jp.co.soramitsu.sora.qa.pages.ActivityPage;
 import jp.co.soramitsu.sora.qa.pages.MorePage;
 import jp.co.soramitsu.sora.qa.pages.ReferralProgramPage;
 import jp.co.soramitsu.sora.qa.pages.WalletPage;
-import jp.co.soramitsu.sora.qa.pages.account.AccountsPage;
-import jp.co.soramitsu.sora.qa.pages.onboarding.PinCodePage;
 
 @Feature("Referral program")
 @Log4j2
@@ -32,18 +30,6 @@ public class ReferralProgramTests extends CoreTestCase {
         morePage = referralProgramPage.returnToMorePage();
     }
 
-    @TmsLink("SORA-377")
-    @Test
-    @Issue("link for ios to be added")
-    public void setReferrerLinkTest() {
-        WalletPage walletPage = WalletPage.createNewAccount();
-        MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
-        ReferralProgramPage referralProgramPage = morePage.goToReferralProgramPage();
-        ActivityPage activityPage = referralProgramPage.setRefferrersLink(TestConfig.config.referrerLink1());
-        referralProgramPage = activityPage.checkSetReffererTransaction();
-        morePage = referralProgramPage.returnToMorePage();
-    }
-
     @Test
     @TmsLink("SORA-378")
     @Issue("issue in iOS")
@@ -53,6 +39,18 @@ public class ReferralProgramTests extends CoreTestCase {
         ReferralProgramPage referralProgramPage = morePage.goToReferralProgramPage();
         ActivityPage activityPage = referralProgramPage.createInviteLink();
         referralProgramPage = activityPage.checkBoundXorTransaction();
+        morePage = referralProgramPage.returnToMorePage();
+    }
+
+    @TmsLink("SORA-377")
+    @Test
+    @Issue("link for ios to be added")
+    public void setReferrerLinkTest() {
+        WalletPage walletPage = WalletPage.createNewAccount();
+        MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
+        ReferralProgramPage referralProgramPage = morePage.goToReferralProgramPage();
+        ActivityPage activityPage = referralProgramPage.setReferrersLink(TestConfig.config.referrerLink1());
+        referralProgramPage = activityPage.checkSetReffererTransaction();
         morePage = referralProgramPage.returnToMorePage();
     }
 }
