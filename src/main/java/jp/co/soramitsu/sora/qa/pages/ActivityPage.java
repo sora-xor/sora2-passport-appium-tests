@@ -6,6 +6,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
+import jp.co.soramitsu.sora.qa.infrastructure.Utils;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -138,6 +139,15 @@ public class ActivityPage extends CommonPage {
         closeBtn.shouldBe(Condition.visible).click();
     }
 
+    @Step public WalletPage checkSendTransaction(){
+        checkTrxStatus("Successful");
+        closeBtn.shouldBe(Condition.visible).click();
+        if (isIOS()) {
+            log.info("Close Asset details by swipe down");
+            Utils.swipeDown();
+        }
+        return screen(WalletPage.class);
+    }
     @Step
     public void checkLastTransactionSendToken(String randomValue) {
         if (isIOS()) {
@@ -165,10 +175,10 @@ public class ActivityPage extends CommonPage {
     }
 
     @Step
-    public ReferralProgramPage checkSetReffererTransaction() {
+    public ReferralProgramPage checkSetReferrerTransaction() {
         //todo add trx type check
         checkTrxStatus("Successful");
-        backBtn.shouldBe(Condition.visible).click();
+        closeBtn.shouldBe(Condition.visible).click();
         return screen(ReferralProgramPage.class);
     }
 

@@ -8,6 +8,7 @@ import jp.co.soramitsu.sora.qa.infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
+import jp.co.soramitsu.sora.qa.pages.ActivityPage;
 import jp.co.soramitsu.sora.qa.pages.WalletPage;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
@@ -85,7 +86,7 @@ public class LiquidAssetsPage {
     private SelenideElement qrScan;
 
     @Step
-    public WalletPage sendToken(String randomValue) {
+    public ActivityPage sendToken(String randomValue) {
         log.info("Open XOR token details");
         xorTokenDetails.shouldBe(Condition.visible).click();
         log.info("Tap Send  button");
@@ -118,18 +119,9 @@ public class LiquidAssetsPage {
         }
         log.info("Click Confirm button");
         confirmBtn.click();
-
-        log.info("Click Close button");
-        closeBtn.shouldBe(Condition.visible).click();
-
-
-        if (isIOS()) {
-            log.info("Close Asset details by swipe down");
-            Utils.swipeDown();
-            qrScan.shouldBe(Condition.visible);
-        }
-        return screen(WalletPage.class);
+        return screen(ActivityPage.class);
     }
+
 }
 
 

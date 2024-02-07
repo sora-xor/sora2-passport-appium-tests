@@ -1,11 +1,9 @@
 package jp.co.soramitsu.sora.qa.commontests;
 
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.TmsLinks;
 import jp.co.soramitsu.sora.qa.configs.TestConfig;
 import jp.co.soramitsu.sora.qa.infrastructure.CoreTestCase;
 import io.qameta.allure.Feature;
-import io.qameta.allure.Issue;
 import io.qameta.allure.TmsLink;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;
@@ -13,8 +11,6 @@ import jp.co.soramitsu.sora.qa.pages.ActivityPage;
 import jp.co.soramitsu.sora.qa.pages.MorePage;
 import jp.co.soramitsu.sora.qa.pages.ReferralProgramPage;
 import jp.co.soramitsu.sora.qa.pages.WalletPage;
-
-import static jp.co.soramitsu.sora.qa.infrastructure.Platform.isAndroid;
 
 @Feature("Referral program")
 @Log4j2
@@ -52,7 +48,7 @@ public class ReferralProgramTests extends CoreTestCase {
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
         ReferralProgramPage referralProgramPage = morePage.goToReferralProgramPage();
         ActivityPage activityPage = referralProgramPage.setReferrersLink(TestConfig.config.referrerLink1());
-        referralProgramPage = activityPage.checkSetReffererTransaction();
+        referralProgramPage = activityPage.checkSetReferrerTransaction();
         referralProgramPage.returnToMorePage();
     }
 }

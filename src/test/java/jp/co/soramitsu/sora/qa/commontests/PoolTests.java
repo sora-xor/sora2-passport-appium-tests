@@ -26,7 +26,6 @@ public class PoolTests extends CoreTestCase {
     @TmsLink("SORA-255")
     public void addLiquidityTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
-        //ios crushes here
         ExplorePage explorePage = walletPage.getNavigationBarSection().goToExplorePage();
         explorePage.clickPoolsButton();
         explorePage.addLiquidity(randomLiquidity);

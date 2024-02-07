@@ -20,8 +20,9 @@ public class SendTokenTests extends CoreTestCase {
     public void sendTokenTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         LiquidAssetsPage liquidAssetsPage = walletPage.goToLiquidAssets();
-        liquidAssetsPage.sendToken(randomValue);
-        ActivityPage activityPage = walletPage.getNavigationBarSection().goToActivityPage();
+        ActivityPage activityPage = liquidAssetsPage.sendToken(randomValue);
+        walletPage = activityPage.checkSendTransaction();
+        activityPage = walletPage.getNavigationBarSection().goToActivityPage();
         activityPage.checkLastTransactionSendToken(randomValue);
         MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
     }
