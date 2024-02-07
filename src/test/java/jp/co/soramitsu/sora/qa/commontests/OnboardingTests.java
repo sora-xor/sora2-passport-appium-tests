@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import jp.co.soramitsu.sora.qa.pages.MorePage;
 import jp.co.soramitsu.sora.qa.pages.WalletPage;
 import jp.co.soramitsu.sora.qa.pages.account.AccountsPage;
-import jp.co.soramitsu.sora.qa.pages.account.PinCodePage;
+import jp.co.soramitsu.sora.qa.pages.onboarding.PinCodePage;
 
 
 public class OnboardingTests extends CoreTestCase {

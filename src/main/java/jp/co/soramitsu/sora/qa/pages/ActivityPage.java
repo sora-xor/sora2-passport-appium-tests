@@ -6,6 +6,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
+import jp.co.soramitsu.sora.qa.infrastructure.Utils;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -81,6 +82,7 @@ public class ActivityPage extends CommonPage {
     @iOSXCUITFindBy(accessibility = "TODAY")
     private SelenideElement TodayTxt;
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.Button")
+    @iOSXCUITFindBy(accessibility = "Close")
     private SelenideElement backBtn;
 
 
@@ -137,6 +139,15 @@ public class ActivityPage extends CommonPage {
         closeBtn.shouldBe(Condition.visible).click();
     }
 
+    @Step public WalletPage checkSendTransaction(){
+        checkTrxStatus("Successful");
+        closeBtn.shouldBe(Condition.visible).click();
+        if (isIOS()) {
+            log.info("Close Asset details by swipe down");
+            Utils.swipeDown();
+        }
+        return screen(WalletPage.class);
+    }
     @Step
     public void checkLastTransactionSendToken(String randomValue) {
         if (isIOS()) {
@@ -164,40 +175,41 @@ public class ActivityPage extends CommonPage {
     }
 
     @Step
-    public ReferralProgramPage checkSetReffererTransaction() {
-        assertThat(getTransactionStatus.getText()).isEqualTo("Successful");
-        backBtn.shouldBe(Condition.visible).click();
+    public ReferralProgramPage checkSetReferrerTransaction() {
+        //todo add trx type check
+        checkTrxStatus("Successful");
+        closeBtn.shouldBe(Condition.visible).click();
         return screen(ReferralProgramPage.class);
     }
 
     @Step
     public ReferralProgramPage checkBoundXorTransaction() {
-        WebDriver driver = WebDriverRunner.getWebDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT300S"), Duration.parse("PT1S"));
-        wait.until(ExpectedConditions.visibilityOf(boundedItem));
-        boundedItem.shouldBe(Condition.visible);
+        log.info("Check bond trx");
+        assertThat(boundedItem.isDisplayed()).isTrue();
+        checkTrxStatus("Successful");
+        log.info("trx is successful");
         closeBtn.shouldBe(Condition.visible).click();
-        String getAvailableInvitations;
-        if (isAndroid()) {
-            getAvailableInvitations = availableInvitations.shouldBe(Condition.visible).getText();
-            log.info("Available invitations " + getAvailableInvitations);
-        }
         return screen(ReferralProgramPage.class);
     }
 
     @Step
     public ReferralProgramPage checkUnboundXorTransaction() {
-        WebDriver driver = WebDriverRunner.getWebDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT10S"), Duration.parse("PT1S"));
-        wait.until(ExpectedConditions.visibilityOf(unboundedItem));
-        unboundedItem.shouldBe(Condition.visible);
+        log.info("Check unbond trx");
+        assertThat(unboundedItem.isDisplayed()).isTrue();
+        checkTrxStatus("Successful");
         closeBtn.shouldBe(Condition.visible).click();
-        String getAvailableInvitations;
-        if (isAndroid()) {
-            getAvailableInvitations = availableInvitations.shouldBe(Condition.visible).getText();
-            log.info("Available invitations " + getAvailableInvitations);
-        }
         return screen(ReferralProgramPage.class);
+    }
+
+    private void checkTrxStatus(String status){
+        WebDriver driver = WebDriverRunner.getWebDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT30S"), Duration.parse("PT1S"));
+        if(isAndroid()) {
+            wait.until(ExpectedConditions.attributeToBe(getTransactionStatus, "text", status));
+        }
+        else {
+            wait.until(ExpectedConditions.attributeToBe(getTransactionStatus, "value", status));
+        }
     }
 }
 

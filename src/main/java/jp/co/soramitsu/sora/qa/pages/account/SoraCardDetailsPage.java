@@ -2,7 +2,6 @@ package jp.co.soramitsu.sora.qa.pages.account;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import jp.co.soramitsu.sora.qa.infrastructure.Utils;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
 import jp.co.soramitsu.sora.qa.pages.WalletPage;
@@ -45,8 +44,7 @@ public class SoraCardDetailsPage {
         String getIBANdetails = IBANdetails.shouldBe(Condition.visible).getText();
         log.info("IBAN account details: " + getIBANdetails);
         shareIBANCard.shouldBe(Condition.visible);
-        Utils.scrollForward(1);
-        logOutSoraCardBtn.shouldBe(Condition.visible).click();
+        logOutSoraCardBtn.scrollTo().shouldBe(Condition.visible).click();
         logOutConfirmBtn.shouldBe(Condition.visible).click();
         return screen(WalletPage.class);
     }

@@ -1,15 +1,13 @@
-package jp.co.soramitsu.sora.qa.pages.account;
+package jp.co.soramitsu.sora.qa.pages.onboarding;
 
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.appium.ScreenObject;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-import io.appium.java_client.touch.offset.PointOption;
 import io.qameta.allure.Step;
 import jp.co.soramitsu.sora.qa.infrastructure.Utils;
 import jp.co.soramitsu.sora.qa.pages.WalletPage;
-import jp.co.soramitsu.sora.qa.pages.WelcomePage;
+import jp.co.soramitsu.sora.qa.pages.account.LoginAndSecurityPage;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 
@@ -144,6 +142,20 @@ public class PinCodePage {
         }
         return ScreenObject.screen(LoginAndSecurityPage.class);
     }
+
+    @Step
+    public WalletPage enterPinCode() {
+        log.info("Enter Pin Code");
+        if (isAndroid()) {
+            enterPinCodeAndroid();
+        }
+        if (isIOS()) {
+            assertThat(pinCodeTitleTv.isDisplayed()).isTrue();
+            enterPinCodeIOs();
+        }
+        return ScreenObject.screen(WalletPage.class);
+    }
+
     public void enterPinCodeAndroid(){
         for (int i = 1; i <= 6; i++) {
             $(By.id("jp.co.soramitsu.sora.develop:id/" + i)).click();

@@ -6,13 +6,10 @@ import jp.co.soramitsu.sora.qa.infrastructure.Random;
 import io.qameta.allure.Feature;
 import io.qameta.allure.TmsLink;
 import jp.co.soramitsu.sora.qa.pages.ActivityPage;
-import jp.co.soramitsu.sora.qa.pages.MorePage;
 import jp.co.soramitsu.sora.qa.pages.PolkaswapPage;
 import jp.co.soramitsu.sora.qa.pages.WalletPage;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;
-import jp.co.soramitsu.sora.qa.pages.account.AccountsPage;
-import jp.co.soramitsu.sora.qa.pages.account.PinCodePage;
 
 @Log4j2
 public class SwapTests extends CoreTestCase {
@@ -30,10 +27,6 @@ public class SwapTests extends CoreTestCase {
         polkaswapPage.simpleSwap(randomValue);
         ActivityPage activityPage = walletPage.getNavigationBarSection().goToActivityPage();
         activityPage.checkLastTransactionStatusSwap(randomValue);
-        MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
-        AccountsPage accountsPage = morePage.goToAccounts();
-        PinCodePage enterCodePage = accountsPage.forgetAccount();
-        enterCodePage.enterPinCodeOnLogout();
     }
 
 }
