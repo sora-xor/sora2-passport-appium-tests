@@ -118,6 +118,7 @@ public class LiquidAssetsPage {
         }
         log.info("Click Confirm button");
         confirmBtn.click();
+
         log.info("Click Close button");
         closeBtn.shouldBe(Condition.visible).click();
 

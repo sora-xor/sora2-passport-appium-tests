@@ -166,61 +166,40 @@ public class ActivityPage extends CommonPage {
 
     @Step
     public ReferralProgramPage checkSetReffererTransaction() {
-        WebDriver driver = WebDriverRunner.getWebDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT30S"), Duration.parse("PT1S"));
-        if(isAndroid()) {
-            wait.until(ExpectedConditions.attributeToBe(getTransactionStatus, "text", "Successful"));
-        }
-        else {
-            wait.until(ExpectedConditions.attributeToBe(getTransactionStatus, "value", "Successful"));
-
-        }        backBtn.shouldBe(Condition.visible).click();
+        //todo add trx type check
+        checkTrxStatus("Successful");
+        backBtn.shouldBe(Condition.visible).click();
         return screen(ReferralProgramPage.class);
     }
 
     @Step
     public ReferralProgramPage checkBoundXorTransaction() {
         log.info("Check bond trx");
-        WebDriver driver = WebDriverRunner.getWebDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT30S"), Duration.parse("PT1S"));
         assertThat(boundedItem.isDisplayed()).isTrue();
-        if(isAndroid()) {
-            wait.until(ExpectedConditions.attributeToBe(getTransactionStatus, "text", "Successful"));
-        }
-        else {
-            wait.until(ExpectedConditions.attributeToBe(getTransactionStatus, "value", "Successful"));
-
-        }
+        checkTrxStatus("Successful");
         log.info("trx is successful");
         closeBtn.shouldBe(Condition.visible).click();
-        String getAvailableInvitations;
-        if (isAndroid()) {
-            getAvailableInvitations = availableInvitations.shouldBe(Condition.visible).getText();
-            log.info("Available invitations " + getAvailableInvitations);
-        }
         return screen(ReferralProgramPage.class);
     }
 
     @Step
     public ReferralProgramPage checkUnboundXorTransaction() {
         log.info("Check unbond trx");
+        assertThat(unboundedItem.isDisplayed()).isTrue();
+        checkTrxStatus("Successful");
+        closeBtn.shouldBe(Condition.visible).click();
+        return screen(ReferralProgramPage.class);
+    }
+
+    private void checkTrxStatus(String status){
         WebDriver driver = WebDriverRunner.getWebDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT30S"), Duration.parse("PT1S"));
-        wait.until(ExpectedConditions.visibilityOf(unboundedItem));
         if(isAndroid()) {
-            wait.until(ExpectedConditions.attributeToBe(getTransactionStatus, "text", "Successful"));
+            wait.until(ExpectedConditions.attributeToBe(getTransactionStatus, "text", status));
         }
         else {
-            wait.until(ExpectedConditions.attributeToBe(getTransactionStatus, "value", "Successful"));
-
+            wait.until(ExpectedConditions.attributeToBe(getTransactionStatus, "value", status));
         }
-        closeBtn.shouldBe(Condition.visible).click();
-        String getAvailableInvitations;
-        if (isAndroid()) {
-            getAvailableInvitations = availableInvitations.shouldBe(Condition.visible).getText();
-            log.info("Available invitations " + getAvailableInvitations);
-        }
-        return screen(ReferralProgramPage.class);
     }
 }
 

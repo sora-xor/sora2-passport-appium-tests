@@ -1,5 +1,6 @@
 package jp.co.soramitsu.sora.qa.commontests;
 
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.TmsLinks;
 import jp.co.soramitsu.sora.qa.configs.TestConfig;
 import jp.co.soramitsu.sora.qa.infrastructure.CoreTestCase;
@@ -12,6 +13,8 @@ import jp.co.soramitsu.sora.qa.pages.ActivityPage;
 import jp.co.soramitsu.sora.qa.pages.MorePage;
 import jp.co.soramitsu.sora.qa.pages.ReferralProgramPage;
 import jp.co.soramitsu.sora.qa.pages.WalletPage;
+
+import static jp.co.soramitsu.sora.qa.infrastructure.Platform.isAndroid;
 
 @Feature("Referral program")
 @Log4j2
@@ -26,7 +29,8 @@ public class ReferralProgramTests extends CoreTestCase {
         referralProgramPage = activityPage.checkBoundXorTransaction();
         activityPage = referralProgramPage.unBondXor();
         referralProgramPage = activityPage.checkUnboundXorTransaction();
-        morePage = referralProgramPage.returnToMorePage();
+        referralProgramPage.checkAvailableInvitations();
+        referralProgramPage.returnToMorePage();
     }
 
     @Test
@@ -37,7 +41,8 @@ public class ReferralProgramTests extends CoreTestCase {
         ReferralProgramPage referralProgramPage = morePage.goToReferralProgramPage();
         ActivityPage activityPage = referralProgramPage.createInviteLink();
         referralProgramPage = activityPage.checkBoundXorTransaction();
-        morePage = referralProgramPage.returnToMorePage();
+        referralProgramPage.checkAvailableInvitations();
+        referralProgramPage.returnToMorePage();
     }
 
     @TmsLink("SORA-377")
@@ -48,6 +53,6 @@ public class ReferralProgramTests extends CoreTestCase {
         ReferralProgramPage referralProgramPage = morePage.goToReferralProgramPage();
         ActivityPage activityPage = referralProgramPage.setReferrersLink(TestConfig.config.referrerLink1());
         referralProgramPage = activityPage.checkSetReffererTransaction();
-        morePage = referralProgramPage.returnToMorePage();
+        referralProgramPage.returnToMorePage();
     }
 }

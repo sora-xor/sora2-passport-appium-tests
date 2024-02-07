@@ -90,22 +90,26 @@ public class ReferralProgramPage extends CoreTestCase {
 
     @Step
     public ActivityPage unBondXor() {
-
-        //todo: find a way to get available invitations on ios too (it might bring flakiness)
-        if (isAndroid()) {
-            String availableInvitations = availableInvitationsField.getText();
-            log.info("Available invitations: " + availableInvitations);
-        }
+        checkAvailableInvitations();
         unbondXorBtn.shouldBe(Condition.visible).click();
-
         log.info("Unbond 1 XOR");
         unbondXorConfirmBtn.shouldBe(Condition.visible).click();
         return ScreenObject.screen(ActivityPage.class);
     }
 
     @Step
-    public ActivityPage setReferrersLink(String referrerLink) {
+    public void checkAvailableInvitations() {
+        //todo add an actual checking not logging
+        //todo: find a way to get available invitations on ios too (it might bring flakiness)
+        String getAvailableInvitations;
+        if (isAndroid()) {
+            getAvailableInvitations = availableInvitationsField.shouldBe(Condition.visible).getText();
+            log.info("Available invitations " + getAvailableInvitations);
+        }
+    }
 
+    @Step
+    public ActivityPage setReferrersLink(String referrerLink) {
         WebDriver driver = WebDriverRunner.getWebDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.parse("PT10S"), Duration.parse("PT1S"));
         wait.until(ExpectedConditions.visibilityOf(enterReferrersLinkBtn));
