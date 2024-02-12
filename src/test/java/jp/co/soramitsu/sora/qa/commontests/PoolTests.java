@@ -21,16 +21,16 @@ public class PoolTests extends CoreTestCase {
     Random rnd = new Random();
     String randomLiquidity = rnd.RandomValue();
 
-    //todo:add balance checking/ this test often fails because xst is not enough
+    //random liquidity caused fails when xst had not enough balance
     @Test
     @TmsLink("SORA-255")
     public void addLiquidityTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         ExplorePage explorePage = walletPage.getNavigationBarSection().goToExplorePage();
         explorePage.clickPoolsButton();
-        explorePage.addLiquidity(randomLiquidity);
+        explorePage.addLiquidity("1");
         ActivityPage activityPage = walletPage.getNavigationBarSection().goToActivityPage();
-        activityPage.checkLastTransactionStatusPool(randomLiquidity);
+        activityPage.checkLastTransactionStatusPool("1");
         MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();

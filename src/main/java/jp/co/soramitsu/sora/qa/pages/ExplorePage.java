@@ -12,7 +12,7 @@ import static jp.co.soramitsu.sora.qa.infrastructure.Platform.isAndroid;
 import static jp.co.soramitsu.sora.qa.infrastructure.Platform.isIOS;
 
 @Log4j2
-public class ExplorePage extends CommonPage{
+public class ExplorePage extends CommonPage {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Pools\"]")
     @iOSXCUITFindBy(accessibility = "Pools")
@@ -88,20 +88,18 @@ public class ExplorePage extends CommonPage{
     private SelenideElement polkaswapPoolsTitle;
 
     @Step
-    public void clickPoolsButton()
-    {
+    public void clickPoolsButton() {
         poolButton.shouldBe(Condition.visible).click();
         polkaswapPoolsTitle.shouldBe(Condition.visible);
     }
+
     @Step
-    public void explorePolkaswapPools()
-    {
+    public void explorePolkaswapPools() {
         showMorePools.scrollTo().shouldBe(Condition.visible).click();
     }
 
     @Step
-    public void addLiquidity(String randomLiquidity)
-    {
+    public void addLiquidity(String randomLiquidity) {
         log.info("Click Add liquidity button");
         addLiquidityBtn.shouldBe(Condition.visible).click();
         supplyLiquidityTitle.shouldBe(Condition.visible);
@@ -110,12 +108,12 @@ public class ExplorePage extends CommonPage{
         selectTokenItem2.shouldBe(Condition.visible).click();
         xstToken.shouldBe(Condition.visible).click();
         inputAmountFieldXor.shouldBe(Condition.visible).sendKeys(randomLiquidity);
-        log.info("Supply XOR : "+randomLiquidity+" XOR" );
-        if (isAndroid()) log.info("Supply XST : "+inputAmountFieldXst.shouldBe(Condition.visible).getText()+" XST" );
+        log.info("Supply XOR : " + randomLiquidity + " XOR");
+        if (isAndroid()) log.info("Supply XST : " + inputAmountFieldXst.shouldBe(Condition.visible).getText() + " XST");
         supplyBtn.shouldBe(Condition.visible).click();
         confirmBtn.shouldBe(Condition.visible).click();
         closeBtn.shouldBe(Condition.visible).click();
-        log.info("Click Close button" );
+        log.info("Click Close button");
         //if (isIOS()) crossBtn.shouldBe(Condition.visible).click();
     }
 }
