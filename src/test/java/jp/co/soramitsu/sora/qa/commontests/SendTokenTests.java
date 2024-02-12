@@ -1,5 +1,6 @@
 package jp.co.soramitsu.sora.qa.commontests;
 
+import io.qameta.allure.TmsLink;
 import jp.co.soramitsu.sora.qa.configs.TestConfig;
 import jp.co.soramitsu.sora.qa.infrastructure.CoreTestCase;
 import jp.co.soramitsu.sora.qa.infrastructure.Random;
@@ -17,6 +18,7 @@ public class SendTokenTests extends CoreTestCase {
     String randomValue = rnd.RandomValue();
 
     @Test
+    @TmsLink("SORA-23")
     public void sendTokenTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         LiquidAssetsPage liquidAssetsPage = walletPage.goToLiquidAssets();

@@ -113,7 +113,5 @@ public class ExplorePage extends CommonPage {
         supplyBtn.shouldBe(Condition.visible).click();
         confirmBtn.shouldBe(Condition.visible).click();
         closeBtn.shouldBe(Condition.visible).click();
-        log.info("Click Close button");
-        //if (isIOS()) crossBtn.shouldBe(Condition.visible).click();
     }
 }

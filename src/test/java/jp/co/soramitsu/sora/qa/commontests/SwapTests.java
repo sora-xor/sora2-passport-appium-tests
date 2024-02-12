@@ -16,10 +16,11 @@ public class SwapTests extends CoreTestCase {
 
     Random rnd = new Random();
     String randomValue = rnd.RandomValue();
+
     @Test
     @Feature("Swap")
     @TmsLink("SORA-242")
-    public void swapTest () {
+    public void swapTest() {
         WalletPage walletPage = WalletPage.importAccountUsePassphrase(TestConfig.config.mnemonic1());
         PolkaswapPage polkaswapPage = walletPage.goToPolkaswapPage();
         polkaswapPage.checkAndCloseDisclaimer();
@@ -28,5 +29,4 @@ public class SwapTests extends CoreTestCase {
         ActivityPage activityPage = walletPage.getNavigationBarSection().goToActivityPage();
         activityPage.checkLastTransactionStatusSwap(randomValue);
     }
-
 }
