@@ -19,7 +19,7 @@ public class OnboardingTests extends CoreTestCase {
     @Features({@Feature("Create account"), @Feature("Logout")})
     public void createAndForgetAccountTest() {
         WalletPage walletPage = WalletPage.createNewAccount();
-        MorePage morePage =  walletPage.getNavigationBarSection().goToMorePage();
+        MorePage morePage = walletPage.getNavigationBarSection().goToMorePage();
         AccountsPage accountsPage = morePage.goToAccounts();
         PinCodePage enterCodePage = accountsPage.forgetAccount();
         enterCodePage.enterPinCodeOnLogout();
