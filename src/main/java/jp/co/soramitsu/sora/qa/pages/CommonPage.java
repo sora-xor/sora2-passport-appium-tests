@@ -15,12 +15,12 @@ import jp.co.soramitsu.sora.qa.pages.elements.NavigationBarSection;
 @Log4j2
 public class CommonPage implements Container {
 
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/bottomNavigationView")
+    @AndroidFindBy(id = "bottomNavigationView")
     @iOSXCUITFindBy(accessibility = "Tab Bar")
     private NavigationBarSection navigationBarSection;
 
     //pswap button is not inside navigationBarSection
-    @AndroidFindBy(id = "jp.co.soramitsu.sora.develop:id/fabMain")
+    @AndroidFindBy(id = "fabMain")
     @iOSXCUITFindBy(accessibility = "polkaswap")
     private SelenideElement polkaswapBtn;
 
