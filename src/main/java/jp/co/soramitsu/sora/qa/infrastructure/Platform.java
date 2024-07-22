@@ -64,7 +64,7 @@ public class Platform {
     	DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOs");
         capabilities.setCapability("automationName", "XCUITest");
-        capabilities.setCapability("appium:deviceName", "new_phone");
+        capabilities.setCapability("appium:deviceName", "sora_phone");
         capabilities.setCapability("appium:includeSafariInWebviews", true);
         capabilities.setCapability("appium:newCommandTimeout", 3600);
         capabilities.setCapability("appium:connectHardwareKeyboard", true);
